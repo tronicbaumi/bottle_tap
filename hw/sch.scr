@@ -1,0 +1,9 @@
+Printer=PDF24 PDF,A4
+Clear
+Name=SCH_$P$_$D$_$T$
+Color=True
+BackGround=False
+SheetFit=True
+Pages=All
+Landscape
+Print

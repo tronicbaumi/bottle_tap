@@ -1,0 +1,17 @@
+Clear
+Header=True
+FieldNames=True
+Number=True
+Name=True
+Value=True
+Collect=True
+PackageForm=True
+Reference=Middle
+Property=None
+Sort=Name
+Separator=Tab
+Variant=Clear
+Variant=<alle Bauteile>
+PCB=<alle Bauteile>
+File=#D\#N.XLS
+Output
