@@ -15,11 +15,14 @@
 #define MOTOR_STEPS 200
 #define RPM 120
 // Microstepping mode. If you hardwired it to save pins, set to the same value here.
-#define MICROSTEPS 0
+#define MICROSTEPS 1
 
-#define DIR 11
-#define STEP 10
-#define SLEEP 12 // optional (just delete SLEEP from everywhere if not used)
+#define DIR_BOTTLE 10
+#define STEP_BOTTLE 11
+
+#define DIR_GLASS 7
+#define STEP_GLASS 8
+//#define SLEEP 6 // optional (just delete SLEEP from everywhere if not used)
 
 /*
  * Choose one of the sections below that match your board
@@ -31,10 +34,11 @@
 // DRV8834 stepper(MOTOR_STEPS, DIR, STEP, SLEEP, M0, M1);
 
 #include "A4988.h"
-#define MS1 10
-#define MS2 11
-#define MS3 12
-A4988 stepper(MOTOR_STEPS, DIR, STEP, SLEEP, MS1, MS2, MS3);
+#define MS1 9
+#define MS2 8
+#define MS3 7
+A4988 stepper_bottle(MOTOR_STEPS, DIR_BOTTLE, STEP_BOTTLE,  MS1, MS2, MS3);
+A4988 stepper_glass(MOTOR_STEPS, DIR_GLASS, STEP_GLASS,  MS1, MS2, MS3);
 
 // #include "DRV8825.h"
 // #define MODE0 10
@@ -61,9 +65,11 @@ void setup() {
     // pinMode(STOPPER_PIN, INPUT_PULLUP);
     // pinMode(STOPPER_PIN, INPUT_PULLUP);
 
-    stepper.begin(RPM, MICROSTEPS);
+    stepper_bottle.begin(RPM, MICROSTEPS);
+    stepper_glass.begin(RPM, MICROSTEPS);
     // if using enable/disable on ENABLE pin (active LOW) instead of SLEEP uncomment next line
-    stepper.setEnableActiveState(LOW);
+    stepper_bottle.setEnableActiveState(HIGH);
+    stepper_glass.setEnableActiveState(HIGH);
     //stepper.enable();
 
     // set current level (for DRV8880 only). Valid percent values are 25, 50, 75 or 100.
@@ -74,7 +80,9 @@ void setup() {
     // set the motor to move continuously for a reasonable time to hit the stopper
     // let's say 100 complete revolutions (arbitrary number)
   //  stepper.startMove(100 * MOTOR_STEPS * MICROSTEPS);     // in microsteps
-   stepper.startRotate(100 * 360);                     // or in degrees
+  stepper_glass.startRotate(100 * 360);
+   stepper_bottle.startRotate(100 * 360);                     // or in degrees
+   
 }
 
 void loop() {
@@ -89,16 +97,16 @@ void loop() {
          * linear (accelerated) mode with brake, the motor will go past the stopper a bit
          */
 
-        stepper.stop();
+        stepper_bottle.stop();
         // stepper.startBrake();
     }
 
     // motor control loop - send pulse and return how long to wait until next pulse
-    unsigned wait_time_micros = stepper.nextAction();
+    unsigned wait_time_micros = stepper_bottle.nextAction();
 
     // 0 wait time indicates the motor has stopped
     if (wait_time_micros <= 0) {
-        stepper.disable();       // comment out to keep motor powered
+        stepper_bottle.disable();       // comment out to keep motor powered
         delay(3600000);
     }
 
