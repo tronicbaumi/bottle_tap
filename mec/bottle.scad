@@ -65,8 +65,18 @@ module minus()
    translate([30,50,100])rotate([0,100,0])cylinder(220,110/2,110/2);
     
     
-    translate([40,15,0])langloch(5.5,80,5);
-    translate([40,15,5])langloch(14,80,80);
+    translate([40,15,0])langloch(5.5,60,5);
+    translate([40,15,5])langloch(14,60,80);
+    
+    translate([140,15,0])langloch(5.5,60,5);
+    translate([140,15,5])langloch(14,60,80);
+    
+    
+    translate([40,85,0])langloch(5.5,60,5);
+    translate([40,85,5])langloch(14,60,80);
+    
+    translate([140,85,0])langloch(5.5,60,5);
+    translate([140,85,5])langloch(14,60,80);
     
 }
 
