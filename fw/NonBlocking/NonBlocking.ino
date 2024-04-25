@@ -34,9 +34,9 @@
 // DRV8834 stepper(MOTOR_STEPS, DIR, STEP, SLEEP, M0, M1);
 
 #include "A4988.h"
-#define MS1 9
-#define MS2 8
-#define MS3 7
+#define MS1 6
+#define MS2 5
+#define MS3 4
 A4988 stepper_bottle(MOTOR_STEPS, DIR_BOTTLE, STEP_BOTTLE,  MS1, MS2, MS3);
 A4988 stepper_glass(MOTOR_STEPS, DIR_GLASS, STEP_GLASS,  MS1, MS2, MS3);
 
