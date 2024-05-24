@@ -62,20 +62,20 @@ extern "C" {
  *                                 3.835 kRPM
  * omega0:                        80.317  rad/s
  *                               766.970  RPM
- * omega_min:                     19.462  rad/s
- *                               185.844  RPM
+ * omega_min:                      3.816  rad/s
+ *                                36.440  RPM
  * omega1:                       104.711  rad/s
  *                               999.914  RPM
- * accel_limit_0:                272.289  rad/s^2
- *                                 2.600 kRPM/s
- * accel_limit_1:                  1.361 krad/s^2
- *                                13.001 kRPM/s
- * accel0:                       272.289  rad/s^2
- *                                 2.600 kRPM/s
- * accel1:                       963.952  rad/s^2
- *                                 9.205 kRPM/s
- * t1:                           294.970 ms
- * t2:                            25.306 ms
+ * accel_limit_0:                  1.815  rad/s^2
+ *                                17.334  RPM/s
+ * accel_limit_1:                  9.076  rad/s^2
+ *                                86.672  RPM/s
+ * accel0:                         1.815  rad/s^2
+ *                                17.334  RPM/s
+ * accel1:                         9.076  rad/s^2
+ *                                86.672  RPM/s
+ * t1:                            44.245  s
+ * t2:                             2.688  s
  * B_desired:                    704.764 uNm/(rad/s)
  * B_added:                      699.341 uNm/(rad/s)
  * damping_gain_ideal:            16.803 mA/(rad/s)
@@ -83,7 +83,7 @@ extern "C" {
  * damping_gain:                  16.803 mA/(rad/s)
  * damping_threshold:             41.884  rad/s
  *                               399.965  RPM
- * damping_Imax:                 340.000 mA
+ * damping_Imax:                   1.700  A
  * t_rampup:                      10.863 ms
  * dIdt_rampup:                   78.250  A/s
  * t_align:                        0.000  s
@@ -110,7 +110,7 @@ extern "C" {
 /* motor current at beginning of startup */
 #define MCAF_STARTUP_CURRENT_INITIAL            0      // Q15(  0.00000) =   +0.00000 A           =   +0.00000 A           + 0.0000%
 /* maximum current amplitude used for active damping */
-#define STARTUP_DAMPING_IQMAX                 253      // Q15(  0.00772) = +340.40112 mA          = +340.00000 mA          + 0.1180%
+#define STARTUP_DAMPING_IQMAX                1264      // Q15(  0.03857) =   +1.70066 A           =   +1.70000 A           + 0.0388%
 /* binary point for active damping gain */
 #define STARTUP_DAMPING_SHIFT                   8
 /* active damping gain */
@@ -121,11 +121,11 @@ extern "C" {
 
 
 #define STARTUP_DELTA_T_FACTOR               2388
-#define STARTUP_DELTA_T_FACTOR_ACCELERATION          6
+#define STARTUP_DELTA_T_FACTOR_ACCELERATION          1
 /* first startup acceleration rate */
-#define STARTUP_ACCELERATION0                8513      // Q15(  0.25980) = +272.29036 rad/s^2     = +272.28873 rad/s^2     + 0.0006%
+#define STARTUP_ACCELERATION0                 341      // Q15(  0.01041) =   +1.81783 rad/s^2     =   +1.81526 rad/s^2     + 0.1416%
 /* second startup acceleration rate */
-#define STARTUP_ACCELERATION1               30137      // Q15(  0.91971) = +963.93920 rad/s^2     = +963.95185 rad/s^2     - 0.0013%
+#define STARTUP_ACCELERATION1                1703      // Q15(  0.05197) =   +9.07848 rad/s^2     =   +9.07629 rad/s^2     + 0.0241%
 
 /* increase in current per control cycle, during current rampup */
 #define STARTUP_TORQUE_RAMPUP_RATE              3      // Q15(  0.00009) =   +4.03638 mA          =   +3.91249 mA          + 3.1665%

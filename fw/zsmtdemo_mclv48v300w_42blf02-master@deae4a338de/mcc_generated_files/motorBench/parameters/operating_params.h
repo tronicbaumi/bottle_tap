@@ -59,7 +59,7 @@ extern "C" {
 /* Maximum velocity command */
 #define MCAF_VELOCITY_COMMAND_MAX           23980      // Q15(  0.73181) =   +4.00008 kRPM        =   +4.00000 kRPM        + 0.0020%
 /* Minimum velocity command */
-#define MCAF_VELOCITY_COMMAND_MIN            1114      // Q15(  0.03400) = +185.82532 RPM         = +185.84400 RPM         - 0.0101%
+#define MCAF_VELOCITY_COMMAND_MIN             218      // Q15(  0.00665) =  +36.36438 RPM         =  +36.44000 RPM         - 0.2075%
 /* Nominal velocity (base speed): nominal no-load speed at nominal supply voltage with no flux weakening */
 #define MCAF_VELOCITY_NOMINAL               21845      // Q15(  0.66666) =   +3.64394 kRPM        =   +3.64400 kRPM        - 0.0015%
 
@@ -70,18 +70,18 @@ extern "C" {
  *                                 5.466 kRPM
  * velocity_maximum:             418.879  rad/s
  *                                 4.000 kRPM
- * velocity_minimum:              19.462  rad/s
- *                               185.844  RPM
+ * velocity_minimum:               3.816  rad/s
+ *                                36.440  RPM
  * velocity_nominal:             381.599  rad/s
  *                                 3.644 kRPM
  * rho_xi_thresh:                0.111111  
  * ilimit                                 
  *   ipeak:                        3.400  A
  * run                                    
- *   slewrate_accel:              19.758 krad/s^2
- *                               188.670 kRPM/s
- *   slewrate_decel:             832.540  rad/s^2
- *                                 7.950 kRPM/s
+ *   slewrate_accel:               9.879 krad/s^2
+ *                                94.335 kRPM/s
+ *   slewrate_decel:             808.367  rad/s^2
+ *                                 7.719 kRPM/s
  *   t_coastdown:                428.616 ms
  *   closedLoopStopping                   
  *     time:                     500.000 ms
@@ -96,9 +96,9 @@ extern "C" {
 
 #define VELOCITY_SLEWRATE_LIMIT1 32000
 /* slew rate limit for velocity commands during acceleration */
-#define VELOCITY_SLEWRATE_LIMIT_ACCEL        1131      // Q15(  0.03452) =  +19.75654 rad/s       =  +19.75753 rad/s       - 0.0050%
+#define VELOCITY_SLEWRATE_LIMIT_ACCEL         566      // Q15(  0.01727) =   +9.88700 rad/s       =   +9.87876 rad/s       + 0.0834%
 /* slew rate limit for velocity commands during deceleration */
-#define VELOCITY_SLEWRATE_LIMIT_DECEL          48      // Q15(  0.00146) = +838.47390 mrad/s      = +832.53953 mrad/s      + 0.7128%
+#define VELOCITY_SLEWRATE_LIMIT_DECEL          46      // Q15(  0.00140) = +803.53749 mrad/s      = +808.36739 mrad/s      - 0.5975%
 /* estimate of worst-case time needed to decelerate to a stop */
 #define VELOCITY_COASTDOWN_TIME              8572      // Q0(8572.00000) = +428.60000 ms          = +428.61636 ms          - 0.0038%
 

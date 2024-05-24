@@ -83,10 +83,10 @@ autotune_result:
     Ki: 5288.958006847764
     pi_phase_lag: 25.0
   velocity:
-    Kp: 0.001205196848052395
+    Kp: 0.0015847025671914222
     phase_margin: 65.0
-    wc: 12.850832271728388
-    Ki: 0.0027309139346880585
+    wc: 17.376473165281922
+    Ki: 0.004855435245432982
     pi_phase_lag: 10.0
 drive:
   metadata:
@@ -397,13 +397,13 @@ config:
       estimator-active-atpll: false
       estimator-active-zsmt: false
       estimator-active-ideal: false
-      operation-min_velocity_ratio: 0.051
+      operation-min_velocity_ratio: 0.01
       operation-startup_velocity_ratio: 0.2744
       operation-max_velocity_ratio: 1.25
       operation-fullscale_base_ratio: 1.5
       operation-outer_loop_type: velocity
       operation-saliency-threshold: 1.25
-      operation-slewrate-accel: 0.5
+      operation-slewrate-accel: 0.25
       operation-slewrate-decel: 1.0
       operation-dyn_current_type: none
       operation-stopping-type: minimal_impact
@@ -438,13 +438,13 @@ config:
       startup-t_rampup: 25.0
       startup-t_align: 0.0
       startup-min_total_accel_time: 250.0
-      startup-torque_scale_accel: 0.15
+      startup-torque_scale_accel: 0.001
       startup-torque_scale_slow_accel: 0.2
       startup-t_hold: 0.0
       startup-omega0: 0.2
       startup-theta_converge_rate: 1.0
       startup-method: zsmt_dsat
-      startup-damping-Imax: 0.1
+      startup-damping-Imax: 0.5
       startup-damping-gainmax: 40.0
       startup-damping-omega_min: 0.4
       overmodulation-vd_limit: 1.0
@@ -463,9 +463,9 @@ config:
       encoder-qei_sync-align_sweep-sweep_rate_pow: 1.0
       encoder-qei_sync-align_sweep-setup_angle: 45.0
       encoder-qei_sync-pullout-pullout_slip: 0.117
-      zsmt-excitation-kV: 0.12
-      zsmt-excitation-kI: 0.1
-      zsmt-pll-zeta: 1.5
+      zsmt-excitation-kV: 0.3
+      zsmt-excitation-kI: 0.05
+      zsmt-pll-zeta: 1.0
       zsmt-pll-tau: 10.0
       zsmt-pll-tau_lpf: 0.0
       zsmt-pll-execution_divider: 2.0

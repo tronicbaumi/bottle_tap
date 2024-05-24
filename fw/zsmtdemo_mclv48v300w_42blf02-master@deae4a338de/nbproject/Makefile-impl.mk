@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=BeerDemo
+PROJECTNAME=zsmtdemo_mclv48v300w_42blf02-master@deae4a338de
 
 # Active Configuration
 DEFAULTCONF=default

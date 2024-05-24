@@ -50,20 +50,20 @@ extern "C" {
 #endif
 
 /* 
- * Vexc:                           1.427  V
+ * Vexc:                         713.728 mV
  * tau:                           10.000 ms
- * zeta:                           1.500  
+ * zeta:                           1.000  
  * executionDivider:               2.000  
  * elim:                         999.970 m
  * A:                            0.333330  
- * A1:                             8.164 mA
+ * A1:                             4.082 mA
  * A2norm:                       511.984375  
  * A2:                            11.613  /A
- * A1A2:                         0.094806  
- * Ki:                           105.479 krad/s^2
- *                                 1.007 MRPM/s
- * Kp:                             3.164 krad/s
- *                                30.217 kRPM
+ * A1A2:                         0.047403  
+ * Ki:                           210.958 krad/s^2
+ *                                 2.014 MRPM/s
+ * Kp:                             4.219 krad/s
+ *                                40.290 kRPM
  * dt:                            50.000 us
  * timestep:                     100.000 us
  * omega_lpf:                     20.000 krad/s
@@ -85,12 +85,12 @@ extern "C" {
  */
 
 /* Excitation voltage amplitude */
-#define ZSMT_EXCITATION_VOLTAGE_AMPLITUDE        616      // Q15(  0.01880) =   +1.42683 V           =   +1.42746 V           - 0.0437%
+#define ZSMT_EXCITATION_VOLTAGE_AMPLITUDE        308      // Q15(  0.00940) = +713.41553 mV          = +713.72768 mV          - 0.0437%
 /* Proportional gain of PLL = 2*zeta/B/tau */
-#define ZSMT_PLL_KP                         17784      // Q12(  4.34180) =   +3.16430 krad/s      =   +3.16437 krad/s      - 0.0021%
-#define ZSMT_PLL_KP_Q                          12
+#define ZSMT_PLL_KP                         11856      // Q11(  5.78906) =   +4.21907 krad/s      =   +4.21916 krad/s      - 0.0021%
+#define ZSMT_PLL_KP_Q                          11
 /* Integral gain of PLL = 1/B/tau^2 */
-#define ZSMT_PLL_KI                           948      // Q16(  0.01447) = +105.42334 krad/s^2    = +105.47892 krad/s^2    - 0.0527%
+#define ZSMT_PLL_KI                          1897      // Q16(  0.02895) = +210.95789 krad/s^2    = +210.95785 krad/s^2    + 0.0000%
 /* PLL integrator time scaling factor */
 #define ZSMT_PLL_DT                          2388      // Q16(  0.03644) =  +49.99724 us          =  +50.00000 us          - 0.0055%
 /* Scaling gain for HFI error */
