@@ -1,30 +1,43 @@
-# .gitignore file
-
-# MPLAB X IDE (Netbeans) specific
-**/*.X/~*.*
+# folders to ignore where *.X is root of repository
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+debug/
+run/
+.generated_files/
+# folder to ignore where *.X is not root of repository
 **/*.X/build/
-**/*.X/debug/
+**/*.X/nbbuild/
 **/*.X/dist/
-**/*.X/disassembly/
+**/*.X/nbdist/
+**/*.X/nb-gradle/
+**/*.X/debug/
+**/*.X/run/
 **/*.X/.generated_files/
-**/*.X/nbproject/private/
-**/*.X/nbproject/*.mk
-**/*.X/nbproject/*.bash
-**/*.X/nbproject/Makefile-genesis.properties
-
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Executables
-*.exe
-
-
-# KDE specific
-.directory
-
-# Misc
-.svn
+#other folders and files to ignore
+**/nbproject/private
+**/nbproject/Makefile-*
+**/nbproject/Package-*
+**/nbproject/project.properties
+# motorbench files to ignore
+*motorbench-log.0.0.txt
+*motorbench-log.0.0.txt.lck
+# extensions to ignore
 *.bak
+*.dat
+*.exe
+*.bkp
+*.7z
+*.h_backup
+*.c_backup
+*.backup
+*.c_backup
+*.log
+*.log
+*.o
+*.lck
+*.elf
+*.map
+*.d
