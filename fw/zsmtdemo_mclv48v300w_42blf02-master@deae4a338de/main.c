@@ -24,7 +24,6 @@
 /*
     Main application
 */
-
 int main(void)
 {
     SYSTEM_Initialize();
@@ -32,6 +31,8 @@ int main(void)
 
     while(1)
     {
+        
         MCAF_MainLoop();
+        
     }    
 }

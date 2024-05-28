@@ -50,31 +50,31 @@ extern "C" {
 #endif
 
 /* 
- * Vexc:                         713.728 mV
+ * Vexc:                           1.427  V
  * tau:                           10.000 ms
- * zeta:                           1.000  
+ * zeta:                           1.500  
  * executionDivider:               2.000  
  * elim:                         999.970 m
  * A:                            0.333330  
- * A1:                             4.082 mA
+ * A1:                             8.164 mA
  * A2norm:                       511.984375  
  * A2:                            11.613  /A
- * A1A2:                         0.047403  
- * Ki:                           210.958 krad/s^2
- *                                 2.014 MRPM/s
- * Kp:                             4.219 krad/s
- *                                40.290 kRPM
+ * A1A2:                         0.094806  
+ * Ki:                           105.479 krad/s^2
+ *                                 1.007 MRPM/s
+ * Kp:                             3.164 krad/s
+ *                                30.217 kRPM
  * dt:                            50.000 us
  * timestep:                     100.000 us
  * omega_lpf:                     20.000 krad/s
  *                               190.986 kRPM
  * alignTime:                      1.000 ms
  * angleLockDelay:                50.000 ms
- * angleProbeCurrent:            850.000 mA
+ * angleProbeCurrent:            340.000 mA
  * angleProbeTime:                10.000 ms
  * angleProbeAccumGain:                1  
  * angleProbeSlewTime:           196.075 us
- * angleProbeSlewRate:             4.335 kA/s
+ * angleProbeSlewRate:             1.734 kA/s
  * angleProbeBlankingTime:       522.868 us
  * correctionGainDc:               0.000  rad/A
  * pllLockTime:                   10.000 ms
@@ -85,12 +85,12 @@ extern "C" {
  */
 
 /* Excitation voltage amplitude */
-#define ZSMT_EXCITATION_VOLTAGE_AMPLITUDE        308      // Q15(  0.00940) = +713.41553 mV          = +713.72768 mV          - 0.0437%
+#define ZSMT_EXCITATION_VOLTAGE_AMPLITUDE        616      // Q15(  0.01880) =   +1.42683 V           =   +1.42746 V           - 0.0437%
 /* Proportional gain of PLL = 2*zeta/B/tau */
-#define ZSMT_PLL_KP                         11856      // Q11(  5.78906) =   +4.21907 krad/s      =   +4.21916 krad/s      - 0.0021%
-#define ZSMT_PLL_KP_Q                          11
+#define ZSMT_PLL_KP                         17784      // Q12(  4.34180) =   +3.16430 krad/s      =   +3.16437 krad/s      - 0.0021%
+#define ZSMT_PLL_KP_Q                          12
 /* Integral gain of PLL = 1/B/tau^2 */
-#define ZSMT_PLL_KI                          1897      // Q16(  0.02895) = +210.95789 krad/s^2    = +210.95785 krad/s^2    + 0.0000%
+#define ZSMT_PLL_KI                           948      // Q16(  0.01447) = +105.42334 krad/s^2    = +105.47892 krad/s^2    - 0.0527%
 /* PLL integrator time scaling factor */
 #define ZSMT_PLL_DT                          2388      // Q16(  0.03644) =  +49.99724 us          =  +50.00000 us          - 0.0055%
 /* Scaling gain for HFI error */
@@ -111,7 +111,7 @@ extern "C" {
 /* Angle probe blanking time */
 #define ZSMT_ANGLE_PROBE_BLANKING_TIME         10      // Q0( 10.00000)  = +500.00000 us          = +522.86797 us          - 4.3736%
 /* Angle probe slew rate */
-#define ZSMT_ANGLE_PROBE_SLEW_RATE            161      // Q15(  0.00491) =   +4.33238 kA/s        =   +4.33507 kA/s        - 0.0620%
+#define ZSMT_ANGLE_PROBE_SLEW_RATE             64      // Q15(  0.00195) =   +1.72219 kA/s        =   +1.73403 kA/s        - 0.6827%
 /* DC correction gain */
 #define ZSMT_CORRECTION_GAIN_DC                 0      // Q14(  0.00000) =   +0.00000 rad/A       =   +0.00000 rad/A       + 0.0000%
 /* Required PLL lock time */

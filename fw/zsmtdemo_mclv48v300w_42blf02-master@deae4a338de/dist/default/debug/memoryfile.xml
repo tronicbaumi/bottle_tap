@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/debug/zsmtdemo_mclv48v300w_42blf02-master_deae4a338de.debug.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>24576</length>
+      <used>6934</used>
+      <free>17642</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>269184</length>
+      <used>43947</used>
+      <free>225237</free>
+    </memory>
+  </executable>
+</project>

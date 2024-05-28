@@ -57,7 +57,7 @@ extern "C" {
 /* Filter constant used for filtering the measured current in q-axis */
 #define KFILTER_IQ                           1638      // Q15(  0.04999) = +999.75586 rad/s       =   +1.00000 krad/s      - 0.0244%
 /* Minimum velocity command */
-#define MCAPI_MINIMUM_VELOCITY                218      // Q15(  0.00665) =   +3.80807 rad/s       =   +3.81599 rad/s       - 0.2075%
+#define MCAPI_MINIMUM_VELOCITY                546      // Q15(  0.01666) =   +9.53764 rad/s       =   +9.53997 rad/s       - 0.0244%
 /* Maximum velocity command */
 #define MCAPI_MAXIMUM_VELOCITY              23980      // Q15(  0.73181) = +418.88759 rad/s       = +418.87902 rad/s       + 0.0020%
 

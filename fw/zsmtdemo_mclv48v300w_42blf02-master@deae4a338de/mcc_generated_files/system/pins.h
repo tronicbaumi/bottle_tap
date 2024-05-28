@@ -45,6 +45,51 @@
 
 /**
  * @ingroup  pinsdriver
+ * @brief    Sets the RE6 GPIO Pin which has a custom name of Position_sensor to High
+ * @pre      The RE6 must be set as Output Pin             
+ * @return   none  
+ */
+#define Position_sensor_SetHigh()          (_LATE6 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RE6 GPIO Pin which has a custom name of Position_sensor to Low
+ * @pre      The RE6 must be set as Output Pin
+ * @return   none  
+ */
+#define Position_sensor_SetLow()           (_LATE6 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RE6 GPIO Pin which has a custom name of Position_sensor
+ * @pre      The RE6 must be set as Output Pin
+ * @return   none  
+ */
+#define Position_sensor_Toggle()           (_LATE6 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RE6 GPIO Pin which has a custom name of Position_sensor
+ * @return   none  
+ */
+#define Position_sensor_GetValue()         _RE6
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE6 GPIO Pin which has a custom name of Position_sensor as Input
+ * @return   none  
+ */
+#define Position_sensor_SetDigitalInput()  (_TRISE6 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE6 GPIO Pin which has a custom name of Position_sensor as Output
+ * @return   none  
+ */
+#define Position_sensor_SetDigitalOutput() (_TRISE6 = 0)
+
+/**
+ * @ingroup  pinsdriver
  * @brief    Sets the RE8 GPIO Pin which has a custom name of MCAF_TESTPOINT1 to High
  * @pre      The RE8 must be set as Output Pin             
  * @return   none  

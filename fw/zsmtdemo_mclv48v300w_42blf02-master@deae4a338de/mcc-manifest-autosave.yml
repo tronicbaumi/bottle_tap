@@ -2,7 +2,7 @@
 
 manifest_file_version: 1.0.0
 project: ZsmtDemoMCLV48V300W-42blf02
-creation_date: 2024-05-27T08:56:22.605+02:00[Europe/Berlin]
+creation_date: 2024-05-28T10:12:29.613+02:00[Europe/Berlin]
 operating_system: Windows 10
 mcc_mode: IDE
 mcc_mode_version: v6.20
@@ -13,7 +13,7 @@ mcc_core_version: 5.7.1
 content_manager_version: 5.0.0
 is_mcc_offline: false
 is_using_prerelease_versions: true
-mcc_content_registries: https://registry.npmjs.org/,, https://artifacts.microchip.com/artifactory/api/npm/npm/
+mcc_content_registries: https://registry.npmjs.org/,https://artifacts.microchip.com/artifactory/api/npm/npm/
 device_library: {library_class: com.microchip.mcc.melody.Library, name: Melody, version: 2.3.2}
 packs: {name: dsPIC33CK-MP_DFP, version: 1.13.366}
 modules:
