@@ -55,13 +55,9 @@
 
 APPLICATION_DATA app;
 int8_t position_sensor;
-bool zero_position_detected = false;
-bool switch_released = false;
-uint32_t release_start_time = 0;
-uint32_t release_duration_ms = 500; // 0.5 seconds
-
 void APP_TimerCallback(void);
 
+#define ROTATION_COUNT_THRESHOLD 2 // Define the number of rotations after zero position
 /**
  * Determines the appropriate velocity command for a given input of unipolar
  * speed reference.
@@ -89,6 +85,8 @@ void APP_ApplicationInitialize(volatile MCAPI_MOTOR_DATA *apiData, MCAF_BOARD_DA
     appData->motorVelocityCommandMinimum = MCAPI_VelocityReferenceMinimumGet(apiData);
     appData->motorVelocityCommandMaximum = MCAPI_VelocityReferenceMaximumGet(apiData);
     appData->pboard = pboard;
+    appData->zeroPositionDetected = false; // Initialize the zero position flag
+    appData->rotationCounter = 0;          // Initialize the rotation counter
     HAL_TMR_TICK_SetCallbackFunction(APP_TimerCallback);
 }
 
@@ -97,128 +95,144 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
     volatile MCAPI_MOTOR_DATA *apiData = appData->apiData;
     MCAF_BOARD_DATA *pboard = appData->pboard;
 
-    // Check if zero position has been detected
-    if (!zero_position_detected)
+    if (!appData->zeroPositionDetected)
     {
-        // Run motor in negative direction to find zero position
-        appData->motorDirection = -1;
-        appData->motorVelocityCommand = appData->motorVelocityCommandMinimum;
+        // Run the motor in downwards direction until zero position is detected
+        int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
+        appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, potentiometerValue);
         MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
+        appData->motorDirection = -1;
         
-        // Check the position sensor
-        if (position_sensor == 0)
+        MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
+        if (motorState == MCAPI_MOTOR_STOPPED || motorState == MCAPI_MOTOR_STOPPING)
         {
-            zero_position_detected = true;
-            switch_released = false;
-            release_start_time = HAL_GetTick();
+            MCAPI_MotorStart(apiData);
         }
     }
-    else if (!switch_released)
+    else if (appData->rotationCounter < ROTATION_COUNT_THRESHOLD)
     {
-        // Run motor in positive direction for 0.5 seconds to release the switch
+        // Rotate the motor upwards for a few rotations to prevent damage to the sensor
         appData->motorDirection = 1;
         appData->motorVelocityCommand = appData->motorVelocityCommandMinimum;
         MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
         
-        if (HAL_GetTick() - release_start_time >= release_duration_ms)
+        MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
+        if (motorState == MCAPI_MOTOR_STOPPED || motorState == MCAPI_MOTOR_STOPPING)
         {
-            switch_released = true;
+            MCAPI_MotorStart(apiData);
         }
+        
+        // Increment the rotation counter
+        appData->rotationCounter++;
     }
-    else
+    else if (appData->hardwareUiEnabled)
     {
-        if (appData->hardwareUiEnabled)
+        /* Use potentiometer to set motor velocity command */
+        int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
+        appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, potentiometerValue);
+        MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
+        
+        /* Button2 toggles motor direction */
+        if (MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard))
         {
-            // Use potentiometer to set motor velocity command
-            int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
-            appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 
-                                                                         potentiometerValue);
-            MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
+            appData->motorDirection = -1;
             
-            // Button2 toggles motor direction
-            if (MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard))
+            MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
+            switch (motorState)
             {
-                appData->motorDirection = -1;
-                MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-                switch (motorState)
+                case MCAPI_MOTOR_STOPPED:
+                case MCAPI_MOTOR_STOPPING:
                 {
-                    case MCAPI_MOTOR_STOPPED:
-                    case MCAPI_MOTOR_STOPPING:
-                        MCAPI_MotorStart(apiData);
-                        break;
-
-                    case MCAPI_MOTOR_FAULT:
-                        uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
-                        MCAPI_FaultStatusClear(apiData, faultFlags);
-                        break;
-
-                    case MCAPI_MOTOR_DIAGSTATE:
-                        // do nothing
-                        break;
+                    MCAPI_MotorStart(apiData);
+                    break;
+                }
+                case MCAPI_MOTOR_FAULT:
+                {
+                    uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
+                    MCAPI_FaultStatusClear(apiData, faultFlags);
+                    break;
+                }
+                case MCAPI_MOTOR_DIAGSTATE:
+                {
+                    /* do nothing */
+                    break;
                 }
             }
-            else if (!MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard))
+        }
+        else if (!MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard))
+        {
+            MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
+            switch (motorState)
             {
-                MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-                switch (motorState)
+                case MCAPI_MOTOR_STARTING:
+                case MCAPI_MOTOR_RUNNING:
                 {
-                    case MCAPI_MOTOR_STARTING:
-                    case MCAPI_MOTOR_RUNNING:
-                        MCAPI_MotorStop(apiData);
-                        break;
-
-                    case MCAPI_MOTOR_FAULT:
-                        uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
-                        MCAPI_FaultStatusClear(apiData, faultFlags);
-                        break;
-
-                    case MCAPI_MOTOR_DIAGSTATE:
-                        // do nothing
-                        break;
+                    MCAPI_MotorStop(apiData);
+                    break;
+                }
+                case MCAPI_MOTOR_FAULT:
+                {
+                    uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
+                    MCAPI_FaultStatusClear(apiData, faultFlags);
+                    break;
+                }
+                case MCAPI_MOTOR_DIAGSTATE:
+                {
+                    /* do nothing */
+                    break;
                 }
             }
+        }
+        
+        /* Button1 toggles motor state + clears motor fault */
+        if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard))
+        {
+            appData->motorDirection = 1;
             
-            // Button1 toggles motor state + clears motor fault
-            if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard))
+            MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
+            switch (motorState)
             {
-                appData->motorDirection = 1;
-                MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-                switch (motorState)
+                case MCAPI_MOTOR_STOPPED:
+                case MCAPI_MOTOR_STOPPING:
                 {
-                    case MCAPI_MOTOR_STOPPED:
-                    case MCAPI_MOTOR_STOPPING:
-                        MCAPI_MotorStart(apiData);
-                        break;
-
-                    case MCAPI_MOTOR_FAULT:
-                        uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
-                        MCAPI_FaultStatusClear(apiData, faultFlags);
-                        break;
-
-                    case MCAPI_MOTOR_DIAGSTATE:
-                        // do nothing
-                        break;
+                    MCAPI_MotorStart(apiData);
+                    break;
+                }
+                case MCAPI_MOTOR_FAULT:
+                {
+                    uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
+                    MCAPI_FaultStatusClear(apiData, faultFlags);
+                    break;
+                }
+                case MCAPI_MOTOR_DIAGSTATE:
+                {
+                    /* do nothing */
+                    break;
                 }
             }
-            else if (!MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard))
+        }
+        else if (!MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard))
+        {
+            MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
+            switch (motorState)
             {
-                MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-                switch (motorState)
+                case MCAPI_MOTOR_STARTING:
+                case MCAPI_MOTOR_RUNNING:
                 {
-                    case MCAPI_MOTOR_STARTING:
-                    case MCAPI_MOTOR_RUNNING:
-                        MCAPI_MotorStop(apiData);
-                        break;
-
-                    case MCAPI_MOTOR_FAULT:
-                        uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
-                        MCAPI_FaultStatusClear(apiData, faultFlags);
-                        break;
-
-                    case MCAPI_MOTOR_DIAGSTATE:
-                        // do nothing
-                        break;
-                }        
+                    MCAPI_MotorStop(apiData);
+                    break;
+                }
+                case MCAPI_MOTOR_FAULT:
+                {
+                    uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
+                    MCAPI_FaultStatusClear(apiData, faultFlags);
+                    break;
+                }
+                case MCAPI_MOTOR_DIAGSTATE:
+                {
+                    /* do nothing */
+                    break;
+                }
             }
         }
     }
@@ -231,6 +245,12 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
 void position_Check()
 {
     position_sensor = Position_sensor_GetValue();
+    if (position_sensor == 0)
+    {
+        app.zeroPositionDetected = true;
+        app.rotationCounter = 0; // Reset the rotation counter
+        MCAPI_MotorStop(app.apiData); // Stop the motor when zero position is detected
+    }
 }
 
 void APP_TimerCallback(void)
@@ -239,4 +259,3 @@ void APP_TimerCallback(void)
     MCAF_BoardServiceTasks(app.pboard);
     APP_ApplicationStep(&app);
 }
-

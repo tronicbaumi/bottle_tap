@@ -65,6 +65,8 @@ typedef struct tagAPPLICATION_DATA
     bool hardwareUiEnabled;
     volatile MCAPI_MOTOR_DATA *apiData;
     MCAF_BOARD_DATA *pboard;
+    bool zeroPositionDetected;
+    uint8_t rotationCounter;
 } APPLICATION_DATA;
 
 /**
