@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/free/production/avr16eb32-stepper-full-ramp-mcc.X.production.elf">                 
+    <memory name="program">              
+      <units>bytes</units>                 
+      <length>16384</length>                 
+      <used>11978</used>                     
+      <free>4406</free>                     
+    </memory>                              
+    <memory name="data">                 
+      <units>bytes</units>                 
+      <length>2048</length>                 
+      <used>66</used>                     
+      <free>1982</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

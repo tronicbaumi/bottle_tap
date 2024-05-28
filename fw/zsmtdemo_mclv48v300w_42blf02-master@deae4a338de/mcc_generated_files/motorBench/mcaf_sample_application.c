@@ -53,11 +53,13 @@
 #include "hal/hardware_access_functions.h"
 #include "system_state.h"
 
+#define ROTATION_COUNT_THRESHOLD 20 //number of rotations after zero position
+
 APPLICATION_DATA app;
 int8_t position_sensor;
 void APP_TimerCallback(void);
 
-#define ROTATION_COUNT_THRESHOLD 2 // Define the number of rotations after zero position
+
 /**
  * Determines the appropriate velocity command for a given input of unipolar
  * speed reference.
@@ -95,6 +97,9 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
     volatile MCAPI_MOTOR_DATA *apiData = appData->apiData;
     MCAF_BOARD_DATA *pboard = appData->pboard;
 
+ /*
+ * part to determine the zero position.
+ */
     if (!appData->zeroPositionDetected)
     {
         // Run the motor in downwards direction until zero position is detected
@@ -125,14 +130,10 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
         // Increment the rotation counter
         appData->rotationCounter++;
     }
+    /*Normal Operation based on buttons to set the direction*/
     else if (appData->hardwareUiEnabled)
     {
-        /* Use potentiometer to set motor velocity command */
-        int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
-        appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, potentiometerValue);
-        MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
-        
-        /* Button2 toggles motor direction */
+        //To spin the motor CCW
         if (MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard))
         {
             appData->motorDirection = -1;
@@ -161,6 +162,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
         }
         else if (!MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard))
         {
+            //To spin the motor CCW
             MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
             switch (motorState)
             {
