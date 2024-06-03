@@ -34,29 +34,13 @@
 #include "mcc_generated_files/system/system.h"
 #include "util/delay.h"
 #include "stepper.h"
-#include "mcc_generated_files/system/pins.h"
 
-/*  Function that returns the voltage expressed in mV */
-uint16_t Get_VBus(adc_0_channel_t channel)
+stepper_position_t MainMove(stepper_position_t position, stepper_position_t displacement, uint16_t count_delay)
 {
-    uint16_t vbus_mv;
-    ADC0_StartConversion(channel);
-    while(ADC0_IsConversionDone() == 0);
-    _delay_us(50);
-    vbus_mv = (uint16_t)(K_VBUS * ADC_VREF * (float)ADC0_GetConversionResult() / 65.536);   
-    return vbus_mv;
-}
-
-stepper_position_t MainMove(stepper_position_t position, stepper_position_t displacement, uint16_t speed)
-{
-    uint16_t acc   = DEGPS_TO_U16(0.3);
-    uint16_t decc  = DEGPS_TO_U16(0.3);
-    uint16_t vbus;
-
-    vbus = Get_VBus(VBUS_ADC);
-    position = Stepper_Move(position, displacement, acc, decc, speed, vbus);
+    position = Stepper_Move(position, displacement, count_delay);
     return position;
 }
+
 
 int main(void)
 {
@@ -65,48 +49,49 @@ int main(void)
     /* System initialize */
     SYSTEM_Initialize();
 
-    /*Register the Stepper_TimeTick as a callback*/
-    TCE0_OverflowCallbackRegister(Stepper_TimeTick);
-
     Stepper_Init();
     
     _delay_ms(2000);
-
+    printf("\n\r-----------------------------------------------");
+    printf("\n\rStepping Mode: %s, 1 step = %d sub-steps", STRING, K_MODE);
+    printf("\n\r");
+    
+    // drive to zero position
+    // add code here
+    stepper_position_t sub_steps;
+    sub_steps = STEPS_TO_SUBSTEPS(25);        /* Positive: CW, Negative: CCW */
+    uint16_t           count_delay;
+    count_delay = RPS_TO_COUNT(1.0);            /* revolutions per second */
     while(1)
     {
         
-        stepper_position_t sub_steps;
-        uint16_t           speed;
-        int8_t button;
-        sub_steps = STEPS_TO_SUBSTEPS(15);        /* Positive: CW, Negative: CCW */
-        speed = SPEED_LIMIT(DEGPS_TO_U16(1080));    /* Degrees per second */
-        LED_SetLow();
-        if (Button1_GetValue() == 0){
-            button = Button1_GetValue();
-            LED_SetHigh();
+//        So use for CW
+        while(Button1_GetValue() == 0)
+        {
             stepper_position = MainMove(stepper_position,
                                     sub_steps,
-                                    speed);
-            
-
+                                    count_delay);
         }
+
         
-//        else if (Button1_GetValue () > 0){
-//            button = Button1_GetValue();
-//            LED_SetLow();
-//            stepper_position = MainMove(stepper_position,
-//                                    -sub_steps,
-//                                    speed);
-//        }
-        //        _delay_ms(500);
-//        
-//        sub_steps = -STEPS_TO_SUBSTEPS(800);       /* Positive: CW, Negative: CCW */
-//        speed = SPEED_LIMIT(DEGPS_TO_U16(720));    /* Degrees per second */
+//        stepper_position_t sub_steps;
+//        uint16_t           count_delay;
+//
+//        sub_steps = STEPS_TO_SUBSTEPS(1000);        /* Positive: CW, Negative: CCW */
+//        count_delay = RPS_TO_COUNT(1.0);            /* revolutions per second */
 //
 //        stepper_position = MainMove(stepper_position,
 //                                    sub_steps,
-//                                    speed);
-//        _delay_ms(500);
+//                                    count_delay);
+//        _delay_ms(1000);
+//        
+//        sub_steps = -STEPS_TO_SUBSTEPS(2000);       /* Positive: CW, Negative: CCW */
+//        count_delay = RPS_TO_COUNT(2.0);            /* revolutions per second */
+//
+//        stepper_position = MainMove(stepper_position,
+//                                    sub_steps,
+//                                    count_delay);
+//        _delay_ms(1000);
     }
 }
 
