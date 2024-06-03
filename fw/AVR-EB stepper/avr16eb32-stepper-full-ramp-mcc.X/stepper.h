@@ -14,10 +14,10 @@ typedef int32_t  stepper_position_t;
 
 /* USER DEFINE CONFIGS*/
 /* MOTOR SPECIFIC*/
-#define R                  2.6                  /* Motor Windings Resistance  [ohm] */
+#define R                  1.25                  /* Motor Windings Resistance  [ohm] */
 #define I_OUT              500.0                /* Motor Output Current Limit [mA] */
 #define STEP_SIZE          1.8                  /* Motor degrees / full-step */
-#define KV                 5.6                  /* Proportionality constant for BEMF compensation 1.0 ... 10.0 */
+#define KV                 3.1                  /* Proportionality constant for BEMF compensation 1.0 ... 10.0 */
 #define RELEASE_IN_IDLE    true                 /* True: for power savings, the current through the coils is stopped. */
 
 

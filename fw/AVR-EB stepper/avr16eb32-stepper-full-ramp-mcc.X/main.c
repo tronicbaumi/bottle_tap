@@ -34,6 +34,7 @@
 #include "mcc_generated_files/system/system.h"
 #include "util/delay.h"
 #include "stepper.h"
+#include "mcc_generated_files/system/pins.h"
 
 /*  Function that returns the voltage expressed in mV */
 uint16_t Get_VBus(adc_0_channel_t channel)
@@ -81,24 +82,39 @@ int main(void)
 
     while(1)
     {
+        
         stepper_position_t sub_steps;
         uint16_t           speed;
-
-        sub_steps = STEPS_TO_SUBSTEPS(400);        /* Positive: CW, Negative: CCW */
-        speed = SPEED_LIMIT(DEGPS_TO_U16(360));    /* Degrees per second */
-
-        stepper_position = MainMove(stepper_position,
+        int8_t button;
+        sub_steps = STEPS_TO_SUBSTEPS(50);        /* Positive: CW, Negative: CCW */
+        speed = SPEED_LIMIT(DEGPS_TO_U16(1080));    /* Degrees per second */
+        LED_SetLow();
+        if (Button1_GetValue() == 0){
+            button = Button1_GetValue();
+            LED_SetHigh();
+            stepper_position = MainMove(stepper_position,
                                     sub_steps,
                                     speed);
-        _delay_ms(500);
+            
+
+        }
         
-        sub_steps = -STEPS_TO_SUBSTEPS(200);       /* Positive: CW, Negative: CCW */
-        speed = SPEED_LIMIT(DEGPS_TO_U16(180));    /* Degrees per second */
-
-        stepper_position = MainMove(stepper_position,
-                                    sub_steps,
-                                    speed);
-        _delay_ms(500);
+//        else if (Button1_GetValue () > 0){
+//            button = Button1_GetValue();
+//            LED_SetLow();
+//            stepper_position = MainMove(stepper_position,
+//                                    -sub_steps,
+//                                    speed);
+//        }
+        //        _delay_ms(500);
+//        
+//        sub_steps = -STEPS_TO_SUBSTEPS(800);       /* Positive: CW, Negative: CCW */
+//        speed = SPEED_LIMIT(DEGPS_TO_U16(720));    /* Degrees per second */
+//
+//        stepper_position = MainMove(stepper_position,
+//                                    sub_steps,
+//                                    speed);
+//        _delay_ms(500);
     }
 }
 

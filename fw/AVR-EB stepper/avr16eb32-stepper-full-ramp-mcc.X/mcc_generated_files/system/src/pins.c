@@ -45,6 +45,8 @@ static void (*IO_PA7_InterruptHandler)(void);
 static void (*IO_PF4_InterruptHandler)(void);
 static void (*IO_PC2_InterruptHandler)(void);
 static void (*IO_PC1_InterruptHandler)(void);
+static void (*Button1_InterruptHandler)(void);
+static void (*LED_InterruptHandler)(void);
 
 void PIN_MANAGER_Initialize()
 {
@@ -52,7 +54,7 @@ void PIN_MANAGER_Initialize()
     PORTA.DIR = 0xFF;
     PORTC.DIR = 0x2;
     PORTD.DIR = 0x0;
-    PORTF.DIR = 0x0;
+    PORTF.DIR = 0x20;
 
   /* OUT Registers Initialization */
     PORTA.OUT = 0x0;
@@ -90,8 +92,8 @@ void PIN_MANAGER_Initialize()
     PORTF.PIN2CTRL = 0x0;
     PORTF.PIN3CTRL = 0x0;
     PORTF.PIN4CTRL = 0x0;
-    PORTF.PIN5CTRL = 0x0;
-    PORTF.PIN6CTRL = 0x0;
+    PORTF.PIN5CTRL = 0x80;
+    PORTF.PIN6CTRL = 0x8;
     PORTF.PIN7CTRL = 0x0;
 
   /* EVGENCTRL registers Initialization */
@@ -122,6 +124,8 @@ void PIN_MANAGER_Initialize()
     IO_PF4_SetInterruptHandler(IO_PF4_DefaultInterruptHandler);
     IO_PC2_SetInterruptHandler(IO_PC2_DefaultInterruptHandler);
     IO_PC1_SetInterruptHandler(IO_PC1_DefaultInterruptHandler);
+    Button1_SetInterruptHandler(Button1_DefaultInterruptHandler);
+    LED_SetInterruptHandler(LED_DefaultInterruptHandler);
 }
 
 /**
@@ -267,6 +271,32 @@ void IO_PC1_DefaultInterruptHandler(void)
     // add your IO_PC1 interrupt custom code
     // or set custom function using IO_PC1_SetInterruptHandler()
 }
+/**
+  Allows selecting an interrupt handler for Button1 at application runtime
+*/
+void Button1_SetInterruptHandler(void (* interruptHandler)(void)) 
+{
+    Button1_InterruptHandler = interruptHandler;
+}
+
+void Button1_DefaultInterruptHandler(void)
+{
+    // add your Button1 interrupt custom code
+    // or set custom function using Button1_SetInterruptHandler()
+}
+/**
+  Allows selecting an interrupt handler for LED at application runtime
+*/
+void LED_SetInterruptHandler(void (* interruptHandler)(void)) 
+{
+    LED_InterruptHandler = interruptHandler;
+}
+
+void LED_DefaultInterruptHandler(void)
+{
+    // add your LED interrupt custom code
+    // or set custom function using LED_SetInterruptHandler()
+}
 ISR(PORTA_PORT_vect)
 { 
     // Call the interrupt handler for the callback registered at runtime
@@ -333,6 +363,14 @@ ISR(PORTF_PORT_vect)
     if(VPORTF.INTFLAGS & PORT_INT4_bm)
     {
        IO_PF4_InterruptHandler(); 
+    }
+    if(VPORTF.INTFLAGS & PORT_INT6_bm)
+    {
+       Button1_InterruptHandler(); 
+    }
+    if(VPORTF.INTFLAGS & PORT_INT5_bm)
+    {
+       LED_InterruptHandler(); 
     }
     /* Clear interrupt flags */
     VPORTF.INTFLAGS = 0xff;

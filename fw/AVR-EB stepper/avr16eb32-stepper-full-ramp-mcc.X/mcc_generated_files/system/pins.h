@@ -247,6 +247,44 @@
 #define IO_PC1_EnableInterruptForLowLevelSensing() do { PORTC.PIN1CTRL = (PORTC.PIN1CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
 #define PC1_SetInterruptHandler IO_PC1_SetInterruptHandler
 
+//get/set Button1 aliases
+#define Button1_SetHigh() do { PORTF_OUTSET = 0x40; } while(0)
+#define Button1_SetLow() do { PORTF_OUTCLR = 0x40; } while(0)
+#define Button1_Toggle() do { PORTF_OUTTGL = 0x40; } while(0)
+#define Button1_GetValue() (VPORTF.IN & (0x1 << 6))
+#define Button1_SetDigitalInput() do { PORTF_DIRCLR = 0x40; } while(0)
+#define Button1_SetDigitalOutput() do { PORTF_DIRSET = 0x40; } while(0)
+#define Button1_SetPullUp() do { PORTF_PIN6CTRL  |= PORT_PULLUPEN_bm; } while(0)
+#define Button1_ResetPullUp() do { PORTF_PIN6CTRL  &= ~PORT_PULLUPEN_bm; } while(0)
+#define Button1_SetInverted() do { PORTF_PIN6CTRL  |= PORT_INVEN_bm; } while(0)
+#define Button1_ResetInverted() do { PORTF_PIN6CTRL  &= ~PORT_INVEN_bm; } while(0)
+#define Button1_DisableInterruptOnChange() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x0 ; } while(0)
+#define Button1_EnableInterruptForBothEdges() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x1 ; } while(0)
+#define Button1_EnableInterruptForRisingEdge() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x2 ; } while(0)
+#define Button1_EnableInterruptForFallingEdge() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x3 ; } while(0)
+#define Button1_DisableDigitalInputBuffer() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
+#define Button1_EnableInterruptForLowLevelSensing() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
+#define PF6_SetInterruptHandler Button1_SetInterruptHandler
+
+//get/set LED aliases
+#define LED_SetHigh() do { PORTF_OUTSET = 0x20; } while(0)
+#define LED_SetLow() do { PORTF_OUTCLR = 0x20; } while(0)
+#define LED_Toggle() do { PORTF_OUTTGL = 0x20; } while(0)
+#define LED_GetValue() (VPORTF.IN & (0x1 << 5))
+#define LED_SetDigitalInput() do { PORTF_DIRCLR = 0x20; } while(0)
+#define LED_SetDigitalOutput() do { PORTF_DIRSET = 0x20; } while(0)
+#define LED_SetPullUp() do { PORTF_PIN5CTRL  |= PORT_PULLUPEN_bm; } while(0)
+#define LED_ResetPullUp() do { PORTF_PIN5CTRL  &= ~PORT_PULLUPEN_bm; } while(0)
+#define LED_SetInverted() do { PORTF_PIN5CTRL  |= PORT_INVEN_bm; } while(0)
+#define LED_ResetInverted() do { PORTF_PIN5CTRL  &= ~PORT_INVEN_bm; } while(0)
+#define LED_DisableInterruptOnChange() do { PORTF.PIN5CTRL = (PORTF.PIN5CTRL & ~PORT_ISC_gm) | 0x0 ; } while(0)
+#define LED_EnableInterruptForBothEdges() do { PORTF.PIN5CTRL = (PORTF.PIN5CTRL & ~PORT_ISC_gm) | 0x1 ; } while(0)
+#define LED_EnableInterruptForRisingEdge() do { PORTF.PIN5CTRL = (PORTF.PIN5CTRL & ~PORT_ISC_gm) | 0x2 ; } while(0)
+#define LED_EnableInterruptForFallingEdge() do { PORTF.PIN5CTRL = (PORTF.PIN5CTRL & ~PORT_ISC_gm) | 0x3 ; } while(0)
+#define LED_DisableDigitalInputBuffer() do { PORTF.PIN5CTRL = (PORTF.PIN5CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
+#define LED_EnableInterruptForLowLevelSensing() do { PORTF.PIN5CTRL = (PORTF.PIN5CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
+#define PF5_SetInterruptHandler LED_SetInterruptHandler
+
 /**
  * @ingroup  pinsdriver
  * @brief GPIO and peripheral I/O initialization
@@ -485,4 +523,46 @@ void IO_PC1_DefaultInterruptHandler(void);
  * @return none
  */
 void IO_PC1_SetInterruptHandler(void (* interruptHandler)(void)) ; 
+
+/**
+ * @ingroup  pinsdriver
+ * @brief Default Interrupt Handler for Button1 pin. 
+ *        This is a predefined interrupt handler to be used together with the Button1_SetInterruptHandler() method.
+ *        This handler is called every time the Button1 ISR is executed. 
+ * @pre PIN_MANAGER_Initialize() has been called at least once
+ * @param none
+ * @return none
+ */
+void Button1_DefaultInterruptHandler(void);
+
+/**
+ * @ingroup  pinsdriver
+ * @brief Interrupt Handler Setter for Button1 pin input-sense-config functionality.
+ *        Allows selecting an interrupt handler for Button1 at application runtime
+ * @pre PIN_MANAGER_Initialize() has been called at least once
+ * @param InterruptHandler function pointer.
+ * @return none
+ */
+void Button1_SetInterruptHandler(void (* interruptHandler)(void)) ; 
+
+/**
+ * @ingroup  pinsdriver
+ * @brief Default Interrupt Handler for LED pin. 
+ *        This is a predefined interrupt handler to be used together with the LED_SetInterruptHandler() method.
+ *        This handler is called every time the LED ISR is executed. 
+ * @pre PIN_MANAGER_Initialize() has been called at least once
+ * @param none
+ * @return none
+ */
+void LED_DefaultInterruptHandler(void);
+
+/**
+ * @ingroup  pinsdriver
+ * @brief Interrupt Handler Setter for LED pin input-sense-config functionality.
+ *        Allows selecting an interrupt handler for LED at application runtime
+ * @pre PIN_MANAGER_Initialize() has been called at least once
+ * @param InterruptHandler function pointer.
+ * @return none
+ */
+void LED_SetInterruptHandler(void (* interruptHandler)(void)) ; 
 #endif /* PINS_H_INCLUDED */
