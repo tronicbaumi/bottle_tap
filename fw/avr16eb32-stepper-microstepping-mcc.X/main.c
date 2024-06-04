@@ -61,15 +61,25 @@ int main(void)
     stepper_position_t sub_steps;
     sub_steps = STEPS_TO_SUBSTEPS(25);        /* Positive: CW, Negative: CCW */
     uint16_t           count_delay;
-    count_delay = RPS_TO_COUNT(1.0);            /* revolutions per second */
+    count_delay = RPS_TO_COUNT(1);            /* revolutions per second */
     while(1)
     {
         
+         LED_SetLow();
 //        So use for CW
         while(Button1_GetValue() == 0)
         {
+            LED_SetHigh();
             stepper_position = MainMove(stepper_position,
                                     sub_steps,
+                                    count_delay);
+        }
+         
+        while(Button2_GetValue() == 1)
+        {
+            LED_SetHigh();
+            stepper_position = MainMove(stepper_position,
+                                    -sub_steps,
                                     count_delay);
         }
 

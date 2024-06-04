@@ -44,7 +44,9 @@ static void (*IO_PA6_InterruptHandler)(void);
 static void (*IO_PA7_InterruptHandler)(void);
 static void (*IO_PC2_InterruptHandler)(void);
 static void (*IO_PC1_InterruptHandler)(void);
+static void (*Button2_InterruptHandler)(void);
 static void (*Button1_InterruptHandler)(void);
+static void (*LED_InterruptHandler)(void);
 
 void PIN_MANAGER_Initialize()
 {
@@ -52,7 +54,7 @@ void PIN_MANAGER_Initialize()
     PORTA.DIR = 0xFF;
     PORTC.DIR = 0x2;
     PORTD.DIR = 0x0;
-    PORTF.DIR = 0x0;
+    PORTF.DIR = 0x20;
 
   /* OUT Registers Initialization */
     PORTA.OUT = 0x0;
@@ -83,14 +85,14 @@ void PIN_MANAGER_Initialize()
     PORTD.PIN3CTRL = 0x0;
     PORTD.PIN4CTRL = 0x0;
     PORTD.PIN5CTRL = 0x0;
-    PORTD.PIN6CTRL = 0x0;
+    PORTD.PIN6CTRL = 0xC;
     PORTD.PIN7CTRL = 0x0;
     PORTF.PIN0CTRL = 0x0;
     PORTF.PIN1CTRL = 0x0;
     PORTF.PIN2CTRL = 0x0;
     PORTF.PIN3CTRL = 0x0;
     PORTF.PIN4CTRL = 0x0;
-    PORTF.PIN5CTRL = 0x0;
+    PORTF.PIN5CTRL = 0x80;
     PORTF.PIN6CTRL = 0x8;
     PORTF.PIN7CTRL = 0x0;
 
@@ -121,7 +123,9 @@ void PIN_MANAGER_Initialize()
     IO_PA7_SetInterruptHandler(IO_PA7_DefaultInterruptHandler);
     IO_PC2_SetInterruptHandler(IO_PC2_DefaultInterruptHandler);
     IO_PC1_SetInterruptHandler(IO_PC1_DefaultInterruptHandler);
+    Button2_SetInterruptHandler(Button2_DefaultInterruptHandler);
     Button1_SetInterruptHandler(Button1_DefaultInterruptHandler);
+    LED_SetInterruptHandler(LED_DefaultInterruptHandler);
 }
 
 /**
@@ -255,6 +259,19 @@ void IO_PC1_DefaultInterruptHandler(void)
     // or set custom function using IO_PC1_SetInterruptHandler()
 }
 /**
+  Allows selecting an interrupt handler for Button2 at application runtime
+*/
+void Button2_SetInterruptHandler(void (* interruptHandler)(void)) 
+{
+    Button2_InterruptHandler = interruptHandler;
+}
+
+void Button2_DefaultInterruptHandler(void)
+{
+    // add your Button2 interrupt custom code
+    // or set custom function using Button2_SetInterruptHandler()
+}
+/**
   Allows selecting an interrupt handler for Button1 at application runtime
 */
 void Button1_SetInterruptHandler(void (* interruptHandler)(void)) 
@@ -266,6 +283,19 @@ void Button1_DefaultInterruptHandler(void)
 {
     // add your Button1 interrupt custom code
     // or set custom function using Button1_SetInterruptHandler()
+}
+/**
+  Allows selecting an interrupt handler for LED at application runtime
+*/
+void LED_SetInterruptHandler(void (* interruptHandler)(void)) 
+{
+    LED_InterruptHandler = interruptHandler;
+}
+
+void LED_DefaultInterruptHandler(void)
+{
+    // add your LED interrupt custom code
+    // or set custom function using LED_SetInterruptHandler()
 }
 ISR(PORTA_PORT_vect)
 { 
@@ -323,6 +353,11 @@ ISR(PORTC_PORT_vect)
 
 ISR(PORTD_PORT_vect)
 { 
+    // Call the interrupt handler for the callback registered at runtime
+    if(VPORTD.INTFLAGS & PORT_INT6_bm)
+    {
+       Button2_InterruptHandler(); 
+    }
     /* Clear interrupt flags */
     VPORTD.INTFLAGS = 0xff;
 }
@@ -333,6 +368,10 @@ ISR(PORTF_PORT_vect)
     if(VPORTF.INTFLAGS & PORT_INT6_bm)
     {
        Button1_InterruptHandler(); 
+    }
+    if(VPORTF.INTFLAGS & PORT_INT5_bm)
+    {
+       LED_InterruptHandler(); 
     }
     /* Clear interrupt flags */
     VPORTF.INTFLAGS = 0xff;
