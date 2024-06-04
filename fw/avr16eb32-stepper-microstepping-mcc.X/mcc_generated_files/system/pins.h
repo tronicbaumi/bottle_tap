@@ -228,43 +228,62 @@
 #define IO_PC1_EnableInterruptForLowLevelSensing() do { PORTC.PIN1CTRL = (PORTC.PIN1CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
 #define PC1_SetInterruptHandler IO_PC1_SetInterruptHandler
 
-//get/set Button2 aliases
-#define Button2_SetHigh() do { PORTD_OUTSET = 0x40; } while(0)
-#define Button2_SetLow() do { PORTD_OUTCLR = 0x40; } while(0)
-#define Button2_Toggle() do { PORTD_OUTTGL = 0x40; } while(0)
-#define Button2_GetValue() (VPORTD.IN & (0x1 << 6))
-#define Button2_SetDigitalInput() do { PORTD_DIRCLR = 0x40; } while(0)
-#define Button2_SetDigitalOutput() do { PORTD_DIRSET = 0x40; } while(0)
-#define Button2_SetPullUp() do { PORTD_PIN6CTRL  |= PORT_PULLUPEN_bm; } while(0)
-#define Button2_ResetPullUp() do { PORTD_PIN6CTRL  &= ~PORT_PULLUPEN_bm; } while(0)
-#define Button2_SetInverted() do { PORTD_PIN6CTRL  |= PORT_INVEN_bm; } while(0)
-#define Button2_ResetInverted() do { PORTD_PIN6CTRL  &= ~PORT_INVEN_bm; } while(0)
-#define Button2_DisableInterruptOnChange() do { PORTD.PIN6CTRL = (PORTD.PIN6CTRL & ~PORT_ISC_gm) | 0x0 ; } while(0)
-#define Button2_EnableInterruptForBothEdges() do { PORTD.PIN6CTRL = (PORTD.PIN6CTRL & ~PORT_ISC_gm) | 0x1 ; } while(0)
-#define Button2_EnableInterruptForRisingEdge() do { PORTD.PIN6CTRL = (PORTD.PIN6CTRL & ~PORT_ISC_gm) | 0x2 ; } while(0)
-#define Button2_EnableInterruptForFallingEdge() do { PORTD.PIN6CTRL = (PORTD.PIN6CTRL & ~PORT_ISC_gm) | 0x3 ; } while(0)
-#define Button2_DisableDigitalInputBuffer() do { PORTD.PIN6CTRL = (PORTD.PIN6CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
-#define Button2_EnableInterruptForLowLevelSensing() do { PORTD.PIN6CTRL = (PORTD.PIN6CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
-#define PD6_SetInterruptHandler Button2_SetInterruptHandler
-
 //get/set Button1 aliases
-#define Button1_SetHigh() do { PORTF_OUTSET = 0x40; } while(0)
-#define Button1_SetLow() do { PORTF_OUTCLR = 0x40; } while(0)
-#define Button1_Toggle() do { PORTF_OUTTGL = 0x40; } while(0)
-#define Button1_GetValue() (VPORTF.IN & (0x1 << 6))
-#define Button1_SetDigitalInput() do { PORTF_DIRCLR = 0x40; } while(0)
-#define Button1_SetDigitalOutput() do { PORTF_DIRSET = 0x40; } while(0)
-#define Button1_SetPullUp() do { PORTF_PIN6CTRL  |= PORT_PULLUPEN_bm; } while(0)
-#define Button1_ResetPullUp() do { PORTF_PIN6CTRL  &= ~PORT_PULLUPEN_bm; } while(0)
-#define Button1_SetInverted() do { PORTF_PIN6CTRL  |= PORT_INVEN_bm; } while(0)
-#define Button1_ResetInverted() do { PORTF_PIN6CTRL  &= ~PORT_INVEN_bm; } while(0)
-#define Button1_DisableInterruptOnChange() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x0 ; } while(0)
-#define Button1_EnableInterruptForBothEdges() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x1 ; } while(0)
-#define Button1_EnableInterruptForRisingEdge() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x2 ; } while(0)
-#define Button1_EnableInterruptForFallingEdge() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x3 ; } while(0)
-#define Button1_DisableDigitalInputBuffer() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
-#define Button1_EnableInterruptForLowLevelSensing() do { PORTF.PIN6CTRL = (PORTF.PIN6CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
-#define PF6_SetInterruptHandler Button1_SetInterruptHandler
+#define Button1_SetHigh() do { PORTF_OUTSET = 0x2; } while(0)
+#define Button1_SetLow() do { PORTF_OUTCLR = 0x2; } while(0)
+#define Button1_Toggle() do { PORTF_OUTTGL = 0x2; } while(0)
+#define Button1_GetValue() (VPORTF.IN & (0x1 << 1))
+#define Button1_SetDigitalInput() do { PORTF_DIRCLR = 0x2; } while(0)
+#define Button1_SetDigitalOutput() do { PORTF_DIRSET = 0x2; } while(0)
+#define Button1_SetPullUp() do { PORTF_PIN1CTRL  |= PORT_PULLUPEN_bm; } while(0)
+#define Button1_ResetPullUp() do { PORTF_PIN1CTRL  &= ~PORT_PULLUPEN_bm; } while(0)
+#define Button1_SetInverted() do { PORTF_PIN1CTRL  |= PORT_INVEN_bm; } while(0)
+#define Button1_ResetInverted() do { PORTF_PIN1CTRL  &= ~PORT_INVEN_bm; } while(0)
+#define Button1_DisableInterruptOnChange() do { PORTF.PIN1CTRL = (PORTF.PIN1CTRL & ~PORT_ISC_gm) | 0x0 ; } while(0)
+#define Button1_EnableInterruptForBothEdges() do { PORTF.PIN1CTRL = (PORTF.PIN1CTRL & ~PORT_ISC_gm) | 0x1 ; } while(0)
+#define Button1_EnableInterruptForRisingEdge() do { PORTF.PIN1CTRL = (PORTF.PIN1CTRL & ~PORT_ISC_gm) | 0x2 ; } while(0)
+#define Button1_EnableInterruptForFallingEdge() do { PORTF.PIN1CTRL = (PORTF.PIN1CTRL & ~PORT_ISC_gm) | 0x3 ; } while(0)
+#define Button1_DisableDigitalInputBuffer() do { PORTF.PIN1CTRL = (PORTF.PIN1CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
+#define Button1_EnableInterruptForLowLevelSensing() do { PORTF.PIN1CTRL = (PORTF.PIN1CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
+#define PF1_SetInterruptHandler Button1_SetInterruptHandler
+
+//get/set Button2 aliases
+#define Button2_SetHigh() do { PORTF_OUTSET = 0x4; } while(0)
+#define Button2_SetLow() do { PORTF_OUTCLR = 0x4; } while(0)
+#define Button2_Toggle() do { PORTF_OUTTGL = 0x4; } while(0)
+#define Button2_GetValue() (VPORTF.IN & (0x1 << 2))
+#define Button2_SetDigitalInput() do { PORTF_DIRCLR = 0x4; } while(0)
+#define Button2_SetDigitalOutput() do { PORTF_DIRSET = 0x4; } while(0)
+#define Button2_SetPullUp() do { PORTF_PIN2CTRL  |= PORT_PULLUPEN_bm; } while(0)
+#define Button2_ResetPullUp() do { PORTF_PIN2CTRL  &= ~PORT_PULLUPEN_bm; } while(0)
+#define Button2_SetInverted() do { PORTF_PIN2CTRL  |= PORT_INVEN_bm; } while(0)
+#define Button2_ResetInverted() do { PORTF_PIN2CTRL  &= ~PORT_INVEN_bm; } while(0)
+#define Button2_DisableInterruptOnChange() do { PORTF.PIN2CTRL = (PORTF.PIN2CTRL & ~PORT_ISC_gm) | 0x0 ; } while(0)
+#define Button2_EnableInterruptForBothEdges() do { PORTF.PIN2CTRL = (PORTF.PIN2CTRL & ~PORT_ISC_gm) | 0x1 ; } while(0)
+#define Button2_EnableInterruptForRisingEdge() do { PORTF.PIN2CTRL = (PORTF.PIN2CTRL & ~PORT_ISC_gm) | 0x2 ; } while(0)
+#define Button2_EnableInterruptForFallingEdge() do { PORTF.PIN2CTRL = (PORTF.PIN2CTRL & ~PORT_ISC_gm) | 0x3 ; } while(0)
+#define Button2_DisableDigitalInputBuffer() do { PORTF.PIN2CTRL = (PORTF.PIN2CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
+#define Button2_EnableInterruptForLowLevelSensing() do { PORTF.PIN2CTRL = (PORTF.PIN2CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
+#define PF2_SetInterruptHandler Button2_SetInterruptHandler
+
+//get/set PositionSensor aliases
+#define PositionSensor_SetHigh() do { PORTF_OUTSET = 0x8; } while(0)
+#define PositionSensor_SetLow() do { PORTF_OUTCLR = 0x8; } while(0)
+#define PositionSensor_Toggle() do { PORTF_OUTTGL = 0x8; } while(0)
+#define PositionSensor_GetValue() (VPORTF.IN & (0x1 << 3))
+#define PositionSensor_SetDigitalInput() do { PORTF_DIRCLR = 0x8; } while(0)
+#define PositionSensor_SetDigitalOutput() do { PORTF_DIRSET = 0x8; } while(0)
+#define PositionSensor_SetPullUp() do { PORTF_PIN3CTRL  |= PORT_PULLUPEN_bm; } while(0)
+#define PositionSensor_ResetPullUp() do { PORTF_PIN3CTRL  &= ~PORT_PULLUPEN_bm; } while(0)
+#define PositionSensor_SetInverted() do { PORTF_PIN3CTRL  |= PORT_INVEN_bm; } while(0)
+#define PositionSensor_ResetInverted() do { PORTF_PIN3CTRL  &= ~PORT_INVEN_bm; } while(0)
+#define PositionSensor_DisableInterruptOnChange() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x0 ; } while(0)
+#define PositionSensor_EnableInterruptForBothEdges() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x1 ; } while(0)
+#define PositionSensor_EnableInterruptForRisingEdge() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x2 ; } while(0)
+#define PositionSensor_EnableInterruptForFallingEdge() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x3 ; } while(0)
+#define PositionSensor_DisableDigitalInputBuffer() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
+#define PositionSensor_EnableInterruptForLowLevelSensing() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
+#define PF3_SetInterruptHandler PositionSensor_SetInterruptHandler
 
 //get/set LED aliases
 #define LED_SetHigh() do { PORTF_OUTSET = 0x20; } while(0)
@@ -505,6 +524,27 @@ void IO_PC1_SetInterruptHandler(void (* interruptHandler)(void)) ;
 
 /**
  * @ingroup  pinsdriver
+ * @brief Default Interrupt Handler for Button1 pin. 
+ *        This is a predefined interrupt handler to be used together with the Button1_SetInterruptHandler() method.
+ *        This handler is called every time the Button1 ISR is executed. 
+ * @pre PIN_MANAGER_Initialize() has been called at least once
+ * @param none
+ * @return none
+ */
+void Button1_DefaultInterruptHandler(void);
+
+/**
+ * @ingroup  pinsdriver
+ * @brief Interrupt Handler Setter for Button1 pin input-sense-config functionality.
+ *        Allows selecting an interrupt handler for Button1 at application runtime
+ * @pre PIN_MANAGER_Initialize() has been called at least once
+ * @param InterruptHandler function pointer.
+ * @return none
+ */
+void Button1_SetInterruptHandler(void (* interruptHandler)(void)) ; 
+
+/**
+ * @ingroup  pinsdriver
  * @brief Default Interrupt Handler for Button2 pin. 
  *        This is a predefined interrupt handler to be used together with the Button2_SetInterruptHandler() method.
  *        This handler is called every time the Button2 ISR is executed. 
@@ -526,24 +566,24 @@ void Button2_SetInterruptHandler(void (* interruptHandler)(void)) ;
 
 /**
  * @ingroup  pinsdriver
- * @brief Default Interrupt Handler for Button1 pin. 
- *        This is a predefined interrupt handler to be used together with the Button1_SetInterruptHandler() method.
- *        This handler is called every time the Button1 ISR is executed. 
+ * @brief Default Interrupt Handler for PositionSensor pin. 
+ *        This is a predefined interrupt handler to be used together with the PositionSensor_SetInterruptHandler() method.
+ *        This handler is called every time the PositionSensor ISR is executed. 
  * @pre PIN_MANAGER_Initialize() has been called at least once
  * @param none
  * @return none
  */
-void Button1_DefaultInterruptHandler(void);
+void PositionSensor_DefaultInterruptHandler(void);
 
 /**
  * @ingroup  pinsdriver
- * @brief Interrupt Handler Setter for Button1 pin input-sense-config functionality.
- *        Allows selecting an interrupt handler for Button1 at application runtime
+ * @brief Interrupt Handler Setter for PositionSensor pin input-sense-config functionality.
+ *        Allows selecting an interrupt handler for PositionSensor at application runtime
  * @pre PIN_MANAGER_Initialize() has been called at least once
  * @param InterruptHandler function pointer.
  * @return none
  */
-void Button1_SetInterruptHandler(void (* interruptHandler)(void)) ; 
+void PositionSensor_SetInterruptHandler(void (* interruptHandler)(void)) ; 
 
 /**
  * @ingroup  pinsdriver

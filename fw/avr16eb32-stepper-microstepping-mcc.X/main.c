@@ -35,12 +35,28 @@
 #include "util/delay.h"
 #include "stepper.h"
 
+bool DriveToZeroPosition(stepper_position_t position, stepper_position_t sub_steps, uint16_t count_delay)
+{
+    bool zero_position = false;
+    uint8_t sensordata;
+    sensordata = PositionSensor_GetValue();
+    while(PositionSensor_GetValue() == 0)
+    {
+        LED_SetHigh();
+        position = Stepper_Move(position, -sub_steps, count_delay);
+    }
+    
+    LED_SetLow();
+    zero_position = true;
+    
+    return zero_position;
+}
+
 stepper_position_t MainMove(stepper_position_t position, stepper_position_t displacement, uint16_t count_delay)
 {
     position = Stepper_Move(position, displacement, count_delay);
     return position;
 }
-
 
 int main(void)
 {
@@ -52,56 +68,37 @@ int main(void)
     Stepper_Init();
     
     _delay_ms(2000);
-    printf("\n\r-----------------------------------------------");
-    printf("\n\rStepping Mode: %s, 1 step = %d sub-steps", STRING, K_MODE);
-    printf("\n\r");
-    
-    // drive to zero position
-    // add code here
     stepper_position_t sub_steps;
     sub_steps = STEPS_TO_SUBSTEPS(25);        /* Positive: CW, Negative: CCW */
     uint16_t           count_delay;
     count_delay = RPS_TO_COUNT(1);            /* revolutions per second */
+    
+    bool zero_position = false;
+
     while(1)
     {
-        
-         LED_SetLow();
-//        So use for CW
+        while (!zero_position)
+        {
+            zero_position = DriveToZeroPosition(stepper_position, sub_steps, count_delay);
+            continue;
+        }
+
+        // For CW
         while(Button1_GetValue() == 0)
         {
             LED_SetHigh();
-            stepper_position = MainMove(stepper_position,
-                                    sub_steps,
-                                    count_delay);
-        }
-         
-        while(Button2_GetValue() == 1)
-        {
-            LED_SetHigh();
-            stepper_position = MainMove(stepper_position,
-                                    -sub_steps,
-                                    count_delay);
+            stepper_position = MainMove(stepper_position, sub_steps, count_delay);
         }
 
+        // For CCW
+        while(Button2_GetValue() == 0)
+        {
+            LED_SetHigh();
+            stepper_position = MainMove(stepper_position, -sub_steps, count_delay);
+        }
         
-//        stepper_position_t sub_steps;
-//        uint16_t           count_delay;
-//
-//        sub_steps = STEPS_TO_SUBSTEPS(1000);        /* Positive: CW, Negative: CCW */
-//        count_delay = RPS_TO_COUNT(1.0);            /* revolutions per second */
-//
-//        stepper_position = MainMove(stepper_position,
-//                                    sub_steps,
-//                                    count_delay);
-//        _delay_ms(1000);
-//        
-//        sub_steps = -STEPS_TO_SUBSTEPS(2000);       /* Positive: CW, Negative: CCW */
-//        count_delay = RPS_TO_COUNT(2.0);            /* revolutions per second */
-//
-//        stepper_position = MainMove(stepper_position,
-//                                    sub_steps,
-//                                    count_delay);
-//        _delay_ms(1000);
+        LED_SetLow();  // Ensure LED is off when neither button is pressed
     }
 }
+
 
