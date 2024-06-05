@@ -38,8 +38,6 @@
 bool DriveToZeroPosition(stepper_position_t position, stepper_position_t sub_steps, uint16_t count_delay)
 {
     bool zero_position = false;
-    uint8_t sensordata;
-    sensordata = PositionSensor_GetValue();
     while(PositionSensor_GetValue() == 0)
     {
         LED_SetHigh();
@@ -52,12 +50,6 @@ bool DriveToZeroPosition(stepper_position_t position, stepper_position_t sub_ste
     return zero_position;
 }
 
-stepper_position_t MainMove(stepper_position_t position, stepper_position_t displacement, uint16_t count_delay)
-{
-    position = Stepper_Move(position, displacement, count_delay);
-    return position;
-}
-
 int main(void)
 {
     stepper_position_t stepper_position = 0;
@@ -68,37 +60,44 @@ int main(void)
     Stepper_Init();
     
     _delay_ms(2000);
-    stepper_position_t sub_steps;
-    sub_steps = STEPS_TO_SUBSTEPS(25);        /* Positive: CW, Negative: CCW */
-    uint16_t           count_delay;
-    count_delay = RPS_TO_COUNT(1);            /* revolutions per second */
+    stepper_position_t sub_steps = STEPS_TO_SUBSTEPS(25);  /* Positive: CW, Negative: CCW */
+    uint16_t count_delay = RPS_TO_COUNT(1);  /* revolutions per second */
     
     bool zero_position = false;
+    if (!zero_position)
+    {
+        zero_position = DriveToZeroPosition(stepper_position, sub_steps, count_delay);
+    }
 
     while(1)
     {
-        while (!zero_position)
-        {
-            zero_position = DriveToZeroPosition(stepper_position, sub_steps, count_delay);
-            continue;
-        }
+        int button1_state = Button1_GetValue();
+        int button2_state = Button2_GetValue();
 
-        // For CW
-        while(Button1_GetValue() == 0)
+        if(button1_state == 0 && button2_state == 0)
         {
+            // Both buttons are pressed, LED flashing
             LED_SetHigh();
-            stepper_position = MainMove(stepper_position, sub_steps, count_delay);
+            _delay_ms(200);
+            LED_SetLow();
+            _delay_ms(200);
         }
-
-        // For CCW
-        while(Button2_GetValue() == 0)
+        else if(button1_state == 0)
         {
+            // Only Button1 is pressed, move CW
             LED_SetHigh();
-            stepper_position = MainMove(stepper_position, -sub_steps, count_delay);
+            stepper_position = Stepper_Move(stepper_position, sub_steps, count_delay);
         }
-        
-        LED_SetLow();  // Ensure LED is off when neither button is pressed
+        else if(button2_state == 0)
+        {
+            // Only Button2 is pressed, move CCW
+            LED_SetHigh();
+            stepper_position = Stepper_Move(stepper_position, -sub_steps, count_delay);
+        }
+        else
+        {
+            // No buttons are pressed, ensure LED is off
+            LED_SetLow();
+        }
     }
 }
-
-
