@@ -315,7 +315,7 @@
         <property key="memories.programmemory.ranges" value="0-1fff"/>
         <property key="poweroptions.powerenable" value="true"/>
         <property key="programmerToGoFilePath"
-                  value="C:/Users/m67250/OneDrive - Microchip Technology Inc/Desktop/portingGateDriver/bottleTap/fw/avr16eb32-stepper-microstepping-mcc.X/debug/free/avr16eb32-stepper-microstepping-mcc_ptg"/>
+                  value="C:\workFolder\avr16eb32-launch\ID01_Motor-Control\Software\Stepper\Stepper\2_Microstep\avr16eb32-stepper-microstepping-mcc.X/debug/default/avr16eb32-stepper-microstepping-mcc_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
