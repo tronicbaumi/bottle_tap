@@ -122,10 +122,26 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
         MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
         
         MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-        if (motorState == MCAPI_MOTOR_STOPPED || motorState == MCAPI_MOTOR_STOPPING)
-        {
-            MCAPI_MotorStart(apiData);
-        }
+            switch (motorState)
+            {
+                case MCAPI_MOTOR_STOPPED:
+                case MCAPI_MOTOR_STOPPING:
+                {
+                    MCAPI_MotorStart(apiData);
+                    break;
+                }
+                case MCAPI_MOTOR_FAULT:
+                {
+                    uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
+                    MCAPI_FaultStatusClear(apiData, faultFlags);
+                    break;
+                }
+                case MCAPI_MOTOR_DIAGSTATE:
+                {
+                    /* do nothing */
+                    break;
+                }
+            }
         
         // Increment the rotation counter
         appData->rotationCounter++;
@@ -244,20 +260,42 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
  * This is an application owned timer the user is responsible for configuring. 
  * The application timer period needs to match the value set in motorBench Customize page.
  */
-void position_Check()
+void position_Check(APPLICATION_DATA *appData)
 {
+    volatile MCAPI_MOTOR_DATA *apiData = appData->apiData;
+    MCAF_BOARD_DATA *pboard = appData->pboard;
     position_sensor = Position_sensor_GetValue();
     if (position_sensor == 0)
     {
         app.zeroPositionDetected = true;
         app.rotationCounter = 0; // Reset the rotation counter
-        MCAPI_MotorStop(app.apiData); // Stop the motor when zero position is detected
+        MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
+        switch (motorState)
+            {
+                case MCAPI_MOTOR_STARTING:
+                case MCAPI_MOTOR_RUNNING:
+                {
+                    MCAPI_MotorStop(apiData);
+                    break;
+                }
+                case MCAPI_MOTOR_FAULT:
+                {
+                    uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
+                    MCAPI_FaultStatusClear(apiData, faultFlags);
+                    break;
+                }
+                case MCAPI_MOTOR_DIAGSTATE:
+                {
+                    /* do nothing */
+                    break;
+                }
+            }
     }
 }
 
 void APP_TimerCallback(void)
 {
-    position_Check();
+    position_Check(&app);
     MCAF_BoardServiceTasks(app.pboard);
     APP_ApplicationStep(&app);
 }
