@@ -315,6 +315,96 @@
 
 /**
  * @ingroup  pinsdriver
+ * @brief    Sets the RE14 GPIO Pin which has a custom name of MCAF_BUTTON2 to High
+ * @pre      The RE14 must be set as Output Pin             
+ * @return   none  
+ */
+#define MCAF_BUTTON2_SetHigh()          (_LATE14 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RE14 GPIO Pin which has a custom name of MCAF_BUTTON2 to Low
+ * @pre      The RE14 must be set as Output Pin
+ * @return   none  
+ */
+#define MCAF_BUTTON2_SetLow()           (_LATE14 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RE14 GPIO Pin which has a custom name of MCAF_BUTTON2
+ * @pre      The RE14 must be set as Output Pin
+ * @return   none  
+ */
+#define MCAF_BUTTON2_Toggle()           (_LATE14 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RE14 GPIO Pin which has a custom name of MCAF_BUTTON2
+ * @return   none  
+ */
+#define MCAF_BUTTON2_GetValue()         _RE14
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE14 GPIO Pin which has a custom name of MCAF_BUTTON2 as Input
+ * @return   none  
+ */
+#define MCAF_BUTTON2_SetDigitalInput()  (_TRISE14 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE14 GPIO Pin which has a custom name of MCAF_BUTTON2 as Output
+ * @return   none  
+ */
+#define MCAF_BUTTON2_SetDigitalOutput() (_TRISE14 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RE15 GPIO Pin which has a custom name of MCAF_BUTTON1 to High
+ * @pre      The RE15 must be set as Output Pin             
+ * @return   none  
+ */
+#define MCAF_BUTTON1_SetHigh()          (_LATE15 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RE15 GPIO Pin which has a custom name of MCAF_BUTTON1 to Low
+ * @pre      The RE15 must be set as Output Pin
+ * @return   none  
+ */
+#define MCAF_BUTTON1_SetLow()           (_LATE15 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RE15 GPIO Pin which has a custom name of MCAF_BUTTON1
+ * @pre      The RE15 must be set as Output Pin
+ * @return   none  
+ */
+#define MCAF_BUTTON1_Toggle()           (_LATE15 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RE15 GPIO Pin which has a custom name of MCAF_BUTTON1
+ * @return   none  
+ */
+#define MCAF_BUTTON1_GetValue()         _RE15
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE15 GPIO Pin which has a custom name of MCAF_BUTTON1 as Input
+ * @return   none  
+ */
+#define MCAF_BUTTON1_SetDigitalInput()  (_TRISE15 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE15 GPIO Pin which has a custom name of MCAF_BUTTON1 as Output
+ * @return   none  
+ */
+#define MCAF_BUTTON1_SetDigitalOutput() (_TRISE15 = 0)
+
+/**
+ * @ingroup  pinsdriver
  * @brief    Initializes the PINS module
  * @return   none  
  */

@@ -9,5 +9,6 @@
             <file>file:/C:/_GIT/bottle_tap/fw/avr16eb32-stepper-microstepping-mcc.X/mcc_generated_files/system/src/pins.c</file>
             <file>file:/C:/_GIT/bottle_tap/fw/avr16eb32-stepper-microstepping-mcc.X/stepper.h</file>
         </group>
+        <group name="test"/>
     </open-files>
 </project-private>
