@@ -445,7 +445,7 @@ config:
       startup-theta_converge_rate: 1.0
       startup-method: zsmt_dsat
       startup-damping-Imax: 0.5
-      startup-damping-gainmax: 40.0
+      startup-damping-gainmax: 100.0
       startup-damping-omega_min: 0.4
       overmodulation-vd_limit: 1.0
       overmodulation-vq_limit: 1.15

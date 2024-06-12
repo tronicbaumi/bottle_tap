@@ -91,45 +91,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                     }
                 }
             }
-            else
-            {
-                appState = INIT_UPWARD; // Transition to the next state
-            }
-            break;
 
-        case INIT_UPWARD:
-            if (appData->rotationCounter < ROTATION_COUNT_THRESHOLD)
-            {
-                // Rotate the motor upwards for a few rotations to prevent damage to the sensor
-                appData->motorDirection = 1;
-                appData->motorVelocityCommand = appData->motorVelocityCommandMinimum;
-                MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
-
-                MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-                switch (motorState)
-                {
-                    case MCAPI_MOTOR_STOPPED:
-                    case MCAPI_MOTOR_STOPPING:
-                    {
-                        MCAPI_MotorStart(apiData);
-                        break;
-                    }
-                    case MCAPI_MOTOR_FAULT:
-                    {
-                        uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
-                        MCAPI_FaultStatusClear(apiData, faultFlags);
-                        break;
-                    }
-                    case MCAPI_MOTOR_DIAGSTATE:
-                    {
-                        /* do nothing */
-                        break;
-                    }
-                }
-
-                // Increment the rotation counter
-                appData->rotationCounter++;
-            }
             else
             {
                 appState = NORMAL_OPERATION; // Transition to normal operation

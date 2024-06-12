@@ -79,7 +79,7 @@ extern "C" {
  * B_desired:                    445.732 uNm/(rad/s)
  * B_added:                      440.309 uNm/(rad/s)
  * damping_gain_ideal:            10.579 mA/(rad/s)
- * damping_gain_max:             324.676 mA/(rad/s)
+ * damping_gain_max:             811.690 mA/(rad/s)
  * damping_gain:                  10.579 mA/(rad/s)
  * damping_threshold:             41.884  rad/s
  *                               399.965  RPM
