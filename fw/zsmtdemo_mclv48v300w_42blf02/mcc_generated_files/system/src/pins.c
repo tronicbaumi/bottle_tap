@@ -71,7 +71,7 @@ void PINS_Initialize(void)
     CNPUB = 0x0000;
     CNPUC = 0x0000;
     CNPUD = 0x0000;
-    CNPUE = 0x0000;
+    CNPUE = 0x0040;
     CNPDA = 0x0000;
     CNPDB = 0x0000;
     CNPDC = 0x0000;
@@ -103,9 +103,6 @@ void PINS_Initialize(void)
      ***************************************************************************/
      __builtin_write_RPCON(0x0000); // unlock PPS
 
-        RPINR15bits.QEINDX1R = 0x0042; //RD2->QEI1:INDX1;
-        RPINR14bits.QEIA1R = 0x0034; //RC4->QEI1:QEA1;
-        RPINR14bits.QEIB1R = 0x0035; //RC5->QEI1:QEB1;
         RPINR18bits.U1RXR = 0x004D; //RD13->UART1:U1RX;
         RPOR23bits.RP78R = 0x0001;  //RD14->UART1:U1TX;
 

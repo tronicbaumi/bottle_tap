@@ -67,6 +67,7 @@ typedef struct tagAPPLICATION_DATA
     MCAF_BOARD_DATA *pboard;
     bool zeroPositionDetected;
     uint8_t rotationCounter;
+    bool  maxPositionDetected;
 } APPLICATION_DATA;
 
 /**

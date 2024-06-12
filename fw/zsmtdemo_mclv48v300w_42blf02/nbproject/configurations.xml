@@ -629,8 +629,6 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-2beff"/>
-        <property key="programmerToGoFilePath"
-                  value="C:/Users/m67250/OneDrive - Microchip Technology Inc/Desktop/portingGateDriver/zsmt-reference-linix-lvmc.X/debug/default/zsmt-reference-linix-lvmc_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
