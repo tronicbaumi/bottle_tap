@@ -155,41 +155,25 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                 // Determine direction based on button presses and sensor values
                 if (MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard))
                 {
+                    appData->motorDirection = -1;
                     if (!appData->zeroPositionDetected) // Allow downward movement if not at zero position
                     {
-                        appData->motorDirection = -1;
                         MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
                         if (motorState == MCAPI_MOTOR_STOPPED || motorState == MCAPI_MOTOR_STOPPING)
                         {
                             MCAPI_MotorStart(apiData);
-                        }
-                    }
-                    else // Stop the motor if it reaches the zero position
-                    {
-                        MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-                        if (motorState == MCAPI_MOTOR_RUNNING)
-                        {
-                            MCAPI_MotorStop(apiData);
                         }
                     }
                 }
                 else if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard))
                 {
+                    appData->motorDirection = 1;
                     if (!appData->maxPositionDetected) // Allow upward movement if not at max position
                     {
-                        appData->motorDirection = 1;
                         MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
                         if (motorState == MCAPI_MOTOR_STOPPED || motorState == MCAPI_MOTOR_STOPPING)
                         {
                             MCAPI_MotorStart(apiData);
-                        }
-                    }
-                    else // Stop the motor if it reaches the max position
-                    {
-                        MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-                        if (motorState == MCAPI_MOTOR_RUNNING)
-                        {
-                            MCAPI_MotorStop(apiData);
                         }
                     }
                 }
@@ -217,19 +201,16 @@ void position_Check(APPLICATION_DATA *appData)
     MCAF_BOARD_DATA *pboard = appData->pboard;
     position_sensor = Position_sensor_GetValue();
     
-    if (position_sensor == 0)
+    if (position_sensor == 0 && appData->motorDirection == -1)
     {
-        if (appData->motorDirection == -1)
-        {
-            app.zeroPositionDetected = true;
-            app.maxPositionDetected = false; // Reset the max position flag
-            app.rotationCounter = 0; // Reset the rotation counter
-        }
-        else if (appData->motorDirection == 1)
-        {
-            app.maxPositionDetected = true;
-            app.zeroPositionDetected = false; // Reset the zero position flag
-        }
+        app.zeroPositionDetected = true;
+        app.maxPositionDetected = false; // Reset the max position flag
+        app.rotationCounter = 0; // Reset the rotation counter
+    }
+    else if (position_sensor == 0 && appData->motorDirection == 1)
+    {
+        app.maxPositionDetected = true;
+        app.zeroPositionDetected = false; // Reset the zero position flag
     }
 }
 
