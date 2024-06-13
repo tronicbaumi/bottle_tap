@@ -158,7 +158,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                     appData->motorDirection = -1;
                     if (!appData->zeroPositionDetected) // Allow downward movement if not at zero position
                     {
-                        MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
+                        MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData); //YA
                         if (motorState == MCAPI_MOTOR_STOPPED || motorState == MCAPI_MOTOR_STOPPING)
                         {
                             MCAPI_MotorStart(apiData);
@@ -167,7 +167,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                 }
                 else if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard))
                 {
-                    appData->motorDirection = 1;
+                    appData->motorDirection = 1;  //YA
                     if (!appData->maxPositionDetected) // Allow upward movement if not at max position
                     {
                         MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
@@ -183,7 +183,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                     MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
                     if (motorState == MCAPI_MOTOR_STARTING || motorState == MCAPI_MOTOR_RUNNING)
                     {
-                        MCAPI_MotorStop(apiData);
+                        MCAPI_MotorStop(apiData); //YA
                     }
                 }
             }
@@ -195,7 +195,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
  * This is an application owned timer the user is responsible for configuring. 
  * The application timer period needs to match the value set in motorBench Customize page.
  */
-void position_Check(APPLICATION_DATA *appData)
+void position_Check(APPLICATION_DATA *appData) //YA
 {
     volatile MCAPI_MOTOR_DATA *apiData = appData->apiData;
     MCAF_BOARD_DATA *pboard = appData->pboard;
@@ -216,7 +216,7 @@ void position_Check(APPLICATION_DATA *appData)
 
 void APP_TimerCallback(void)
 {
-    position_Check(&app);
+    position_Check(&app); //YA
     MCAF_BoardServiceTasks(app.pboard);
     APP_ApplicationStep(&app);
 }
