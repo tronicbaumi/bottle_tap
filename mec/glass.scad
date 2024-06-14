@@ -66,17 +66,17 @@ module minus()
     
     
     translate([20,15,0])langloch(5.5,60,5);
-    translate([20,15,5])langloch(14,60,80);
+    translate([20,15,5])langloch(16,60,80);
     
     translate([120,15,0])langloch(5.5,60,5);
-    translate([120,15,5])langloch(14,60,80);
+    translate([120,15,5])langloch(16,60,80);
     
     
     translate([20,85,0])langloch(5.5,60,5);
-    translate([20,85,5])langloch(14,60,80);
+    translate([20,85,5])langloch(16,60,80);
     
     translate([120,85,0])langloch(5.5,60,5);
-    translate([120,85,5])langloch(14,60,80);
+    translate([120,85,5])langloch(16,60,80);
     
 }
 
