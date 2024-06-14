@@ -60,12 +60,12 @@ extern "C" {
  * Kspring:                       56.604 mNm/rad
  * omega_crit:                   253.984  rad/s
  *                                 2.425 kRPM
- * omega0:                        50.797  rad/s
- *                               485.074  RPM
- * omega_min:                      9.540  rad/s
- *                                91.100  RPM
- * omega1:                       104.711  rad/s
- *                               999.914  RPM
+ * omega0:                         7.632  rad/s
+ *                                72.880  RPM
+ * omega_min:                      7.632  rad/s
+ *                                72.880  RPM
+ * omega1:                         7.632  rad/s
+ *                                72.880  RPM
  * accel_limit_0:                725.715 mrad/s^2
  *                                 6.930  RPM/s
  * accel_limit_1:                  3.629  rad/s^2
@@ -74,15 +74,15 @@ extern "C" {
  *                                 6.930  RPM/s
  * accel1:                         3.629  rad/s^2
  *                                34.650  RPM/s
- * t1:                            69.996  s
- * t2:                            14.858  s
+ * t1:                            10.516  s
+ * t2:                             0.000  s
  * B_desired:                    445.732 uNm/(rad/s)
  * B_added:                      440.309 uNm/(rad/s)
  * damping_gain_ideal:            10.579 mA/(rad/s)
  * damping_gain_max:             811.690 mA/(rad/s)
  * damping_gain:                  10.579 mA/(rad/s)
- * damping_threshold:             41.884  rad/s
- *                               399.965  RPM
+ * damping_threshold:              3.053  rad/s
+ *                                29.152  RPM
  * damping_Imax:                   1.700  A
  * t_rampup:                      10.863 ms
  * dIdt_rampup:                   31.300  A/s
@@ -97,11 +97,11 @@ extern "C" {
  */
 
 /* first startup threshold velocity */
-#define STARTUP_ACCEL0_VELOCITY_THRESHOLD       2908      // Q15(  0.08875) = +485.08081 RPM         = +485.07433 RPM         + 0.0013%
+#define STARTUP_ACCEL0_VELOCITY_THRESHOLD        437      // Q15(  0.01334) =  +72.89557 RPM         =  +72.88000 RPM         + 0.0214%
 /* second startup threshold velocity */
-#define STARTUP_ACCEL1_VELOCITY_THRESHOLD       5994      // Q15(  0.18292) = +999.85364 RPM         = +999.91360 RPM         - 0.0060%
+#define STARTUP_ACCEL1_VELOCITY_THRESHOLD        437      // Q15(  0.01334) =  +72.89557 RPM         =  +72.88000 RPM         + 0.0214%
 /* threshold velocity for damping */
-#define STARTUP_DAMPING_THRESHOLD            2398      // Q15(  0.07318) = +400.00818 RPM         = +399.96544 RPM         + 0.0107%
+#define STARTUP_DAMPING_THRESHOLD             175      // Q15(  0.00534) =  +29.19159 RPM         =  +29.15200 RPM         + 0.1358%
 #define Q15_THETADELTA (Q15(THETADELTA/180.0))
 
 /* open loop startup current ramp from initial startup current to startup current */

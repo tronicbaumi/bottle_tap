@@ -56,24 +56,24 @@ extern "C" {
 
 //************** PI Coefficients **************
 //// Current loop
-// phase margin = 60 deg
-// PI phase at crossover = 25.000 deg
-// crossover frequency = 7.650 k rad/s (1.218 kHz)
+// phase margin = 80 deg
+// PI phase at crossover = 45.000 deg
+// crossover frequency = 2.952 k rad/s (469.780 Hz)
 /* Current loop proportional gain */
-#define KIP                                 25000      //14110// YA Q14(  0.86121) =   +1.48262 V/A         =   +1.48262 V/A         - 0.0003%
-#define KIP_Q                                  14
+#define KIP                                  9438      // Q15(  0.28802) = +495.85125 mV/A        = +495.82539 mV/A        + 0.0052%
+#define KIP_Q                                  15
 /* Current loop integral gain */
-#define KII                                  1500      //5033// YA Q15(  0.15359) =   +5.28845 kV/A/s      =   +5.28896 kV/A/s      - 0.0096%
+#define KII                                  1393      // Q15(  0.04251) =   +1.46370 kV/A/s      =   +1.46354 kV/A/s      + 0.0113%
 #define KII_Q                                  15
 //// Velocity loop
-// phase margin = 65 deg
-// PI phase at crossover = 10.000 deg
-// crossover frequency = 12.851 rad/s (2.045 Hz)
+// phase margin = 2.7 deg
+// PI phase at crossover = 2.900 deg
+// crossover frequency = 85.891 rad/s (13.670 Hz)
 /* Velocity loop proportional gain */
-#define KWP                                   15000      //513// YA Q15(  0.01566) =   +1.20584 mA/(rad/s)  =   +1.20520 mA/(rad/s)  + 0.0533%
+#define KWP                                  9745      // Q15(  0.29739) =  +22.90625 mA/(rad/s)  =  +22.90652 mA/(rad/s)  - 0.0012%
 #define KWP_Q                                  15
 /* Velocity loop integral gain */
-#define KWI                                    60      //1// YA  Q15(  0.00003) =   +2.35056 mA/rad      =   +2.73091 mA/rad      -13.9275%
+#define KWI                                    42      // Q15(  0.00128) =  +98.72372 mA/rad      =  +99.66794 mA/rad      - 0.9474%
 #define KWI_Q                                  15
 
 //// Voltage loop (if applicable)

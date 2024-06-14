@@ -386,7 +386,7 @@ This list is still under construction.
 <td><code>foc.kii</code></td>
 <td class="col_macro"><code>KII</code></td>
 <td>\(K_{ii}\)</td>
-<td>5.289e+03 </td>
+<td>1.464e+03 </td>
 <td>V/A/s</td>
 <td>Current loop integral gain</td>
 </tr>
@@ -394,7 +394,7 @@ This list is still under construction.
 <td><code>foc.kip</code></td>
 <td class="col_macro"><code>KIP</code></td>
 <td>\(K_{ip}\)</td>
-<td>1.4826192 </td>
+<td>0.4958254 </td>
 <td>V/A</td>
 <td>Current loop proportional gain</td>
 </tr>
@@ -402,7 +402,7 @@ This list is still under construction.
 <td><code>foc.kwi</code></td>
 <td class="col_macro"><code>KWI</code></td>
 <td>\(K_{\omega i}\)</td>
-<td>0.0027309 </td>
+<td>0.0996679 </td>
 <td>A/rad</td>
 <td>Velocity loop integral gain</td>
 </tr>
@@ -410,7 +410,7 @@ This list is still under construction.
 <td><code>foc.kwp</code></td>
 <td class="col_macro"><code>KWP</code></td>
 <td>\(K_{\omega p}\)</td>
-<td>0.0012052 </td>
+<td>0.0229065 </td>
 <td>A/(rad/s)</td>
 <td>Velocity loop proportional gain</td>
 </tr>
@@ -619,7 +619,7 @@ This list is still under construction.
 <td><code>mcapi.mcapiMinimumVelocity</code></td>
 <td class="col_macro"><code>MCAPI_MINIMUM_VELOCITY</code></td>
 <td></td>
-<td>9.5399697 </td>
+<td>7.6319758 </td>
 <td>rad/s</td>
 <td>Minimum velocity command</td>
 </tr>
@@ -796,7 +796,7 @@ This list is still under construction.
 <td><code>operation.mcafRelativeSaliencyThreshold</code></td>
 <td class="col_macro"><code>MCAF_RELATIVE_SALIENCY_THRESHOLD</code></td>
 <td></td>
-<td>0.1111111 </td>
+<td>0.0909091 </td>
 <td></td>
 <td> Relative saliency threshold = (xi-1.0)/(xi+1.0) </td>
 </tr>
@@ -812,7 +812,7 @@ This list is still under construction.
 <td><code>operation.mcafVelocityCommandMin</code></td>
 <td class="col_macro"><code>MCAF_VELOCITY_COMMAND_MIN</code></td>
 <td></td>
-<td>9.5399697 </td>
+<td>7.6319758 </td>
 <td>rad/s</td>
 <td>Minimum velocity command</td>
 </tr>
@@ -866,7 +866,7 @@ This list is still under construction.
 <td><code>operation.run.velocitySlewrateLimitDecel</code></td>
 <td class="col_macro"><code>VELOCITY_SLEWRATE_LIMIT_DECEL</code></td>
 <td></td>
-<td>0.8172109 </td>
+<td>0.8142630 </td>
 <td>rad/s</td>
 <td>slew rate limit for velocity commands during deceleration</td>
 </tr>
@@ -1070,7 +1070,7 @@ for the gain in dI/dt calculation that is due to undersampling
 <td><code>stall_detect.group.activeTimerThresholdLowSpeedDetect</code></td>
 <td class="col_macro"><code>ACTIVE_TIMER_THRESHOLD_LOW_SPEED_DETECT</code></td>
 <td></td>
-<td>1.4667965 </td>
+<td>0.2194579 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger low speed detect.
@@ -1081,7 +1081,7 @@ It is set to 3 times (1/natural frequency of velocity loop)
 <td><code>stall_detect.group.activeTimerThresholdNegativeEdDetect</code></td>
 <td class="col_macro"><code>ACTIVE_TIMER_THRESHOLD_NEGATIVE_ED_DETECT</code></td>
 <td></td>
-<td>2.4446608 </td>
+<td>0.3657632 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger negative Ed stall detect.
@@ -1092,7 +1092,7 @@ It is set to 5 times (1/natural frequency of velocity loop)
 <td><code>stall_detect.group.activeTimerThresholdTorqueAngleDetect</code></td>
 <td class="col_macro"><code>ACTIVE_TIMER_THRESHOLD_TORQUE_ANGLE_DETECT</code></td>
 <td></td>
-<td>1.4667965 </td>
+<td>0.2194579 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger stall detect based on torque angle.
@@ -1122,7 +1122,7 @@ f3db*Ts*2*pi. f3db for 1st stage is 10hz
 <td><code>stall_detect.group.decimationFilterLpf2VarianceDetectCoeffa1</code></td>
 <td class="col_macro"><code>DECIMATION_FILTER_LPF2_VARIANCE_DETECT_COEFFA1</code></td>
 <td></td>
-<td>0.2045273 </td>
+<td>1.3670046 </td>
 <td>Hz</td>
 <td>
 Coefficient a1 for 2 stage implementation of LPF. Equation used for calculation:
@@ -1133,7 +1133,7 @@ f3db*Ts*2*pi. f3db for second stage is 1/10th of the natural frequency, Ts is 1/
 <td><code>stall_detect.group.filterHpfVarianceDetect</code></td>
 <td class="col_macro"><code>FILTER_HPF_VARIANCE_DETECT</code></td>
 <td></td>
-<td>4.0905470 </td>
+<td>2.734e+01 </td>
 <td>Hz</td>
 <td>
 HPF filter coefficient for 16bit implementation of HPF.
@@ -1144,7 +1144,7 @@ f3db is 2x natural frequency.
 <td><code>stall_detect.group.filterLpfNegativeEdDetect</code></td>
 <td class="col_macro"><code>FILTER_LPF_NEGATIVE_ED_DETECT</code></td>
 <td></td>
-<td>2.0452735 </td>
+<td>1.367e+01 </td>
 <td>Hz</td>
 <td>
 LPF filter coefficient for negative Ed detect. Equation used for calculation:
@@ -1155,7 +1155,7 @@ f3db*Ts*2*pi f3d is equal to natural frequency
 <td><code>stall_detect.group.filterLpfOvercurrentDetect</code></td>
 <td class="col_macro"><code>FILTER_LPF_OVERCURRENT_DETECT</code></td>
 <td></td>
-<td>2.0452735 </td>
+<td>1.367e+01 </td>
 <td>Hz</td>
 <td>
 LPF filter coefficient for over current detect. Equation used for calculation:
@@ -1166,7 +1166,7 @@ f3db*Ts*2*pi f3d is equal to natural frequency
 <td><code>stall_detect.group.inactiveTimerThresholdLowSpeedDetect</code></td>
 <td class="col_macro"><code>INACTIVE_TIMER_THRESHOLD_LOW_SPEED_DETECT</code></td>
 <td></td>
-<td>1.4667965 </td>
+<td>0.2194579 </td>
 <td>s</td>
 <td>
 Inactive timer threshold for low speed detect.
@@ -1178,7 +1178,7 @@ in units of the ADC ISR period.
 <td><code>stall_detect.group.inactiveTimerThresholdNegativeEdDetect</code></td>
 <td class="col_macro"><code>INACTIVE_TIMER_THRESHOLD_NEGATIVE_ED_DETECT</code></td>
 <td></td>
-<td>2.4446608 </td>
+<td>0.3657632 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger negative Ed stall detect.
@@ -1189,7 +1189,7 @@ It is set to 5 times (1/natural frequency of velocity loop)
 <td><code>stall_detect.group.inactiveTimerThresholdTorqueAngleDetect</code></td>
 <td class="col_macro"><code>INACTIVE_TIMER_THRESHOLD_TORQUE_ANGLE_DETECT</code></td>
 <td></td>
-<td>1.4667965 </td>
+<td>0.2194579 </td>
 <td>s</td>
 <td>
 Inactive Timer threshold for stall detect based on torque angle.
@@ -1200,7 +1200,7 @@ It is set to 3 times (1/natural frequency of velocity loop)
 <td><code>stall_detect.group.timerCountsOvercurrentDetect</code></td>
 <td class="col_macro"><code>TIMER_COUNTS_OVERCURRENT_DETECT</code></td>
 <td></td>
-<td>0.0016426 </td>
+<td>0.0042573 </td>
 <td>s</td>
 <td>
 Overcurrent detector. Normally if the saturation limit was exceeded,
@@ -1214,7 +1214,7 @@ It is set to 2 times (1/natural frequency of current loop)
 <td><code>stall_detect.group.timerCountsVarianceDetect</code></td>
 <td class="col_macro"><code>TIMER_COUNTS_VARIANCE_DETECT</code></td>
 <td></td>
-<td>0.4889322 </td>
+<td>0.0731526 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger stall detect based on variance in Ed and Eq.
@@ -1321,7 +1321,7 @@ Torque angle method of stall detection
 <td><code>startup.minspeedinrpm</code></td>
 <td class="col_macro"><code>MINSPEEDINRPM</code></td>
 <td></td>
-<td>91 </td>
+<td>73 </td>
 <td></td>
 <td>minimum operating speed in RPM</td>
 </tr>
@@ -1329,7 +1329,7 @@ Torque angle method of stall detection
 <td><code>startup.startupAccel0VelocityThreshold</code></td>
 <td class="col_macro"><code>STARTUP_ACCEL0_VELOCITY_THRESHOLD</code></td>
 <td></td>
-<td>5.080e+01 </td>
+<td>7.6319758 </td>
 <td>rad/s</td>
 <td>first startup threshold velocity</td>
 </tr>
@@ -1337,7 +1337,7 @@ Torque angle method of stall detection
 <td><code>startup.startupAccel1VelocityThreshold</code></td>
 <td class="col_macro"><code>STARTUP_ACCEL1_VELOCITY_THRESHOLD</code></td>
 <td></td>
-<td>1.047e+02 </td>
+<td>7.6319758 </td>
 <td>rad/s</td>
 <td>second startup threshold velocity</td>
 </tr>
@@ -1401,7 +1401,7 @@ Torque angle method of stall detection
 <td><code>startup.startupDampingThreshold</code></td>
 <td class="col_macro"><code>STARTUP_DAMPING_THRESHOLD</code></td>
 <td></td>
-<td>4.188e+01 </td>
+<td>3.0527903 </td>
 <td>rad/s</td>
 <td>threshold velocity for damping</td>
 </tr>
@@ -1551,7 +1551,7 @@ Torque angle method of stall detection
 <td><code>zsmt.angleProbeBlankingTime</code></td>
 <td class="col_macro"><code>ZSMT_ANGLE_PROBE_BLANKING_TIME</code></td>
 <td></td>
-<td>0.0005229 </td>
+<td>0.0013551 </td>
 <td>s</td>
 <td>Angle probe blanking time</td>
 </tr>
@@ -1559,7 +1559,7 @@ Torque angle method of stall detection
 <td><code>zsmt.angleProbeSlewRate</code></td>
 <td class="col_macro"><code>ZSMT_ANGLE_PROBE_SLEW_RATE</code></td>
 <td></td>
-<td>1.734e+03 </td>
+<td>6.691e+02 </td>
 <td>A/s</td>
 <td>Angle probe slew rate</td>
 </tr>
@@ -1599,7 +1599,7 @@ Torque angle method of stall detection
 <td><code>zsmt.excitationVoltageAmplitude</code></td>
 <td class="col_macro"><code>ZSMT_EXCITATION_VOLTAGE_AMPLITUDE</code></td>
 <td></td>
-<td>1.4274554 </td>
+<td>4.8000000 </td>
 <td>V</td>
 <td>Excitation voltage amplitude</td>
 </tr>
@@ -1631,7 +1631,7 @@ Torque angle method of stall detection
 <td><code>zsmt.pllKi</code></td>
 <td class="col_macro"><code>ZSMT_PLL_KI</code></td>
 <td></td>
-<td>1.055e+05 </td>
+<td>3.137e+04 </td>
 <td>rad/s^2</td>
 <td>Integral gain of PLL = 1/B/tau^2</td>
 </tr>
@@ -1639,7 +1639,7 @@ Torque angle method of stall detection
 <td><code>zsmt.pllKp</code></td>
 <td class="col_macro"><code>ZSMT_PLL_KP</code></td>
 <td></td>
-<td>3.164e+03 </td>
+<td>9.410e+02 </td>
 <td>rad/s</td>
 <td>Proportional gain of PLL = 2*zeta/B/tau</td>
 </tr>
