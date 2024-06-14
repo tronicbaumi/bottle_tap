@@ -153,7 +153,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                 MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
 
                 // Determine direction based on button presses and sensor values
-                if (MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard) && !appData->zeroPositionDetected )
+                if (MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard))
                 {
                     appData->motorDirection = -1;
                     
@@ -180,7 +180,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                         }   
                     
                 }
-                else if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard) &&!appData->maxPositionDetected )
+                else if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard))
                 {
                     appData->motorDirection = 1;  //YA
               
@@ -206,16 +206,33 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                                 break;
                             }
                            
-                    }
+                        }
                 }
                 else
                 {
                     // If no button is pressed, stop the motor
                     MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-                    if (motorState == MCAPI_MOTOR_STARTING || motorState == MCAPI_MOTOR_RUNNING)
-                    {
-                        MCAPI_MotorStop(apiData); //YA
-                    }
+                     switch (motorState)
+                        {
+                            case MCAPI_MOTOR_STARTING:
+                            case MCAPI_MOTOR_RUNNING:
+                            {
+                                MCAPI_MotorStop(apiData);
+                                break;
+                            }
+                            case MCAPI_MOTOR_FAULT:
+                            {
+                                uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
+                                MCAPI_FaultStatusClear(apiData, faultFlags);
+                                break;
+                            }
+                            case MCAPI_MOTOR_DIAGSTATE:
+                            {
+                                /* do nothing */
+                                break;
+                            }
+                           
+                        }
                 }
             }
             break;

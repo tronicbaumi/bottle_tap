@@ -50,47 +50,47 @@ extern "C" {
 #endif
 
 /* 
- * Vexc:                           1.427  V
+ * Vexc:                           1.200  V
  * tau:                           10.000 ms
- * zeta:                           1.500  
+ * zeta:                           1.000  
  * executionDivider:               2.000  
  * elim:                         999.970 m
  * A:                            0.333330  
- * A1:                             8.164 mA
+ * A1:                             6.863 mA
  * A2norm:                       511.984375  
  * A2:                            11.613  /A
- * A1A2:                         0.094806  
- * Ki:                           105.479 krad/s^2
- *                                 1.007 MRPM/s
- * Kp:                             3.164 krad/s
- *                                30.217 kRPM
+ * A1A2:                         0.079699  
+ * Ki:                           125.472 krad/s^2
+ *                                 1.198 MRPM/s
+ * Kp:                             2.509 krad/s
+ *                                23.963 kRPM
  * dt:                            50.000 us
  * timestep:                     100.000 us
  * omega_lpf:                     20.000 krad/s
  *                               190.986 kRPM
  * alignTime:                      1.000 ms
  * angleLockDelay:                50.000 ms
- * angleProbeCurrent:            340.000 mA
+ * angleProbeCurrent:            170.000 mA
  * angleProbeTime:                10.000 ms
  * angleProbeAccumGain:                1  
  * angleProbeSlewTime:           196.075 us
- * angleProbeSlewRate:             1.734 kA/s
+ * angleProbeSlewRate:           867.013  A/s
  * angleProbeBlankingTime:       522.868 us
  * correctionGainDc:               0.000  rad/A
  * pllLockTime:                   10.000 ms
- * pllLockSpeedLimit:              5.724  rad/s
- *                                54.660  RPM
- * pllLockCurrentLimit:            1.020  A
- * pllLockCurrentSquaredLimit:     1.040  A^2
+ * pllLockSpeedLimit:              3.816  rad/s
+ *                                36.440  RPM
+ * pllLockCurrentLimit:          340.000 mA
+ * pllLockCurrentSquaredLimit:   115.600 mA^2
  */
 
 /* Excitation voltage amplitude */
-#define ZSMT_EXCITATION_VOLTAGE_AMPLITUDE        616      // Q15(  0.01880) =   +1.42683 V           =   +1.42746 V           - 0.0437%
+#define ZSMT_EXCITATION_VOLTAGE_AMPLITUDE        518      // Q15(  0.01581) =   +1.19984 V           =   +1.20000 V           - 0.0137%
 /* Proportional gain of PLL = 2*zeta/B/tau */
-#define ZSMT_PLL_KP                         17784      // Q12(  4.34180) =   +3.16430 krad/s      =   +3.16437 krad/s      - 0.0021%
+#define ZSMT_PLL_KP                         14104      // Q12(  3.44336) =   +2.50952 krad/s      =   +2.50944 krad/s      + 0.0032%
 #define ZSMT_PLL_KP_Q                          12
 /* Integral gain of PLL = 1/B/tau^2 */
-#define ZSMT_PLL_KI                           948      // Q16(  0.01447) = +105.42334 krad/s^2    = +105.47892 krad/s^2    - 0.0527%
+#define ZSMT_PLL_KI                          1128      // Q16(  0.01721) = +125.44043 krad/s^2    = +125.47204 krad/s^2    - 0.0252%
 /* PLL integrator time scaling factor */
 #define ZSMT_PLL_DT                          2388      // Q16(  0.03644) =  +49.99724 us          =  +50.00000 us          - 0.0055%
 /* Scaling gain for HFI error */
@@ -111,15 +111,15 @@ extern "C" {
 /* Angle probe blanking time */
 #define ZSMT_ANGLE_PROBE_BLANKING_TIME         10      // Q0( 10.00000)  = +500.00000 us          = +522.86797 us          - 4.3736%
 /* Angle probe slew rate */
-#define ZSMT_ANGLE_PROBE_SLEW_RATE             64      // Q15(  0.00195) =   +1.72219 kA/s        =   +1.73403 kA/s        - 0.6827%
+#define ZSMT_ANGLE_PROBE_SLEW_RATE             32      // Q15(  0.00098) = +861.09375 A/s         = +867.01302 A/s         - 0.6827%
 /* DC correction gain */
 #define ZSMT_CORRECTION_GAIN_DC                 0      // Q14(  0.00000) =   +0.00000 rad/A       =   +0.00000 rad/A       + 0.0000%
 /* Required PLL lock time */
 #define ZSMT_PLL_LOCK_TIME                    200      // Q0(200.00000)  =  +10.00000 ms          =  +10.00000 ms          + 0.0000%
 /* Maximum allowed speed for ZSMT startup */
-#define ZSMT_PLL_LOCK_SPEED_LIMIT             328      // Q15(  0.01001) =   +5.72957 rad/s       =   +5.72398 rad/s       + 0.0977%
+#define ZSMT_PLL_LOCK_SPEED_LIMIT             218      // Q15(  0.00665) =   +3.80807 rad/s       =   +3.81599 rad/s       - 0.2075%
 /* Maximum allowed squared current for ZSMT startup */
-#define ZSMT_PLL_LOCK_CURRENT_SQUARED_LIMIT         18      // Q15(  0.00055) =   +1.06773 A^2         =   +1.04040 A^2         + 2.6273%
+#define ZSMT_PLL_LOCK_CURRENT_SQUARED_LIMIT          2      // Q15(  0.00006) = +118.63719 mA^2        = +115.60000 mA^2        + 2.6273%
 
 /**
  * Returns whether ZS/MT estimator operates in a standalone manner.

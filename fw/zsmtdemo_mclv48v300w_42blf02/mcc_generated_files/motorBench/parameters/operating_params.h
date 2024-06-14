@@ -57,7 +57,7 @@ extern "C" {
 /**** parameters for speed reference ***/
 
 /* Maximum velocity command */
-#define MCAF_VELOCITY_COMMAND_MAX           23980      // Q15(  0.73181) =   +4.00008 kRPM        =   +4.00000 kRPM        + 0.0020%
+#define MCAF_VELOCITY_COMMAND_MAX             612      // Q15(  0.01868) = +102.08716 RPM         = +102.03200 RPM         + 0.0541%
 /* Minimum velocity command */
 #define MCAF_VELOCITY_COMMAND_MIN             546      // Q15(  0.01666) =  +91.07776 RPM         =  +91.10000 RPM         - 0.0244%
 /* Nominal velocity (base speed): nominal no-load speed at nominal supply voltage with no flux weakening */
@@ -68,8 +68,8 @@ extern "C" {
 /*
  * velocity_fullscale:           572.398  rad/s
  *                                 5.466 kRPM
- * velocity_maximum:             418.879  rad/s
- *                                 4.000 kRPM
+ * velocity_maximum:              10.685  rad/s
+ *                               102.032  RPM
  * velocity_minimum:               9.540  rad/s
  *                                91.100  RPM
  * velocity_nominal:             381.599  rad/s
@@ -82,7 +82,7 @@ extern "C" {
  *                                94.335 kRPM/s
  *   slewrate_decel:             817.211  rad/s^2
  *                                 7.804 kRPM/s
- *   t_coastdown:                714.361 ms
+ *   t_coastdown:                428.616 ms
  *   closedLoopStopping                   
  *     time:                     500.000 ms
  *     speed:                     19.080  rad/s
@@ -100,7 +100,7 @@ extern "C" {
 /* slew rate limit for velocity commands during deceleration */
 #define VELOCITY_SLEWRATE_LIMIT_DECEL          47      // Q15(  0.00143) = +821.00569 mrad/s      = +817.21086 mrad/s      + 0.4644%
 /* estimate of worst-case time needed to decelerate to a stop */
-#define VELOCITY_COASTDOWN_TIME             14287      // Q0(14287.00000) = +714.35000 ms          = +714.36059 ms          - 0.0015%
+#define VELOCITY_COASTDOWN_TIME              8572      // Q0(8572.00000) = +428.60000 ms          = +428.61636 ms          - 0.0038%
 
 #define RATED_MOTOR_IPEAK                          3.4 // (A)        rated allowable current of motor (peak amplitude)
 
