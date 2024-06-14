@@ -398,7 +398,7 @@ config:
       estimator-active-zsmt: false
       estimator-active-ideal: false
       operation-min_velocity_ratio: 0.025
-      operation-startup_velocity_ratio: 0.2744
+      operation-startup_velocity_ratio: 0.02744
       operation-max_velocity_ratio: 1.25
       operation-fullscale_base_ratio: 1.5
       operation-outer_loop_type: velocity

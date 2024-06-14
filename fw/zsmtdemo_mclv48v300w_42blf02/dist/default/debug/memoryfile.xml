@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/production/zsmtdemo_mclv48v300w_42blf02.production.elf">
+  <executable name="dist/default/debug/zsmtdemo_mclv48v300w_42blf02.debug.elf">
     <memory name="data">
       <units>bytes</units>
       <length>24576</length>
-      <used>6860</used>
-      <free>17716</free>
+      <used>6940</used>
+      <free>17636</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>269184</length>
-      <used>44019</used>
-      <free>225165</free>
+      <used>43953</used>
+      <free>225231</free>
     </memory>
   </executable>
 </project>
