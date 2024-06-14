@@ -11,7 +11,7 @@ typedef int32_t  stepper_position_t;
 
 /* USER DEFINE CONFIGS*/
 /* MOTOR SPECIFIC*/
-#define AMPLITUDE_DRIVE                         AMP_TO_U16(0.08)    /* adjust these values according to your motor and supply voltage */
+#define AMPLITUDE_DRIVE                         AMP_TO_U16(0.2)    /* adjust these values according to your motor and supply voltage */
 #define AMPLITUDE_STALL                         AMP_TO_U16(0.05)
 
 #define R                  1.25

@@ -18,7 +18,16 @@ main();
 module main()
 {
     
-
+//    translate([50,0,0])cube_r(30,20,10,2);
+//    
+//    translate([0,50,0])rotate([90,0,0])rectTriangle(10,20,5);
+//    
+//    linear_extrude(12)translate([10,10,0])import("BFKDO.svg");
+//    
+//    translate([50,50,0])rotate([0,0,0])linear_extrude(height = 0.5)text("(c) ChB 2/2021",size = 5);
+//    
+//    translate([100,0,0])cylinder_r(40,12,8,3,2);
+    
     difference(){
         plus();
         minus();
@@ -32,7 +41,7 @@ module main()
 
 module plus()
 {   
-    translate([0,0,0])rotate([0,0,0])cube([200,100,80]);
+    translate([0,0,0])rotate([0,0,0])cube([200,100,40]);
 //    translate([116-52,0,0])rotate([0,0,0])cube([52,62,12]);
 //    translate([0,0,0])rotate([0,0,0])cube([116,62,5]);
 //    translate([0,0,12])rotate([0,0,0])cylinder(l1,12/2,11.8/2);
@@ -53,18 +62,18 @@ module minus()
 //    translate([116/2,52,3])rotate([0,0,0])cylinder(2,4/2,8/2);
 //    
 //    translate([42/2+5,12,0])rotate([90,0,0])cylinder(20,20/2,20/2);
-   translate([15,50,58])rotate([0,90,0])cylinder(220,110/2,110/2);
+   translate([10,50,110/2+3])rotate([0,90,0])cylinder(220,110/2,110/2);
     
     
-    translate([30,15,0])langloch(5.5,60,5);
-    translate([30,15,5])langloch(16,60,80);
+    translate([20,15,0])langloch(5.5,60,5);
+    translate([20,15,5])langloch(16,60,80);
     
     translate([120,15,0])langloch(5.5,60,5);
     translate([120,15,5])langloch(16,60,80);
     
     
-    translate([30,85,0])langloch(5.5,60,5);
-    translate([30,85,5])langloch(16,60,80);
+    translate([20,85,0])langloch(5.5,60,5);
+    translate([20,85,5])langloch(16,60,80);
     
     translate([120,85,0])langloch(5.5,60,5);
     translate([120,85,5])langloch(16,60,80);

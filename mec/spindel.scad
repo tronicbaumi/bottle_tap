@@ -54,10 +54,10 @@ module minus()
 //    translate([20,20,2])rotate([0,0,0])cylinder(7,22/2,22/2);
 //    translate([20,20,0])rotate([0,0,0])cylinder(9,18/2,18/2);
     
-    translate([25/2,25/2,0])rotate([0,0,0])cylinder(25,10/2,10.1/2);
+    translate([25/2,25/2,0])rotate([0,0,0])cylinder(25,9.9/2,10/2);
     
     
-    translate([28,26,25/2])rotate([90,0,0])cylinder(30,4.4/2,4.1/2);
+    translate([28,26,25/2])rotate([90,0,0])cylinder(30,4.3/2,4.3/2);
 
 //    translate([28,26,25/2])rotate([90,0,0])cylinder(30,11.5/2,11.5/2,$fn=6);    
     

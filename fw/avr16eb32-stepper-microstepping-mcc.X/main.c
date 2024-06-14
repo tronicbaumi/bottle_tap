@@ -35,13 +35,18 @@
 #include "util/delay.h"
 #include "stepper.h"
 
+#define SPEED_RPM 3
+#define STEPS   5
+#define HIGH_LIMIT -100000
+#define LOW_LIMIT 0
+
 bool DriveToZeroPosition(stepper_position_t position, stepper_position_t sub_steps, uint16_t count_delay)
 {
     bool zero_position = false;
     while(PositionSensor_GetValue() == 0)
     {
         LED_SetHigh();
-        position = Stepper_Move(position, -sub_steps, count_delay);
+        position = Stepper_Move(position, sub_steps, count_delay);
     }
     
     LED_SetLow();
@@ -50,9 +55,11 @@ bool DriveToZeroPosition(stepper_position_t position, stepper_position_t sub_ste
     return zero_position;
 }
 
+stepper_position_t stepper_position = 0;
+
 int main(void)
 {
-    stepper_position_t stepper_position = 0;
+    
 
     /* System initialize */
     SYSTEM_Initialize();
@@ -60,14 +67,15 @@ int main(void)
     Stepper_Init();
     
     _delay_ms(2000);
-    stepper_position_t sub_steps = STEPS_TO_SUBSTEPS(25);  /* Positive: CW, Negative: CCW */
-    uint16_t count_delay = RPS_TO_COUNT(1);  /* revolutions per second */
+    stepper_position_t sub_steps = STEPS_TO_SUBSTEPS(STEPS);  /* Positive: CW, Negative: CCW */
+    uint16_t count_delay = RPS_TO_COUNT(SPEED_RPM);  /* revolutions per second */
     
     bool zero_position = false;
     if (!zero_position)
     {
         zero_position = DriveToZeroPosition(stepper_position, sub_steps, count_delay);
     }
+    stepper_position = 0;
 
     while(1)
     {
@@ -82,17 +90,23 @@ int main(void)
             LED_SetLow();
             _delay_ms(200);
         }
-        else if(button1_state == 0)
+        else if(button1_state == 0) // move DOWN
         {
             // Only Button1 is pressed, move CW
             LED_SetHigh();
-            stepper_position = Stepper_Move(stepper_position, sub_steps, count_delay);
+            if(stepper_position <= LOW_LIMIT)
+            {
+                stepper_position = Stepper_Move(stepper_position, sub_steps, count_delay);
+            }
         }
-        else if(button2_state == 0)
+        else if(button2_state == 0) // move UP
         {
             // Only Button2 is pressed, move CCW
             LED_SetHigh();
-            stepper_position = Stepper_Move(stepper_position, -sub_steps, count_delay);
+            if(stepper_position >= HIGH_LIMIT)
+            {
+                stepper_position = Stepper_Move(stepper_position, -sub_steps, count_delay);
+            }
         }
         else
         {
