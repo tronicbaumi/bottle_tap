@@ -91,7 +91,7 @@ extern "C" {
 /* UI button debounce time in ISRs */
 #define MCAF_BUTTON_DEBOUNCE_TIME               7      // Q0(  7.00000)  =   +7.00000 ms          =   +7.00000 ms          + 0.0000%
 /* UI button long press time in ISRs */
-#define MCAF_BUTTON_LONG_PRESS_TIME          500      //2500//YA Q0(2500.00000) =   +2.50000 s           =   +2.50000 s           + 0.0000%
+#define MCAF_BUTTON_LONG_PRESS_TIME          2500      // Q0(2500.00000) =   +2.50000 s           =   +2.50000 s           + 0.0000%
 
 /* ---- system initialization parameters ---- */
 #define MCAF_POWERUP_FAULT_LATCH_DELAY 20

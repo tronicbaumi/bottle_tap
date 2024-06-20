@@ -72,8 +72,6 @@ MCAF_SYSTEM_DATA systemData;
 
 extern volatile MCAF_WATCHDOG_T watchdog;
 
-
-
 bool MCAF_MainInit(void)
 {
     MCAF_SystemStateInit(&motor, &systemData);
@@ -122,11 +120,9 @@ void MCAF_MainLoop(void)
      * (since no interruptions)
      * but in main loop, the ISR may interrupt + we need to assume volatile.
      */
-      
     volatile MCAF_MOTOR_DATA *pmotor = &motor;
     volatile MCAF_SYSTEM_DATA *psystemData = &systemData;
     volatile MCAF_WATCHDOG_T *pwatchdog = &watchdog;
-    
     
     MCAF_UiStepMain(&pmotor->ui);
     MCAF_SystemStateMachine_StepMain(pmotor);
