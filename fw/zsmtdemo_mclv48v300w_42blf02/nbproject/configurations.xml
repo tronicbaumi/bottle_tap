@@ -15,110 +15,110 @@
         </logicalFolder>
         <logicalFolder name="motorBench" displayName="motorBench" projectFiles="true">
           <logicalFolder name="commutation" displayName="commutation" projectFiles="true">
-            <itemPath>mcc_generated_files/motorBench/commutation/zsmt_types.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/commutation/zsmt_hybrid.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/commutation/common.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/commutation/zsmtlib.h</itemPath>
             <itemPath>mcc_generated_files/motorBench/commutation/zsmt.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/commutation/pll.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/common.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmt_hybrid.h</itemPath>
             <itemPath>mcc_generated_files/motorBench/commutation/zsmt_hybrid_interaction.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmtlib.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmt_types.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/pll.h</itemPath>
           </logicalFolder>
           <logicalFolder name="hal" displayName="hal" projectFiles="true">
             <itemPath>mcc_generated_files/motorBench/hal/hardware_access_functions.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/hal/hardware_access_functions_params.h</itemPath>
             <itemPath>mcc_generated_files/motorBench/hal/mcaf_pin_manager.h</itemPath>
             <itemPath>mcc_generated_files/motorBench/hal/hardware_access_functions_types.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/hal/hardware_access_functions_params.h</itemPath>
           </logicalFolder>
           <logicalFolder name="library" displayName="library" projectFiles="true">
             <logicalFolder name="mc-library" displayName="mc-library" projectFiles="true">
-              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_dsp.h</itemPath>
-              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_inline_declarations.h</itemPath>
-              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_util.h</itemPath>
-              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_inline_dspic.h</itemPath>
               <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_inline_internal.h</itemPath>
+              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_declarations.h</itemPath>
+              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_inline_declarations.h</itemPath>
               <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control.h</itemPath>
               <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_types.h</itemPath>
-              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_declarations.h</itemPath>
+              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_dsp.h</itemPath>
+              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_inline_dspic.h</itemPath>
+              <itemPath>mcc_generated_files/motorBench/library/mc-library/motor_control_util.h</itemPath>
             </logicalFolder>
             <logicalFolder name="x2cscope" displayName="x2cscope" projectFiles="true">
               <itemPath>mcc_generated_files/motorBench/library/x2cscope/X2CScope.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="parameters" displayName="parameters" projectFiles="true">
-            <itemPath>mcc_generated_files/motorBench/parameters/options.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/foc_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/init_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/outerloop_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/startup_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/hal_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/timing_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/commutation_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/zsmt_hybrid_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/motor_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/sat_PI_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/adc_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/mcapi_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/operating_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/zsmt_params.h</itemPath>
-            <itemPath>mcc_generated_files/motorBench/parameters/fault_detect_params.h</itemPath>
             <itemPath>mcc_generated_files/motorBench/parameters/recover_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/sat_PI_params.h</itemPath>
             <itemPath>mcc_generated_files/motorBench/parameters/pll_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/zsmt_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/timing_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/mcapi_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/outerloop_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/hal_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/adc_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/zsmt_hybrid_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/operating_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/motor_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/options.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/init_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/foc_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/commutation_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/startup_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/fault_detect_params.h</itemPath>
           </logicalFolder>
-          <itemPath>mcc_generated_files/motorBench/current_measure.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/timing.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/test_harness_timestamps.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/fault_detect_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcapi_internal.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcaf_sample_application.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/system_init.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/foc.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcapi_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/filter.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcaf_watchdog.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/ui_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/motor_control_function_mapping.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/adc_compensation_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/commutation.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/current_measure_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/stall_detect.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/fault_detect.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/stall_detect_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/filter_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/startup.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/board_service.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/math_asm.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/foc_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/startup_lib.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcapi.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/commutation_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/hal.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/commutation_excitation.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/dyn_current.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/ui.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/diagnostics.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/dyn_current_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/sat_PI.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/monitor_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/state_machine_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/sat_PI_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/monitor.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/board_service_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcaf_traps.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/startup_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/adc_compensation.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/test_harness_timestamps.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/units.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/flux_control_types.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcaf_main.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/recover.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/deadtimecomp.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/commutation.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/ui_types.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/flux_control.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcapi_types.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/test_harness.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/state_machine.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/util.h</itemPath>
-          <itemPath>mcc_generated_files/motorBench/error_codes.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/monitor_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/motor_control_function_mapping.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/stall_detect_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/recover.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcapi_internal.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/deadtimecomp.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcaf_watchdog.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcaf_main.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/current_measure.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/state_machine_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/commutation_excitation.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/filter.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/dyn_current.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/foc.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/system_state.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcaf_traps.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/system_init.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/state_machine.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/startup_lib.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/startup.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/hal.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/fault_detect_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcapi.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/startup_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/sat_PI_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/ui.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/util.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/monitor.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/timing.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/deadtimecomp_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/dyn_current_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/fault_detect.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/board_service.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcaf_sample_application.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/board_service_types.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/motor_control_noinline.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/error_codes.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/flux_control_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/stall_detect.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/commutation_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/filter_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/foc_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/math_asm.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/diagnostics.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/sat_PI.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/adc_compensation.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/current_measure_types.h</itemPath>
         </logicalFolder>
         <logicalFolder name="opa" displayName="opa" projectFiles="true">
           <itemPath>mcc_generated_files/opa/opa1.h</itemPath>
@@ -186,14 +186,14 @@
         </logicalFolder>
         <logicalFolder name="motorBench" displayName="motorBench" projectFiles="true">
           <logicalFolder name="aux-files" displayName="aux-files" projectFiles="true">
-            <itemPath>mcc_generated_files/motorBench/aux-files/parameters.html</itemPath>
             <itemPath>mcc_generated_files/motorBench/aux-files/report.html</itemPath>
+            <itemPath>mcc_generated_files/motorBench/aux-files/parameters.html</itemPath>
             <itemPath>mcc_generated_files/motorBench/aux-files/report.json</itemPath>
           </logicalFolder>
           <logicalFolder name="commutation" displayName="commutation" projectFiles="true">
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmt.c</itemPath>
             <itemPath>mcc_generated_files/motorBench/commutation/zsmt_hybrid.c</itemPath>
             <itemPath>mcc_generated_files/motorBench/commutation/pll.c</itemPath>
-            <itemPath>mcc_generated_files/motorBench/commutation/zsmt.c</itemPath>
           </logicalFolder>
           <logicalFolder name="hal" displayName="hal" projectFiles="true">
             <itemPath>mcc_generated_files/motorBench/hal/hardware_access_functions.c</itemPath>
@@ -205,30 +205,30 @@
           <logicalFolder name="parameters" displayName="parameters" projectFiles="true">
             <itemPath>mcc_generated_files/motorBench/parameters/init_params.c</itemPath>
           </logicalFolder>
-          <itemPath>mcc_generated_files/motorBench/current_measure.c</itemPath>
           <itemPath>mcc_generated_files/motorBench/isr.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/system_init.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/board_service.c</itemPath>
           <itemPath>mcc_generated_files/motorBench/test_harness_timestamps.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcaf_sample_application.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/foc.c</itemPath>
           <itemPath>mcc_generated_files/motorBench/commutation.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/fault_detect.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/stall_detect.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/startup.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/math_asm.s</itemPath>
-          <itemPath>mcc_generated_files/motorBench/ui.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcapi.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/diagnostics.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/sat_PI.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/monitor.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/mcaf_traps.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/adc_compensation.c</itemPath>
           <itemPath>mcc_generated_files/motorBench/test_harness.c</itemPath>
           <itemPath>mcc_generated_files/motorBench/recover.c</itemPath>
-          <itemPath>mcc_generated_files/motorBench/state_machine.c</itemPath>
           <itemPath>mcc_generated_files/motorBench/mcaf_main.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/current_measure.c</itemPath>
           <itemPath>mcc_generated_files/motorBench/system_state.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/foc.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcaf_traps.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/system_init.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/state_machine.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/adc_compensation.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/startup.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/ui.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcapi.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/fault_detect.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/monitor.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/mcaf_sample_application.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/board_service.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/stall_detect.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/sat_PI.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/diagnostics.c</itemPath>
+          <itemPath>mcc_generated_files/motorBench/math_asm.s</itemPath>
         </logicalFolder>
         <logicalFolder name="opa" displayName="opa" projectFiles="true">
           <logicalFolder name="src" displayName="src" projectFiles="true">
@@ -296,9 +296,9 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>mcc_generated_files/motorBench/library/libzsmt-elf.a</linkerLibFileItem>
-            <linkerLibFileItem>mcc_generated_files/motorBench/library/x2cscope/libx2cscope-dspic-elf.a</linkerLibFileItem>
             <linkerLibFileItem>mcc_generated_files/motorBench/library/mc-library/libmotor_control_dspic-elf.a</linkerLibFileItem>
+            <linkerLibFileItem>mcc_generated_files/motorBench/library/x2cscope/libx2cscope-dspic-elf.a</linkerLibFileItem>
+            <linkerLibFileItem>mcc_generated_files/motorBench/library/libzsmt-elf.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>

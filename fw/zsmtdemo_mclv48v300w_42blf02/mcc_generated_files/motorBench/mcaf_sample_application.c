@@ -54,7 +54,11 @@
 #include "hal/hardware_access_functions.h"
 #include "system_state.h"
 
-#define ROTATION_COUNT_THRESHOLD 20 // number of rotations after zero position
+#define Upper_limit 1450000
+#define Lower_Limit 0 
+int32_t Calculated_position = 0;
+/** Global instance of the main set of motor state variables */
+extern MCAF_MOTOR_DATA motor;
 
 APPLICATION_DATA app;
 int8_t position_sensor;
@@ -110,9 +114,10 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
         case INIT_DOWNWARD:
             if (!appData->zeroPositionDetected)
             {
+         
                 // Run the motor in downwards direction until zero position is detected
                 //int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
-                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 100);
+                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 1000);
                 MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
                 appData->motorDirection = -1;
 
@@ -147,13 +152,14 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
         case NORMAL_OPERATION:
             if (appData->hardwareUiEnabled)
             {
+                Calculated_position += motor.apiData.velocityMeasured ; 
                 // Use potentiometer to set motor velocity command
                 //int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
                 appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 100);
                 MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
 
                 // Determine direction based on button presses and sensor values
-                if (MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard))
+                if (MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard) && Calculated_position > Lower_Limit  )
                 {
                     appData->motorDirection = -1;
                     
@@ -180,7 +186,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                         }   
                     
                 }
-                else if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard))
+                else if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard) Calculated_position < Upper_limit)
                 {
                     appData->motorDirection = 1;  //YA
               
