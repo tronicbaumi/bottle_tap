@@ -12,6 +12,7 @@ l1 = 65;    // [5:1:80]
 // variable 3
 l2 = 28;    // [1:1:69]
 
+
 main();
 
 
@@ -49,8 +50,8 @@ module plus()
 module minus()
 {
 //    translate([0,0,12])rotate([0,0,0])cylinder(4,12/2,11.8/2);
-    translate([5,10,0])rotate([0,0,0])cube([42.4,42.4,20]);
-    translate([116-52+5,10,0])rotate([0,0,0])cube([42.4,42.4,20]);
+    translate([5,10,0])rotate([0,0,0])cube([42.45,42.4,20]);
+    translate([116-52+5,10,0])rotate([0,0,0])cube([42.45,42.4,20]);
     
     translate([116/2,10,0])rotate([0,0,0])cylinder(20,4/2,4/2);
     translate([116/2,10,9])rotate([0,0,0])cylinder(2,4/2,9/2);
