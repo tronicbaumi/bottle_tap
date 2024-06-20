@@ -59,7 +59,7 @@ extern "C" {
 /* Minimum velocity command */
 #define MCAPI_MINIMUM_VELOCITY                546      // Q15(  0.01666) =   +9.53764 rad/s       =   +9.53997 rad/s       - 0.0244%
 /* Maximum velocity command */
-#define MCAPI_MAXIMUM_VELOCITY              23980      // Q15(  0.73181) = +418.88759 rad/s       = +418.87902 rad/s       + 0.0020%
+#define MCAPI_MAXIMUM_VELOCITY                612      // Q15(  0.01868) =  +10.69054 rad/s       =  +10.68477 rad/s       + 0.0541%
 
 #define MCAPI_FULLSCALE_CURRENT                 44.088 //            A
 #define MCAPI_FULLSCALE_VOLTAGE                   75.9 //            V
