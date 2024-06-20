@@ -111,6 +111,7 @@ static void MCAF_ButtonService(volatile BOARD_BUTTON_DATA_T *pButtonData, bool r
         if (!rawInput)
         {
             pButtonData->counterC1 = 0;
+            pButtonData->longButtonPress = false; // Reset longButtonPress status
             pButtonData->buttonState = BOARD_BUTTON_UNPRESSED;
         }
         break;
@@ -139,24 +140,19 @@ void MCAF_BoardServiceTasks(MCAF_BOARD_DATA *pboard)
 
 bool MCAF_ButtonGp1_EventGet(const MCAF_BOARD_DATA *pboard)
 {
-    return pboard->sw1.shortButtonPress;
+    return pboard->sw1.longButtonPress; //YA shortButtonPress
 }
 
 bool MCAF_ButtonGp2_EventGet(const MCAF_BOARD_DATA *pboard)
 {
-    if (HAL_hasTwoButtons())
-    {
-        return pboard->sw2.shortButtonPress;
-    }
-    else
-    {
-        return pboard->sw2.longButtonPress;
-    }
+    
+    return pboard->sw2.longButtonPress;
+    
 }
 
 void MCAF_ButtonGp1_EventClear(MCAF_BOARD_DATA *pboard)
 {
-    pboard->sw1.shortButtonPress = false;
+    pboard->sw1.longButtonPress = false; //YA shortButtonPress
 }
 
 void MCAF_ButtonGp2_EventClear(MCAF_BOARD_DATA *pboard)

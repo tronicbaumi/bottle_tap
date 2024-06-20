@@ -186,7 +186,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                         }   
                     
                 }
-                else if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard) Calculated_position < Upper_limit)
+                else if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard) && Calculated_position < Upper_limit)
                 {
                     appData->motorDirection = 1;  //YA
               
