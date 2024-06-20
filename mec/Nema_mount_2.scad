@@ -38,9 +38,9 @@ module main()
 
 module plus()
 {   
-    translate([0,0,0])rotate([0,0,0])cube([52,62,12]);
-    translate([116-52,0,0])rotate([0,0,0])cube([52,62,12]);
-    translate([0,0,0])rotate([0,0,0])cube([116,62,5]);
+    translate([0,0,0])rotate([0,0,0])cube([52,62,18]);
+    translate([116-52,0,0])rotate([0,0,0])cube([52,62,18]);
+    translate([0,0,0])rotate([0,0,0])cube([116,62,10]);
 //    translate([0,0,12])rotate([0,0,0])cylinder(l1,12/2,11.8/2);
     
 
@@ -52,14 +52,14 @@ module minus()
     translate([5,10,0])rotate([0,0,0])cube([42.4,42.4,20]);
     translate([116-52+5,10,0])rotate([0,0,0])cube([42.4,42.4,20]);
     
-    translate([116/2,10,0])rotate([0,0,0])cylinder(9,4/2,4/2);
-    translate([116/2,10,3])rotate([0,0,0])cylinder(2,4/2,8/2);
+    translate([116/2,10,0])rotate([0,0,0])cylinder(20,4/2,4/2);
+    translate([116/2,10,9])rotate([0,0,0])cylinder(2,4/2,9/2);
     
-    translate([116/2,52,0])rotate([0,0,0])cylinder(9,4/2,4/2);
-    translate([116/2,52,3])rotate([0,0,0])cylinder(2,4/2,8/2);
+    translate([116/2,52,0])rotate([0,0,0])cylinder(20,4/2,4/2);
+    translate([116/2,52,9])rotate([0,0,0])cylinder(2,4/2,9/2);
     
     translate([42/2+5,12,0])rotate([90,0,0])cylinder(20,20/2,20/2);
-    translate([116-(42/2+5),12,0])rotate([90,0,0])cylinder(20,20/2,20/2);
+    translate([116-(42/2+5),12,3])rotate([90,0,0])cylinder(20,22/2,22/2);
     
 }
 
