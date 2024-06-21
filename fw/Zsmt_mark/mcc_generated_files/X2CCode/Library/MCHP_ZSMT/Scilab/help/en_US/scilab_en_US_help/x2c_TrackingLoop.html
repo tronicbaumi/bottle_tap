@@ -1,0 +1,93 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>x2c_TrackingLoop</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="x2c_SquareInjection_Fast.html">&lt;&lt; x2c_SquareInjection_Fast</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path" dir="ltr"><a href="index.html">X2C MCHP_ZSMT Library</a> &gt;&gt; <a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a> &gt; x2c_TrackingLoop</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">x2c_TrackingLoop</h1>
+        <p class="refpurpose">TrackingLoop</p></div>
+
+    <div class="refsection"><p class="para">Block image not available.</p></div>
+
+    <div class="refsection"><h3 class="title">Description</h3>
+        <p class="para">Calculates rotor angle and speed based on angle-error response due to voltage injection
+
+BE AWARE:
+For using this block with HFInjSquare-Block, set the sample time factor to 4 times the sample time factor of HFInjSquare-Block.</p></div>
+
+    <div class="refsection"><h3 class="title">Inports</h3>
+        <ul class="itemizedlist"><li class="member"><b>phi_eps:</b> rotor angle estimation error</li>
+            <li class="member"><b>n0:</b> Initial speed preloaded at rising edge of Enable signal</li>
+            <li class="member"><b>phi0:</b> Initial rotor angle preloaded at rising edge of Enable signal</li>
+            <li class="member"><b>Enable:</b> Enable == 0: Deactivation of this block; Outputs are set to zero
+Enable 0-&gt;1: Preload of angle and speed for internal integrators
+Enable == 1: Activation of this block</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Outports</h3>
+        <ul class="itemizedlist"><li class="member"><b>n:</b> Angular speed</li>
+            <li class="member"><b>phi:</b> Estimated electrical rotor angle</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Mask Parameters</h3>
+        <ul class="itemizedlist"><li class="member"><b>Jp:</b> Moment of inertia of rotor (and load)</li>
+            <li class="member"><b>fo:</b> Frequency of observer pole. The higher the pole is chosen, the more dynamic is the angle estimation.</li>
+            <li class="member"><b>p:</b> Number of pole pairs</li>
+            <li class="member"><b>estimation:</b> Select where to place the emphasis of the speed output: dynamic or noise</li>
+            <li class="member"><b>method:</b> Discretization method of of used LTI systems (PI, I)</li>
+            <li class="member"><b>n_max:</b> Maximum (mechanical) speed
+(Only used for scaling in fixed point implementations)</li>
+            <li class="member"><b>ts_fact:</b> Multiplication factor of base sampling time (in integer format).</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Implementations</h3>
+
+        <ul class="itemizedlist"><li class="member"><b>FiP16:</b> 16 Bit Fixed Point</li>
+            <li class="member"><b>FiP32:</b> 32 Bit Fixed Point</li>
+            <li class="member"><b>Float32:</b> 32 Bit Floating Point</li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="x2c_SquareInjection_Fast.html">&lt;&lt; x2c_SquareInjection_Fast</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

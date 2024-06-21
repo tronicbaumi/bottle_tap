@@ -1,0 +1,106 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>x2c_SquareInjection_Fast</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="x2c_SquareInj_Slow_Modell.html">&lt;&lt; x2c_SquareInj_Slow_Modell</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="x2c_TrackingLoop.html">x2c_TrackingLoop &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path" dir="ltr"><a href="index.html">X2C MCHP_ZSMT Library</a> &gt;&gt; <a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a> &gt; x2c_SquareInjection_Fast</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">x2c_SquareInjection_Fast</h1>
+        <p class="refpurpose">SquareInjection_Fast</p></div>
+
+    <div class="refsection"><p class="para">Block image not available.</p></div>
+
+    <div class="refsection"><h3 class="title">Description</h3>
+        <p class="para">* AngleDetection: calculates rotor-angle at init-time;
+* Enable Sequence: realizes an adjustable Delay-Sequence for enabling PLL and controller;
+* Voltage Injection: injects a square-wave voltage signal with fPWM/2 and adjustable amplitude;
+
+BE AWARE:
+This Block needs the SquareInjection_Slow-Block to work properly!</p></div>
+
+    <div class="refsection"><h3 class="title">Inports</h3>
+        <ul class="itemizedlist"><li class="member"><b>Ix:</b> d-current in estimated refercence frame x,y</li>
+            <li class="member"><b>Iy:</b> q-current in estimated refercence frame x,y</li>
+            <li class="member"><b>Sync:</b> synchronization with slowTaskISR;
+First detected rising egde of the Sync-input activates the voltage injection.</li>
+            <li class="member"><b>EnableInj:</b> Enables and disables injection of HF-voltage. 
+Usually used in combination with sensorless bEmf-algortihms @higher speeds. For applications solely controlled by hf-injection, set this input to constant 1.
+
+EnableInj = 0: hf-voltage injection is disabled. Ud and angle-error dPhi are set to zero.
+EnableInj != 0:  hf-voltage is enabled.</li>
+            <li class="member"><b>Enable:</b> Enable = 0: Outputs are zero.
+Enable != 0: Initial rotor angle is determined, PLL and controller enabled.</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Outports</h3>
+        <ul class="itemizedlist"><li class="member"><b>Ud:</b> This Output has 2 operational meanings:
+@startUp: ud is the amplitude of the voltage-phasor for the calculation of the initial rotor angle.
+@Injection: once Injection is activated, ud is the amplitude of the square-wave voltage injected.</li>
+            <li class="member"><b>PhiInit:</b> Initial rotor angle</li>
+            <li class="member"><b>EnablePLL:</b> Enable signal for PLL</li>
+            <li class="member"><b>EnableCtrl:</b> Enable signal for motor-controllers</li>
+            <li class="member"><b>dPhi:</b> Angle-error of the estimated reference frame x,y. k\epsilon \sin (2\Delta\varphi)</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Mask Parameters</h3>
+        <ul class="itemizedlist"><li class="member"><b>VoltPhasor:</b> Angle Detection: Amplitdue of voltage pulses used for determination of initial rotor anlge</li>
+            <li class="member"><b>T1:</b> Angle Detection: Time after enable of first voltage-pulse</li>
+            <li class="member"><b>deltaT:</b> Angle Detection: Time inbetween voltage pulses</li>
+            <li class="member"><b>Tpulse:</b> Angle Detection: Time of voltage-pulse to be at the given amplitude</li>
+            <li class="member"><b>DelayPLL:</b> Time delay for enabling PLL</li>
+            <li class="member"><b>DelayCtrl:</b> Time Delay for enabling PLL [s]</li>
+            <li class="member"><b>uInj:</b> voltage amplitude of injected square wave</li>
+            <li class="member"><b>uDCmax:</b> Normalization of Udc link voltage</li>
+            <li class="member"><b>ts_fact:</b></li></ul></div>
+
+    <div class="refsection"><h3 class="title">Implementations</h3>
+
+        <ul class="itemizedlist"><li class="member"><b>FiP16:</b> FiP16</li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="x2c_SquareInj_Slow_Modell.html">&lt;&lt; x2c_SquareInj_Slow_Modell</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="x2c_TrackingLoop.html">x2c_TrackingLoop &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

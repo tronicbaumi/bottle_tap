@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:lang="en"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns3="http://www.w3.org/1999/xhtml"
+    xmlns:mml="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+
+    <refnamediv xml:id="x2c_SquareInjection_Fast">
+        <refname>x2c_SquareInjection_Fast</refname>
+        <refpurpose>SquareInjection_Fast</refpurpose>
+    </refnamediv>
+
+    <refsection>
+        <para>
+            Block image not available.
+        </para>
+    </refsection>
+
+    <refsection>
+        <title>Description</title>
+        <para>* AngleDetection: calculates rotor-angle at init-time;
+* Enable Sequence: realizes an adjustable Delay-Sequence for enabling PLL and controller;
+* Voltage Injection: injects a square-wave voltage signal with fPWM/2 and adjustable amplitude;
+
+BE AWARE:
+This Block needs the SquareInjection_Slow-Block to work properly!</para>
+    </refsection>
+
+    <refsection>
+        <title>Inports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">Ix:</emphasis> d-current in estimated refercence frame x,y</member>
+            <member><emphasis role="bold">Iy:</emphasis> q-current in estimated refercence frame x,y</member>
+            <member><emphasis role="bold">Sync:</emphasis> synchronization with slowTaskISR;
+First detected rising egde of the Sync-input activates the voltage injection.</member>
+            <member><emphasis role="bold">EnableInj:</emphasis> Enables and disables injection of HF-voltage. 
+Usually used in combination with sensorless bEmf-algortihms @higher speeds. For applications solely controlled by hf-injection, set this input to constant 1.
+
+EnableInj = 0: hf-voltage injection is disabled. Ud and angle-error dPhi are set to zero.
+EnableInj != 0:  hf-voltage is enabled.</member>
+            <member><emphasis role="bold">Enable:</emphasis> Enable = 0: Outputs are zero.
+Enable != 0: Initial rotor angle is determined, PLL and controller enabled.</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Outports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">Ud:</emphasis> This Output has 2 operational meanings:
+@startUp: ud is the amplitude of the voltage-phasor for the calculation of the initial rotor angle.
+@Injection: once Injection is activated, ud is the amplitude of the square-wave voltage injected. </member>
+            <member><emphasis role="bold">PhiInit:</emphasis> Initial rotor angle</member>
+            <member><emphasis role="bold">EnablePLL:</emphasis> Enable signal for PLL</member>
+            <member><emphasis role="bold">EnableCtrl:</emphasis> Enable signal for motor-controllers</member>
+            <member><emphasis role="bold">dPhi:</emphasis> Angle-error of the estimated reference frame x,y. k\epsilon \sin (2\Delta\varphi)</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Mask Parameters</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">VoltPhasor:</emphasis> Angle Detection: Amplitdue of voltage pulses used for determination of initial rotor anlge</member>
+            <member><emphasis role="bold">T1:</emphasis> Angle Detection: Time after enable of first voltage-pulse</member>
+            <member><emphasis role="bold">deltaT:</emphasis> Angle Detection: Time inbetween voltage pulses</member>
+            <member><emphasis role="bold">Tpulse:</emphasis> Angle Detection: Time of voltage-pulse to be at the given amplitude</member>
+            <member><emphasis role="bold">DelayPLL:</emphasis> Time delay for enabling PLL</member>
+            <member><emphasis role="bold">DelayCtrl:</emphasis> Time Delay for enabling PLL [s]</member>
+            <member><emphasis role="bold">uInj:</emphasis> voltage amplitude of injected square wave</member>
+            <member><emphasis role="bold">uDCmax:</emphasis> Normalization of Udc link voltage</member>
+            <member><emphasis role="bold">ts_fact:</emphasis> </member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Implementations</title>
+
+        <simplelist type="vert">
+            <member><emphasis role="bold">FiP16:</emphasis> FiP16</member>
+        </simplelist>
+    </refsection>
+
+</refentry>

@@ -1,0 +1,93 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>x2c_InitPosDetect</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="x2c_HFInjectionSquare.html">&lt;&lt; x2c_HFInjectionSquare</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="x2c_SquareInj_Slow_Modell.html">x2c_SquareInj_Slow_Modell &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path" dir="ltr"><a href="index.html">X2C MCHP_ZSMT Library</a> &gt;&gt; <a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a> &gt; x2c_InitPosDetect</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">x2c_InitPosDetect</h1>
+        <p class="refpurpose">X2C Initial Position Detection Block</p></div>
+
+    <div class="refsection"><p class="para">Block image not available.</p></div>
+
+    <div class="refsection"><h3 class="title">Description</h3>
+        <p class="para">Calculation of initial rotor angle.</p></div>
+
+    <div class="refsection"><h3 class="title">Inports</h3>
+        <ul class="itemizedlist"><li class="member"><b>I_A:</b> Current in phase A</li>
+            <li class="member"><b>I_B:</b> Current in phase B</li>
+            <li class="member"><b>I_C:</b> Current in phase C</li>
+            <li class="member"><b>Enable:</b> Enable = false: Outputs are zero.
+Enable = true: Initial rotor angle is determined and enable signal for HF injection is given.</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Outports</h3>
+        <ul class="itemizedlist"><li class="member"><b>U_A:</b> Voltage to be applied in phase A</li>
+            <li class="member"><b>U_B:</b> Voltage to be applied in phase B</li>
+            <li class="member"><b>U_C:</b> Voltage to be applied in phase C</li>
+            <li class="member"><b>Ready:</b> Signal to indicate end of initial position detection</li>
+            <li class="member"><b>phi0:</b> Initial position estimate</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Mask Parameters</h3>
+        <ul class="itemizedlist"><li class="member"><b>U_pulse:</b> Amplitude of voltage pulses used for determination of initial rotor anlge</li>
+            <li class="member"><b>T_pulse:</b> Pulse length in samples</li>
+            <li class="member"><b>T_pause:</b> Time between voltage pulses</li>
+            <li class="member"><b>U_max:</b> Phase voltage scaling value
+(Only used for scaling in fixed point implementations)</li>
+            <li class="member"><b>ts_fact:</b> Multiplication factor of base sampling time (in integer format).</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Implementations</h3>
+
+        <ul class="itemizedlist"><li class="member"><b>FiP16:</b> 16 Bit Fixed Point</li>
+            <li class="member"><b>FiP32:</b> 32 Bit Fixed Point</li>
+            <li class="member"><b>Float32:</b> 32 Bit Floating Point</li>
+            <li class="member"><b>Float64:</b> 64 Bit Floating Point</li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="x2c_HFInjectionSquare.html">&lt;&lt; x2c_HFInjectionSquare</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="x2c_SquareInj_Slow_Modell.html">x2c_SquareInj_Slow_Modell &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

@@ -117,9 +117,10 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
          
                 // Run the motor in downwards direction until zero position is detected
                 //int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
-                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 32000);
-                MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
                 appData->motorDirection = -1;
+                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 50000);
+                MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
+                
 
                 MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
                 switch (motorState)
@@ -152,17 +153,20 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
 
         case NORMAL_OPERATION:
             if (appData->hardwareUiEnabled)
-            {
-                Calculated_position += motor.apiData.velocityMeasured ; 
+            { 
                 // Use potentiometer to set motor velocity command
                 //int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
-                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 32000);
-                MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
+//                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 32000);
+//                MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
 
                 // Determine direction based on button presses and sensor values
                 if (MCAF_ButtonGp2_EventGet(pboard) && !MCAF_ButtonGp1_EventGet(pboard) && Calculated_position > Lower_Limit  )
                 {
                     appData->motorDirection = -1;
+                    appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 32000);
+                    MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
+
+                    Calculated_position += motor.apiData.velocityMeasured ; 
                     
                         MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData); //YA
                          switch (motorState)
@@ -190,7 +194,10 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                 else if (MCAF_ButtonGp1_EventGet(pboard) && !MCAF_ButtonGp2_EventGet(pboard) && Calculated_position < Upper_limit)
                 {
                     appData->motorDirection = 1;  //YA
-              
+                    appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 32000);
+                    MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
+
+                    Calculated_position += motor.apiData.velocityMeasured ; 
                     
                         MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
                         switch (motorState)

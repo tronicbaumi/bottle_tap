@@ -1,0 +1,217 @@
+\XtoCBlock{HFInjectionSquare}
+\label{block:HFInjectionSquare}
+\begin{figure}[H]\includegraphics{HFInjectionSquare}\end{figure} 
+
+\begin{XtoCtabular}{Inports}
+iD & Direct current in fixed coordinate system\tabularnewline
+\hline
+iQ & Quadrature current in fixed coordinate system\tabularnewline
+\hline
+n0 & Initial speed preloaded at rising edge of Enable signal\tabularnewline
+\hline
+phi0 & Initial rotor angle preloaded at rising edge of Enable signal\tabularnewline
+\hline
+Enable & Enable == 0: Deactivation of this block; Outputs are set to zero
+
+Enable 0->1: Preload of angle and speed for internal integrators
+
+Enable == 1: Activation of this block\tabularnewline
+\hline
+\end{XtoCtabular}
+
+
+\begin{XtoCtabular}{Outports}
+ud & Once the HFI is activated, on Ud the square-wave voltage signal is present that is supposed to be injected\tabularnewline
+\hline
+i\_eps & Error current in q-direction due to HF-injection.
+
+(Only needed for parametrization of block.)\tabularnewline
+\hline
+n & Angular speed\tabularnewline
+\hline
+phi & Estimated electrical rotor angle\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCMaskParamTabular}{Mask Parameters}
+\rowcolor[gray]{0.8}\textbf{Name} & \textbf{ID} & \textbf{Description}\tabularnewline\hline
+U\_inj & 1 & Amplitude of injected square wave voltage\tabularnewline
+\hline
+Jp & 2 & Moment of inertia of rotor (and load)\tabularnewline
+\hline
+I\_inj & 3 & Error current due to HF voltage injection into wrong direction\tabularnewline
+\hline
+fo & 4 & Frequency of observer pole. The higher the pole is chosen, the more dynamic is the angle estimation\tabularnewline
+\hline
+p & 5 & Number of pole pairs\tabularnewline
+\hline
+n\_max & 6 & Maximum (mechanical) speed
+
+(Only used for scaling in fixed point implementations)\tabularnewline
+\hline
+I\_max & 7 & Maximum current
+
+(Only used for scaling in fixed point implementations)\tabularnewline
+\hline
+U\_max & 8 & Maximum voltage
+
+(Only used for scaling in fixed point implementations)\tabularnewline
+\hline
+ts\_fact & 9 & Multiplication factor of base sampling time (in integer format)\tabularnewline
+\hline
+estimation & 10 & Select where to place the emphasis of the speed output: dynamic or noise\tabularnewline
+\hline
+method & 11 & Discretization method of of used LTI systems (PI, I)\tabularnewline
+\hline
+\end{XtoCMaskParamTabular}
+
+\subsubsection*{Description:}
+High frequency square wave voltage injection:
+
+ - Voltage Injection: injects a square-wave voltage signal with fPWM/2 and adjustable amplitude
+
+ - Estimator: Calculates rotor angle and speed based on current response due to voltage injection
+
+BE AWARE:
+
+This block needs to be in synchronization with the current controller!
+
+% include optional documentation file
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/HFInjectionSquare_Info.tex}{\vspace{1ex}}{}
+
+\subsubsection*{Implementations:}
+\begin{tabular}{l l}
+\textbf{FiP16} & 16 Bit Fixed Point Implementation\tabularnewline
+\textbf{FiP32} & 32 Bit Fixed Point Implementation\tabularnewline
+\textbf{Float32} & 32 Bit Floating Point Implementation\tabularnewline
+\textbf{Float64} & 64 Bit Floating Point Implementation\tabularnewline
+\end{tabular}
+
+\XtoCImplementation{FiP16}
+\nopagebreak[0]
+
+16 Bit Fixed Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+iD & int16\tabularnewline
+\hline
+iQ & int16\tabularnewline
+\hline
+n0 & int16\tabularnewline
+\hline
+phi0 & int16\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+ud & int16\tabularnewline
+\hline
+i\_eps & int16\tabularnewline
+\hline
+n & int16\tabularnewline
+\hline
+phi & int16\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_HFInjectionSquare_FiP16.tex}{}{}
+\fi
+\XtoCImplementation{FiP32}
+\nopagebreak[0]
+
+32 Bit Fixed Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+iD & int32\tabularnewline
+\hline
+iQ & int32\tabularnewline
+\hline
+n0 & int32\tabularnewline
+\hline
+phi0 & int32\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+ud & int32\tabularnewline
+\hline
+i\_eps & int32\tabularnewline
+\hline
+n & int32\tabularnewline
+\hline
+phi & int32\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_HFInjectionSquare_FiP32.tex}{}{}
+\fi
+\XtoCImplementation{Float32}
+\nopagebreak[0]
+
+32 Bit Floating Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+iD & float32\tabularnewline
+\hline
+iQ & float32\tabularnewline
+\hline
+n0 & float32\tabularnewline
+\hline
+phi0 & float32\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+ud & float32\tabularnewline
+\hline
+i\_eps & float32\tabularnewline
+\hline
+n & float32\tabularnewline
+\hline
+phi & float32\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_HFInjectionSquare_Float32.tex}{}{}
+\fi
+\XtoCImplementation{Float64}
+\nopagebreak[0]
+
+64 Bit Floating Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+iD & float64\tabularnewline
+\hline
+iQ & float64\tabularnewline
+\hline
+n0 & float64\tabularnewline
+\hline
+phi0 & float64\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+ud & float64\tabularnewline
+\hline
+i\_eps & float64\tabularnewline
+\hline
+n & float64\tabularnewline
+\hline
+phi & float64\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_HFInjectionSquare_Float64.tex}{}{}
+\fi

@@ -490,8 +490,8 @@ config:
       dyn_current1-tau: 5.0
       dyn_current1-nsamples: 128.0
       voltage_outerloop-tau_lpf: 2.0
-      voltage_outerloop-Kp: 0.1
-      voltage_outerloop-tau: 5.0
+      voltage_outerloop-Kp: 0.9
+      voltage_outerloop-tau: 2.0
       mcapi-isSquaredTau: 1.0
       mcapi-iqTau: 1.0
       mcapi-adcIsrUserFunctions_enable: false

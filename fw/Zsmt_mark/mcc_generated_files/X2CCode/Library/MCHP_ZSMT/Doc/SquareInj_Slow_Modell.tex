@@ -1,0 +1,90 @@
+\XtoCBlock{SquareInj\_Slow\_Modell}
+\label{block:SquareInjSlowModell}
+\missingfigure{SquareInj\_Slow\_Modell : SquareInj\_Slow\_Modell.png} 
+
+\begin{XtoCtabular}{Inports}
+dphi & angle error input signal\tabularnewline
+\hline
+phi0 & initial rotor angle Value which is preloaded at rising edge of Enable signal.\tabularnewline
+\hline
+n0 & initial speed preloaded at rising edge of Enable signal\tabularnewline
+\hline
+Enable & Enable == 0: Deactivation of PLL functionality; Angle-Output is set input phi0; SYNC-Output toggles between 0 and 1;
+
+Enable 0->1: Preload of integral parts of PI and uI
+
+Enable == 1: Activation of this block\tabularnewline
+\hline
+\end{XtoCtabular}
+
+
+\begin{XtoCtabular}{Outports}
+phi & calculated electrical rotor angle\tabularnewline
+\hline
+Sync & Sync Signal:
+
+For Synchronization of HF-Injection with SlowTaskISR. Synchronization is done in SquareInjection\_Fast-Block\tabularnewline
+\hline
+speed & \tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Mask Parameters}
+n\_max & Maximum (mechanical) speed\tabularnewline
+\hline
+p & Number of pole pairs\tabularnewline
+\hline
+ts\_fact & Multiplication factor of base sampling time (in integer
+
+format)\tabularnewline
+\hline
+I\_max & Normalization Value of Currents\tabularnewline
+\hline
+Jp & Moment of Inertia [kg*m\textasciicircum{}2]\tabularnewline
+\hline
+Keps & Error Current due to HF-Injection into wrong direction\tabularnewline
+\hline
+rho & placement of Observer pole. The greater the pole is chosen, estimation of angle is done more dynamically\tabularnewline
+\hline
+method & method of discretization of used LTI systems (PI, I)\tabularnewline
+\hline
+selSpeedProp & Select where to place the emphasis of the speed output: dynamic or noise\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\subsubsection*{Description:}
+BE AWARE: This Block needs the SquareInjection\_Fast-Block to work properly!!
+
+\subsubsection*{Implementations:}
+\begin{tabular}{l l}
+\textbf{FiP16} & 16 Bit Fixed Point Implementation\tabularnewline
+\end{tabular}
+
+\XtoCImplementation{FiP16}
+\nopagebreak[0]
+
+16 Bit Fixed Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+dphi & int16\tabularnewline
+\hline
+phi0 & int16\tabularnewline
+\hline
+n0 & int16\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+phi & int16\tabularnewline
+\hline
+Sync & int16\tabularnewline
+\hline
+speed & int16\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_LSHT/Doc/Test_SquareInj_Slow_Modell_FiP16.tex}{}{}
+\fi

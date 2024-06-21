@@ -1,0 +1,118 @@
+\XtoCVerification{HFInjectionSquare Float32 CPU TM4C123GH6}
+\begin{tabular}{l l}
+\textbf{Date of Test} & 2020-12-07 \tabularnewline
+\textbf{Target controller} & TM4C123GH6 \tabularnewline
+\end{tabular}
+\vspace{1ex}
+\XtoCTestCase{Conversion test}{1}
+Conversion test for MCHP_ZSMT block HFInjectionSquare.
+
+\vspace{1em}
+\begin{tabularx}{\textwidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+\hline
+\multicolumn{4}{|l|}{\cellcolor[gray]{0.8}\textbf{Test results}} \tabularnewline \hline
+\textbf{Time step} & 1 & 2 & 3 \tabularnewline \hline
+\multicolumn{4}{|l|}{\cellcolor[gray]{0.9}\textit{Mask parameters}} \tabularnewline \hline
+\textbf{U\_inj} & 2 & 3 & 4 \tabularnewline \hline
+\textbf{Jp} & 0.1 & 1 & 1.11 \tabularnewline \hline
+\textbf{I\_inj} & 0.3 & 0.4 & 0.5 \tabularnewline \hline
+\textbf{fo} & 20 & 30 & 40 \tabularnewline \hline
+\textbf{p} & 1 & 2 & 3 \tabularnewline \hline
+\textbf{n\_max} & 1000 & 1000 & 1000 \tabularnewline \hline
+\textbf{I\_max} & 10 & 10 & 10 \tabularnewline \hline
+\textbf{U\_max} & 5 & 5 & 5 \tabularnewline \hline
+\textbf{ts\_fact} & 1 & 1 & 1 \tabularnewline \hline
+\textbf{estimation} & less noise & less noise & high dynamic range \tabularnewline \hline
+\textbf{method} & tustin & tustin & zoh \tabularnewline \hline
+\multicolumn{4}{|l|}{\cellcolor[gray]{0.9}\textit{Controller parameters}} \tabularnewline \hline
+\textbf{b1\_torque} & 9503.735 & 80520.861 & 83692.028 \tabularnewline \hline
+\textbf{b0\_angle} & 0 & 0 & 0 \tabularnewline \hline
+\textbf{uInjAmp} & 2 & 3 & 4 \tabularnewline \hline
+\textbf{b0\_speed} & 0.004 & 0 & 0 \tabularnewline \hline
+\textbf{rawSpeed} & 0 & 0 & 1 \tabularnewline \hline
+\textbf{b1\_angle} & 0 & 0 & 0 \tabularnewline \hline
+\textbf{b1\_speed} & 0.002 & 0 & 0 \tabularnewline \hline
+\textbf{b0\_torque} & 157.914 & 1998.595 & 2804.547 \tabularnewline \hline
+\textbf{vGain} & 750 & 421.875 & 300 \tabularnewline \hline
+\textbf{Exp. b1\_torque} & 9503.735 & 80520.861 & 83692.028 \tabularnewline \hline
+\textbf{Exp. b0\_angle} & 0 & 0 & 0 \tabularnewline \hline
+\textbf{Exp. uInjAmp} & 2 & 3 & 4 \tabularnewline \hline
+\textbf{Exp. b0\_speed} & 0.004 & 0 & 0 \tabularnewline \hline
+\textbf{Exp. rawSpeed} & 0 & 0 & 1 \tabularnewline \hline
+\textbf{Exp. b1\_angle} & 0 & 0 & 0 \tabularnewline \hline
+\textbf{Exp. b1\_speed} & 0.002 & 0 & 0 \tabularnewline \hline
+\textbf{Exp. b0\_torque} & 157.914 & 1998.595 & 2804.547 \tabularnewline \hline
+\textbf{Exp. vGain} & 750 & 421.875 & 300 \tabularnewline \hline
+\end{tabularx}
+\vspace{1ex}
+
+\begin{XtoCtabular}{Test settings}
+Tolerance b1\_torque & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance b0\_angle & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance uInjAmp & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance b0\_speed & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance rawSpeed & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance b1\_angle & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance b1\_speed & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance b0\_torque & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance vGain & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+\end{XtoCtabular}
+\XtoCTestCase{Conversion-on-Target test}{1}
+Conversion-on-Target test for MCHP_ZSMT block HFInjectionSquare.
+
+\vspace{1em}
+\begin{tabularx}{\textwidth}{|c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+\hline
+\multicolumn{4}{|l|}{\cellcolor[gray]{0.8}\textbf{Test results}} \tabularnewline \hline
+\textbf{Time step} & 1 & 2 & 3 \tabularnewline \hline
+\multicolumn{4}{|l|}{\cellcolor[gray]{0.9}\textit{Mask parameters}} \tabularnewline \hline
+\textbf{U\_inj} & 2 & 3 & 4 \tabularnewline \hline
+\textbf{Jp} & 0.1 & 1 & 1.11 \tabularnewline \hline
+\textbf{I\_inj} & 0.3 & 0.4 & 0.5 \tabularnewline \hline
+\textbf{fo} & 20 & 30 & 40 \tabularnewline \hline
+\textbf{p} & 1 & 2 & 3 \tabularnewline \hline
+\textbf{n\_max} & 1000 & 1000 & 1000 \tabularnewline \hline
+\textbf{I\_max} & 10 & 10 & 10 \tabularnewline \hline
+\textbf{U\_max} & 5 & 5 & 5 \tabularnewline \hline
+\textbf{ts\_fact} & 1 & 1 & 1 \tabularnewline \hline
+\textbf{estimation} & less noise & less noise & high dynamic range \tabularnewline \hline
+\textbf{method} & tustin & tustin & zoh \tabularnewline \hline
+\multicolumn{4}{|l|}{\cellcolor[gray]{0.9}\textit{Controller parameters}} \tabularnewline \hline
+\textbf{b1\_torque} & 9503.736 & 80520.852 & 83692.031 \tabularnewline \hline
+\textbf{b0\_angle} & 0 & 0 & 0 \tabularnewline \hline
+\textbf{uInjAmp} & 2 & 3 & 4 \tabularnewline \hline
+\textbf{b0\_speed} & 0.004 & 0 & 0 \tabularnewline \hline
+\textbf{rawSpeed} & 0 & 0 & 1 \tabularnewline \hline
+\textbf{b1\_angle} & 0 & 0 & 0 \tabularnewline \hline
+\textbf{b1\_speed} & 0.002 & 0 & 0 \tabularnewline \hline
+\textbf{b0\_torque} & 157.914 & 1998.595 & 2804.547 \tabularnewline \hline
+\textbf{vGain} & 750 & 421.875 & 300 \tabularnewline \hline
+\textbf{Exp. b1\_torque} & 9503.735 & 80520.861 & 83692.028 \tabularnewline \hline
+\textbf{Exp. b0\_angle} & 0 & 0 & 0 \tabularnewline \hline
+\textbf{Exp. uInjAmp} & 2 & 3 & 4 \tabularnewline \hline
+\textbf{Exp. b0\_speed} & 0.004 & 0 & 0 \tabularnewline \hline
+\textbf{Exp. rawSpeed} & 0 & 0 & 1 \tabularnewline \hline
+\textbf{Exp. b1\_angle} & 0 & 0 & 0 \tabularnewline \hline
+\textbf{Exp. b1\_speed} & 0.002 & 0 & 0 \tabularnewline \hline
+\textbf{Exp. b0\_torque} & 157.914 & 1998.595 & 2804.547 \tabularnewline \hline
+\textbf{Exp. vGain} & 750 & 421.875 & 300 \tabularnewline \hline
+\end{tabularx}
+\vspace{1ex}
+
+\begin{XtoCtabular}{Test settings}
+Tolerance b1\_torque & $\pm$1.0000e-02 ($\pm$21474836 LSB) \tabularnewline \hline
+Tolerance b0\_angle & $\pm$1.0000e-11 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance uInjAmp & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance b0\_speed & $\pm$1.0000e-09 ($\pm$2 LSB) \tabularnewline \hline
+Tolerance rawSpeed & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance b1\_angle & $\pm$1.0000e-12 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance b1\_speed & $\pm$1.0000e-09 ($\pm$2 LSB) \tabularnewline \hline
+Tolerance b0\_torque & $\pm$1.0000e-03 ($\pm$2147484 LSB) \tabularnewline \hline
+Tolerance vGain & $\pm$1.0000e-04 ($\pm$214748 LSB) \tabularnewline \hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Test statistics}
+Min CPU cycles & 1899 \tabularnewline \hline
+Max CPU cycles & 1925 \tabularnewline \hline
+Avg CPU cycles & 1916 \tabularnewline \hline
+\end{XtoCtabular}

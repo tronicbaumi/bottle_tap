@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:lang="en"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns3="http://www.w3.org/1999/xhtml"
+    xmlns:mml="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+
+    <refnamediv xml:id="x2c_SquareInj_Slow_Modell">
+        <refname>x2c_SquareInj_Slow_Modell</refname>
+        <refpurpose>SquareInj_Slow_Modell</refpurpose>
+    </refnamediv>
+
+    <refsection>
+        <para>
+            Block image not available.
+        </para>
+    </refsection>
+
+    <refsection>
+        <title>Description</title>
+        <para>BE AWARE: This Block needs the SquareInjection_Fast-Block to work properly!!</para>
+    </refsection>
+
+    <refsection>
+        <title>Inports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">dphi:</emphasis> angle error input signal</member>
+            <member><emphasis role="bold">phi0:</emphasis> initial rotor angle Value which is preloaded at rising edge of Enable signal..</member>
+            <member><emphasis role="bold">n0:</emphasis> initial speed preloaded at rising edge of Enable signal</member>
+            <member><emphasis role="bold">Enable:</emphasis> Enable == 0: Deactivation of PLL functionality; Angle-Output is set input phi0; SYNC-Output toggles between 0 and 1;
+Enable 0-&gt;1: Preload of integral parts of PI and uI
+Enable == 1: Activation of this block</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Outports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">phi:</emphasis> calculated electrical rotor angle</member>
+            <member><emphasis role="bold">Sync:</emphasis> Sync Signal:
+For Synchronization of HF-Injection with SlowTaskISR. Synchronization is done in SquareInjection_Fast-Block.</member>
+            <member><emphasis role="bold">speed:</emphasis> </member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Mask Parameters</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">n_max:</emphasis> Maximum (mechanical) speed</member>
+            <member><emphasis role="bold">p:</emphasis> Number of pole pairs</member>
+            <member><emphasis role="bold">ts_fact:</emphasis> Multiplication factor of base sampling time (in integer
+format)</member>
+            <member><emphasis role="bold">I_max:</emphasis> Normalization Value of Currents</member>
+            <member><emphasis role="bold">Jp:</emphasis> Moment of Inertia [kg*m^2]</member>
+            <member><emphasis role="bold">Keps:</emphasis> Error Current due to HF-Injection into wrong direction</member>
+            <member><emphasis role="bold">rho:</emphasis> placement of Observer pole. The greater the pole is chosen, estimation of angle is done more dynamically</member>
+            <member><emphasis role="bold">method:</emphasis> method of discretization of used LTI systems (PI, I)</member>
+            <member><emphasis role="bold">selSpeedProp:</emphasis> Select where to place the emphasis of the speed output: dynamic or noise</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Implementations</title>
+
+        <simplelist type="vert">
+            <member><emphasis role="bold">FiP16:</emphasis> 16 Bit Fixed Point</member>
+        </simplelist>
+    </refsection>
+
+</refentry>

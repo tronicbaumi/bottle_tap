@@ -1,0 +1,189 @@
+\XtoCBlock{InitPosDetect}
+\label{block:InitPosDetect}
+\begin{figure}[H]\includegraphics{InitPosDetect}\end{figure} 
+
+\begin{XtoCtabular}{Inports}
+I\_A & Current in phase A\tabularnewline
+\hline
+I\_B & Current in phase B\tabularnewline
+\hline
+I\_C & Current in phase C\tabularnewline
+\hline
+Enable & Enable = false: Outputs are zero.
+
+Enable = true: Initial rotor angle is determined and enable signal for HF injection is given\tabularnewline
+\hline
+\end{XtoCtabular}
+
+
+\begin{XtoCtabular}{Outports}
+U\_A & Voltage to be applied in phase A\tabularnewline
+\hline
+U\_B & Voltage to be applied in phase B\tabularnewline
+\hline
+U\_C & Voltage to be applied in phase C\tabularnewline
+\hline
+Ready & Signal to indicate end of initial position detection\tabularnewline
+\hline
+phi0 & Initial position estimate\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCMaskParamTabular}{Mask Parameters}
+\rowcolor[gray]{0.8}\textbf{Name} & \textbf{ID} & \textbf{Description}\tabularnewline\hline
+U\_pulse & 1 & Amplitude of voltage pulses used for determination of initial rotor anlge\tabularnewline
+\hline
+T\_pulse & 2 & Pulse length in samples\tabularnewline
+\hline
+T\_pause & 3 & Time between voltage pulses\tabularnewline
+\hline
+U\_max & 4 & Phase voltage scaling value
+
+(Only used for scaling in fixed point implementations)\tabularnewline
+\hline
+ts\_fact & 5 & Multiplication factor of base sampling time (in integer format)\tabularnewline
+\hline
+\end{XtoCMaskParamTabular}
+
+\subsubsection*{Description:}
+Calculation of initial rotor angle.
+
+% include optional documentation file
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/InitPosDetect_Info.tex}{\vspace{1ex}}{}
+
+\subsubsection*{Implementations:}
+\begin{tabular}{l l}
+\textbf{FiP16} & 16 Bit Fixed Point Implementation\tabularnewline
+\textbf{FiP32} & 32 Bit Fixed Point Implementation\tabularnewline
+\textbf{Float32} & 32 Bit Floating Point Implementation\tabularnewline
+\textbf{Float64} & 64 Bit Floating Point Implementation\tabularnewline
+\end{tabular}
+
+\XtoCImplementation{FiP16}
+\nopagebreak[0]
+
+16 Bit Fixed Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+I\_A & int16\tabularnewline
+\hline
+I\_B & int16\tabularnewline
+\hline
+I\_C & int16\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+U\_A & int16\tabularnewline
+\hline
+U\_B & int16\tabularnewline
+\hline
+U\_C & int16\tabularnewline
+\hline
+Ready & bool\tabularnewline
+\hline
+phi0 & int16\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_InitPosDetect_FiP16.tex}{}{}
+\fi
+\XtoCImplementation{FiP32}
+\nopagebreak[0]
+
+32 Bit Fixed Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+I\_A & int32\tabularnewline
+\hline
+I\_B & int32\tabularnewline
+\hline
+I\_C & int32\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+U\_A & int32\tabularnewline
+\hline
+U\_B & int32\tabularnewline
+\hline
+U\_C & int32\tabularnewline
+\hline
+Ready & bool\tabularnewline
+\hline
+phi0 & int32\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_InitPosDetect_FiP32.tex}{}{}
+\fi
+\XtoCImplementation{Float32}
+\nopagebreak[0]
+
+32 Bit Floating Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+I\_A & float32\tabularnewline
+\hline
+I\_B & float32\tabularnewline
+\hline
+I\_C & float32\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+U\_A & float32\tabularnewline
+\hline
+U\_B & float32\tabularnewline
+\hline
+U\_C & float32\tabularnewline
+\hline
+Ready & bool\tabularnewline
+\hline
+phi0 & float32\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_InitPosDetect_Float32.tex}{}{}
+\fi
+\XtoCImplementation{Float64}
+\nopagebreak[0]
+
+64 Bit Floating Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+I\_A & float64\tabularnewline
+\hline
+I\_B & float64\tabularnewline
+\hline
+I\_C & float64\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+U\_A & float64\tabularnewline
+\hline
+U\_B & float64\tabularnewline
+\hline
+U\_C & float64\tabularnewline
+\hline
+Ready & float64\tabularnewline
+\hline
+phi0 & float64\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_InitPosDetect_Float64.tex}{}{}
+\fi

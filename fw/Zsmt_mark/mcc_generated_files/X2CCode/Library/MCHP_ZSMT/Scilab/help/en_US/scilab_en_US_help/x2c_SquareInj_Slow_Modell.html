@@ -1,0 +1,94 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>x2c_SquareInj_Slow_Modell</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="x2c_InitPosDetect.html">&lt;&lt; x2c_InitPosDetect</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="x2c_SquareInjection_Fast.html">x2c_SquareInjection_Fast &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path" dir="ltr"><a href="index.html">X2C MCHP_ZSMT Library</a> &gt;&gt; <a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a> &gt; x2c_SquareInj_Slow_Modell</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">x2c_SquareInj_Slow_Modell</h1>
+        <p class="refpurpose">SquareInj_Slow_Modell</p></div>
+
+    <div class="refsection"><p class="para">Block image not available.</p></div>
+
+    <div class="refsection"><h3 class="title">Description</h3>
+        <p class="para">BE AWARE: This Block needs the SquareInjection_Fast-Block to work properly!!</p></div>
+
+    <div class="refsection"><h3 class="title">Inports</h3>
+        <ul class="itemizedlist"><li class="member"><b>dphi:</b> angle error input signal</li>
+            <li class="member"><b>phi0:</b> initial rotor angle Value which is preloaded at rising edge of Enable signal..</li>
+            <li class="member"><b>n0:</b> initial speed preloaded at rising edge of Enable signal</li>
+            <li class="member"><b>Enable:</b> Enable == 0: Deactivation of PLL functionality; Angle-Output is set input phi0; SYNC-Output toggles between 0 and 1;
+Enable 0-&gt;1: Preload of integral parts of PI and uI
+Enable == 1: Activation of this block</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Outports</h3>
+        <ul class="itemizedlist"><li class="member"><b>phi:</b> calculated electrical rotor angle</li>
+            <li class="member"><b>Sync:</b> Sync Signal:
+For Synchronization of HF-Injection with SlowTaskISR. Synchronization is done in SquareInjection_Fast-Block.</li>
+            <li class="member"><b>speed:</b></li></ul></div>
+
+    <div class="refsection"><h3 class="title">Mask Parameters</h3>
+        <ul class="itemizedlist"><li class="member"><b>n_max:</b> Maximum (mechanical) speed</li>
+            <li class="member"><b>p:</b> Number of pole pairs</li>
+            <li class="member"><b>ts_fact:</b> Multiplication factor of base sampling time (in integer
+format)</li>
+            <li class="member"><b>I_max:</b> Normalization Value of Currents</li>
+            <li class="member"><b>Jp:</b> Moment of Inertia [kg*m^2]</li>
+            <li class="member"><b>Keps:</b> Error Current due to HF-Injection into wrong direction</li>
+            <li class="member"><b>rho:</b> placement of Observer pole. The greater the pole is chosen, estimation of angle is done more dynamically</li>
+            <li class="member"><b>method:</b> method of discretization of used LTI systems (PI, I)</li>
+            <li class="member"><b>selSpeedProp:</b> Select where to place the emphasis of the speed output: dynamic or noise</li></ul></div>
+
+    <div class="refsection"><h3 class="title">Implementations</h3>
+
+        <ul class="itemizedlist"><li class="member"><b>FiP16:</b> 16 Bit Fixed Point</li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="x2c_InitPosDetect.html">&lt;&lt; x2c_InitPosDetect</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_28ce4c50cfb7e47655b49d500797fc5a.html">MCHP_ZSMT</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="x2c_SquareInjection_Fast.html">x2c_SquareInjection_Fast &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

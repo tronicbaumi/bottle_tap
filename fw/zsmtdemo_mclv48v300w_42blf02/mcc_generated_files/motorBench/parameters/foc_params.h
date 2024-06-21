@@ -78,11 +78,11 @@ extern "C" {
 
 //// Voltage loop (if applicable)
 /* Voltage loop proportional gain */
-#define MCAF_CONTROL_GAIN_KVP               11677      // Q15(  0.35635) = +206.99505 mA/V        = +206.98655 mA/V        + 0.0041%
-#define MCAF_CONTROL_GAIN_KVP_Q                15
+#define MCAF_CONTROL_GAIN_KVP               13136      // Q12(  3.20703) =   +1.86287 A/V         =   +1.86288 A/V         - 0.0006%
+#define MCAF_CONTROL_GAIN_KVP_Q                12
 /* Voltage loop integral gain */
-#define MCAF_CONTROL_GAIN_KVI                2335      // Q15(  0.07126) =  +41.39192 A/Vs        =  +41.39731 A/Vs        - 0.0130%
-#define MCAF_CONTROL_GAIN_KVI_Q                15
+#define MCAF_CONTROL_GAIN_KVI               13136      // Q13(  1.60352) = +931.43342 A/Vs        = +931.43947 A/Vs        - 0.0006%
+#define MCAF_CONTROL_GAIN_KVI_Q                13
 /* Pole of voltage loop low-pass filter */
 #define MCAF_FILTER_COEFF_VQ                 1638      // Q16(  0.02499) = +499.87793 rad/s       = +500.00000 rad/s       - 0.0244%
 /* Gain from velocity reference to voltage */

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!--Begin Entities-->
+<!ENTITY ae0ec5eecdcf89a58da0f4167e34d5949 SYSTEM "file:///C:/LCM/X2C/v6.4.2894/Library/MCHP_ZSMT/Scilab/help/en_US/x2c_EstimatorSwitch.xml">
+<!ENTITY a9922548d485156165d91eaf5c8cb1e9e SYSTEM "file:///C:/LCM/X2C/v6.4.2894/Library/MCHP_ZSMT/Scilab/help/en_US/x2c_ForwardPath_HFI.xml">
+<!ENTITY a6bfbb237f4bab59e881cc2c529b41e94 SYSTEM "file:///C:/LCM/X2C/v6.4.2894/Library/MCHP_ZSMT/Scilab/help/en_US/x2c_HFInjectionSquare.xml">
+<!ENTITY adf229803e3a6b3c1ae2bfee51eb8cbf8 SYSTEM "file:///C:/LCM/X2C/v6.4.2894/Library/MCHP_ZSMT/Scilab/help/en_US/x2c_InitPosDetect.xml">
+<!ENTITY a0cc63f627f5ae6cffa945a1464564c47 SYSTEM "file:///C:/LCM/X2C/v6.4.2894/Library/MCHP_ZSMT/Scilab/help/en_US/x2c_SquareInj_Slow_Modell.xml">
+<!ENTITY ae2ea427221887433e941ea02c1514b18 SYSTEM "file:///C:/LCM/X2C/v6.4.2894/Library/MCHP_ZSMT/Scilab/help/en_US/x2c_SquareInjection_Fast.xml">
+<!ENTITY a72a125dde10d97616fcb8be0ab402d0a SYSTEM "file:///C:/LCM/X2C/v6.4.2894/Library/MCHP_ZSMT/Scilab/help/en_US/x2c_TrackingLoop.xml">
+<!--End Entities-->
+]>
+<book version="5.0-subset Scilab" xml:lang="en_US"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info xml:id='x2c_mchp_zsmt_library_manual'>
+    <title>X2C MCHP_ZSMT Library</title>
+  </info>
+
+<part xml:id='section_28ce4c50cfb7e47655b49d500797fc5a'>
+<title>MCHP_ZSMT</title>
+&ae0ec5eecdcf89a58da0f4167e34d5949;
+&a9922548d485156165d91eaf5c8cb1e9e;
+&a6bfbb237f4bab59e881cc2c529b41e94;
+&adf229803e3a6b3c1ae2bfee51eb8cbf8;
+&a0cc63f627f5ae6cffa945a1464564c47;
+&ae2ea427221887433e941ea02c1514b18;
+&a72a125dde10d97616fcb8be0ab402d0a;
+</part>
+</book>
