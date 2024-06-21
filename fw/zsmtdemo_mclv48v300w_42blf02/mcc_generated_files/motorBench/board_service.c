@@ -111,7 +111,7 @@ static void MCAF_ButtonService(volatile BOARD_BUTTON_DATA_T *pButtonData, bool r
         if (!rawInput)
         {
             pButtonData->counterC1 = 0;
-            pButtonData->longButtonPress = false; // Reset longButtonPress status
+            pButtonData->longButtonPress = false; // YA Reset longButtonPress status
             pButtonData->buttonState = BOARD_BUTTON_UNPRESSED;
         }
         break;

@@ -117,7 +117,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
          
                 // Run the motor in downwards direction until zero position is detected
                 //int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
-                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 1000);
+                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 32000);
                 MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
                 appData->motorDirection = -1;
 
@@ -146,6 +146,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
             else
             {
                 appState = NORMAL_OPERATION; // Transition to normal operation
+                Calculated_position = 0;
             }
             break;
 
@@ -155,7 +156,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                 Calculated_position += motor.apiData.velocityMeasured ; 
                 // Use potentiometer to set motor velocity command
                 //int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
-                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 100);
+                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 32000);
                 MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
 
                 // Determine direction based on button presses and sensor values
