@@ -49,9 +49,7 @@
 #include <stdint.h>
 #include "units.h"
 #include "commutation/common.h"
-#include "commutation/zsmt.h"
 #include "commutation/pll.h"
-#include "commutation/zsmt_hybrid.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -66,7 +64,7 @@ extern "C" {
  */
 inline static MCAF_U_VOLTAGE MCAF_CommutationExcitationValpha(const MCAF_MOTOR_DATA *pmotor)
 {
-   return MCAF_EstimatorZsmtExcitationValpha(&pmotor->estimator.zsmt);
+   return 0;
 }
 
 /**
@@ -77,7 +75,7 @@ inline static MCAF_U_VOLTAGE MCAF_CommutationExcitationValpha(const MCAF_MOTOR_D
  */
 inline static MCAF_U_VOLTAGE MCAF_CommutationExcitationVbeta(const MCAF_MOTOR_DATA *pmotor)
 {
-   return MCAF_EstimatorZsmtExcitationVbeta(&pmotor->estimator.zsmt);
+   return 0;
 }
 
 /**
@@ -88,7 +86,7 @@ inline static MCAF_U_VOLTAGE MCAF_CommutationExcitationVbeta(const MCAF_MOTOR_DA
  */
 inline static MCAF_U_VOLTAGE MCAF_CommutationExcitationVd(const MCAF_MOTOR_DATA *pmotor)
 {
-   return MCAF_EstimatorZsmtExcitationVd(&pmotor->estimator.zsmt);
+   return 0;
 }
 
 /**
@@ -99,7 +97,7 @@ inline static MCAF_U_VOLTAGE MCAF_CommutationExcitationVd(const MCAF_MOTOR_DATA 
  */
 inline static MCAF_U_VOLTAGE MCAF_CommutationExcitationVq(const MCAF_MOTOR_DATA *pmotor)
 {
-   return MCAF_EstimatorZsmtExcitationVq(&pmotor->estimator.zsmt);
+   return 0;
 }
 
 #ifdef __cplusplus

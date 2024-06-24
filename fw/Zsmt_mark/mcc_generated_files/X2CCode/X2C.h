@@ -2,7 +2,7 @@
  * @file
  * @brief Generated model file.
  * 
- * Date:  2024-06-21 14:17
+ * Date:  2024-06-24 14:06
  * 
  * X2C-Version: 6.4.3142
  * X2C-Edition: Free
@@ -10,7 +10,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: MC_FOC_ZSMT_FIP_dsPIC33CK_POWERTOOL                                                                         */
-/* Date:  2024-06-21 14:17                                                                                            */
+/* Date:  2024-06-24 14:06                                                                                            */
 
 /* X2C-Version: 6.4.3142                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -133,42 +133,41 @@ extern "C" {
     { 47U, &x2cModel.blocks.bGain } , \
     { 48U, &x2cModel.blocks.bPI } , \
     { 49U, &x2cModel.blocks.bStartOverride } , \
-    { 50U, &x2cModel.blocks.bSub } , \
-    { 51U, &x2cModel.blocks.bUseCurrCtr } , \
-    { 52U, &x2cModel.blocks.bangleError } , \
-    { 53U, &x2cModel.blocks.sangleErrorLpf.bLPF } , \
-    { 54U, &x2cModel.blocks.sangleErrorLpf.bTypeConv } , \
-    { 55U, &x2cModel.blocks.sangleErrorLpf.bTypeConv1 } , \
-    { 56U, &x2cModel.blocks.bzConst1 } , \
-    { 57U, &x2cModel.blocks.bzConst2 } , \
-    { 58U, &x2cModel.blocks.bzConst3 } , \
-    { 81U, &x2cScope }
+    { 50U, &x2cModel.blocks.bUseCurrCtr } , \
+    { 51U, &x2cModel.blocks.bangleError } , \
+    { 52U, &x2cModel.blocks.sangleErrorLpf.bLPF } , \
+    { 53U, &x2cModel.blocks.sangleErrorLpf.bTypeConv } , \
+    { 54U, &x2cModel.blocks.sangleErrorLpf.bTypeConv1 } , \
+    { 55U, &x2cModel.blocks.bzConst1 } , \
+    { 56U, &x2cModel.blocks.bzConst2 } , \
+    { 57U, &x2cModel.blocks.bzConst3 } , \
+    { 80U, &x2cScope }
 
 #define INPORT_PARAMID_TABLE \
-    { 59U, 2U, &x2cModel.inports.bCPU_LOAD } , \
-    { 60U, 2U, &x2cModel.inports.bHall_state } , \
-    { 61U, 2U, &x2cModel.inports.bI_a } , \
-    { 62U, 2U, &x2cModel.inports.bI_b } , \
-    { 63U, 2U, &x2cModel.inports.bI_sum } , \
-    { 64U, 2U, &x2cModel.inports.bQEI_POS } , \
-    { 65U, 2U, &x2cModel.inports.bQEI_VEL } , \
-    { 66U, 1U, &x2cModel.inports.bS2 } , \
-    { 67U, 1U, &x2cModel.inports.bS3 } , \
-    { 68U, 2U, &x2cModel.inports.bV_DCLINK } , \
-    { 69U, 2U, &x2cModel.inports.bV_POT } , \
-    { 70U, 2U, &x2cModel.inports.bVa } , \
-    { 71U, 2U, &x2cModel.inports.bVb } , \
-    { 72U, 2U, &x2cModel.inports.bVc } 
+    { 58U, 2U, &x2cModel.inports.bCPU_LOAD } , \
+    { 59U, 2U, &x2cModel.inports.bHall_state } , \
+    { 60U, 2U, &x2cModel.inports.bI_a } , \
+    { 61U, 2U, &x2cModel.inports.bI_b } , \
+    { 62U, 2U, &x2cModel.inports.bI_sum } , \
+    { 63U, 2U, &x2cModel.inports.bQEI_POS } , \
+    { 64U, 2U, &x2cModel.inports.bQEI_VEL } , \
+    { 65U, 1U, &x2cModel.inports.bS2 } , \
+    { 66U, 1U, &x2cModel.inports.bS3 } , \
+    { 67U, 2U, &x2cModel.inports.bV_DCLINK } , \
+    { 68U, 2U, &x2cModel.inports.bV_POT } , \
+    { 69U, 2U, &x2cModel.inports.bVa } , \
+    { 70U, 2U, &x2cModel.inports.bVb } , \
+    { 71U, 2U, &x2cModel.inports.bVc } 
 
 #define OUTPORT_PARAMID_TABLE \
-    { 73U, 1U, &x2cModel.outports.bCONTROL_ENABLED } , \
-    { 74U, 2U, &x2cModel.outports.sFOC_main.bEstimated_angle } , \
-    { 75U, 2U, &x2cModel.outports.sFOC_main.bEstimated_speed } , \
-    { 76U, 2U, &x2cModel.outports.bHOME_INIT } , \
-    { 77U, 2U, &x2cModel.outports.bPWM1 } , \
-    { 78U, 2U, &x2cModel.outports.bPWM2 } , \
-    { 79U, 2U, &x2cModel.outports.bPWM3 } , \
-    { 80U, 2U, &x2cModel.outports.bTHETA_ERROR } 
+    { 72U, 1U, &x2cModel.outports.bCONTROL_ENABLED } , \
+    { 73U, 2U, &x2cModel.outports.sFOC_main.bEstimated_angle } , \
+    { 74U, 2U, &x2cModel.outports.sFOC_main.bEstimated_speed } , \
+    { 75U, 2U, &x2cModel.outports.bHOME_INIT } , \
+    { 76U, 2U, &x2cModel.outports.bPWM1 } , \
+    { 77U, 2U, &x2cModel.outports.bPWM2 } , \
+    { 78U, 2U, &x2cModel.outports.bPWM3 } , \
+    { 79U, 2U, &x2cModel.outports.bTHETA_ERROR } 
 
 
 /**********************************************************************************************************************/
@@ -244,7 +243,6 @@ struct x2cModel {
         GAIN_FIP16 bGain;
         PI_FIP16 bPI;
         MANUALSWITCH_BOOL bStartOverride;
-        SUB_FIP16 bSub;
         MANUALSWITCH_FIP16 bUseCurrCtr;
         USUB_FIP16 bangleError;
         CONSTANT_FIP16 bzConst1;

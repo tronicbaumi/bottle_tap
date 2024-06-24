@@ -294,8 +294,8 @@
       &lt;lag&gt;25.0&lt;/lag&gt;
    &lt;/current&gt;
    &lt;velocity&gt;
-      &lt;margin&gt;65.0&lt;/margin&gt;
-      &lt;lag&gt;10.0&lt;/lag&gt;
+      &lt;margin&gt;55.0&lt;/margin&gt;
+      &lt;lag&gt;4.0&lt;/lag&gt;
    &lt;/velocity&gt;
    &lt;version&gt;2.15&lt;/version&gt;
 &lt;/autotuningState&gt;</value>
@@ -309,7 +309,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Customize" name="component"/>
-         <value>{&quot;config&quot;:{&quot;ui&quot;:{&quot;content&quot;:{&quot;current_measure-method&quot;:&quot;triple_channel&quot;,&quot;current_measure-single_channel-minimumTime&quot;:2.0,&quot;current_measure-single_channel-sampleDelay&quot;:0.0,&quot;current_measure-opamp-full_input_range&quot;:true,&quot;estimator-type&quot;:&quot;zsmt&quot;,&quot;estimator-active-pll&quot;:true,&quot;estimator-active-qei&quot;:false,&quot;estimator-active-atpll&quot;:false,&quot;estimator-active-zsmt&quot;:false,&quot;estimator-active-ideal&quot;:false,&quot;operation-min_velocity_ratio&quot;:0.0494,&quot;operation-startup_velocity_ratio&quot;:0.0494,&quot;operation-max_velocity_ratio&quot;:0.1,&quot;operation-fullscale_base_ratio&quot;:1.5,&quot;operation-outer_loop_type&quot;:&quot;voltage&quot;,&quot;operation-saliency-threshold&quot;:1.25,&quot;operation-slewrate-accel&quot;:0.5,&quot;operation-slewrate-decel&quot;:1.0,&quot;operation-dyn_current_type&quot;:&quot;none&quot;,&quot;operation-stopping-type&quot;:&quot;minimal_impact&quot;,&quot;operation-stopping-closed_loop_parameters-speed&quot;:0.05,&quot;operation-stopping-closed_loop_parameters-time&quot;:0.5,&quot;operation-coastdown-end_velocity&quot;:0.05,&quot;operation-coastdown-time&quot;:1.2,&quot;fault_inject-get_tf-div0&quot;:false,&quot;fault_inject-get_tf-missing_data&quot;:false,&quot;fault_inject-get_tf-raise_value_error&quot;:false,&quot;fault_inject-get_tf-raise_custom_error&quot;:false,&quot;fault_inject-tf-tf_null&quot;:false,&quot;fault_inject-tf-tf_jy&quot;:false,&quot;fault_inject-tf-tf_jyex&quot;:false,&quot;fault_inject-tf-div0&quot;:false,&quot;fault_inject-tf-tau&quot;:0.0,&quot;flux_control-method&quot;:&quot;none&quot;,&quot;flux_control-eqn_based-ilimit-region_type&quot;:&quot;quadratic&quot;,&quot;flux_control-eqn_based-ilimit-id_limit&quot;:0.7,&quot;flux_control-eqn_based-ilimit-iq_limit&quot;:0.95,&quot;flux_control-eqn_based-fluxweak_enable&quot;:false,&quot;flux_control-eqn_based-fw-vdq_limit&quot;:0.95,&quot;flux_control-eqn_based-mtpa_enable&quot;:false,&quot;deadtimecomp-method&quot;:&quot;none&quot;,&quot;deadtimecomp-perphase-current_sign_band&quot;:0.02,&quot;deadtimecomp-perphase-forward_gain&quot;:0.0,&quot;deadtimecomp-perphase-feedback_gain&quot;:0.0,&quot;fault_detect-margin_uv&quot;:2.0,&quot;fault_detect-margin_ov&quot;:2.0,&quot;fault_detect-stall_detect_enable&quot;:false,&quot;startup-Istartup&quot;:0.75,&quot;startup-t_rampup&quot;:25.0,&quot;startup-t_align&quot;:0.0,&quot;startup-min_total_accel_time&quot;:250.0,&quot;startup-torque_scale_accel&quot;:0.15,&quot;startup-torque_scale_slow_accel&quot;:0.2,&quot;startup-t_hold&quot;:0.0,&quot;startup-omega0&quot;:0.2,&quot;startup-theta_converge_rate&quot;:1.0,&quot;startup-method&quot;:&quot;zsmt_dsat&quot;,&quot;startup-damping-Imax&quot;:0.1,&quot;startup-damping-gainmax&quot;:40.0,&quot;startup-damping-omega_min&quot;:0.4,&quot;overmodulation-vd_limit&quot;:1.0,&quot;overmodulation-vq_limit&quot;:1.15,&quot;overmodulation-include_duty_clipping&quot;:true,&quot;pll-tau&quot;:2.19,&quot;pll-omega1&quot;:116.5,&quot;pll-velocity_filter_threshold&quot;:1.0,&quot;encoder-lines&quot;:250.0,&quot;encoder-index_present&quot;:false,&quot;encoder-tracking_loop-tau&quot;:1.5,&quot;encoder-qei_sync-method&quot;:&quot;align&quot;,&quot;encoder-qei_sync-align-t_align&quot;:0.5,&quot;encoder-qei_sync-align-angle_shift&quot;:30.0,&quot;encoder-qei_sync-align-angle_init&quot;:-30.0,&quot;encoder-qei_sync-align_sweep-sweep_rate_pow&quot;:1.0,&quot;encoder-qei_sync-align_sweep-setup_angle&quot;:45.0,&quot;encoder-qei_sync-pullout-pullout_slip&quot;:0.117,&quot;zsmt-excitation-kV&quot;:0.12,&quot;zsmt-excitation-kI&quot;:0.1,&quot;zsmt-pll-zeta&quot;:1.5,&quot;zsmt-pll-tau&quot;:10.0,&quot;zsmt-pll-tau_lpf&quot;:0.0,&quot;zsmt-pll-execution_divider&quot;:2.0,&quot;zsmt-startup-align_delay&quot;:1.0,&quot;zsmt-startup-pll_lock_time&quot;:1.0,&quot;zsmt-startup-speed_limit&quot;:0.015,&quot;zsmt-startup-current_limit&quot;:0.3,&quot;zsmt-startup-probe_duration&quot;:10.0,&quot;zsmt-startup-probe_slew_time&quot;:1.5,&quot;zsmt-startup-probe_blanking_time&quot;:4.0,&quot;zsmt-hybrid-type&quot;:&quot;minotaur&quot;,&quot;zsmt-minotaur-voltage_limit-vd&quot;:0.45,&quot;zsmt-minotaur-voltage_limit-vq&quot;:0.78,&quot;zsmt-minotaur-converge-angle&quot;:10.0,&quot;zsmt-minotaur-converge-duration&quot;:2.0,&quot;zsmt-minotaur-velocity_threshold-slow&quot;:0.15,&quot;zsmt-minotaur-velocity_threshold-transition&quot;:0.2,&quot;zsmt-minotaur-velocity_threshold-fast&quot;:0.25,&quot;zsmt-angle_correction-current_gain&quot;:0.0,&quot;dyn_current1-peak_factor&quot;:1.0,&quot;dyn_current1-horizon_factor&quot;:1.05,&quot;dyn_current1-tau&quot;:5.0,&quot;dyn_current1-nsamples&quot;:128.0,&quot;voltage_outerloop-tau_lpf&quot;:2.0,&quot;voltage_outerloop-Kp&quot;:0.9,&quot;voltage_outerloop-tau&quot;:1.0,&quot;mcapi-isSquaredTau&quot;:1.0,&quot;mcapi-iqTau&quot;:1.0,&quot;mcapi-adcIsrUserFunctions_enable&quot;:false,&quot;board_service-uiServiceTiming&quot;:1.0,&quot;board_service-uiButtonDebounceTime&quot;:7.0,&quot;board_service-uiButtonLongPressTime&quot;:2.5,&quot;test_harness-perturbation_asymmetric&quot;:false,&quot;adc-vtempbridge&quot;:false,&quot;adc-temp_bridge_params-threshold&quot;:50.0,&quot;adc-temp_bridge_params-tau_lpf&quot;:10.0,&quot;adc-temp_bridge_params-slewrate&quot;:4.0,&quot;adc-vabsref&quot;:false,&quot;adc-vphasea&quot;:false,&quot;adc-vphaseb&quot;:false,&quot;adc-vphasec&quot;:false},&quot;version&quot;:{&quot;schema&quot;:4.0,&quot;motorBench&quot;:&quot;2.45.0&quot;,&quot;MCAF&quot;:&quot;R7&quot;},&quot;status&quot;:{&quot;valid&quot;:true}}}}</value>
+         <value>{&quot;config&quot;:{&quot;ui&quot;:{&quot;content&quot;:{&quot;current_measure-method&quot;:&quot;triple_channel&quot;,&quot;current_measure-single_channel-minimumTime&quot;:2.0,&quot;current_measure-single_channel-sampleDelay&quot;:0.0,&quot;current_measure-opamp-full_input_range&quot;:true,&quot;estimator-type&quot;:&quot;pll&quot;,&quot;estimator-active-pll&quot;:true,&quot;estimator-active-qei&quot;:false,&quot;estimator-active-atpll&quot;:false,&quot;estimator-active-zsmt&quot;:false,&quot;estimator-active-ideal&quot;:false,&quot;operation-min_velocity_ratio&quot;:0.0494,&quot;operation-startup_velocity_ratio&quot;:0.0494,&quot;operation-max_velocity_ratio&quot;:0.1,&quot;operation-fullscale_base_ratio&quot;:1.5,&quot;operation-outer_loop_type&quot;:&quot;velocity&quot;,&quot;operation-saliency-threshold&quot;:1.25,&quot;operation-slewrate-accel&quot;:0.5,&quot;operation-slewrate-decel&quot;:1.0,&quot;operation-dyn_current_type&quot;:&quot;none&quot;,&quot;operation-stopping-type&quot;:&quot;minimal_impact&quot;,&quot;operation-stopping-closed_loop_parameters-speed&quot;:0.05,&quot;operation-stopping-closed_loop_parameters-time&quot;:0.5,&quot;operation-coastdown-end_velocity&quot;:0.05,&quot;operation-coastdown-time&quot;:1.2,&quot;fault_inject-get_tf-div0&quot;:false,&quot;fault_inject-get_tf-missing_data&quot;:false,&quot;fault_inject-get_tf-raise_value_error&quot;:false,&quot;fault_inject-get_tf-raise_custom_error&quot;:false,&quot;fault_inject-tf-tf_null&quot;:false,&quot;fault_inject-tf-tf_jy&quot;:false,&quot;fault_inject-tf-tf_jyex&quot;:false,&quot;fault_inject-tf-div0&quot;:false,&quot;fault_inject-tf-tau&quot;:0.0,&quot;flux_control-method&quot;:&quot;none&quot;,&quot;flux_control-eqn_based-ilimit-region_type&quot;:&quot;quadratic&quot;,&quot;flux_control-eqn_based-ilimit-id_limit&quot;:0.7,&quot;flux_control-eqn_based-ilimit-iq_limit&quot;:0.95,&quot;flux_control-eqn_based-fluxweak_enable&quot;:false,&quot;flux_control-eqn_based-fw-vdq_limit&quot;:0.95,&quot;flux_control-eqn_based-mtpa_enable&quot;:false,&quot;deadtimecomp-method&quot;:&quot;none&quot;,&quot;deadtimecomp-perphase-current_sign_band&quot;:0.02,&quot;deadtimecomp-perphase-forward_gain&quot;:0.0,&quot;deadtimecomp-perphase-feedback_gain&quot;:0.0,&quot;fault_detect-margin_uv&quot;:2.0,&quot;fault_detect-margin_ov&quot;:2.0,&quot;fault_detect-stall_detect_enable&quot;:false,&quot;startup-Istartup&quot;:0.75,&quot;startup-t_rampup&quot;:25.0,&quot;startup-t_align&quot;:0.0,&quot;startup-min_total_accel_time&quot;:250.0,&quot;startup-torque_scale_accel&quot;:0.15,&quot;startup-torque_scale_slow_accel&quot;:0.2,&quot;startup-t_hold&quot;:0.0,&quot;startup-omega0&quot;:0.2,&quot;startup-theta_converge_rate&quot;:1.0,&quot;startup-method&quot;:&quot;classic&quot;,&quot;startup-damping-Imax&quot;:0.1,&quot;startup-damping-gainmax&quot;:40.0,&quot;startup-damping-omega_min&quot;:0.4,&quot;overmodulation-vd_limit&quot;:1.0,&quot;overmodulation-vq_limit&quot;:1.15,&quot;overmodulation-include_duty_clipping&quot;:true,&quot;pll-tau&quot;:2.19,&quot;pll-omega1&quot;:116.5,&quot;pll-velocity_filter_threshold&quot;:1.0,&quot;encoder-lines&quot;:250.0,&quot;encoder-index_present&quot;:false,&quot;encoder-tracking_loop-tau&quot;:1.5,&quot;encoder-qei_sync-method&quot;:&quot;align&quot;,&quot;encoder-qei_sync-align-t_align&quot;:0.5,&quot;encoder-qei_sync-align-angle_shift&quot;:30.0,&quot;encoder-qei_sync-align-angle_init&quot;:-30.0,&quot;encoder-qei_sync-align_sweep-sweep_rate_pow&quot;:1.0,&quot;encoder-qei_sync-align_sweep-setup_angle&quot;:45.0,&quot;encoder-qei_sync-pullout-pullout_slip&quot;:0.117,&quot;zsmt-excitation-kV&quot;:0.24,&quot;zsmt-excitation-kI&quot;:0.1,&quot;zsmt-pll-zeta&quot;:1.5,&quot;zsmt-pll-tau&quot;:5.0,&quot;zsmt-pll-tau_lpf&quot;:0.0,&quot;zsmt-pll-execution_divider&quot;:2.0,&quot;zsmt-startup-align_delay&quot;:1.0,&quot;zsmt-startup-pll_lock_time&quot;:1.0,&quot;zsmt-startup-speed_limit&quot;:0.015,&quot;zsmt-startup-current_limit&quot;:0.3,&quot;zsmt-startup-probe_duration&quot;:10.0,&quot;zsmt-startup-probe_slew_time&quot;:1.5,&quot;zsmt-startup-probe_blanking_time&quot;:4.0,&quot;zsmt-hybrid-type&quot;:&quot;minotaur&quot;,&quot;zsmt-minotaur-voltage_limit-vd&quot;:0.45,&quot;zsmt-minotaur-voltage_limit-vq&quot;:0.78,&quot;zsmt-minotaur-converge-angle&quot;:10.0,&quot;zsmt-minotaur-converge-duration&quot;:2.0,&quot;zsmt-minotaur-velocity_threshold-slow&quot;:0.15,&quot;zsmt-minotaur-velocity_threshold-transition&quot;:0.2,&quot;zsmt-minotaur-velocity_threshold-fast&quot;:0.25,&quot;zsmt-angle_correction-current_gain&quot;:0.0,&quot;dyn_current1-peak_factor&quot;:1.0,&quot;dyn_current1-horizon_factor&quot;:1.05,&quot;dyn_current1-tau&quot;:5.0,&quot;dyn_current1-nsamples&quot;:128.0,&quot;voltage_outerloop-tau_lpf&quot;:2.0,&quot;voltage_outerloop-Kp&quot;:0.9,&quot;voltage_outerloop-tau&quot;:5.0,&quot;mcapi-isSquaredTau&quot;:1.0,&quot;mcapi-iqTau&quot;:1.0,&quot;mcapi-adcIsrUserFunctions_enable&quot;:false,&quot;board_service-uiServiceTiming&quot;:1.0,&quot;board_service-uiButtonDebounceTime&quot;:7.0,&quot;board_service-uiButtonLongPressTime&quot;:2.5,&quot;test_harness-perturbation_asymmetric&quot;:false,&quot;adc-vtempbridge&quot;:false,&quot;adc-temp_bridge_params-threshold&quot;:50.0,&quot;adc-temp_bridge_params-tau_lpf&quot;:10.0,&quot;adc-temp_bridge_params-slewrate&quot;:4.0,&quot;adc-vabsref&quot;:false,&quot;adc-vphasea&quot;:false,&quot;adc-vphaseb&quot;:false,&quot;adc-vphasec&quot;:false},&quot;version&quot;:{&quot;schema&quot;:4.0,&quot;motorBench&quot;:&quot;2.45.0&quot;,&quot;MCAF&quot;:&quot;R7&quot;},&quot;status&quot;:{&quot;valid&quot;:true}}}}</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="FocAlgorithm" name="component"/>
@@ -559,7 +559,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\aux-files\parameters.html</file>
-         <hash>5159bf3c66c18aee210079256ebbf8b3103bebe0b84915b75f3c0af65e21a1f4</hash>
+         <hash>dd4a13ba63a8daa6e966584d0302a2cdaf30c11196af445dac0f213e165b23a8</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\aux-files\report.html</file>
@@ -587,7 +587,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\commutation.c</file>
-         <hash>3593d6e3210844e4464f9fd2e35286043c49f0981b6f7a7110ae86019bd7e6c4</hash>
+         <hash>993d1c85782d46f4ed2165b909a73c69db1a0914b7d67f3cc6055070289f8391</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\commutation.h</file>
@@ -606,40 +606,12 @@
          <hash>1271a35b918cad8e0daed88b37eaa5f987a0bcb167fc6e873b1662dc8948fa79</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\motorBench\commutation\zsmt.c</file>
-         <hash>7d3044bae128ef0bbc9b967df0acfa4b03509f70cffa03657d5e40ec198d3865</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\motorBench\commutation\zsmt.h</file>
-         <hash>7e43186ce66d4b29f1322ab244fa384ebf2c2df1e2833fc0ed18cbe1f31f6930</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\motorBench\commutation\zsmt_hybrid.c</file>
-         <hash>0375aaf864e096c381220534b93c254cafeb3a443e8207a867e4dd0d63d0fee8</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\motorBench\commutation\zsmt_hybrid.h</file>
-         <hash>c3ff85dd2e6de663c3f579ba2870df13a0b3ba0a0c67b1670e311d91fdb4ca13</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\motorBench\commutation\zsmt_hybrid_interaction.h</file>
-         <hash>4716e887edc40019f5954f63f4dbccc9c3131129b3d918faae58661b1fb78efd</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\motorBench\commutation\zsmt_types.h</file>
-         <hash>5b11dddbb8a8aad4c12112090d2830b73f2f4c57e846f122b81be79d5931ef1d</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\motorBench\commutation\zsmtlib.h</file>
-         <hash>b3c3cc3008c93fb18fc6b1b1df0656afed41ee10ec4a6ac5cf30219382cb7557</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\motorBench\commutation_excitation.h</file>
-         <hash>0577d85dd1adf66521dfbd0a2380ebac70bed934f8b9ccb5e86a6cde59bd4a33</hash>
+         <hash>9faea9786c575581c946aa88a38fc83447c2501543478dd6b1c8cef76c0e7b65</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\commutation_types.h</file>
-         <hash>1f91cfb3cd280b78412a0037d994035f9435bef1066ace08f1f187493b583456</hash>
+         <hash>97a3167d86c5ae668786050a968e2e52354015d805291b17f64500f047f446d5</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\current_measure.c</file>
@@ -754,10 +726,6 @@
          <hash>647390cee258be2adc780549457762af772a0a1ed0286cc02105ab89ffc4b7ff</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\motorBench\library\libzsmt-elf.a</file>
-         <hash>13b64746035a1fe3f21a502ea82de58c469b235ce582604d8df9fc8f34115fea</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\motorBench\library\mc-library\libmotor_control_dspic-elf.a</file>
          <hash>26920cff71aa7745aee223e3b98dad7cb3e7885e610146ae5d93edfdea30f29e</hash>
       </entry>
@@ -855,7 +823,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\metadata\data_model_snapshot.c</file>
-         <hash>1c199d1128ce78c41231a6bd139f04603680c543dbfb50e4796b7e0733c9a652</hash>
+         <hash>954900306e0337dba00b1fb6d677f39591c79ed6bfe6f30d25ca5ae349f792e3</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\monitor.c</file>
@@ -887,15 +855,15 @@
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\parameters\fault_detect_params.h</file>
-         <hash>97cbdd3fd8a90a669a689f70846069d81e07773da65a93aa912ebb9deaf02784</hash>
+         <hash>51afdfa57c73ddd5b7b605158a019c445f58b9b9e00808b286ed18e562d49104</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\parameters\foc_params.h</file>
-         <hash>618c491cbd15782f82c8453d94c98277a30ca5e83a50cf4c9450a3f08cf71cb0</hash>
+         <hash>c5d966c9a172a278786423c6496d7db7cc1f31ec3526224bdbfe1e4f8331aab2</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\parameters\hal_params.h</file>
-         <hash>ee1b010bdb74da726e39698ce3254efd9fb22bd4c6f7fbda75883f23c83ad4a2</hash>
+         <hash>df23fa75f107e0f1a5612336760fb9c92aca26e69bc2a8fab319e0f0be90e397</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\parameters\init_params.c</file>
@@ -923,7 +891,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\parameters\outerloop_params.h</file>
-         <hash>7bd22ce532cd0623086c5050a00d18a7e565a3d8180aa8a4f3c7971bc73b9a35</hash>
+         <hash>7f660b1d2276c2443f436ff845c14fa7a8cbdfbb5f8c4a1ba9dd4564b4965764</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\parameters\pll_params.h</file>
@@ -944,14 +912,6 @@
       <entry>
          <file>mcc_generated_files\motorBench\parameters\timing_params.h</file>
          <hash>03b89b0d87ace23f1980a5d3e17bc3060d96e59879f81a9c18be92e2ecdd1e8c</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\motorBench\parameters\zsmt_hybrid_params.h</file>
-         <hash>0e006abc190d5f9c11348487a849c7ed01bf652edc8e8d4df0192a74599f1627</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\motorBench\parameters\zsmt_params.h</file>
-         <hash>35b090def42b3e20216add3a065258760d833c23d05e442ffaae674d5e9ab8a2</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\recover.c</file>
@@ -987,19 +947,15 @@
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\startup.c</file>
-         <hash>93d2d385dc589df16ae5c3c9b5cad6f132b932a9f0f1d9f1707c4c834768169d</hash>
+         <hash>bd03edf08237a112c36c9eb0b533c57cc5fd9fb6f7bd6ff8289fcbd1b94fbcde</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\startup.h</file>
-         <hash>33f15fbf75917d024ec46845263a28a16629c550373e182483939ac611cf24e6</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\motorBench\startup_lib.h</file>
-         <hash>2b6cbed742d97842ae1ea6b255d2d7217aded750dd860df22fd2472baec2f05e</hash>
+         <hash>d9700249172eafe973a690536da0cf8f5e9bfaa6a37e730441ed74cc959050c6</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\startup_types.h</file>
-         <hash>32c8bb9f6875cf6f0d9e55bd4334df243d0ebd573600629ed15b39c122d52e9a</hash>
+         <hash>0b3829b611f3cf5415661d43b63d6e36f52d4405ed102693c286f265f8055a02</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\motorBench\state_machine.c</file>

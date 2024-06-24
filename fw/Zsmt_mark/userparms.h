@@ -76,7 +76,7 @@
 //---- Parameters for auto offset compensation -------//
 #define CURRENT_OFFSET_SAMPLE_COUNT 1024 //Number of samples for avaraging
 #define CURRENT_OFFSET_SAMPLE_SCALER  10 //Backshifting of the result of the avaraging
-#define CURRENT_MAX_OFFSET 0x0500 // Maximum offset that still accaptable, above that error
+#define CURRENT_MAX_OFFSET 0x0300 // Maximum offset that still accaptable, above that error
     
 #endif	/* XC_HEADER_TEMPLATE_H */
 

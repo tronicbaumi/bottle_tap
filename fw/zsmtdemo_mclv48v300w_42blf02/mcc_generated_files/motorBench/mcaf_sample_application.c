@@ -118,7 +118,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                 // Run the motor in downwards direction until zero position is detected
                 //int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
                 appData->motorDirection = -1;
-                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 50000);
+                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 1080);
                 MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
                 
 
@@ -166,7 +166,7 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
                     appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 32000);
                     MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
 
-                    Calculated_position += motor.apiData.velocityMeasured ; 
+                    Calculated_position += motor.apiData.velocityMeasured; // angle instead of velocity. 
                     
                         MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData); //YA
                          switch (motorState)

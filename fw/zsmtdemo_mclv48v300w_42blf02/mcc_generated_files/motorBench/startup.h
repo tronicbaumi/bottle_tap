@@ -53,9 +53,6 @@
 #include "motor_control_types.h"
 #include "startup_types.h"
 #include "parameters/startup_params.h"
-// Close coupling with ZSMT estimator
-#include "commutation/zsmt_types.h"
-#include "startup_lib.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -67,18 +64,6 @@ extern "C" {
  * @param pstartup startup state
  */
 void MCAF_StartupTransitioningInit(MCAF_MOTOR_STARTUP_DATA *pstartup);
-
-/**
- * Handle failure in the startup state machine
- *
- * This is an internal function of this module and subject to change.
- *
- * @param result   result of the state machine step function
- * @param pstartup startup state
- */
-void MCAF_StartupOnError(ZSMT_STARTUP_STATEMACHINE_RESULT result, 
-                         MCAF_MOTOR_STARTUP_DATA *pstartup);
-
 /**
  * State machine step for startup and transition from open- to closed-loop commutation
  *
@@ -87,23 +72,8 @@ void MCAF_StartupOnError(ZSMT_STARTUP_STATEMACHINE_RESULT result,
  * @param pstartup startup state
  * @param idqCommand open loop current command
  * @param direction +1 for positive rotation, -1 for negative rotation
- * @param pzsmt estimator state
  */
-inline void MCAF_StartupTransitioningStep(MCAF_MOTOR_STARTUP_DATA *pstartup, 
-                                   MC_DQ_T *idqCommand, 
-                                   int16_t direction,
-                                   MCAF_ESTIMATOR_ZSMT_T *pzsmt
-) 
-{
-    ZSMT_STARTUP_STATEMACHINE_RESULT result =
-       ZSMTLIB_StartupTransitioningStep(pstartup, idqCommand, direction, pzsmt);
-
-    if (result != ZSR_OK)
-    {
-        MCAF_StartupOnError(result, pstartup);
-    }
-}
-
+void MCAF_StartupTransitioningStep(MCAF_MOTOR_STARTUP_DATA *pstartup, MC_DQ_T *idqCommand, int16_t direction);
 
 /**
  * Reinitializes the startup process.
@@ -120,7 +90,6 @@ inline static void MCAF_StartupReinit(MCAF_MOTOR_STARTUP_DATA *pstartup, int16_t
     pstartup->enable = false;
     pstartup->delayRequest = false;
     pstartup->iRampupLimit = STARTUP_TORQUE_RAMPUP_RATE;
-    ++pstartup->restartCount;
 }
 
 /**
@@ -152,7 +121,7 @@ inline static bool MCAF_StartupHasCompleted(const MCAF_MOTOR_STARTUP_DATA *pstar
  */
 inline static bool MCAF_StartupInOpenLoopCommutation(const MCAF_MOTOR_STARTUP_DATA *pstartup)
 {
-    return pstartup->state < SSM_PLL_LOCK;
+    return pstartup->state < SSM_TRANSITION;
 }
 
 /**
@@ -211,7 +180,7 @@ inline static int16_t MCAF_StartupCalcNextElectricalAngle(MCAF_MOTOR_STARTUP_DAT
  */
 inline static bool MCAF_StartupReferenceFrameFlip(MCAF_MOTOR_STARTUP_DATA *pstartup)
 {
-    return pstartup->referenceFrameInvert;
+    return false;
 }
 
 #ifdef __cplusplus

@@ -49,9 +49,7 @@
 #include <stdint.h>
 #include "units.h"
 #include "commutation/common.h"
-#include "commutation/zsmt.h"
 #include "commutation/pll.h"
-#include "commutation/zsmt_hybrid.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -70,17 +68,13 @@ typedef struct tagMCAF_RELATIVE_ANGLE_T
  */
 typedef struct tagMCAF_ESTIMATOR_T
 {
-    MCAF_ESTIMATOR_ZSMT_T zsmt;  /** Zero-speed maximum torque */
     MCAF_ESTIMATOR_PLL_T pll;  /** sensorless, phase-locked loop (AN1292 PLL) */
-    MCAF_ESTIMATOR_ZSMT_HYBRID_T zsmtHybrid;  /** Binary hard-switch hybrid estimator ('Minotaur') */
     MCAF_U_ANGLE_ELEC     theta;                   /** estimated rotor angle (electrical) */
     MCAF_U_VELOCITY_ELEC  omega;                   /** estimated rotor velocity (electrical) */
     MCAF_RELATIVE_ANGLE_T thetaRelativeTo;
 } MCAF_ESTIMATOR_T;
 
-inline static bool MCAF_EstimatorZsmtIsActive(const MCAF_ESTIMATOR_T* pestimator) { return false; }
-inline static bool MCAF_EstimatorPllIsActive(const MCAF_ESTIMATOR_T* pestimator) { return false; }
-inline static bool MCAF_EstimatorZsmtHybridIsActive(const MCAF_ESTIMATOR_T* pestimator) { return true; }
+inline static bool MCAF_EstimatorPllIsActive(const MCAF_ESTIMATOR_T* pestimator) { return true; }
 
 #ifdef __cplusplus
 }

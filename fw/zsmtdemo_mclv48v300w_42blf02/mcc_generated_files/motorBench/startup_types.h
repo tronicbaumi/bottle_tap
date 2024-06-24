@@ -68,21 +68,24 @@ typedef enum tagMCAF_STARTUP_FSM_STATE
    /** Rotor is locked during align state. 
     * Current and angle held constant. */
    SSM_ALIGN            = 2, 
-   /** Allow PLL to lock onto d-axis (closed-loop commutation begins here) */
-   SSM_PLL_LOCK         = 3, 
-   /** Ramp current positive */
-   SSM_IDPOS            = 4,
-   /** Measure inductance with positive d-axis current */
-   SSM_IDPOS_MEASURE    = 5,
-   /** Ramp current negative */
-   SSM_IDNEG            = 6,
-   /** Measure inductance with negative d-axis current */
-   SSM_IDNEG_MEASURE    = 7,
-   /** Ramp current back to zero */
-   SSM_IDZERO           = 8,
+   /** Alignment acceleration of motor with forced commutation to overcome cogging torque. 
+    * Motor is accelerated slowly from standstill to a certain alignment velocity */
+   SSM_ACCEL0           = 3, 
+   /** Initial acceleration of motor with forced commutation. 
+    * Motor is accelerated from alignment velocity to minimum velocity */
+   SSM_ACCEL1           = 4, 
+   /** Motor is allowed to recover after initial acceleration during hold state. 
+    * Speed and applied current torque command are constant during this state. */     
+   SSM_HOLD             = 5,
+   /** Current torque command is ramp down during this state. 
+    * In this state, startup theta error (imposed theta - estimated theta) is also computed */  
+   SSM_CURRENT_RAMPDOWN = 6, 
+   /** When startup theta error falls below threshold, open to close loop transition takes place. 
+    * Estimated theta is used for commutation after transition */
+   SSM_TRANSITION       = 7,
    /** indicates completion of open to close loop transition */
-   SSM_COMPLETE         = 9,
-   SSM_INACTIVE         = 10   /** inactive state for test modes */                   
+   SSM_COMPLETE         = 8,
+   SSM_INACTIVE         = 9  /** inactive state for test modes */
 } MCAF_STARTUP_FSM_STATE;
 
 typedef enum tagMCAF_STARTUP_STATUS_T
@@ -113,75 +116,71 @@ typedef enum tagMCAF_STARTUP_STATUS_T
  */
 typedef struct tagMOTOR_STARTUP_DATA
 {
-     MCAF_U_CURRENT_DQ    idq;              /** dq-frame current */
+     MCAF_U_CURRENT_DQ   idq;              /** dq-frame current */
      /** Slewrate limit for current. It is given by (max openloop Iq/rampup rate) */
-     int16_t              iRampupLimit;   
+     int16_t           iRampupLimit;   
 
      /** estimated electrical angle (from outside of open-loop operation) */
-     MCAF_U_ANGLE_ELEC    thetaElectricalEstimated;
+     MCAF_U_ANGLE_ELEC thetaElectricalEstimated;
      MCAF_U_VELOCITY_ELEC omegaElectricalEstimated;
      MCAF_U_DIMENSIONLESS_SINCOS sincos;           /** Sine and Cosine of electrical angle */
      
      /* ----- open-loop commutation ----- */
-     sx1632_t             omegaElectrical;  /** open-loop electrical frequency */
-     sx1632_t             thetaElectrical;  /** open-loop electrical angle */
-     MCAF_U_ANGLE_ELEC    rampupAngle;      /** angle applied during current rampup */
-     MCAF_U_ANGLE_ELEC    alignAngleDelta;  /** angle shift for align stage */
+     sx1632_t          omegaElectrical;  /** open-loop electrical frequency */
+     sx1632_t          thetaElectrical;  /** open-loop electrical angle */
+     MCAF_U_ANGLE_ELEC rampupAngle;      /** angle applied during current rampup */
+     MCAF_U_ANGLE_ELEC alignAngleDelta;  /** angle shift for align stage */
+        /* ----- two-stage acceleration ----- */
+     int16_t           acceleration[2];  /** open-loop accelerations  */
+     MCAF_U_VELOCITY_ELEC velocityThreshold[2]; /** velocity threshold to complete acceleration */
      int16_t           dt;               /** timestep scaling factor for angle */
+     int16_t           dtAcceleration;   /** timestep scaling factor for acceleration */     
+     /* --------------------------------- */
+     struct
+     {
+         MCAF_U_CURRENT iqmax;  /** maximum damping current */
+         int16_t k;             /** damping constant */
+         MCAF_U_VELOCITY_ELEC velocityThreshold; /** velocity threshold to enable */
+     } activeDamping;    /** active damping */
+     
      /**
       * Time after initial rampup of current at a fixed electrical angle,
       * and before open-loop acceleration during startup
       */
-     uint32_t             alignTime;
+     uint32_t           alignTime;
      /**
       * Time after intial acceleration of velocity
       * and before the rampdown of current during startup
       */
-     uint32_t             holdTime;
+     uint32_t           holdTime;
+     /**
+      * This value is used to transition from open loop to closed loop.
+      * It is difference between forced angle and estimated angle. This difference is stored in
+      * thetaError, and added to estimated theta after transition so the
+      * effective angle used for commutating the motor is the same at
+      * the end of open loop, and at the beginning of closed loop.
+      */
+     sx1632_t           thetaError;   
+     /**
+      * When theta error falls below this threshold, open to close loop transition happens 
+      */
+     MCAF_U_ANGLE_ELEC  thetaDelta;         
      /** Amplitude of applied current during startup */
-     MCAF_U_CURRENT       iAmplitude;
-     /** Nominal current applied during startup (always along the positive D axis) */
-     MCAF_U_CURRENT       iNominal;
-     /** Time to allow PLL to lock */
-     uint16_t             pllLockTime;
-     /** Maximum speed under which a PLL lock may be considered complete */
-     MCAF_U_VELOCITY_ELEC pllLockSpeedLimit;
-     /** Maximum current magnitude squared, under which a PLL lock may be considered complete */
-     int16_t              pllLockCurrentSquaredLimit;
-     /** saturation-probing current */
-     MCAF_U_CURRENT       idsat;
-     /** saturation-probing current slew rate (current per cycle) */
-     MCAF_U_CURRENT       idsatSlewRate;
+     MCAF_U_CURRENT     iAmplitude;
+     /** Nominal current applied during startup (sign depends on direction) */
+     MCAF_U_CURRENT     iNominal;
      /** open-loop state machine state */
      MCAF_STARTUP_FSM_STATE state;
      /** Whether open-loop startup is enabled */
-     bool                 enable;
-     /** Whether the reference frame needs to be inverted (rotated by 180) */
-     bool                 referenceFrameInvert;
+     bool               enable;
      /** Whether open-loop startup is complete */
-     bool                 complete;
+     bool               complete;
      /** Request for delay */
-     bool                 delayRequest;
+     bool               delayRequest;
      /** Counter used in openloop for different states */
-     uint32_t             counter;  
+     uint32_t           counter;  
      /** 32-bit variable for torque command */
-     int32_t              torqueCmd32;
-     /** Accumulators for demodulated ZSMT amplitude during positive and negative current states */
-     struct {
-         sx1632_t          pos;            // Positve accumulator
-         sx1632_t          neg;            // Negative accumulator
-         int16_t           gain;           // Accumulator gain
-         /* Note: at this time, gain is not critical since we only compare
-          * accum values (pos & neg) to each other rather than an absolute reference. */
-         uint16_t          sampleCount;    // Number of samples
-     } demodAmplitudeAccum;     
-     /** Time (in # of samples) needed to accumulate demodulated amplitude */
-     uint16_t              angleProbeTime;
-     /** Blanking time (in # of ISR cycles) at beginning of state to ignore samples */
-     uint16_t              blankingTime;
-     
-     /** Counter for troubleshooting the number of restarts */
-     uint16_t              restartCount;
+     int32_t            torqueCmd32;
      
 } MCAF_MOTOR_STARTUP_DATA;
 
@@ -195,17 +194,14 @@ inline static MCAF_STARTUP_STATUS_T MCAF_StartupGetStatus(const MCAF_MOTOR_START
     MCAF_STARTUP_FSM_STATE state = pstartup->state;
     switch (state)
     {
-        case SSM_START:          return MSST_RESTART;
-        case SSM_CURRENT_RAMPUP: return MSST_ALIGN;
-        case SSM_ALIGN:          return MSST_ALIGN;
-        case SSM_PLL_LOCK:       return MSST_ANGLE_LOCK;
-        case SSM_IDNEG:          return MSST_ANGLE_LOCK;
-        case SSM_IDNEG_MEASURE:  return MSST_ANGLE_LOCK;
-        case SSM_IDPOS:          return MSST_ANGLE_LOCK;
-        case SSM_IDPOS_MEASURE:  return MSST_ANGLE_LOCK;
-        case SSM_IDZERO:         return MSST_ANGLE_LOCK;
-        case SSM_COMPLETE:       return MSST_COMPLETE;
-        default:                 return MSST_UNSPECIFIED;
+        case SSM_START:      return MSST_RESTART;
+        case SSM_ALIGN:      return MSST_ALIGN;
+        case SSM_ACCEL0:     return MSST_ACCEL;
+        case SSM_ACCEL1:     return MSST_ACCEL;
+        case SSM_HOLD:       return MSST_SPIN;
+        case SSM_TRANSITION: return MSST_COMPLETE;   // from the outside, once we get to this state, closed-loop is entered
+        case SSM_COMPLETE:   return MSST_COMPLETE;
+        default:             return MSST_UNSPECIFIED;
     }
 }
 
@@ -236,8 +232,7 @@ inline static void MCAF_StartupRequestDelay(MCAF_MOTOR_STARTUP_DATA *pstartup)
  */
 inline static bool MCAF_StartupDelayPermitted(MCAF_MOTOR_STARTUP_DATA *pstartup)
 {
-    const MCAF_STARTUP_STATUS_T msst = MCAF_StartupGetStatus(pstartup);
-    return (msst == MSST_ALIGN);
+    return false;
 }
 
 /**
@@ -246,7 +241,7 @@ inline static bool MCAF_StartupDelayPermitted(MCAF_MOTOR_STARTUP_DATA *pstartup)
  */
 inline static MCAF_U_ANGLE_ELEC MCAF_StartupGetThetaError(const MCAF_MOTOR_STARTUP_DATA *pstartup)
 {
-    return 0;
+    return pstartup->thetaError.x16.hi;
 }
 
 /**
@@ -258,7 +253,7 @@ inline static MCAF_U_ANGLE_ELEC MCAF_StartupGetThetaError(const MCAF_MOTOR_START
  */
 inline static void MCAF_StartupSetThetaError(MCAF_MOTOR_STARTUP_DATA *pstartup, MCAF_U_ANGLE_ELEC thetaError)
 {
-    // no action required
+    pstartup->thetaError.x16.hi = thetaError;
 }
 
 /**
@@ -280,10 +275,14 @@ inline static void MCAF_StartupSetThetaError(MCAF_MOTOR_STARTUP_DATA *pstartup, 
  */
 inline static MCAF_U_ANGLE_ELEC MCAF_StartupGetIdqCmdAngle(const MCAF_MOTOR_STARTUP_DATA *pstartup)
 {
-    // always along the positive d-axis
-    return 0;
+    /* 
+     * If iNominal is positive, we're applying current along the positive Q axis = +90 degrees.
+     * otherwise we're applying current along the negative Q axis = -90 degrees.
+     */
+    
+    const MCAF_U_ANGLE_ELEC ninety_degrees = 0x4000;
+    return UTIL_CopySign(pstartup->iNominal, ninety_degrees);
 }
-
 
 #ifdef __cplusplus
 }

@@ -60,7 +60,7 @@ typedef enum {
 
 inline static MCAF_OUTER_LOOP_TYPE MCAF_OuterLoopType(void)
 {
-    return MCAF_OLT_VOLTAGE;
+    return MCAF_OLT_VELOCITY;
 }
                             
 #ifdef  __cplusplus
