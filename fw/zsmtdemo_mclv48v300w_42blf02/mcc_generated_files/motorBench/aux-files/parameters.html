@@ -294,6 +294,65 @@ This list is still under construction.
 <td>Peak current level (max current for short transients)</td>
 </tr>
 <tr class="param-group">
+<th class="group-name"><code>estimator_minotaur</code> (7 items)</th><th>Minotaur hybrid estimator parameters</th>
+</tr>
+<tr>
+<td><code>estimator_minotaur.mcafZsmtHybridAngleConvergeDuration</code></td>
+<td class="col_macro"><code>MCAF_ZSMT_HYBRID_ANGLE_CONVERGE_DURATION</code></td>
+<td></td>
+<td>0.0020000 </td>
+<td>s</td>
+<td>Minimum duration of angle convergence for switching to back-emf based estimator</td>
+</tr>
+<tr>
+<td><code>estimator_minotaur.mcafZsmtHybridAngleConvergeThreshold</code></td>
+<td class="col_macro"><code>MCAF_ZSMT_HYBRID_ANGLE_CONVERGE_THRESHOLD</code></td>
+<td></td>
+<td>0.1745329 </td>
+<td>rad</td>
+<td>Maximum angle difference allowed for switching to back-emf based estimator</td>
+</tr>
+<tr>
+<td><code>estimator_minotaur.mcafZsmtHybridVelocityThresholdFast</code></td>
+<td class="col_macro"><code>MCAF_ZSMT_HYBRID_VELOCITY_THRESHOLD_FAST</code></td>
+<td></td>
+<td>9.540e+01 </td>
+<td>rad/s</td>
+<td>Velocity threshold fast</td>
+</tr>
+<tr>
+<td><code>estimator_minotaur.mcafZsmtHybridVelocityThresholdSlow</code></td>
+<td class="col_macro"><code>MCAF_ZSMT_HYBRID_VELOCITY_THRESHOLD_SLOW</code></td>
+<td></td>
+<td>5.724e+01 </td>
+<td>rad/s</td>
+<td>Velocity threshold slow</td>
+</tr>
+<tr>
+<td><code>estimator_minotaur.mcafZsmtHybridVelocityThresholdTransition</code></td>
+<td class="col_macro"><code>MCAF_ZSMT_HYBRID_VELOCITY_THRESHOLD_TRANSITION</code></td>
+<td></td>
+<td>7.632e+01 </td>
+<td>rad/s</td>
+<td>Velocity threshold transition</td>
+</tr>
+<tr>
+<td><code>estimator_minotaur.zsmtCurrentCtrlDOutLimit</code></td>
+<td class="col_macro"><code>ZSMT_CURRENT_CTRL_D_OUT_LIMIT</code></td>
+<td></td>
+<td>0.4500000 </td>
+<td>line-to-line</td>
+<td>Reduced limit during ZS/MT for output line-to-line voltage of d-axis current controller, expressed as a fraction of DC link voltage</td>
+</tr>
+<tr>
+<td><code>estimator_minotaur.zsmtCurrentCtrlQOutLimit</code></td>
+<td class="col_macro"><code>ZSMT_CURRENT_CTRL_Q_OUT_LIMIT</code></td>
+<td></td>
+<td>0.7800000 </td>
+<td>line-to-line</td>
+<td>Reduced limit during ZS/MT for output line-to-line voltage of q-axis current controller, expressed as a fraction of DC link voltage</td>
+</tr>
+<tr class="param-group">
 <th class="group-name"><code>fault_detect</code> (3 items)</th><th>Fault detection parameters</th>
 </tr>
 <tr>
@@ -327,7 +386,7 @@ This list is still under construction.
 <td><code>foc.kii</code></td>
 <td class="col_macro"><code>KII</code></td>
 <td>\(K_{ii}\)</td>
-<td>5.289e+03 </td>
+<td>1.035e+03 </td>
 <td>V/A/s</td>
 <td>Current loop integral gain</td>
 </tr>
@@ -335,7 +394,7 @@ This list is still under construction.
 <td><code>foc.kip</code></td>
 <td class="col_macro"><code>KIP</code></td>
 <td>\(K_{ip}\)</td>
-<td>1.4826192 </td>
+<td>0.6072596 </td>
 <td>V/A</td>
 <td>Current loop proportional gain</td>
 </tr>
@@ -343,7 +402,7 @@ This list is still under construction.
 <td><code>foc.kwi</code></td>
 <td class="col_macro"><code>KWI</code></td>
 <td>\(K_{\omega i}\)</td>
-<td>0.0931968 </td>
+<td>0.1587725 </td>
 <td>A/rad</td>
 <td>Velocity loop integral gain</td>
 </tr>
@@ -351,7 +410,7 @@ This list is still under construction.
 <td><code>foc.kwp</code></td>
 <td class="col_macro"><code>KWP</code></td>
 <td>\(K_{\omega p}\)</td>
-<td>0.0110520 </td>
+<td>0.0516587 </td>
 <td>A/(rad/s)</td>
 <td>Velocity loop proportional gain</td>
 </tr>
@@ -1011,7 +1070,7 @@ for the gain in dI/dt calculation that is due to undersampling
 <td><code>stall_detect.group.activeTimerThresholdLowSpeedDetect</code></td>
 <td class="col_macro"><code>ACTIVE_TIMER_THRESHOLD_LOW_SPEED_DETECT</code></td>
 <td></td>
-<td>0.1563090 </td>
+<td>0.1070511 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger low speed detect.
@@ -1022,7 +1081,7 @@ It is set to 3 times (1/natural frequency of velocity loop)
 <td><code>stall_detect.group.activeTimerThresholdNegativeEdDetect</code></td>
 <td class="col_macro"><code>ACTIVE_TIMER_THRESHOLD_NEGATIVE_ED_DETECT</code></td>
 <td></td>
-<td>0.2605149 </td>
+<td>0.1784185 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger negative Ed stall detect.
@@ -1033,7 +1092,7 @@ It is set to 5 times (1/natural frequency of velocity loop)
 <td><code>stall_detect.group.activeTimerThresholdTorqueAngleDetect</code></td>
 <td class="col_macro"><code>ACTIVE_TIMER_THRESHOLD_TORQUE_ANGLE_DETECT</code></td>
 <td></td>
-<td>0.1563090 </td>
+<td>0.1070511 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger stall detect based on torque angle.
@@ -1063,7 +1122,7 @@ f3db*Ts*2*pi. f3db for 1st stage is 10hz
 <td><code>stall_detect.group.decimationFilterLpf2VarianceDetectCoeffa1</code></td>
 <td class="col_macro"><code>DECIMATION_FILTER_LPF2_VARIANCE_DETECT_COEFFA1</code></td>
 <td></td>
-<td>1.9192758 </td>
+<td>2.8023998 </td>
 <td>Hz</td>
 <td>
 Coefficient a1 for 2 stage implementation of LPF. Equation used for calculation:
@@ -1074,7 +1133,7 @@ f3db*Ts*2*pi. f3db for second stage is 1/10th of the natural frequency, Ts is 1/
 <td><code>stall_detect.group.filterHpfVarianceDetect</code></td>
 <td class="col_macro"><code>FILTER_HPF_VARIANCE_DETECT</code></td>
 <td></td>
-<td>3.839e+01 </td>
+<td>5.605e+01 </td>
 <td>Hz</td>
 <td>
 HPF filter coefficient for 16bit implementation of HPF.
@@ -1085,7 +1144,7 @@ f3db is 2x natural frequency.
 <td><code>stall_detect.group.filterLpfNegativeEdDetect</code></td>
 <td class="col_macro"><code>FILTER_LPF_NEGATIVE_ED_DETECT</code></td>
 <td></td>
-<td>1.919e+01 </td>
+<td>2.802e+01 </td>
 <td>Hz</td>
 <td>
 LPF filter coefficient for negative Ed detect. Equation used for calculation:
@@ -1096,7 +1155,7 @@ f3db*Ts*2*pi f3d is equal to natural frequency
 <td><code>stall_detect.group.filterLpfOvercurrentDetect</code></td>
 <td class="col_macro"><code>FILTER_LPF_OVERCURRENT_DETECT</code></td>
 <td></td>
-<td>1.919e+01 </td>
+<td>2.802e+01 </td>
 <td>Hz</td>
 <td>
 LPF filter coefficient for over current detect. Equation used for calculation:
@@ -1107,7 +1166,7 @@ f3db*Ts*2*pi f3d is equal to natural frequency
 <td><code>stall_detect.group.inactiveTimerThresholdLowSpeedDetect</code></td>
 <td class="col_macro"><code>INACTIVE_TIMER_THRESHOLD_LOW_SPEED_DETECT</code></td>
 <td></td>
-<td>0.1563090 </td>
+<td>0.1070511 </td>
 <td>s</td>
 <td>
 Inactive timer threshold for low speed detect.
@@ -1119,7 +1178,7 @@ in units of the ADC ISR period.
 <td><code>stall_detect.group.inactiveTimerThresholdNegativeEdDetect</code></td>
 <td class="col_macro"><code>INACTIVE_TIMER_THRESHOLD_NEGATIVE_ED_DETECT</code></td>
 <td></td>
-<td>0.2605149 </td>
+<td>0.1784185 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger negative Ed stall detect.
@@ -1130,7 +1189,7 @@ It is set to 5 times (1/natural frequency of velocity loop)
 <td><code>stall_detect.group.inactiveTimerThresholdTorqueAngleDetect</code></td>
 <td class="col_macro"><code>INACTIVE_TIMER_THRESHOLD_TORQUE_ANGLE_DETECT</code></td>
 <td></td>
-<td>0.1563090 </td>
+<td>0.1070511 </td>
 <td>s</td>
 <td>
 Inactive Timer threshold for stall detect based on torque angle.
@@ -1141,7 +1200,7 @@ It is set to 3 times (1/natural frequency of velocity loop)
 <td><code>stall_detect.group.timerCountsOvercurrentDetect</code></td>
 <td class="col_macro"><code>TIMER_COUNTS_OVERCURRENT_DETECT</code></td>
 <td></td>
-<td>0.0016426 </td>
+<td>0.0042573 </td>
 <td>s</td>
 <td>
 Overcurrent detector. Normally if the saturation limit was exceeded,
@@ -1155,7 +1214,7 @@ It is set to 2 times (1/natural frequency of current loop)
 <td><code>stall_detect.group.timerCountsVarianceDetect</code></td>
 <td class="col_macro"><code>TIMER_COUNTS_VARIANCE_DETECT</code></td>
 <td></td>
-<td>0.0521030 </td>
+<td>0.0356837 </td>
 <td>s</td>
 <td>
 Timer threshold to trigger stall detect based on variance in Ed and Eq.
@@ -1460,6 +1519,153 @@ Torque angle method of stall detection
 <td>0.0010000 </td>
 <td>s</td>
 <td>velocity loop period</td>
+</tr>
+<tr class="param-group">
+<th class="group-name"><code>zsmt</code> (18 items)</th><th>ZS/MT estimator parameters</th>
+</tr>
+<tr>
+<td><code>zsmt.alignTime</code></td>
+<td class="col_macro"><code>ZSMT_ALIGN_TIME</code></td>
+<td></td>
+<td>0.0010000 </td>
+<td>s</td>
+<td>Align delay</td>
+</tr>
+<tr>
+<td><code>zsmt.angleLockDelay</code></td>
+<td class="col_macro"><code>ZSMT_ANGLE_LOCK_DELAY</code></td>
+<td></td>
+<td>0.0500000 </td>
+<td>s</td>
+<td>Angle lock delay</td>
+</tr>
+<tr>
+<td><code>zsmt.angleProbeAccumGain</code></td>
+<td class="col_macro"><code>ZSMT_ANGLE_PROBE_ACCUM_GAIN</code></td>
+<td></td>
+<td>1.0000000 </td>
+<td></td>
+<td>Angle probe accumulator gain</td>
+</tr>
+<tr>
+<td><code>zsmt.angleProbeBlankingTime</code></td>
+<td class="col_macro"><code>ZSMT_ANGLE_PROBE_BLANKING_TIME</code></td>
+<td></td>
+<td>0.0013551 </td>
+<td>s</td>
+<td>Angle probe blanking time</td>
+</tr>
+<tr>
+<td><code>zsmt.angleProbeSlewRate</code></td>
+<td class="col_macro"><code>ZSMT_ANGLE_PROBE_SLEW_RATE</code></td>
+<td></td>
+<td>5.018e+03 </td>
+<td>A/s</td>
+<td>Angle probe slew rate</td>
+</tr>
+<tr>
+<td><code>zsmt.angleProbeTime</code></td>
+<td class="col_macro"><code>ZSMT_ANGLE_PROBE_TIME</code></td>
+<td></td>
+<td>0.0100000 </td>
+<td>s</td>
+<td>Angle probe duration</td>
+</tr>
+<tr>
+<td><code>zsmt.correctionGainDc</code></td>
+<td class="col_macro"><code>ZSMT_CORRECTION_GAIN_DC</code></td>
+<td></td>
+<td>0.000e+00 </td>
+<td>rad/A</td>
+<td>DC correction gain</td>
+</tr>
+<tr>
+<td><code>zsmt.errorGain</code></td>
+<td class="col_macro"><code>ZSMT_ERROR_GAIN</code></td>
+<td></td>
+<td>5.120e+02 </td>
+<td></td>
+<td>Scaling gain for HFI error</td>
+</tr>
+<tr>
+<td><code>zsmt.errorLimit</code></td>
+<td class="col_macro"><code>ZSMT_ERROR_LIMIT</code></td>
+<td></td>
+<td>0.9999700 </td>
+<td></td>
+<td>Error limit for PLL</td>
+</tr>
+<tr>
+<td><code>zsmt.excitationVoltageAmplitude</code></td>
+<td class="col_macro"><code>ZSMT_EXCITATION_VOLTAGE_AMPLITUDE</code></td>
+<td></td>
+<td>1.4274554 </td>
+<td>V</td>
+<td>Excitation voltage amplitude</td>
+</tr>
+<tr>
+<td><code>zsmt.filterGain</code></td>
+<td class="col_macro"><code>ZSMT_FILTER_GAIN</code></td>
+<td></td>
+<td>2.000e+04 </td>
+<td>rad/s</td>
+<td>Pole of input low-pass filter</td>
+</tr>
+<tr>
+<td><code>zsmt.pllDt</code></td>
+<td class="col_macro"><code>ZSMT_PLL_DT</code></td>
+<td>\(\Delta t\)</td>
+<td>5.000e-05 </td>
+<td>s</td>
+<td>PLL integrator time scaling factor</td>
+</tr>
+<tr>
+<td><code>zsmt.pllExecutionDivider</code></td>
+<td class="col_macro"><code>ZSMT_PLL_EXECUTION_DIVIDER</code></td>
+<td></td>
+<td>2.0000000 </td>
+<td></td>
+<td>defines PLL execution rate based on main control update rate</td>
+</tr>
+<tr>
+<td><code>zsmt.pllKi</code></td>
+<td class="col_macro"><code>ZSMT_PLL_KI</code></td>
+<td></td>
+<td>4.219e+05 </td>
+<td>rad/s^2</td>
+<td>Integral gain of PLL = 1/B/tau^2</td>
+</tr>
+<tr>
+<td><code>zsmt.pllKp</code></td>
+<td class="col_macro"><code>ZSMT_PLL_KP</code></td>
+<td></td>
+<td>6.329e+03 </td>
+<td>rad/s</td>
+<td>Proportional gain of PLL = 2*zeta/B/tau</td>
+</tr>
+<tr>
+<td><code>zsmt.pllLockCurrentSquaredLimit</code></td>
+<td class="col_macro"><code>ZSMT_PLL_LOCK_CURRENT_SQUARED_LIMIT</code></td>
+<td></td>
+<td>1.0404000 </td>
+<td>A^2</td>
+<td>Maximum allowed squared current for ZSMT startup</td>
+</tr>
+<tr>
+<td><code>zsmt.pllLockSpeedLimit</code></td>
+<td class="col_macro"><code>ZSMT_PLL_LOCK_SPEED_LIMIT</code></td>
+<td></td>
+<td>5.7239818 </td>
+<td>rad/s</td>
+<td>Maximum allowed speed for ZSMT startup</td>
+</tr>
+<tr>
+<td><code>zsmt.pllLockTime</code></td>
+<td class="col_macro"><code>ZSMT_PLL_LOCK_TIME</code></td>
+<td></td>
+<td>0.0050000 </td>
+<td>s</td>
+<td>Required PLL lock time</td>
 </tr>
 </table>
 

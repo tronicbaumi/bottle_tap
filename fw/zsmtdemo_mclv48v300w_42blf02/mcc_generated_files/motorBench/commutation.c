@@ -56,7 +56,10 @@
 #include "test_harness.h"
 
 
+#include "commutation/zsmt.h"
 #include "commutation/pll.h"
+#include "commutation/zsmt_hybrid.h"
+#include "commutation/zsmt_hybrid_interaction.h"
 
 
 void MCAF_CommutationStep(MCAF_MOTOR_DATA *pmotor)
@@ -64,6 +67,19 @@ void MCAF_CommutationStep(MCAF_MOTOR_DATA *pmotor)
     MCAF_ESTIMATOR_T *pestimator = &pmotor->estimator;
 
 
+
+    /* ---- Zero-speed maximum torque ---- */
+    MCAF_EstimatorZsmtStep(
+                  &pestimator->zsmt,        // state
+                  &pmotor->standardInputs,                   // common inputs
+                  &pmotor->motorParameters                   // motorParameters
+    );
+    if (MCAF_EstimatorZsmtIsActive(pestimator))
+    {
+        pestimator->theta = MCAF_EstimatorZsmtCommutationAngle(&pestimator->zsmt);
+        pestimator->omega = MCAF_EstimatorZsmtElectricalFrequency(&pestimator->zsmt);
+    }
+    /* ---- Zero-speed maximum torque ---- */
 
     /* ---- sensorless, phase-locked loop (AN1292 PLL) ---- */
     MCAF_EstimatorPllStep(
@@ -77,6 +93,26 @@ void MCAF_CommutationStep(MCAF_MOTOR_DATA *pmotor)
         pestimator->omega = MCAF_EstimatorPllElectricalFrequency(&pestimator->pll);
     }
     /* ---- sensorless, phase-locked loop (AN1292 PLL) ---- */
+
+    /* ---- Binary hard-switch hybrid estimator ('Minotaur') ---- */
+    MCAF_EstimatorZsmtHybridStep(
+                  &pestimator->zsmtHybrid,   // state
+                  &pmotor->standardInputs,                   // common inputs
+                  &pmotor->motorParameters                   // motorParameters
+    );
+    // This estimator has some specific coupling with other modules.    
+    MCAF_EstimatorZsmtHybridInteractionStep(
+            &pestimator->zsmtHybrid,                   // estimator state
+            pmotor,                                    // access to full state
+            MCAF_EstimatorPllUpdateOutput,             // pointer to function to update other estimator
+            &pestimator->pll                           // other estimator state
+    );
+    if (MCAF_EstimatorZsmtHybridIsActive(pestimator))
+    {
+        pestimator->theta = MCAF_EstimatorZsmtHybridCommutationAngle(&pestimator->zsmtHybrid);
+        pestimator->omega = MCAF_EstimatorZsmtHybridElectricalFrequency(&pestimator->zsmtHybrid);
+    }
+    /* ---- Binary hard-switch hybrid estimator ('Minotaur') ---- */
 
     pmotor->startup.thetaElectricalEstimated = pmotor->estimator.theta;
     pmotor->startup.omegaElectricalEstimated = pmotor->estimator.omega;
@@ -100,7 +136,15 @@ void MCAF_CommutationStep(MCAF_MOTOR_DATA *pmotor)
     }
     if (MCAF_StartupDelayPermitted(&pmotor->startup))
     {
+        if (MCAF_EstimatorZsmtStartupDelayRequested(&pestimator->zsmt, startupStatus))
+        {
+            MCAF_StartupRequestDelay(&pmotor->startup);
+        }
         if (MCAF_EstimatorPllStartupDelayRequested(&pestimator->pll, startupStatus))
+        {
+            MCAF_StartupRequestDelay(&pmotor->startup);
+        }
+        if (MCAF_EstimatorZsmtHybridStartupDelayRequested(&pestimator->zsmtHybrid, startupStatus))
         {
             MCAF_StartupRequestDelay(&pmotor->startup);
         }
@@ -116,7 +160,8 @@ void MCAF_CommutationStep(MCAF_MOTOR_DATA *pmotor)
         const int16_t motorDirection = UTIL_SignFromHighBit(pmotor->velocityControl.velocityCmd);
         MCAF_StartupTransitioningStep(&pmotor->startup,
             &pmotor->idqCmdRaw, 
-            motorDirection
+            motorDirection,
+            &pmotor->estimator.zsmt
         );
 
         if (MCAF_StartupInOpenLoopCommutation(&pmotor->startup))
@@ -153,7 +198,10 @@ void MCAF_CommutationStep(MCAF_MOTOR_DATA *pmotor)
 
 void MCAF_CommutationInit(MCAF_MOTOR_DATA *pmotor)
 {
+    MCAF_EstimatorZsmtInit(&pmotor->estimator.zsmt, &pmotor->motorParameters);
     MCAF_EstimatorPllInit(&pmotor->estimator.pll, &pmotor->motorParameters);
+    MCAF_EstimatorZsmtHybridSetupOutputDependencies(&pmotor->estimator.zsmtHybrid, &pmotor->estimator.zsmt.output, &pmotor->estimator.pll.output);
+    MCAF_EstimatorZsmtHybridInit(&pmotor->estimator.zsmtHybrid, &pmotor->motorParameters);
 }
 
 void MCAF_CommutationStartupInit(MCAF_MOTOR_DATA *pmotor)
@@ -177,7 +225,9 @@ void MCAF_CommutationStartupInit(MCAF_MOTOR_DATA *pmotor)
     MCAF_StartupEnable(&pmotor->startup);
 
     /* Allow estimators to re-initialize on startup */
+    MCAF_EstimatorZsmtStartupInit(&pmotor->estimator.zsmt);
     MCAF_EstimatorPllStartupInit(&pmotor->estimator.pll);
+    MCAF_EstimatorZsmtHybridStartupInit(&pmotor->estimator.zsmtHybrid);
 }
 
 void MCAF_CommutationPrepareStallDetectInputs(MCAF_MOTOR_DATA *pmotor)

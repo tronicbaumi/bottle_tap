@@ -115,7 +115,7 @@ extern "C" {
  */
 inline static bool MCAF_IsDoubleUpdatePwmAllowed()
 {
-  return true;
+  return false;
 }
 
 #ifdef  __cplusplus

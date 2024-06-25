@@ -17,6 +17,11 @@
           <logicalFolder name="commutation" displayName="commutation" projectFiles="true">
             <itemPath>mcc_generated_files/motorBench/commutation/common.h</itemPath>
             <itemPath>mcc_generated_files/motorBench/commutation/pll.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmt_types.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmt_hybrid_interaction.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmt_hybrid.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmt.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmtlib.h</itemPath>
           </logicalFolder>
           <logicalFolder name="hal" displayName="hal" projectFiles="true">
             <itemPath>mcc_generated_files/motorBench/hal/hardware_access_functions.h</itemPath>
@@ -56,6 +61,8 @@
             <itemPath>mcc_generated_files/motorBench/parameters/commutation_params.h</itemPath>
             <itemPath>mcc_generated_files/motorBench/parameters/startup_params.h</itemPath>
             <itemPath>mcc_generated_files/motorBench/parameters/fault_detect_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/zsmt_hybrid_params.h</itemPath>
+            <itemPath>mcc_generated_files/motorBench/parameters/zsmt_params.h</itemPath>
           </logicalFolder>
           <itemPath>mcc_generated_files/motorBench/adc_compensation_types.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/test_harness_timestamps.h</itemPath>
@@ -111,6 +118,7 @@
           <itemPath>mcc_generated_files/motorBench/sat_PI.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/adc_compensation.h</itemPath>
           <itemPath>mcc_generated_files/motorBench/current_measure_types.h</itemPath>
+          <itemPath>mcc_generated_files/motorBench/startup_lib.h</itemPath>
         </logicalFolder>
         <logicalFolder name="opa" displayName="opa" projectFiles="true">
           <itemPath>mcc_generated_files/opa/opa1.h</itemPath>
@@ -184,6 +192,8 @@
           </logicalFolder>
           <logicalFolder name="commutation" displayName="commutation" projectFiles="true">
             <itemPath>mcc_generated_files/motorBench/commutation/pll.c</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmt_hybrid.c</itemPath>
+            <itemPath>mcc_generated_files/motorBench/commutation/zsmt.c</itemPath>
           </logicalFolder>
           <logicalFolder name="hal" displayName="hal" projectFiles="true">
             <itemPath>mcc_generated_files/motorBench/hal/hardware_access_functions.c</itemPath>
@@ -288,6 +298,7 @@
           <linkerLibItems>
             <linkerLibFileItem>mcc_generated_files/motorBench/library/mc-library/libmotor_control_dspic-elf.a</linkerLibFileItem>
             <linkerLibFileItem>mcc_generated_files/motorBench/library/x2cscope/libx2cscope-dspic-elf.a</linkerLibFileItem>
+            <linkerLibFileItem>mcc_generated_files/motorBench/library/libzsmt-elf.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
