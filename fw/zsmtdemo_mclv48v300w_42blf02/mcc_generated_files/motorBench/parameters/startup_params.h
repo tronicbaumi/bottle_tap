@@ -60,20 +60,20 @@ extern "C" {
  * Kspring:                      424.533 mNm/rad
  * omega_crit:                   695.565  rad/s
  *                                 6.642 kRPM
- * omega0:                        18.851  rad/s
- *                               180.014  RPM
- * omega_min:                     18.851  rad/s
- *                               180.014  RPM
- * omega1:                        18.851  rad/s
- *                               180.014  RPM
+ * omega0:                        19.080  rad/s
+ *                               182.200  RPM
+ * omega_min:                     19.080  rad/s
+ *                               182.200  RPM
+ * omega1:                        19.080  rad/s
+ *                               182.200  RPM
  * accel_limit_0:                877.052  rad/s^2
  *                                 8.375 kRPM/s
  * accel_limit_1:                  4.385 krad/s^2
  *                                41.876 kRPM/s
- * accel0:                       173.539  rad/s^2
- *                                 1.657 kRPM/s
- * accel1:                       173.539  rad/s^2
- *                                 1.657 kRPM/s
+ * accel0:                       175.647  rad/s^2
+ *                                 1.677 kRPM/s
+ * accel1:                       175.647  rad/s^2
+ *                                 1.677 kRPM/s
  * t1:                           108.626 ms
  * t2:                             0.000  s
  * B_desired:                      1.221 mNm/(rad/s)
@@ -81,8 +81,8 @@ extern "C" {
  * damping_gain_ideal:            29.198 mA/(rad/s)
  * damping_gain_max:             324.676 mA/(rad/s)
  * damping_gain:                  29.198 mA/(rad/s)
- * damping_threshold:              7.540  rad/s
- *                                72.005  RPM
+ * damping_threshold:              7.632  rad/s
+ *                                72.880  RPM
  * damping_Imax:                 340.000 mA
  * t_rampup:                      10.863 ms
  * dIdt_rampup:                  234.749  A/s
@@ -97,11 +97,11 @@ extern "C" {
  */
 
 /* first startup threshold velocity */
-#define STARTUP_ACCEL0_VELOCITY_THRESHOLD       1079      // Q15(  0.03293) = +179.98700 RPM         = +180.01360 RPM         - 0.0148%
+#define STARTUP_ACCEL0_VELOCITY_THRESHOLD       1092      // Q15(  0.03333) = +182.15552 RPM         = +182.20000 RPM         - 0.0244%
 /* second startup threshold velocity */
-#define STARTUP_ACCEL1_VELOCITY_THRESHOLD       1079      // Q15(  0.03293) = +179.98700 RPM         = +180.01360 RPM         - 0.0148%
+#define STARTUP_ACCEL1_VELOCITY_THRESHOLD       1092      // Q15(  0.03333) = +182.15552 RPM         = +182.20000 RPM         - 0.0244%
 /* threshold velocity for damping */
-#define STARTUP_DAMPING_THRESHOLD             432      // Q15(  0.01318) =  +72.06152 RPM         =  +72.00544 RPM         + 0.0779%
+#define STARTUP_DAMPING_THRESHOLD             437      // Q15(  0.01334) =  +72.89557 RPM         =  +72.88000 RPM         + 0.0214%
 #define Q15_THETADELTA (Q15(THETADELTA/180.0))
 
 /* open loop startup current ramp from initial startup current to startup current */
@@ -121,11 +121,11 @@ extern "C" {
 
 
 #define STARTUP_DELTA_T_FACTOR               2388
-#define STARTUP_DELTA_T_FACTOR_ACCELERATION          1
+#define STARTUP_DELTA_T_FACTOR_ACCELERATION          2
 /* first startup acceleration rate */
-#define STARTUP_ACCELERATION0               32554      // Q15(  0.99347) = +173.54126 rad/s^2     = +173.53944 rad/s^2     + 0.0010%
+#define STARTUP_ACCELERATION0               16475      // Q15(  0.50278) = +175.65228 rad/s^2     = +175.64720 rad/s^2     + 0.0029%
 /* second startup acceleration rate */
-#define STARTUP_ACCELERATION1               32554      // Q15(  0.99347) = +173.54126 rad/s^2     = +173.53944 rad/s^2     + 0.0010%
+#define STARTUP_ACCELERATION1               16475      // Q15(  0.50278) = +175.65228 rad/s^2     = +175.64720 rad/s^2     + 0.0029%
 
 /* increase in current per control cycle, during current rampup */
 #define STARTUP_TORQUE_RAMPUP_RATE              9      // Q15(  0.00027) =  +12.10913 mA          =  +11.73747 mA          + 3.1665%

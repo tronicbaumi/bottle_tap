@@ -73,9 +73,9 @@ extern "C" {
  * angleProbeCurrent:              2.550  A
  * angleProbeTime:                10.000 ms
  * angleProbeAccumGain:                1  
- * angleProbeSlewTime:           508.179 us
- * angleProbeSlewRate:             5.018 kA/s
- * angleProbeBlankingTime:         1.355 ms
+ * angleProbeSlewTime:           196.075 us
+ * angleProbeSlewRate:            13.005 kA/s
+ * angleProbeBlankingTime:       522.868 us
  * correctionGainDc:               0.000  rad/A
  * pllLockTime:                    5.000 ms
  * pllLockSpeedLimit:              5.724  rad/s
@@ -109,9 +109,9 @@ extern "C" {
 /* Angle probe accumulator gain */
 #define ZSMT_ANGLE_PROBE_ACCUM_GAIN           328      // Q16(  0.00500) =   +1.00098             =   +1.00000             + 0.0977%
 /* Angle probe blanking time */
-#define ZSMT_ANGLE_PROBE_BLANKING_TIME         27      // Q0( 27.00000)  =   +1.35000 ms          =   +1.35514 ms          - 0.3796%
+#define ZSMT_ANGLE_PROBE_BLANKING_TIME         10      // Q0( 10.00000)  = +500.00000 us          = +522.86797 us          - 4.3736%
 /* Angle probe slew rate */
-#define ZSMT_ANGLE_PROBE_SLEW_RATE            186      // Q15(  0.00568) =   +5.00511 kA/s        =   +5.01792 kA/s        - 0.2553%
+#define ZSMT_ANGLE_PROBE_SLEW_RATE            483      // Q15(  0.01474) =  +12.99713 kA/s        =  +13.00520 kA/s        - 0.0620%
 /* DC correction gain */
 #define ZSMT_CORRECTION_GAIN_DC                 0      // Q14(  0.00000) =   +0.00000 rad/A       =   +0.00000 rad/A       + 0.0000%
 /* Required PLL lock time */

@@ -1,7 +1,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: MC_FOC_ZSMT_FIP_dsPIC33CK_POWERTOOL                                                                         */
-/* Date:  2024-06-24 14:06                                                                                            */
+/* Date:  2024-06-25 17:03                                                                                            */
 
 /* X2C-Version: 6.4.3142                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -347,8 +347,8 @@ void X2C_Init(void)
     x2cModel.blocks.sFOC_main.bzConst1.K = 0;
 
     /* Block: Gain                                                                                                    */
-    /* Gain = 0.001                                                                                                   */
-    x2cModel.blocks.bGain.V = 33;
+    /* Gain = 0.01                                                                                                    */
+    x2cModel.blocks.bGain.V = 328;
     x2cModel.blocks.bGain.sfr = 15;
 
     /* Block: PI                                                                                                      */
@@ -365,6 +365,8 @@ void X2C_Init(void)
     /* Block: StartOverride                                                                                           */
     /* Toggle = 0.0                                                                                                   */
     x2cModel.blocks.bStartOverride.Toggle = 0;
+
+    /* Block: Sub                                                                                                     */
 
     /* Block: UseCurrCtr                                                                                              */
     /* Toggle = 1.0                                                                                                   */
@@ -668,7 +670,7 @@ void X2C_Init(void)
 
     /* Block PI                                                                                                       */
     x2cModel.blocks.bPI.In =
-        &x2cModel.blocks.bGain.Out;
+        &x2cModel.blocks.bSub.Out;
     x2cModel.blocks.bPI.Init =
         &x2cModel.blocks.bzConst3.Out;
     x2cModel.blocks.bPI.Enable =
@@ -679,6 +681,12 @@ void X2C_Init(void)
         &x2cModel.inports.bS2;
     x2cModel.blocks.bStartOverride.In2 =
         &x2cModel.blocks.bzConst2.Out;
+
+    /* Block Sub                                                                                                      */
+    x2cModel.blocks.bSub.Plus =
+        &x2cModel.blocks.bGain.Out;
+    x2cModel.blocks.bSub.Minus =
+        &x2cModel.blocks.bDelay1.Out;
 
     /* Block UseCurrCtr                                                                                               */
     x2cModel.blocks.bUseCurrCtr.In1 =
@@ -782,6 +790,7 @@ void X2C_Init(void)
     Gain_FiP16_Init(&x2cModel.blocks.bGain);
     PI_FiP16_Init(&x2cModel.blocks.bPI);
     ManualSwitch_Bool_Init(&x2cModel.blocks.bStartOverride);
+    Sub_FiP16_Init(&x2cModel.blocks.bSub);
     ManualSwitch_FiP16_Init(&x2cModel.blocks.bUseCurrCtr);
     uSub_FiP16_Init(&x2cModel.blocks.bangleError);
     PT1_FiP32_Init(&x2cModel.blocks.sangleErrorLpf.bLPF);
@@ -834,12 +843,12 @@ void X2C_Update_1(void)
     Delay_FiP16_Update(&x2cModel.blocks.bDelay1);
     uSub_FiP16_Update(&x2cModel.blocks.bangleError);
     TypeConv_FiP16_32_Update(&x2cModel.blocks.sangleErrorLpf.bTypeConv);
-    ForwardPath_HFI_FiP16_Update(&x2cModel.blocks.sFOC_main.bForwardPath_HFI);
     PT1_FiP32_Update(&x2cModel.blocks.sangleErrorLpf.bLPF);
+    TypeConv_FiP32_16_Update(&x2cModel.blocks.sangleErrorLpf.bTypeConv1);
+    ForwardPath_HFI_FiP16_Update(&x2cModel.blocks.sFOC_main.bForwardPath_HFI);
     AutoSwitch_FiP16_Update(&x2cModel.blocks.sFOC_main.bAutoSwitch);
     AutoSwitch_FiP16_Update(&x2cModel.blocks.sFOC_main.bAutoSwitch1);
     AutoSwitch_FiP16_Update(&x2cModel.blocks.sFOC_main.bAutoSwitch2);
-    TypeConv_FiP32_16_Update(&x2cModel.blocks.sangleErrorLpf.bTypeConv1);
     Scope_Main_Update(&x2cScope);
 }
 
@@ -854,16 +863,17 @@ void X2C_Update_4(void)
     Delay_Bool_Update(&x2cModel.blocks.bDelay);
     Negation_FiP16_Update(&x2cModel.blocks.sFOC_main.sVoltageSaturation.b_Vsat);
     Negation_FiP16_Update(&x2cModel.blocks.sFOC_main.sVoltageSaturation.b_Vsat1);
-    PI_FiP16_Update(&x2cModel.blocks.bPI);
-    ManualSwitch_FiP16_Update(&x2cModel.blocks.bUseCurrCtr);
-    ManualSwitch_FiP16_Update(&x2cModel.blocks.sFOC_main.bOverrideIq);
     ManualSwitch_Bool_Update(&x2cModel.blocks.sFOC_main.sHFI.bEnableHF);
     Delay_Bool_Update(&x2cModel.blocks.sFOC_main.sHFI.bDelay);
     ManualSwitch_Bool_Update(&x2cModel.blocks.sFOC_main.bDisableFOC);
     TypeConv_Bool_FiP16_Update(&x2cModel.blocks.sFOC_main.bTypeConv);
     Sub_FiP16_Update(&x2cModel.blocks.sFOC_main.bFluxError);
-    Sub_FiP16_Update(&x2cModel.blocks.sFOC_main.bTorqueError);
     PILimit_FiP16_Update(&x2cModel.blocks.sFOC_main.bPI_Flux);
+    Sub_FiP16_Update(&x2cModel.blocks.bSub);
+    PI_FiP16_Update(&x2cModel.blocks.bPI);
+    ManualSwitch_FiP16_Update(&x2cModel.blocks.bUseCurrCtr);
+    ManualSwitch_FiP16_Update(&x2cModel.blocks.sFOC_main.bOverrideIq);
+    Sub_FiP16_Update(&x2cModel.blocks.sFOC_main.bTorqueError);
     PILimit_FiP16_Update(&x2cModel.blocks.sFOC_main.bPI_Torque);
 }
 

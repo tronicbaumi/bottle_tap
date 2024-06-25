@@ -56,24 +56,24 @@ extern "C" {
 
 //************** PI Coefficients **************
 //// Current loop
-// phase margin = 95 deg
-// PI phase at crossover = 30.000 deg
-// crossover frequency = 2.952 k rad/s (469.780 Hz)
+// phase margin = 60 deg
+// PI phase at crossover = 25.000 deg
+// crossover frequency = 7.650 k rad/s (1.218 kHz)
 /* Current loop proportional gain */
-#define KIP                                 11559      // Q15(  0.35275) = +607.28381 mV/A        = +607.25961 mV/A        + 0.0040%
-#define KIP_Q                                  15
+#define KIP                                 14110      // Q14(  0.86121) =   +1.48262 V/A         =   +1.48262 V/A         - 0.0003%
+#define KIP_Q                                  14
 /* Current loop integral gain */
-#define KII                                   985      // Q15(  0.03006) =   +1.03499 kV/A/s      =   +1.03488 kV/A/s      + 0.0114%
+#define KII                                  5033      // Q15(  0.15359) =   +5.28845 kV/A/s      =   +5.28896 kV/A/s      - 0.0096%
 #define KII_Q                                  15
 //// Velocity loop
-// phase margin = 2 deg
-// PI phase at crossover = 1.000 deg
-// crossover frequency = 176.080 rad/s (28.024 Hz)
+// phase margin = 45 deg
+// PI phase at crossover = 2.000 deg
+// crossover frequency = 59.120 rad/s (9.409 Hz)
 /* Velocity loop proportional gain */
-#define KWP                                 21977      // Q15(  0.67068) =  +51.65836 mA/(rad/s)  =  +51.65873 mA/(rad/s)  - 0.0007%
+#define KWP                                 5500 //32500      // Q15(  0.08743) =   +6.73437 mA/(rad/s)  =   +6.73526 mA/(rad/s)  - 0.0132%
 #define KWP_Q                                  15
 /* Velocity loop integral gain */
-#define KWI                                    68      // Q15(  0.00208) = +159.83840 mA/rad      = +158.77245 mA/rad      + 0.6714%
+#define KWI                                  200//2000      // Q15(  0.00018) =  +14.10339 mA/rad      =  +13.90516 mA/rad      + 1.4256%
 #define KWI_Q                                  15
 
 //// Voltage loop (if applicable)

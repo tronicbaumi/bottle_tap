@@ -77,17 +77,17 @@ scdata:
         value: 12.0
 autotune_result:
   current:
-    Kp: 0.6072596064756008
-    phase_margin: 95.0
-    wc: 2951.7156838706696
-    Ki: 1034.8759382705823
-    pi_phase_lag: 30.0
+    Kp: 1.4826191835341103
+    phase_margin: 60.0
+    wc: 7650.1148601983705
+    Ki: 5288.958006847764
+    pi_phase_lag: 25.0
   velocity:
-    Kp: 0.051658730106178295
-    phase_margin: 2.0
-    wc: 176.07997369569952
-    Ki: 0.15877245470811008
-    pi_phase_lag: 1.0
+    Kp: 0.006735259216398416
+    phase_margin: 45.0
+    wc: 59.12044856099907
+    Ki: 0.013905155193107567
+    pi_phase_lag: 2.0
 drive:
   metadata:
     name: MCLV-48V-300W Development Board
@@ -395,11 +395,11 @@ config:
       estimator-active-pll: true
       estimator-active-qei: false
       estimator-active-atpll: false
-      estimator-active-zsmt: false
+      estimator-active-zsmt: true
       estimator-active-ideal: false
-      operation-min_velocity_ratio: 0.0494
-      operation-startup_velocity_ratio: 0.0494
-      operation-max_velocity_ratio: 0.1
+      operation-min_velocity_ratio: 0.05
+      operation-startup_velocity_ratio: 0.05
+      operation-max_velocity_ratio: 1.25
       operation-fullscale_base_ratio: 1.5
       operation-outer_loop_type: velocity
       operation-saliency-threshold: 1.25
