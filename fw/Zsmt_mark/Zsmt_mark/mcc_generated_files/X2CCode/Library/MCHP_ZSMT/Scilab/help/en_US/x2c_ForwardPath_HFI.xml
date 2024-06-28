@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:lang="en"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns3="http://www.w3.org/1999/xhtml"
+    xmlns:mml="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+
+    <refnamediv xml:id="x2c_ForwardPath_HFI">
+        <refname>x2c_ForwardPath_HFI</refname>
+        <refpurpose>MHCP inverse Clarke Park SVM Merged Transform for ZSMT</refpurpose>
+    </refnamediv>
+
+    <refsection>
+        <para>
+            Block image not available.
+        </para>
+    </refsection>
+
+    <refsection>
+        <title>Description</title>
+        <para>Merged Inverse Park, Inverse Clark and Space Vector Modulation
+Park_inv:
+alpha = d*cos(theta) - q*sin(theta) 
+beta = d*sin(theta) + q*cos(theta)
+Clark_inv:
+a = beta
+b = (-beta + 1.732*alpha)/2
+c = (-beta - 1.732*alpha)/2
+SVM:
+Optimize output for PWM
+Description:
+Transform from the two-axis rotating d-q frame 
+to the two-axis stationary frame α-β.
+Transform from the stationary two-axis α-β frame 
+to the stationary three-axis, 3-phase reference frame.
+Optimize output for PWM</para>
+    </refsection>
+
+    <refsection>
+        <title>Inports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">Ud:</emphasis> d voltage axis in rotating system</member>
+            <member><emphasis role="bold">Uq:</emphasis> q voltage axis in rotating system</member>
+            <member><emphasis role="bold">UdHF:</emphasis> HF injection to the d axis</member>
+            <member><emphasis role="bold">theta:</emphasis> Rotor position</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Outports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">Va:</emphasis> Phase A out</member>
+            <member><emphasis role="bold">Vb:</emphasis> Phase B out</member>
+            <member><emphasis role="bold">Vc:</emphasis> Phase C out</member>
+            <member><emphasis role="bold">Valpha:</emphasis> Inverse Park Voltage output</member>
+            <member><emphasis role="bold">Vbeta:</emphasis> Inverse Park Voltage output</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Mask Parameters</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">HF_InjectionPolarity:</emphasis> Adding to Ud --&gt; Non inverting
+  
+Subtract from Ud --&gt; Inverting</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Implementations</title>
+
+        <simplelist type="vert">
+            <member><emphasis role="bold">FiP16:</emphasis> 16 Bit Fixed Point</member>
+            <member><emphasis role="bold">FiP32:</emphasis> 32 Bit Fixed Point</member>
+            <member><emphasis role="bold">Float32:</emphasis> 32 Bit Floating Point</member>
+        </simplelist>
+    </refsection>
+
+</refentry>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:lang="en"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns3="http://www.w3.org/1999/xhtml"
+    xmlns:mml="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+
+    <refnamediv xml:id="x2c_HFInjectionSquare">
+        <refname>x2c_HFInjectionSquare</refname>
+        <refpurpose>X2C High Frequency Injection Square Block</refpurpose>
+    </refnamediv>
+
+    <refsection>
+        <para>
+            Block image not available.
+        </para>
+    </refsection>
+
+    <refsection>
+        <title>Description</title>
+        <para>High frequency square wave voltage injection:
+ - Voltage Injection: injects a square-wave voltage signal with fPWM/2 and adjustable amplitude
+ - Estimator: Calculates rotor angle and speed based on current response due to voltage injection
+BE AWARE:
+This block needs to be in synchronization with the current controller!</para>
+    </refsection>
+
+    <refsection>
+        <title>Inports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">iAlpha:</emphasis> Direct current in fixed coordinate system</member>
+            <member><emphasis role="bold">iBeta:</emphasis> Quadrature current in fixed coordinate system</member>
+            <member><emphasis role="bold">n0:</emphasis> Initial speed preloaded at rising edge of Enable signal</member>
+            <member><emphasis role="bold">phi0:</emphasis> Initial rotor angle preloaded at rising edge of Enable signal</member>
+            <member><emphasis role="bold">Enable:</emphasis> Enable == 0: Deactivation of this block; Outputs are set to zero
+Enable 0-&gt;1: Preload of angle and speed for internal integrators
+Enable == 1: Activation of this block</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Outports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">ud:</emphasis> Once the HFI is activated, on Ud the square-wave voltage signal is present that is supposed to be injected.</member>
+            <member><emphasis role="bold">i_eps:</emphasis> Error current in q-direction due to HF-injection.
+(Only needed for parametrization of block.)</member>
+            <member><emphasis role="bold">n:</emphasis> Angular speed</member>
+            <member><emphasis role="bold">phi:</emphasis> Estimated electrical rotor angle</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Mask Parameters</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">U_inj:</emphasis> Amplitude of injected square wave voltage</member>
+            <member><emphasis role="bold">Jp:</emphasis> Moment of inertia of rotor (and load)</member>
+            <member><emphasis role="bold">I_inj:</emphasis> Error current due to HF voltage injection into wrong direction</member>
+            <member><emphasis role="bold">fo:</emphasis> Frequency of observer pole. The higher the pole is chosen, the more dynamic is the angle estimation.</member>
+            <member><emphasis role="bold">p:</emphasis> Number of pole pairs</member>
+            <member><emphasis role="bold">n_max:</emphasis> Maximum (mechanical) speed
+(Only used for scaling in fixed point implementations)</member>
+            <member><emphasis role="bold">I_max:</emphasis> Maximum current
+(Only used for scaling in fixed point implementations)</member>
+            <member><emphasis role="bold">U_max:</emphasis> Maximum voltage
+(Only used for scaling in fixed point implementations)</member>
+            <member><emphasis role="bold">ts_fact:</emphasis> Multiplication factor of base sampling time (in integer format).</member>
+            <member><emphasis role="bold">estimation:</emphasis> Select where to place the emphasis of the speed output: dynamic or noise</member>
+            <member><emphasis role="bold">method:</emphasis> Discretization method of of used LTI systems (PI, I)</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Implementations</title>
+
+        <simplelist type="vert">
+            <member><emphasis role="bold">FiP16:</emphasis> 16 Bit Fixed Point</member>
+            <member><emphasis role="bold">FiP32:</emphasis> 32 Bit Fixed Point</member>
+            <member><emphasis role="bold">Float32:</emphasis> 32 Bit Floating Point</member>
+            <member><emphasis role="bold">Float64:</emphasis> 64 Bit Floating Point</member>
+        </simplelist>
+    </refsection>
+
+</refentry>

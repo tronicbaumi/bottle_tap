@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head>
+<title></title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html,png --> 
+<meta name="src" content="TrackingLoop_.tex"> 
+<meta name="date" content="2021-12-14 15:08:00"> 
+<link rel="stylesheet" type="text/css" href="TrackingLoop_.css"> 
+</head><body 
+>
+<a 
+ id="x1-2r1"></a>
+<h3 class="likesectionHead"><a 
+ id="x1-10001"></a>Block: TrackingLoop</h3>
+<!--l. 1--><p class="noindent" ><HR> <a 
+ id="Q1-1-2"></a>  <hr class="figure"><div class="figure" 
+>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+<!--l. 3--><p class="noindent" ><img 
+src="TrackingLoop.png" alt="PIC"  
+style="width:_eval:n{round(\Gin@req@width /\textwidth *100,2)}%">
+                                                                                
+                                                                                
+<!--l. 3--><p class="noindent" ></div><hr class="endfigure">
+                                                                                
+                                                                                
+<div class="tabular"> <table id="TBL-1" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1"></colgroup><colgroup id="TBL-1-2g"><col 
+id="TBL-1-2"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td colspan="2" style="white-space:nowrap; text-align:left;" id="TBL-1-1-1"  
+class="td11">  <div class="multicolumn"  style="white-space:nowrap; text-align:left;"><span 
+class="ecsx-1200">Inports</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-2-1"  
+class="td11">  <!--l. 6--><p class="noindent" >phi_eps                         </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-2-2"  
+class="td11">  <!--l. 6--><p class="noindent" >rotor
+   angle
+   estimation
+   error                                                                        </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-3-1"  
+class="td11">  <!--l. 8--><p class="noindent" >n0                                </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-3-2"  
+class="td11">  <!--l. 8--><p class="noindent" >Initial
+   speed
+   preloaded
+   at
+   rising
+   edge
+   of
+   Enable
+   signal                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-4-1"  
+class="td11">  <!--l. 10--><p class="noindent" >phi0                              </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-4-2"  
+class="td11">  <!--l. 10--><p class="noindent" >Initial
+   rotor
+   angle
+   preloaded
+   at
+   rising
+   edge
+   of
+   Enable
+   signal                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-5-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-5-1"  
+class="td11">  <!--l. 12--><p class="noindent" >Enable                           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-5-2"  
+class="td11">  <!--l. 12--><p class="noindent" >Enable
+   ==
+   0:
+   Deactivation
+   of
+   this
+   block;
+   Outputs
+   are
+   set
+   to
+   zero
+   <!--l. 14--><p class="noindent" >Enable
+   0-&#x003E;1:
+   Preload
+   of
+   angle
+   and
+   speed
+   for
+   internal
+   integrators
+   <!--l. 16--><p class="noindent" >Enable
+   ==
+   1:
+   Activation
+   of
+   this
+   block                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-6-1"  
+class="td11">                        </td></tr></table>                                                 
+                                                                                
+</div><br 
+class="newline" />
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"></colgroup><colgroup id="TBL-2-2g"><col 
+id="TBL-2-2"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td colspan="2" style="white-space:nowrap; text-align:left;" id="TBL-2-1-1"  
+class="td11">  <div class="multicolumn"  style="white-space:nowrap; text-align:left;"><span 
+class="ecsx-1200">Outports</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-2-1"  
+class="td11">  <!--l. 22--><p class="noindent" >n                                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-2-2"  
+class="td11">  <!--l. 22--><p class="noindent" >Angular
+   speed                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-1"  
+class="td11">  <!--l. 24--><p class="noindent" >phi                               </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-2"  
+class="td11">  <!--l. 24--><p class="noindent" >Estimated
+   electrical
+   rotor
+   angle                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-1"  
+class="td11">                        </td></tr></table></div><br 
+class="newline" />
+                                                                                
+                                                                                
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1"></colgroup><colgroup id="TBL-3-2g"><col 
+id="TBL-3-2"></colgroup><colgroup id="TBL-3-3g"><col 
+id="TBL-3-3"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td colspan="3" style="white-space:wrap; text-align:left;" id="TBL-3-1-1"  
+class="td11">  <div class="multicolumn"  style="white-space:nowrap; text-align:left;"><span 
+class="ecsx-1200">Mask Parameters</span></div></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-2-1"  
+class="td11"> <!--l. 29--><p class="noindent" ><span 
+class="ecsx-1200">Name</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-2-2"  
+class="td11">  <!--l. 29--><p class="noindent" ><span 
+class="ecsx-1200">ID</span>         </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-2-3"  
+class="td11">  <!--l. 29--><p class="noindent" ><span 
+class="ecsx-1200">Description</span>                                            </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-1"  
+class="td11">  <!--l. 30--><p class="noindent" >Jp                                </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-2"  
+class="td11">  <!--l. 30--><p class="noindent" >1            </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-3"  
+class="td11">  <!--l. 30--><p class="noindent" >Moment
+   of
+   inertia
+   of
+   rotor
+   (and
+   load)                                                             </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-1"  
+class="td11">  <!--l. 32--><p class="noindent" >fo                                 </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-2"  
+class="td11">  <!--l. 32--><p class="noindent" >2            </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-3"  
+class="td11">  <!--l. 32--><p class="noindent" >Frequency
+   of
+   observer
+   pole.
+   The
+   higher
+   the
+   pole
+   is
+   chosen,
+   the
+   more
+   dynamic
+   is
+   the
+   angle
+   estimation                                                      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-5-1"  
+class="td11">  <!--l. 34--><p class="noindent" >p                                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-5-2"  
+class="td11">  <!--l. 34--><p class="noindent" >3            </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-5-3"  
+class="td11">  <!--l. 34--><p class="noindent" >Number
+   of
+   pole
+   pairs                                                             </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-1"  
+class="td11">  <!--l. 36--><p class="noindent" >estimation                      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-2"  
+class="td11">  <!--l. 36--><p class="noindent" >4            </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-3"  
+class="td11">  <!--l. 36--><p class="noindent" >Select
+   where
+   to
+   place
+   the
+   emphasis
+   of
+   the
+   speed
+   output:
+   dynamic
+   or
+   noise                                                             </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-1"  
+class="td11">  <!--l. 38--><p class="noindent" >method                          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-2"  
+class="td11">  <!--l. 38--><p class="noindent" >5            </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-3"  
+class="td11">  <!--l. 38--><p class="noindent" >Discretization
+   method
+   of
+   of
+   used
+   LTI
+   systems
+   (PI,
+   I)                                                                 </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-1"  
+class="td11">  <!--l. 40--><p class="noindent" >n_max                          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-2"  
+class="td11">  <!--l. 40--><p class="noindent" >6            </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-3"  
+class="td11">  <!--l. 40--><p class="noindent" >Maximum
+   (mechanical)
+   speed
+   <!--l. 42--><p class="noindent" >(Only
+   used
+   for
+   scaling
+   in
+   fixed
+   point
+   implementations)                                              </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-9-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-1"  
+class="td11">  <!--l. 44--><p class="noindent" >ts_fact                          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-2"  
+class="td11">  <!--l. 44--><p class="noindent" >7            </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-3"  
+class="td11">  <!--l. 44--><p class="noindent" >Multiplication
+   factor
+   of
+   base
+   sampling
+   time
+   (in
+   integer
+   format)                                                          </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-10-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-1"  
+class="td11">                        </td></tr></table>                                                 
+                                                                                
+</div><br 
+class="newline" />
+<h5 class="likesubsubsectionHead"><a 
+ id="x1-20001"></a>Description:</h5>
+<!--l. 49--><p class="noindent" >Calculates rotor angle and speed based on angle-error response due to voltage
+injection
+<!--l. 53--><p class="noindent" >BE AWARE:
+<!--l. 55--><p class="noindent" >For using this block with HFInjSquare-Block, set the sample time factor to 4 times the
+sample time factor of HFInjSquare-Block.
+<!--l. 57--><p class="noindent" >
+<h5 class="likesubsubsectionHead"><a 
+ id="x1-30001"></a>Implementations:</h5>
+<div class="tabular"> <table id="TBL-4" class="tabular" 
+cellspacing="0" cellpadding="0"  
+><colgroup id="TBL-4-1g"><col 
+id="TBL-4-1"><col 
+id="TBL-4-2"></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-4-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-4-1-1"  
+class="td11">  <span 
+class="ecsx-1200">FiP16    </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-4-1-2"  
+class="td11">  16 Bit Fixed Point Implementation       </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-4-2-1"  
+class="td11">  <span 
+class="ecsx-1200">FiP32     </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-4-2-2"  
+class="td11">  32 Bit Fixed Point Implementation       </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-4-3-1"  
+class="td11">  <span 
+class="ecsx-1200">Float32   </span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-4-3-2"  
+class="td11">  32 Bit Floating Point Implementation   </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-4-4-1"  
+class="td11">           </td></tr></table></div>
+<!--l. 64--><p class="noindent" >
+<h4 class="likesubsectionHead"><a 
+ id="x1-40001"></a>Implementation: FiP16</h4>
+<!--l. 64--><p class="noindent" ><HR>
+<!--l. 67--><p class="noindent" >16 Bit Fixed Point Implementation
+<div class="tabular"> <table id="TBL-5" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-5-1g"><col 
+id="TBL-5-1"></colgroup><colgroup id="TBL-5-2g"><col 
+id="TBL-5-2"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-1-"><td colspan="2" style="white-space:nowrap; text-align:left;" id="TBL-5-1-1"  
+class="td11">  <div class="multicolumn"  style="white-space:nowrap; text-align:left;"><span 
+class="ecsx-1200">Inports Data Type</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-2-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-2-1"  
+class="td11">  <!--l. 70--><p class="noindent" >phi_eps                         </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-2-2"  
+class="td11">  <!--l. 70--><p class="noindent" >int16                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-3-1"  
+class="td11">  <!--l. 72--><p class="noindent" >n0                                </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-3-2"  
+class="td11">  <!--l. 72--><p class="noindent" >int16                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-4-1"  
+class="td11">  <!--l. 74--><p class="noindent" >phi0                              </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-4-2"  
+class="td11">  <!--l. 74--><p class="noindent" >int16                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-5-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-5-1"  
+class="td11">  <!--l. 76--><p class="noindent" >Enable                           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-5-2"  
+class="td11">  <!--l. 76--><p class="noindent" >bool                                                                        </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-6-1"  
+class="td11">                        </td></tr></table></div><br 
+class="newline" />
+<div class="tabular"> <table id="TBL-6" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-6-1g"><col 
+id="TBL-6-1"></colgroup><colgroup id="TBL-6-2g"><col 
+id="TBL-6-2"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-6-1-"><td colspan="2" style="white-space:nowrap; text-align:left;" id="TBL-6-1-1"  
+class="td11">  <div class="multicolumn"  style="white-space:nowrap; text-align:left;"><span 
+class="ecsx-1200">Outports Data Type</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-6-2-"><td  style="white-space:wrap; text-align:left;" id="TBL-6-2-1"  
+class="td11">  <!--l. 81--><p class="noindent" >n                                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-6-2-2"  
+class="td11">  <!--l. 81--><p class="noindent" >int16                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-6-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-6-3-1"  
+class="td11">  <!--l. 83--><p class="noindent" >phi                               </td><td  style="white-space:wrap; text-align:left;" id="TBL-6-3-2"  
+class="td11">  <!--l. 83--><p class="noindent" >int16                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-6-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-6-4-1"  
+class="td11">                        </td></tr></table></div><br 
+class="newline" />
+<!--l. 90--><p class="noindent" >
+<h4 class="likesubsectionHead"><a 
+ id="x1-50001"></a>Implementation: FiP32</h4>
+<!--l. 90--><p class="noindent" ><HR>
+<!--l. 93--><p class="noindent" >32 Bit Fixed Point Implementation
+                                                                                
+                                                                                
+<div class="tabular"> <table id="TBL-7" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-7-1g"><col 
+id="TBL-7-1"></colgroup><colgroup id="TBL-7-2g"><col 
+id="TBL-7-2"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-1-"><td colspan="2" style="white-space:nowrap; text-align:left;" id="TBL-7-1-1"  
+class="td11">  <div class="multicolumn"  style="white-space:nowrap; text-align:left;"><span 
+class="ecsx-1200">Inports Data Type</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-2-"><td  style="white-space:wrap; text-align:left;" id="TBL-7-2-1"  
+class="td11">  <!--l. 96--><p class="noindent" >phi_eps                         </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-2-2"  
+class="td11">  <!--l. 96--><p class="noindent" >int32                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-7-3-1"  
+class="td11">  <!--l. 98--><p class="noindent" >n0                                </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-3-2"  
+class="td11">  <!--l. 98--><p class="noindent" >int32                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-7-4-1"  
+class="td11">  <!--l. 100--><p class="noindent" >phi0                              </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-4-2"  
+class="td11">  <!--l. 100--><p class="noindent" >int32                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-5-"><td  style="white-space:wrap; text-align:left;" id="TBL-7-5-1"  
+class="td11">  <!--l. 102--><p class="noindent" >Enable                           </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-5-2"  
+class="td11">  <!--l. 102--><p class="noindent" >bool                                                                        </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-7-6-1"  
+class="td11">                        </td></tr></table></div><br 
+class="newline" />
+<div class="tabular"> <table id="TBL-8" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-8-1g"><col 
+id="TBL-8-1"></colgroup><colgroup id="TBL-8-2g"><col 
+id="TBL-8-2"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-8-1-"><td colspan="2" style="white-space:nowrap; text-align:left;" id="TBL-8-1-1"  
+class="td11">  <div class="multicolumn"  style="white-space:nowrap; text-align:left;"><span 
+class="ecsx-1200">Outports Data Type</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-8-2-"><td  style="white-space:wrap; text-align:left;" id="TBL-8-2-1"  
+class="td11">  <!--l. 107--><p class="noindent" >n                                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-8-2-2"  
+class="td11">  <!--l. 107--><p class="noindent" >int32                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-8-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-8-3-1"  
+class="td11">  <!--l. 109--><p class="noindent" >phi                               </td><td  style="white-space:wrap; text-align:left;" id="TBL-8-3-2"  
+class="td11">  <!--l. 109--><p class="noindent" >int32                                                                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-8-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-8-4-1"  
+class="td11">                        </td></tr></table></div><br 
+class="newline" />
+<!--l. 116--><p class="noindent" >
+<h4 class="likesubsectionHead"><a 
+ id="x1-60001"></a>Implementation: Float32</h4>
+<!--l. 116--><p class="noindent" ><HR>
+<!--l. 119--><p class="noindent" >32 Bit Floating Point Implementation
+<div class="tabular"> <table id="TBL-9" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-9-1g"><col 
+id="TBL-9-1"></colgroup><colgroup id="TBL-9-2g"><col 
+id="TBL-9-2"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-9-1-"><td colspan="2" style="white-space:nowrap; text-align:left;" id="TBL-9-1-1"  
+class="td11">  <div class="multicolumn"  style="white-space:nowrap; text-align:left;"><span 
+class="ecsx-1200">Inports Data Type</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-9-2-"><td  style="white-space:wrap; text-align:left;" id="TBL-9-2-1"  
+class="td11">  <!--l. 122--><p class="noindent" >phi_eps                         </td><td  style="white-space:wrap; text-align:left;" id="TBL-9-2-2"  
+class="td11">  <!--l. 122--><p class="noindent" >float32                                                                     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-9-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-9-3-1"  
+class="td11">  <!--l. 124--><p class="noindent" >n0                                </td><td  style="white-space:wrap; text-align:left;" id="TBL-9-3-2"  
+class="td11">  <!--l. 124--><p class="noindent" >float32                                                                     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-9-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-9-4-1"  
+class="td11">  <!--l. 126--><p class="noindent" >phi0                              </td><td  style="white-space:wrap; text-align:left;" id="TBL-9-4-2"  
+class="td11">  <!--l. 126--><p class="noindent" >float32                                                                     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-9-5-"><td  style="white-space:wrap; text-align:left;" id="TBL-9-5-1"  
+class="td11">  <!--l. 128--><p class="noindent" >Enable                           </td><td  style="white-space:wrap; text-align:left;" id="TBL-9-5-2"  
+class="td11">  <!--l. 128--><p class="noindent" >bool                                                                        </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-9-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-9-6-1"  
+class="td11">                        </td></tr></table></div><br 
+class="newline" />
+<div class="tabular"> <table id="TBL-10" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-10-1g"><col 
+id="TBL-10-1"></colgroup><colgroup id="TBL-10-2g"><col 
+id="TBL-10-2"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-1-"><td colspan="2" style="white-space:nowrap; text-align:left;" id="TBL-10-1-1"  
+class="td11">  <div class="multicolumn"  style="white-space:nowrap; text-align:left;"><span 
+class="ecsx-1200">Outports Data Type</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-2-"><td  style="white-space:wrap; text-align:left;" id="TBL-10-2-1"  
+class="td11">  <!--l. 133--><p class="noindent" >n                                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-2-2"  
+class="td11">  <!--l. 133--><p class="noindent" >float32                                                                     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-10-3-1"  
+class="td11">  <!--l. 135--><p class="noindent" >phi                               </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-3-2"  
+class="td11">  <!--l. 135--><p class="noindent" >float32                                                                     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-10-4-1"  
+class="td11">                        </td></tr></table></div><br 
+class="newline" />
+                                                                                
+                                                                                
+ 
+</body></html> 
+
+                                                                                
+
+

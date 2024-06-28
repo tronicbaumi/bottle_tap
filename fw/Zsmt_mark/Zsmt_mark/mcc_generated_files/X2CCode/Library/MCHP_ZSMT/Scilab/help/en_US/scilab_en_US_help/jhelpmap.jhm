@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN" "http://java.sun.com/products/javahelp/map_1_0.dtd">
+<map version="1.0">
+<mapID target="index" url="index.html"/>
+<mapID target="section_28ce4c50cfb7e47655b49d500797fc5a" url="section_28ce4c50cfb7e47655b49d500797fc5a.html"/>
+<mapID target="x2c_EstimatorSwitch" url="x2c_EstimatorSwitch.html"/>
+<mapID target="x2c_ForwardPath_HFI" url="x2c_ForwardPath_HFI.html"/>
+<mapID target="x2c_HFInjectionSquare" url="x2c_HFInjectionSquare.html"/>
+<mapID target="x2c_InitPosDetect" url="x2c_InitPosDetect.html"/>
+<mapID target="x2c_SquareInj_Slow_Modell" url="x2c_SquareInj_Slow_Modell.html"/>
+<mapID target="x2c_SquareInjection_Fast" url="x2c_SquareInjection_Fast.html"/>
+<mapID target="x2c_TrackingLoop" url="x2c_TrackingLoop.html"/>
+</map>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+$LastChangedRevision: 2061 $
+$LastChangedDate:: 2020-09-25 10:33:12 +0200#$
+
+This file is part of X2C. http://x2c.lcm.at/
+
+===== CONFIDENTIAL =====
+The content of this file is confidential according to the X2C Licence Terms and Conditions.
+  
+Copyright (c) 2017, Linz Center of Mechatronics GmbH (LCM) http://www.lcm.at/
+All rights reserved.
+-->
+<project name="Library MCHP_ZSMT" default="main" basedir=".">
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+	<property environment="env" />
+	<property name="src.dir" location="src" />
+	<property name="x2c.root.dir" location="../../../.." />
+	
+	
+	<!-- Create a classpath container which can be later used in the ant task -->
+	<path id="build.classpath">
+        <fileset dir="${x2c.root.dir}/System/Java/">
+            <include name="**/*.jar" />
+        </fileset>
+	</path>
+		
+
+	<!-- Deletes the existing build, docs and dist directory -->
+	<target name="clean">
+		<delete dir="${ant.dir}" />
+	</target>
+
+	<!-- Creates the build, docs and dist directory -->
+	<target name="makedir" depends="">
+		<mkdir dir="${ant.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+
+	<!-- Compiles the java code -->
+	<target name="compile" depends="makedir">
+		<property name="myclasspath" refid="build.classpath"/>
+		<echo message="Classpath = ${myclasspath}"/>
+		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="build.classpath" />
+	</target>
+
+	
+	<!--Creates the deployable jar file -->	
+	<target name="jar" depends="MCHP_ZSMT.jar">
+	</target>
+	
+	<property name="MCHP_ZSMT.jar" location="${dist.dir}/MCHP_ZSMT.jar" />
+	<path      id="pMCHP_ZSMT.jar" location="${dist.dir}/MCHP_ZSMT.jar" />
+	<target name="MCHP_ZSMT.jar" depends="compile">
+		<delete file="${MCHP_ZSMT.jar}"/>
+		<jar destfile="${MCHP_ZSMT.jar}" 
+			basedir="${build.dir}"> 
+			<manifest>
+				<attribute name="Main-Class" value="" />
+	            <attribute name="Implementation-Vendor" value="Linz Center of Mechatronics GmbH -- http://www.lcm.at/"/>
+	            <attribute name="Implementation-Title" value="X2C -- Component Library MCHP_ZSMT"/>
+	            <attribute name="Implementation-Version" value="${BUILD_TAG} r${SVN_REVISION} -- ${BUILD_ID}"/>				
+				<attribute name="Build" value="${BUILD_TAG} r${SVN_REVISION} -- ${BUILD_ID}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="distribute" depends="jar">
+		<delete file="MCHP_ZSMT.jar"/>
+		<copy file="${MCHP_ZSMT.jar}" todir="${basedir}" verbose="true" />
+	</target>
+	
+	<target name="build_conversion" depends="clean, jar, distribute">
+		<description>Build Conversion</description>
+	</target>
+	
+	<target name="print-version"> 
+   		<echo>Java/JVM version: ${ant.java.version}</echo> 
+   		<echo>Java/JVM detail version: ${java.version}</echo> 
+	</target>
+	
+	<target name="clean_deep" depends="clean">
+	</target>
+	
+	
+	<target name="main" depends="print-version,clean, jar, distribute">
+		<description>Main target</description>
+	</target>
+</project> 

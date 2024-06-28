@@ -1,0 +1,131 @@
+\XtoCVerification{InitPosDetect Float64 CPU TM4C123GH6}
+\begin{tabular}{l l}
+\textbf{Date of Test} & 2020-12-07 \tabularnewline
+\textbf{Target controller} & TM4C123GH6 \tabularnewline
+\end{tabular}
+\vspace{1ex}
+\XtoCTestCase{Inport test}{1}
+Inport test for MCHP_ZSMT block InitPosDetect.
+
+\vspace{1em}
+\begin{tabularx}{\textwidth}{|c|c|c|>{\centering\arraybackslash}X|c|}
+\hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.8}\textbf{Test results}} \tabularnewline \hline
+\textbf{Time step} & 1 & 2 & ... & 185 \tabularnewline \hline
+\textbf{CPU cycles} & 125 & 125 & ... & 157 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Inputs}} \tabularnewline \hline
+\textbf{I\_A (DSP)} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{I\_B (DSP)} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{I\_C (DSP)} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Enable (DSP)} & 0 & 0 & ... & 1 \tabularnewline \hline
+\textbf{I\_A} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{I\_B} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{I\_C} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Enable} & 0 & 0 & ... & 1 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Parameters}} \tabularnewline \hline
+\textbf{U\_pulse} & \multicolumn{4}{c|}{4} \tabularnewline \hline
+\textbf{T\_pulse} & \multicolumn{4}{c|}{10} \tabularnewline \hline
+\textbf{T\_pause} & \multicolumn{4}{c|}{1} \tabularnewline \hline
+\textbf{U\_max} & \multicolumn{4}{c|}{1} \tabularnewline \hline
+\textbf{ts\_fact} & \multicolumn{4}{c|}{1} \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Outputs}} \tabularnewline \hline
+\textbf{U\_A} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{U\_B} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{U\_C} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Ready} & 0 & 0 & ... & 1 \tabularnewline \hline
+\textbf{phi0} & 0 & 0 & ... & 0.969 \tabularnewline \hline
+\textbf{Exp. U\_A} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Exp. U\_B} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Exp. U\_C} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Exp. Ready} & 0 & 0 & ... & 1 \tabularnewline \hline
+\textbf{Exp. phi0} & 0 & 0 & ... & 0.969 \tabularnewline \hline
+\textbf{U\_A (DSP)} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{U\_B (DSP)} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{U\_C (DSP)} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Ready (DSP)} & 0 & 0 & ... & 1 \tabularnewline \hline
+\textbf{phi0 (DSP)} & 0 & 0 & ... & 0.969 \tabularnewline \hline
+\textbf{Exp. U\_A (DSP)} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Exp. U\_B (DSP)} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Exp. U\_C (DSP)} & 0 & 0 & ... & 0 \tabularnewline \hline
+\textbf{Exp. Ready (DSP)} & 0 & 0 & ... & 1 \tabularnewline \hline
+\textbf{Exp. phi0 (DSP)} & 0 & 0 & ... & 0.969 \tabularnewline \hline
+\end{tabularx}
+\vspace{1ex}
+
+\begin{XtoCtabular}{Test settings}
+Tolerance U\_A & $\pm$1.0842e-19 ($\pm$1 LSB) \tabularnewline \hline
+Tolerance U\_B & $\pm$1.0842e-19 ($\pm$1 LSB) \tabularnewline \hline
+Tolerance U\_C & $\pm$1.0842e-19 ($\pm$1 LSB) \tabularnewline \hline
+Tolerance Ready & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance phi0 & $\pm$2.3283e-07 ($\pm$2147483648000 LSB) \tabularnewline \hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Test statistics}
+Min CPU cycles & 125 \tabularnewline \hline
+Max CPU cycles & 22671 \tabularnewline \hline
+Avg CPU cycles & 609 \tabularnewline \hline
+\end{XtoCtabular}
+\XtoCTestCase{Conversion test}{1}
+Conversion test for MCHP_ZSMT block InitPosDetect.
+
+\vspace{1em}
+\begin{tabularx}{\textwidth}{|c|c|c|>{\centering\arraybackslash}X|c|}
+\hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.8}\textbf{Test results}} \tabularnewline \hline
+\textbf{Time step} & 1 & 2 & ... & 7 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Mask parameters}} \tabularnewline \hline
+\textbf{U\_pulse} & 0 & 12.1 & ... & 7.9 \tabularnewline \hline
+\textbf{T\_pulse} & 1 & 1 & ... & 32769 \tabularnewline \hline
+\textbf{T\_pause} & 0 & 1 & ... & 32769 \tabularnewline \hline
+\textbf{U\_max} & 57.3 & -57.3 & ... & 4.8 \tabularnewline \hline
+\textbf{ts\_fact} & 1 & 1 & ... & 1 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Controller parameters}} \tabularnewline \hline
+\textbf{u\_pulse} & 0 & 12.1 & ... & 7.9 \tabularnewline \hline
+\textbf{t\_period} & 2 & 12 & ... & 32767 \tabularnewline \hline
+\textbf{t\_pulse} & 1 & 1 & ... & 32767 \tabularnewline \hline
+\textbf{Exp. u\_pulse} & 0 & 12.1 & ... & 7.9 \tabularnewline \hline
+\textbf{Exp. t\_period} & 2 & 12 & ... & 32767 \tabularnewline \hline
+\textbf{Exp. t\_pulse} & 1 & 1 & ... & 32767 \tabularnewline \hline
+\end{tabularx}
+\vspace{1ex}
+
+\begin{XtoCtabular}{Test settings}
+Tolerance u\_pulse & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance t\_period & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance t\_pulse & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+\end{XtoCtabular}
+\XtoCTestCase{Conversion-on-Target test}{1}
+Conversion-on-Target test for MCHP_ZSMT block InitPosDetect.
+
+\vspace{1em}
+\begin{tabularx}{\textwidth}{|c|c|c|>{\centering\arraybackslash}X|c|}
+\hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.8}\textbf{Test results}} \tabularnewline \hline
+\textbf{Time step} & 1 & 2 & ... & 7 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Mask parameters}} \tabularnewline \hline
+\textbf{U\_pulse} & 0 & 12.1 & ... & 7.9 \tabularnewline \hline
+\textbf{T\_pulse} & 1 & 1 & ... & 32769 \tabularnewline \hline
+\textbf{T\_pause} & 0 & 1 & ... & 32769 \tabularnewline \hline
+\textbf{U\_max} & 57.3 & -57.3 & ... & 4.8 \tabularnewline \hline
+\textbf{ts\_fact} & 1 & 1 & ... & 1 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Controller parameters}} \tabularnewline \hline
+\textbf{u\_pulse} & 0 & 12.1 & ... & 7.9 \tabularnewline \hline
+\textbf{t\_period} & 2 & 12 & ... & 32767 \tabularnewline \hline
+\textbf{t\_pulse} & 1 & 1 & ... & 32767 \tabularnewline \hline
+\textbf{Exp. u\_pulse} & 0 & 12.1 & ... & 7.9 \tabularnewline \hline
+\textbf{Exp. t\_period} & 2 & 12 & ... & 32767 \tabularnewline \hline
+\textbf{Exp. t\_pulse} & 1 & 1 & ... & 32767 \tabularnewline \hline
+\end{tabularx}
+\vspace{1ex}
+
+\begin{XtoCtabular}{Test settings}
+Tolerance u\_pulse & $\pm$1.0000e-06 ($\pm$9223372036855 LSB) \tabularnewline \hline
+Tolerance t\_period & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance t\_pulse & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Test statistics}
+Min CPU cycles & 1259 \tabularnewline \hline
+Max CPU cycles & 1265 \tabularnewline \hline
+Avg CPU cycles & 1264 \tabularnewline \hline
+\end{XtoCtabular}
