@@ -1,7 +1,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: MC_FOC_ZSMT_FIP_dsPIC33CK_POWERTOOL                                                                         */
-/* Date:  2024-06-28 11:12                                                                                            */
+/* Date:  2024-07-01 09:16                                                                                            */
 
 /* X2C-Version: 6.4.3142                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -347,8 +347,8 @@ void X2C_Init(void)
     x2cModel.blocks.sFOC_main.bzConst1.K = 0;
 
     /* Block: StartOverride                                                                                           */
-    /* Toggle = 0.0                                                                                                   */
-    x2cModel.blocks.bStartOverride.Toggle = 0;
+    /* Toggle = 1.0                                                                                                   */
+    x2cModel.blocks.bStartOverride.Toggle = 1;
 
     /* Block: SuperBlock/SPEED_PI                                                                                     */
     /* Kp = -0.5                                                                                                      */
@@ -396,10 +396,6 @@ void X2C_Init(void)
     /* Block: zConst2                                                                                                 */
     /* Value = 1.0                                                                                                    */
     x2cModel.blocks.bzConst2.K = 1;
-
-    /* Block: zConst4                                                                                                 */
-    /* Value = 0.1                                                                                                    */
-    x2cModel.blocks.bzConst4.K = 3277;
 
 
     /* Initialize RAM table content */
@@ -679,7 +675,7 @@ void X2C_Init(void)
 
     /* Block Sub                                                                                                      */
     x2cModel.blocks.sSuperBlock.bSub.Plus =
-        &x2cModel.blocks.bzConst4.Out;
+        &x2cModel.inports.bV_POT;
     x2cModel.blocks.sSuperBlock.bSub.Minus =
         &x2cModel.blocks.bDelay1.Out;
 
@@ -712,8 +708,6 @@ void X2C_Init(void)
     /* Block zConst1                                                                                                  */
 
     /* Block zConst2                                                                                                  */
-
-    /* Block zConst4                                                                                                  */
 
     /******************************************************************************************************************/
     /**                                                 Link Outports                                                **/
@@ -795,7 +789,6 @@ void X2C_Init(void)
     TypeConv_FiP32_16_Init(&x2cModel.blocks.sangleErrorLpf.bTypeConv1);
     Constant_FiP16_Init(&x2cModel.blocks.bzConst1);
     Constant_Bool_Init(&x2cModel.blocks.bzConst2);
-    Constant_FiP16_Init(&x2cModel.blocks.bzConst4);
     Scope_Main_Init(&x2cScope);
 
     /* Initialize TableStruct tables                                                                                  */
