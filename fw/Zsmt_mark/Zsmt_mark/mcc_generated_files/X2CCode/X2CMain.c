@@ -30,6 +30,7 @@
     static unsigned char edge=0;
     static int16_t CpuLoad;
     static uint16_t POS1CNTtemp;
+    static bool zeroPositionDetected = false;
 
     volatile int16_t offset_AN1_IA=0, offset_AN4_IB=0;
 
@@ -136,13 +137,24 @@ void UpdateInports(void) {
     x2cModel.inports.bI_a = (-ADCBUF1) - offset_AN1_IA; 
     x2cModel.inports.bI_b = (-ADCBUF4) - offset_AN4_IB;
     
-     /* Implementing the new logic for bV_POT */
-    if (SW1_GetValue() == 0) {
+ /* Check for zero position detection */
+    if (!zeroPositionDetected) {
+        if (Position_Switch_GetValue() == 0) {
+            zeroPositionDetected = true;
+        }
+    }
+    
+    /* Implementing the new logic for bV_POT */
+    if (!zeroPositionDetected) {
         x2cModel.inports.bV_POT = 3250;
-    } else if (SW2_GetValue() == 0) {
-        x2cModel.inports.bV_POT = -3250;
     } else {
-        x2cModel.inports.bV_POT = 0;
+        if (SW1_GetValue() == 0) {
+            x2cModel.inports.bV_POT = 3250;
+        } else if (SW2_GetValue() == 0) {
+            x2cModel.inports.bV_POT = -3250;
+        } else {
+            x2cModel.inports.bV_POT = 0;
+        }
     }
 
     //Encoder caculation

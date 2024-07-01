@@ -45,105 +45,54 @@
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RE10 GPIO Pin which has a custom name of SW1 to High
- * @pre      The RE10 must be set as Output Pin             
+ * @brief    Sets the RE6 GPIO Pin which has a custom name of Position_Switch to High
+ * @pre      The RE6 must be set as Output Pin             
  * @param    none
  * @return   none  
  */
-#define SW1_SetHigh()          (_LATE10 = 1)
+#define Position_Switch_SetHigh()          (_LATE6 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RE10 GPIO Pin which has a custom name of SW1 to Low
- * @pre      The RE10 must be set as Output Pin
+ * @brief    Sets the RE6 GPIO Pin which has a custom name of Position_Switch to Low
+ * @pre      The RE6 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define SW1_SetLow()           (_LATE10 = 0)
+#define Position_Switch_SetLow()           (_LATE6 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Toggles the RE10 GPIO Pin which has a custom name of SW1
- * @pre      The RE10 must be set as Output Pin
+ * @brief    Toggles the RE6 GPIO Pin which has a custom name of Position_Switch
+ * @pre      The RE6 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define SW1_Toggle()           (_LATE10 ^= 1)
+#define Position_Switch_Toggle()           (_LATE6 ^= 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Reads the value of the RE10 GPIO Pin which has a custom name of SW1
+ * @brief    Reads the value of the RE6 GPIO Pin which has a custom name of Position_Switch
  * @param    none
  * @return   none  
  */
-#define SW1_GetValue()         _RE10
+#define Position_Switch_GetValue()         _RE6
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RE10 GPIO Pin which has a custom name of SW1 as Input
+ * @brief    Configures the RE6 GPIO Pin which has a custom name of Position_Switch as Input
  * @param    none
  * @return   none  
  */
-#define SW1_SetDigitalInput()  (_TRISE10 = 1)
+#define Position_Switch_SetDigitalInput()  (_TRISE6 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RE10 GPIO Pin which has a custom name of SW1 as Output
+ * @brief    Configures the RE6 GPIO Pin which has a custom name of Position_Switch as Output
  * @param    none
  * @return   none  
  */
-#define SW1_SetDigitalOutput() (_TRISE10 = 0)
-
-/**
- * @ingroup  pinsdriver
- * @brief    Sets the RE11 GPIO Pin which has a custom name of SW2 to High
- * @pre      The RE11 must be set as Output Pin             
- * @param    none
- * @return   none  
- */
-#define SW2_SetHigh()          (_LATE11 = 1)
-
-/**
- * @ingroup  pinsdriver
- * @brief    Sets the RE11 GPIO Pin which has a custom name of SW2 to Low
- * @pre      The RE11 must be set as Output Pin
- * @param    none
- * @return   none  
- */
-#define SW2_SetLow()           (_LATE11 = 0)
-
-/**
- * @ingroup  pinsdriver
- * @brief    Toggles the RE11 GPIO Pin which has a custom name of SW2
- * @pre      The RE11 must be set as Output Pin
- * @param    none
- * @return   none  
- */
-#define SW2_Toggle()           (_LATE11 ^= 1)
-
-/**
- * @ingroup  pinsdriver
- * @brief    Reads the value of the RE11 GPIO Pin which has a custom name of SW2
- * @param    none
- * @return   none  
- */
-#define SW2_GetValue()         _RE11
-
-/**
- * @ingroup  pinsdriver
- * @brief    Configures the RE11 GPIO Pin which has a custom name of SW2 as Input
- * @param    none
- * @return   none  
- */
-#define SW2_SetDigitalInput()  (_TRISE11 = 1)
-
-/**
- * @ingroup  pinsdriver
- * @brief    Configures the RE11 GPIO Pin which has a custom name of SW2 as Output
- * @param    none
- * @return   none  
- */
-#define SW2_SetDigitalOutput() (_TRISE11 = 0)
+#define Position_Switch_SetDigitalOutput() (_TRISE6 = 0)
 
 /**
  * @ingroup  pinsdriver
@@ -246,6 +195,108 @@
  * @return   none  
  */
 #define LED2_SetDigitalOutput() (_TRISE13 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RE14 GPIO Pin which has a custom name of SW1 to High
+ * @pre      The RE14 must be set as Output Pin             
+ * @param    none
+ * @return   none  
+ */
+#define SW1_SetHigh()          (_LATE14 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RE14 GPIO Pin which has a custom name of SW1 to Low
+ * @pre      The RE14 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define SW1_SetLow()           (_LATE14 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RE14 GPIO Pin which has a custom name of SW1
+ * @pre      The RE14 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define SW1_Toggle()           (_LATE14 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RE14 GPIO Pin which has a custom name of SW1
+ * @param    none
+ * @return   none  
+ */
+#define SW1_GetValue()         _RE14
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE14 GPIO Pin which has a custom name of SW1 as Input
+ * @param    none
+ * @return   none  
+ */
+#define SW1_SetDigitalInput()  (_TRISE14 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE14 GPIO Pin which has a custom name of SW1 as Output
+ * @param    none
+ * @return   none  
+ */
+#define SW1_SetDigitalOutput() (_TRISE14 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RE15 GPIO Pin which has a custom name of SW2 to High
+ * @pre      The RE15 must be set as Output Pin             
+ * @param    none
+ * @return   none  
+ */
+#define SW2_SetHigh()          (_LATE15 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RE15 GPIO Pin which has a custom name of SW2 to Low
+ * @pre      The RE15 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define SW2_SetLow()           (_LATE15 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RE15 GPIO Pin which has a custom name of SW2
+ * @pre      The RE15 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define SW2_Toggle()           (_LATE15 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RE15 GPIO Pin which has a custom name of SW2
+ * @param    none
+ * @return   none  
+ */
+#define SW2_GetValue()         _RE15
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE15 GPIO Pin which has a custom name of SW2 as Input
+ * @param    none
+ * @return   none  
+ */
+#define SW2_SetDigitalInput()  (_TRISE15 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RE15 GPIO Pin which has a custom name of SW2 as Output
+ * @param    none
+ * @return   none  
+ */
+#define SW2_SetDigitalOutput() (_TRISE15 = 0)
 
 /**
  * @ingroup  pinsdriver
