@@ -1,7 +1,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: MC_FOC_ZSMT_FIP_dsPIC33CK_POWERTOOL                                                                         */
-/* Date:  2024-07-01 11:10                                                                                            */
+/* Date:  2024-07-01 13:33                                                                                            */
 
 /* X2C-Version: 6.4.3142                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -158,8 +158,8 @@ void X2C_Init(void)
     x2cModel.blocks.sFOC_main.sHFI.bEnableHFI.K = 0;
 
     /* Block: FOC_main/HFI/HFInjectionSquare                                                                          */
-    /* U_inj = 5.0                                                                                                    */
-    /* Jp = 0.0012                                                                                                    */
+    /* U_inj = 8.0                                                                                                    */
+    /* Jp = 0.00128                                                                                                   */
     /* I_inj = 0.4                                                                                                    */
     /* fo = 200.0                                                                                                     */
     /* p = 4.0                                                                                                        */
@@ -169,7 +169,7 @@ void X2C_Init(void)
     /* ts_fact = 1.0                                                                                                  */
     /* estimation = less noise                                                                                        */
     /* method = tustin                                                                                                */
-    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.uInjAmp = 6827;
+    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.uInjAmp = 10923;
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.sampleCnt = 0;
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.iyArr = &RamTable_int32[0];
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.enable_old = 0;
@@ -178,12 +178,12 @@ void X2C_Init(void)
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.i_old_angle = 0;
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.vGain = 21120;
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.sfrGain = 11;
-    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.b0_torque = 1092857600;
-    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.b1_torque = 1698931936;
+    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.b0_torque = 1165714773;
+    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.b1_torque = 1812194065;
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.sfrb0_torque = 23;
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.sfrb1_torque = 20;
-    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.b0_speed = 55;
-    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.b1_speed = 27;
+    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.b0_speed = 51;
+    x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.b1_speed = 26;
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.sfrb0_speed = 15;
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.sfrb1_speed = 15;
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.b0_angle = 2621;
@@ -351,11 +351,11 @@ void X2C_Init(void)
     x2cModel.blocks.bStartOverride.Toggle = 1;
 
     /* Block: SuperBlock/SPEED_PI                                                                                     */
-    /* Kp = -0.25                                                                                                     */
-    /* Ki = -1.5                                                                                                      */
+    /* Kp = -0.5                                                                                                      */
+    /* Ki = -1.0                                                                                                      */
     /* ts_fact = 4.0                                                                                                  */
-    x2cModel.blocks.sSuperBlock.bSPEED_PI.b0 = -10;
-    x2cModel.blocks.sSuperBlock.bSPEED_PI.b1 = -8192;
+    x2cModel.blocks.sSuperBlock.bSPEED_PI.b0 = -7;
+    x2cModel.blocks.sSuperBlock.bSPEED_PI.b1 = -16384;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.sfrb0 = 15;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.sfrb1 = 15;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.i_old = 0;
@@ -404,7 +404,7 @@ void X2C_Init(void)
     /******************************************************************************************************************/
     /**                                              Initialize Inports                                              **/
     /******************************************************************************************************************/
-    x2cModel.inports.bCPU_LOAD = (int16)0;
+    x2cModel.inports.bCPU_LOAD = (int32)0;
     x2cModel.inports.bHall_state = (int16)0;
     x2cModel.inports.bI_a = (int16)0;
     x2cModel.inports.bI_b = (int16)0;

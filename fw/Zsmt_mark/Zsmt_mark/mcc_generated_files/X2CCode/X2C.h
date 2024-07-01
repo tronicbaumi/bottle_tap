@@ -2,7 +2,7 @@
  * @file
  * @brief Generated model file.
  * 
- * Date:  2024-07-01 11:10
+ * Date:  2024-07-01 13:33
  * 
  * X2C-Version: 6.4.3142
  * X2C-Edition: Free
@@ -10,7 +10,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: MC_FOC_ZSMT_FIP_dsPIC33CK_POWERTOOL                                                                         */
-/* Date:  2024-07-01 11:10                                                                                            */
+/* Date:  2024-07-01 13:33                                                                                            */
 
 /* X2C-Version: 6.4.3142                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -142,7 +142,7 @@ extern "C" {
     { 80U, &x2cScope }
 
 #define INPORT_PARAMID_TABLE \
-    { 58U, 2U, &x2cModel.inports.bCPU_LOAD } , \
+    { 58U, 4U, &x2cModel.inports.bCPU_LOAD } , \
     { 59U, 2U, &x2cModel.inports.bHall_state } , \
     { 60U, 2U, &x2cModel.inports.bI_a } , \
     { 61U, 2U, &x2cModel.inports.bI_b } , \
