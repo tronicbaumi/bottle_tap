@@ -1,7 +1,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: MC_FOC_ZSMT_FIP_dsPIC33CK_POWERTOOL                                                                         */
-/* Date:  2024-07-01 09:16                                                                                            */
+/* Date:  2024-07-01 11:10                                                                                            */
 
 /* X2C-Version: 6.4.3142                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -351,11 +351,11 @@ void X2C_Init(void)
     x2cModel.blocks.bStartOverride.Toggle = 1;
 
     /* Block: SuperBlock/SPEED_PI                                                                                     */
-    /* Kp = -0.5                                                                                                      */
-    /* Ki = -1.0                                                                                                      */
+    /* Kp = -0.25                                                                                                     */
+    /* Ki = -1.5                                                                                                      */
     /* ts_fact = 4.0                                                                                                  */
-    x2cModel.blocks.sSuperBlock.bSPEED_PI.b0 = -7;
-    x2cModel.blocks.sSuperBlock.bSPEED_PI.b1 = -16384;
+    x2cModel.blocks.sSuperBlock.bSPEED_PI.b0 = -10;
+    x2cModel.blocks.sSuperBlock.bSPEED_PI.b1 = -8192;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.sfrb0 = 15;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.sfrb1 = 15;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.i_old = 0;
