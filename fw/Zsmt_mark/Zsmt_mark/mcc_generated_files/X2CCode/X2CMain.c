@@ -22,7 +22,8 @@
 #warning "Please generate the code from the model!"
 #endif
 
-#define Upper_limit 245000000
+#define limit 200000000
+#define Upper_limit limit
 #define Lower_Limit 0 
 
     static unsigned int pwmFaultCounter = 0;
@@ -121,7 +122,7 @@ void UpdateInports(void) {
         }
        
         x2cModel.inports.bV_POT = rampValue;
-        Calculated_position = 145000000;
+        Calculated_position = limit;
     } else {
        
         if (SW1_GetValue() == 0 && Calculated_position < Upper_limit ) {
