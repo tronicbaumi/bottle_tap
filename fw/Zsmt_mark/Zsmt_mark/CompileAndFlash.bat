@@ -1,6 +1,6 @@
 @echo off
 
-set PROJECT_ROOT= C:\Users\m67250\OneDrive - Microchip Technology Inc\Desktop\portingGateDriver\BottleTap_new\fw\Zsmt_mark
+set PROJECT_ROOT= C:\Users\m67250\OneDrive - Microchip Technology Inc\Desktop\portingGateDriver\BottleTap_new\fw\Zsmt_mark\Zsmt_mark
 set MPLABX_ROOT=C:\Program Files\Microchip\MPLABX\v6.20
 set DEVICE=33CK256MP508
 set TOOL=Supported device not found. Please programm it manually!

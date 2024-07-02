@@ -22,6 +22,9 @@
 #warning "Please generate the code from the model!"
 #endif
 
+#define Upper_limit 245000000
+#define Lower_Limit 0 
+
     static unsigned int pwmFaultCounter = 0;
     static unsigned int pwmFaultActive = 0;
     static unsigned char S2_Value;
@@ -30,6 +33,12 @@
     static unsigned char edge=0;
     static int16_t CpuLoad;
     static uint16_t POS1CNTtemp;
+    static bool zeroPositionDetected = false;
+    static int16_t rampValue = 0; //YA
+    static int16_t targetValue = 4000; //YA
+    static const int16_t rampStep = 1; //
+
+    static int32_t Calculated_position; // position estimator for beertap
 
     volatile int16_t offset_AN1_IA=0, offset_AN4_IB=0;
 
@@ -56,49 +65,6 @@ void UpdateInports(void) {
 
      */
     
-    if(SW1_GetValue() == 0) x2cModel.inports.bS3 = false;
-    else  x2cModel.inports.bS3 = true;
-    
-    /* Button latch and debounce */
-    S2_Value = SW2_GetValue();
-    
-    if(edge==0)
-    {
-        if (S2_Value != S2_Value_old) 
-        {
-            S2_Value_old = S2_Value;
-            if(S2_Value)
-            {
-                DebounceCnt = 0;
-                edge = 1;
-            }
-        }
-    }
-    else
-    {
-        DebounceCnt++;
-        if(DebounceCnt >= 10)
-        {           
-            if(x2cModel.inports.bS2==0)
-            {
-                x2cModel.inports.bS2 = INT16_MAX;
-            }
-            else
-            {
-                x2cModel.inports.bS2 = 0;
-                /* Clear PWM fault */
-                pwmFaultCounter = 0;
-                pwmFaultActive = 0;
-                PG1FPCILbits.SWTERM = 1;
-                PG2FPCILbits.SWTERM = 1;
-                PG3FPCILbits.SWTERM = 1;
-            }
-            
-            DebounceCnt = 0;
-            edge=0;
-        }    
-    }  
-
 #ifdef FAULT_ON
     /* Handle PWM fault */
     if(_PWM1IF == 1)
@@ -135,12 +101,58 @@ void UpdateInports(void) {
     //x2cModel.inports.bI_sum = ADC1_ConversionResultGet(???)
     x2cModel.inports.bI_a = (-ADCBUF1) - offset_AN1_IA; 
     x2cModel.inports.bI_b = (-ADCBUF4) - offset_AN4_IB;
-    x2cModel.inports.bV_POT = ADCBUF17;   
+    
+    
+ /* Check for zero position detection */
+    if (!zeroPositionDetected) {
+        if (Position_Switch_GetValue() == 0) {
+            zeroPositionDetected = true;
+            
+        }
+    }
+    
+    /* Implementing the new logic for bV_POT with ramp for acceleration only */
+    if (!zeroPositionDetected) {
+        if (rampValue < targetValue) {
+            rampValue += rampStep;
+            if (rampValue > targetValue) {
+                rampValue = targetValue;
+            }
+        }
+       
+        x2cModel.inports.bV_POT = rampValue;
+        Calculated_position = 145000000;
+    } else {
+       
+        if (SW1_GetValue() == 0 && Calculated_position < Upper_limit ) {
+            Calculated_position += (x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.n); // estimated speed
+            targetValue = 4000; // going down
+             
+        } else if (SW2_GetValue() == 0 && Calculated_position > Lower_Limit) {
+            Calculated_position += (x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.n); // estimated speed
+            targetValue = -4000; // going up
+        } else {
+            targetValue = 0;
+        }
+        
+        if (rampValue < targetValue) {
+            rampValue += rampStep;
+            if (rampValue > targetValue) {
+                rampValue = targetValue;
+            }
+        } else {
+            rampValue = targetValue;
+        }
+        x2cModel.inports.bV_POT = rampValue;
+        
+        
+    }
+
 
     //Encoder caculation
     x2cModel.inports.bQEI_POS = (int16_t) (__builtin_mulss(QEI1_PositionCount16bitRead(), QEI_FACT));
 //    x2cModel.inports.bQEI_VEL = QEI;
-    
+
     x2cModel.inports.bCPU_LOAD = CpuLoad;
     
 
@@ -167,9 +179,9 @@ void UpdateOutports(void) {
       A_PeripheralVariable = *x2cModel.outports.bPWM2*Scaling
       A_PeripheralVariable = *x2cModel.outports.bPWM3*Scaling
      */    
-    
-    if (x2cModel.inports.bS2)
-    {
+       
+        
+
         PG1IOCONLbits.OVRENH = 0;
         PG1IOCONLbits.OVRENL = 0;
         PG2IOCONLbits.OVRENH = 0;
@@ -180,23 +192,23 @@ void UpdateOutports(void) {
         PG1DC = (PWM_PERIODE+(int16)(__builtin_mulss(*x2cModel.outports.bPWM1, PWM_PERIODE)>>15));
         PG2DC = (PWM_PERIODE+(int16)(__builtin_mulss(*x2cModel.outports.bPWM2, PWM_PERIODE)>>15));
         PG3DC = (PWM_PERIODE+(int16)(__builtin_mulss(*x2cModel.outports.bPWM3, PWM_PERIODE)>>15));
-    }
-    else
-    {
-        PG1DC = 0;
-        PG2DC = 0;
-        PG3DC = 0;        
-        PG1IOCONLbits.OVRDAT = 0;
-        PG2IOCONLbits.OVRDAT = 0;
-        PG3IOCONLbits.OVRDAT = 0;
-        PG1IOCONLbits.OVRENH = 1;
-        PG1IOCONLbits.OVRENL = 1;
-        PG2IOCONLbits.OVRENH = 1;
-        PG2IOCONLbits.OVRENL = 1;
-        PG3IOCONLbits.OVRENH = 1;
-        PG3IOCONLbits.OVRENL = 1;        
-        
-    }
+    
+//    else
+//    {
+//        PG1DC = 0;
+//        PG2DC = 0;
+//        PG3DC = 0;        
+//        PG1IOCONLbits.OVRDAT = 0;
+//        PG2IOCONLbits.OVRDAT = 0;
+//        PG3IOCONLbits.OVRDAT = 0;
+//        PG1IOCONLbits.OVRENH = 1;
+//        PG1IOCONLbits.OVRENL = 1;
+//        PG2IOCONLbits.OVRENH = 1;
+//        PG2IOCONLbits.OVRENL = 1;
+//        PG3IOCONLbits.OVRENH = 1;
+//        PG3IOCONLbits.OVRENL = 1;        
+//        
+//    }
     
     /* Clear position counter on Home init */
     if (*x2cModel.outports.bHOME_INIT > 0) { 

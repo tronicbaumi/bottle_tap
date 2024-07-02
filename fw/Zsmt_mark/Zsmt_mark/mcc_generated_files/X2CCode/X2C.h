@@ -2,7 +2,7 @@
  * @file
  * @brief Generated model file.
  * 
- * Date:  2024-06-26 14:42
+ * Date:  2024-07-02 10:17
  * 
  * X2C-Version: 6.4.3142
  * X2C-Edition: Free
@@ -10,7 +10,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: MC_FOC_ZSMT_FIP_dsPIC33CK_POWERTOOL                                                                         */
-/* Date:  2024-06-26 14:42                                                                                            */
+/* Date:  2024-07-02 10:17                                                                                            */
 
 /* X2C-Version: 6.4.3142                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -27,7 +27,6 @@ extern "C" {
 /**********************************************************************************************************************/
 /* Common includes                                                                                                    */
 #include "Constant_Bool.h"
-#include "Gain_FiP16.h"
 #include "TypeConv_Bool_FiP16.h"
 #include "TypeConv_FiP32_16.h"
 #include "Sub_FiP16.h"
@@ -46,6 +45,7 @@ extern "C" {
 #include "uSub_FiP16.h"
 #include "ManualSwitch_Bool.h"
 #include "PI_FiP16.h"
+#include "Saturation_FiP16.h"
 #include "PILimit_FiP16.h"
 #include "AutoSwitch_FiP16.h"
 #include "InitPosDetect_FiP16.h"
@@ -58,7 +58,6 @@ extern "C" {
 /**********************************************************************************************************************/
 #define FUNCTIONS \
     CONSTANT_BOOL_FUNCTIONS , \
-    GAIN_FIP16_FUNCTIONS , \
     TYPECONV_BOOL_FIP16_FUNCTIONS , \
     TYPECONV_FIP32_16_FUNCTIONS , \
     SUB_FIP16_FUNCTIONS , \
@@ -77,6 +76,7 @@ extern "C" {
     USUB_FIP16_FUNCTIONS , \
     MANUALSWITCH_BOOL_FUNCTIONS , \
     PI_FIP16_FUNCTIONS , \
+    SATURATION_FIP16_FUNCTIONS , \
     PILIMIT_FIP16_FUNCTIONS , \
     AUTOSWITCH_FIP16_FUNCTIONS , \
     INITPOSDETECT_FIP16_FUNCTIONS , \
@@ -130,18 +130,18 @@ extern "C" {
     { 44U, &x2cModel.blocks.sFOC_main.sVoltageSaturation.bVqSat_Switch } , \
     { 45U, &x2cModel.blocks.sFOC_main.sVoltageSaturation.bVqsat } , \
     { 46U, &x2cModel.blocks.sFOC_main.bzConst1 } , \
-    { 47U, &x2cModel.blocks.bGain } , \
-    { 48U, &x2cModel.blocks.bPI } , \
-    { 49U, &x2cModel.blocks.bStartOverride } , \
-    { 50U, &x2cModel.blocks.bSub } , \
-    { 51U, &x2cModel.blocks.bUseCurrCtr } , \
-    { 52U, &x2cModel.blocks.bangleError } , \
-    { 53U, &x2cModel.blocks.sangleErrorLpf.bLPF } , \
-    { 54U, &x2cModel.blocks.sangleErrorLpf.bTypeConv } , \
-    { 55U, &x2cModel.blocks.sangleErrorLpf.bTypeConv1 } , \
-    { 56U, &x2cModel.blocks.bzConst1 } , \
-    { 57U, &x2cModel.blocks.bzConst2 } , \
-    { 58U, &x2cModel.blocks.bzConst3 } , \
+    { 47U, &x2cModel.blocks.bStartOverride } , \
+    { 48U, &x2cModel.blocks.sSuperBlock.bSPEED_PI } , \
+    { 49U, &x2cModel.blocks.sSuperBlock.bSaturation } , \
+    { 50U, &x2cModel.blocks.sSuperBlock.bSub } , \
+    { 51U, &x2cModel.blocks.sSuperBlock.bzConst3 } , \
+    { 52U, &x2cModel.blocks.bUseCurrCtr } , \
+    { 53U, &x2cModel.blocks.bangleError } , \
+    { 54U, &x2cModel.blocks.sangleErrorLpf.bLPF } , \
+    { 55U, &x2cModel.blocks.sangleErrorLpf.bTypeConv } , \
+    { 56U, &x2cModel.blocks.sangleErrorLpf.bTypeConv1 } , \
+    { 57U, &x2cModel.blocks.bzConst1 } , \
+    { 58U, &x2cModel.blocks.bzConst2 } , \
     { 81U, &x2cScope }
 
 #define INPORT_PARAMID_TABLE \
@@ -231,6 +231,13 @@ struct x2cModel {
             TYPECONV_BOOL_FIP16 bTypeConv;
             CONSTANT_BOOL bzConst1;
         } sFOC_main;
+/*      Sub-system SuperBlock                                                                                         */
+        struct {
+            PI_FIP16 bSPEED_PI;
+            SATURATION_FIP16 bSaturation;
+            SUB_FIP16 bSub;
+            CONSTANT_FIP16 bzConst3;
+        } sSuperBlock;
 /*      Sub-system angleErrorLpf                                                                                      */
         struct {
             PT1_FIP32 bLPF;
@@ -241,15 +248,11 @@ struct x2cModel {
         CONSTANT_FIP16 bConst_IdCmd1;
         DELAY_BOOL bDelay;
         DELAY_FIP16 bDelay1;
-        GAIN_FIP16 bGain;
-        PI_FIP16 bPI;
         MANUALSWITCH_BOOL bStartOverride;
-        SUB_FIP16 bSub;
         MANUALSWITCH_FIP16 bUseCurrCtr;
         USUB_FIP16 bangleError;
         CONSTANT_FIP16 bzConst1;
         CONSTANT_BOOL bzConst2;
-        CONSTANT_FIP16 bzConst3;
     } blocks;
 /*  Inports                                                                                                           */
     struct {
