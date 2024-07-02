@@ -129,7 +129,7 @@ void UpdateInports(void) {
 
         if (sw1_pressed && sw2_pressed) {
             targetValue = 0;
-        } else if (sw1_pressed && Calculated_position < lower_limit && Position_Switch_GetValue() !=0) {
+        } else if (sw1_pressed && Position_Switch_GetValue() !=0) {
             Calculated_position += (x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.n); // estimated speed
             targetValue = 4000; // going down
         } else if (sw2_pressed && Calculated_position > Upper_Limit) {
