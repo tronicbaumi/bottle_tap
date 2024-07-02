@@ -22,7 +22,7 @@
 #warning "Please generate the code from the model!"
 #endif
 
-#define Upper_limit 145000000
+#define Upper_limit 245000000
 #define Lower_Limit 0 
 
     static unsigned int pwmFaultCounter = 0;

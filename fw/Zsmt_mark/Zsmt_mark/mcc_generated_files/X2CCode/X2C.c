@@ -1,7 +1,7 @@
 /* This file is part of X2C. http://x2c.lcm.at/                                                                       */
 
 /* Model: MC_FOC_ZSMT_FIP_dsPIC33CK_POWERTOOL                                                                         */
-/* Date:  2024-07-01 13:33                                                                                            */
+/* Date:  2024-07-02 10:06                                                                                            */
 
 /* X2C-Version: 6.4.3142                                                                                              */
 /* X2C-Edition: Free                                                                                                  */
@@ -193,14 +193,14 @@ void X2C_Init(void)
     x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.rawSpeed = 0;
 
     /* Block: FOC_main/HFI/InitPosDetect                                                                              */
-    /* U_pulse = 8.0                                                                                                  */
-    /* T_pulse = 4.0                                                                                                  */
-    /* T_pause = 3.0                                                                                                  */
+    /* U_pulse = 10.0                                                                                                 */
+    /* T_pulse = 20.0                                                                                                 */
+    /* T_pause = 4.0                                                                                                  */
     /* U_max = 24.0                                                                                                   */
     /* ts_fact = 1.0                                                                                                  */
-    x2cModel.blocks.sFOC_main.sHFI.bInitPosDetect.u_pulse = 10923;
-    x2cModel.blocks.sFOC_main.sHFI.bInitPosDetect.t_pulse = 4;
-    x2cModel.blocks.sFOC_main.sHFI.bInitPosDetect.t_period = 68;
+    x2cModel.blocks.sFOC_main.sHFI.bInitPosDetect.u_pulse = 13653;
+    x2cModel.blocks.sFOC_main.sHFI.bInitPosDetect.t_pulse = 20;
+    x2cModel.blocks.sFOC_main.sHFI.bInitPosDetect.t_period = 120;
     x2cModel.blocks.sFOC_main.sHFI.bInitPosDetect.timer = 0;
     x2cModel.blocks.sFOC_main.sHFI.bInitPosDetect.dir = 0;
     x2cModel.blocks.sFOC_main.sHFI.bInitPosDetect.phi = 0;
@@ -351,15 +351,21 @@ void X2C_Init(void)
     x2cModel.blocks.bStartOverride.Toggle = 1;
 
     /* Block: SuperBlock/SPEED_PI                                                                                     */
-    /* Kp = -0.5                                                                                                      */
+    /* Kp = -0.6                                                                                                      */
     /* Ki = -1.0                                                                                                      */
     /* ts_fact = 4.0                                                                                                  */
     x2cModel.blocks.sSuperBlock.bSPEED_PI.b0 = -7;
-    x2cModel.blocks.sSuperBlock.bSPEED_PI.b1 = -16384;
+    x2cModel.blocks.sSuperBlock.bSPEED_PI.b1 = -19661;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.sfrb0 = 15;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.sfrb1 = 15;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.i_old = 0;
     x2cModel.blocks.sSuperBlock.bSPEED_PI.enable_old = 0;
+
+    /* Block: SuperBlock/Saturation                                                                                   */
+    /* max = 0.15                                                                                                     */
+    /* min = -0.15                                                                                                    */
+    x2cModel.blocks.sSuperBlock.bSaturation.max = 4915;
+    x2cModel.blocks.sSuperBlock.bSaturation.min = -4915;
 
     /* Block: SuperBlock/Sub                                                                                          */
 
@@ -404,7 +410,7 @@ void X2C_Init(void)
     /******************************************************************************************************************/
     /**                                              Initialize Inports                                              **/
     /******************************************************************************************************************/
-    x2cModel.inports.bCPU_LOAD = (int32)0;
+    x2cModel.inports.bCPU_LOAD = (int16)0;
     x2cModel.inports.bHall_state = (int16)0;
     x2cModel.inports.bI_a = (int16)0;
     x2cModel.inports.bI_b = (int16)0;
@@ -673,11 +679,15 @@ void X2C_Init(void)
     x2cModel.blocks.sSuperBlock.bSPEED_PI.Enable =
         &x2cModel.blocks.bDelay.Out;
 
+    /* Block Saturation                                                                                               */
+    x2cModel.blocks.sSuperBlock.bSaturation.In =
+        &x2cModel.blocks.bDelay1.Out;
+
     /* Block Sub                                                                                                      */
     x2cModel.blocks.sSuperBlock.bSub.Plus =
         &x2cModel.inports.bV_POT;
     x2cModel.blocks.sSuperBlock.bSub.Minus =
-        &x2cModel.blocks.bDelay1.Out;
+        &x2cModel.blocks.sSuperBlock.bSaturation.Out;
 
     /* Block zConst3                                                                                                  */
 
@@ -780,6 +790,7 @@ void X2C_Init(void)
     Constant_Bool_Init(&x2cModel.blocks.sFOC_main.bzConst1);
     ManualSwitch_Bool_Init(&x2cModel.blocks.bStartOverride);
     PI_FiP16_Init(&x2cModel.blocks.sSuperBlock.bSPEED_PI);
+    Saturation_FiP16_Init(&x2cModel.blocks.sSuperBlock.bSaturation);
     Sub_FiP16_Init(&x2cModel.blocks.sSuperBlock.bSub);
     Constant_FiP16_Init(&x2cModel.blocks.sSuperBlock.bzConst3);
     ManualSwitch_FiP16_Init(&x2cModel.blocks.bUseCurrCtr);
@@ -858,6 +869,7 @@ void X2C_Update_4(void)
     TypeConv_Bool_FiP16_Update(&x2cModel.blocks.sFOC_main.bTypeConv);
     Sub_FiP16_Update(&x2cModel.blocks.sFOC_main.bFluxError);
     PILimit_FiP16_Update(&x2cModel.blocks.sFOC_main.bPI_Flux);
+    Saturation_FiP16_Update(&x2cModel.blocks.sSuperBlock.bSaturation);
     Sub_FiP16_Update(&x2cModel.blocks.sSuperBlock.bSub);
     PI_FiP16_Update(&x2cModel.blocks.sSuperBlock.bSPEED_PI);
     ManualSwitch_FiP16_Update(&x2cModel.blocks.bUseCurrCtr);
