@@ -22,8 +22,8 @@
 #warning "Please generate the code from the model!"
 #endif
 
-#define limit 200000000
-#define Lower_limit limit
+#define limit 175000000
+#define lower_limit limit
 #define Upper_Limit 0 
 
     static unsigned int pwmFaultCounter = 0;
@@ -129,7 +129,7 @@ void UpdateInports(void) {
 
         if (sw1_pressed && sw2_pressed) {
             targetValue = 0;
-        } else if (sw1_pressed && Calculated_position < Lower_limit && Position_Switch_GetValue()!=0) {
+        } else if (sw1_pressed && Calculated_position < lower_limit && Position_Switch_GetValue() !=0) {
             Calculated_position += (x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.n); // estimated speed
             targetValue = 4000; // going down
         } else if (sw2_pressed && Calculated_position > Upper_Limit) {
