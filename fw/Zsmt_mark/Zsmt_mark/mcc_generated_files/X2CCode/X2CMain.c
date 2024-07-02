@@ -23,8 +23,8 @@
 #endif
 
 #define limit 200000000
-#define Upper_limit limit
-#define Lower_Limit 0 
+#define Lower_limit limit
+#define Upper_Limit 0 
 
     static unsigned int pwmFaultCounter = 0;
     static unsigned int pwmFaultActive = 0;
@@ -124,12 +124,15 @@ void UpdateInports(void) {
         x2cModel.inports.bV_POT = rampValue;
         Calculated_position = limit;
     } else {
-       
-        if (SW1_GetValue() == 0 && Calculated_position < Upper_limit ) {
+        bool sw1_pressed = (SW1_GetValue() == 0);
+        bool sw2_pressed = (SW2_GetValue() == 0);
+
+        if (sw1_pressed && sw2_pressed) {
+            targetValue = 0;
+        } else if (sw1_pressed && Calculated_position < Lower_limit && Position_Switch_GetValue()!=0) {
             Calculated_position += (x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.n); // estimated speed
             targetValue = 4000; // going down
-             
-        } else if (SW2_GetValue() == 0 && Calculated_position > Lower_Limit) {
+        } else if (sw2_pressed && Calculated_position > Upper_Limit) {
             Calculated_position += (x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.n); // estimated speed
             targetValue = -4000; // going up
         } else {
@@ -145,14 +148,11 @@ void UpdateInports(void) {
             rampValue = targetValue;
         }
         x2cModel.inports.bV_POT = rampValue;
-        
-        
     }
 
-
-    //Encoder caculation
+    //Encoder calculation
     x2cModel.inports.bQEI_POS = (int16_t) (__builtin_mulss(QEI1_PositionCount16bitRead(), QEI_FACT));
-//    x2cModel.inports.bQEI_VEL = QEI;
+    //x2cModel.inports.bQEI_VEL = QEI;
 
     x2cModel.inports.bCPU_LOAD = CpuLoad;
     
