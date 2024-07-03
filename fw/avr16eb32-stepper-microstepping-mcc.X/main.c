@@ -89,17 +89,19 @@ int main(void)
             _delay_ms(200);
             LED_SetLow();
             _delay_ms(200);
-        }
-        else if(button1_state == 0) // move DOWN
+        }else if(button1_state == 0) // move DOWN
         {
             // Only Button1 is pressed, move CW
             LED_SetHigh();
-            if(stepper_position <= LOW_LIMIT)
+            if(stepper_position <= LOW_LIMIT || PositionSensor_GetValue() ==0)
             {
                 stepper_position = Stepper_Move(stepper_position, sub_steps, count_delay);
             }
-        }
-        else if(button2_state == 0) // move UP
+            if (button1_state == 0 && PositionSensor_GetValue() == 0)
+            {
+                stepper_position = LOW_LIMIT;
+            }
+        }else if(button2_state == 0) // move UP
         {
             // Only Button2 is pressed, move CCW
             LED_SetHigh();
@@ -107,8 +109,7 @@ int main(void)
             {
                 stepper_position = Stepper_Move(stepper_position, -sub_steps, count_delay);
             }
-        }
-        else
+        }else
         {
             // No buttons are pressed, ensure LED is off
             LED_SetLow();
