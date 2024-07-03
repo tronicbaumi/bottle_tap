@@ -65,7 +65,7 @@ typedef enum {
     NORMAL_OPERATION
 } APP_STATE;
 
-APP_STATE appState =  NORMAL_OPERATION;//  INIT_DOWNWARD; // Initialize the application state
+APP_STATE appState =  INIT_DOWNWARD; // Initialize the application state
 
 /**
  * Determines the appropriate velocity command for a given input of unipolar
@@ -107,42 +107,42 @@ void APP_ApplicationStep(APPLICATION_DATA *appData)
 
     switch (appState)
     {
-//        case INIT_DOWNWARD:
-//            if (!appData->zeroPositionDetected)
-//            {
-//                // Run the motor in downwards direction until zero position is detected
-//                //int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
-//                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 100);
-//                MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
-//                appData->motorDirection = -1;
-//
-//                MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
-//                switch (motorState)
-//                {
-//                    case MCAPI_MOTOR_STOPPED:
-//                    case MCAPI_MOTOR_STOPPING:
-//                    {
-//                        MCAPI_MotorStart(apiData);
-//                        break;
-//                    }
-//                    case MCAPI_MOTOR_FAULT:
-//                    {
-//                        uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
-//                        MCAPI_FaultStatusClear(apiData, faultFlags);
-//                        break;
-//                    }
-//                    case MCAPI_MOTOR_DIAGSTATE:
-//                    {
-//                        /* do nothing */
-//                        break;
-//                    }
-//                }
-//            }
-//            else
-//            {
-//                appState = NORMAL_OPERATION; // Transition to normal operation
-//            }
-//            break;
+        case INIT_DOWNWARD:
+            if (!appData->zeroPositionDetected)
+            {
+                // Run the motor in downwards direction until zero position is detected
+                //int16_t potentiometerValue = MCAF_BoardServicePotentiometerValue(pboard);
+                appData->motorVelocityCommand = APP_DetermineVelocityCommand(appData, 100);
+                MCAPI_VelocityReferenceSet(apiData, appData->motorVelocityCommand);
+                appData->motorDirection = -1;
+
+                MCAPI_MOTOR_STATE motorState = MCAPI_OperatingStatusGet(apiData);
+                switch (motorState)
+                {
+                    case MCAPI_MOTOR_STOPPED:
+                    case MCAPI_MOTOR_STOPPING:
+                    {
+                        MCAPI_MotorStart(apiData);
+                        break;
+                    }
+                    case MCAPI_MOTOR_FAULT:
+                    {
+                        uint16_t faultFlags = MCAPI_FaultStatusGet(apiData);
+                        MCAPI_FaultStatusClear(apiData, faultFlags);
+                        break;
+                    }
+                    case MCAPI_MOTOR_DIAGSTATE:
+                    {
+                        /* do nothing */
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                appState = NORMAL_OPERATION; // Transition to normal operation
+            }
+            break;
 
         case NORMAL_OPERATION:
             if (appData->hardwareUiEnabled)

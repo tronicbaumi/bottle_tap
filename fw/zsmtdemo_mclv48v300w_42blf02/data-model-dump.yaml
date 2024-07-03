@@ -83,10 +83,10 @@ autotune_result:
     Ki: 5288.958006847764
     pi_phase_lag: 25.0
   velocity:
-    Kp: 0.006735259216398416
+    Kp: 0.0019724820028627138
     phase_margin: 45.0
-    wc: 59.12044856099907
-    Ki: 0.013905155193107567
+    wc: 16.485289911603374
+    Ki: 0.0011355164846936008
     pi_phase_lag: 2.0
 drive:
   metadata:
@@ -463,10 +463,10 @@ config:
       encoder-qei_sync-align_sweep-sweep_rate_pow: 1.0
       encoder-qei_sync-align_sweep-setup_angle: 45.0
       encoder-qei_sync-pullout-pullout_slip: 0.117
-      zsmt-excitation-kV: 0.24
+      zsmt-excitation-kV: 0.41668
       zsmt-excitation-kI: 0.1
       zsmt-pll-zeta: 1.5
-      zsmt-pll-tau: 5.0
+      zsmt-pll-tau: 20.0
       zsmt-pll-tau_lpf: 0.0
       zsmt-pll-execution_divider: 2.0
       zsmt-startup-align_delay: 1.0

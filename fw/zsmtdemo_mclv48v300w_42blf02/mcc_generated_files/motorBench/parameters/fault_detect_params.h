@@ -58,7 +58,7 @@ extern "C" {
  * natural_freq_current:           1.218 kHz
  * current loop natural frequency
 
- * natural_freq_velocity:          9.409  Hz
+ * natural_freq_velocity:          2.624  Hz
  * velocity loop natural frequency
  */
 
@@ -73,33 +73,33 @@ extern "C" {
  * Coefficient a1 for 2 stage implementation of LPF. Equation used for calculation:
  * f3db*Ts*2*pi. f3db for second stage is 1/10th of the natural frequency, Ts is 1/200hz
  */
-#define DECIMATION_FILTER_LPF2_VARIANCE_DETECT_COEFFA1        969      // Q15(  0.02957) = +941.29114 mHz         = +940.93116 mHz         + 0.0383%
+#define DECIMATION_FILTER_LPF2_VARIANCE_DETECT_COEFFA1        270      // Q15(  0.00824) = +262.27926 mHz         = +262.37154 mHz         - 0.0352%
 /* 
  * LPF filter coefficient for over current detect. Equation used for calculation:
  * f3db*Ts*2*pi f3d is equal to natural frequency
  */
-#define FILTER_LPF_OVERCURRENT_DETECT          97      // Q15(  0.00296) =   +9.42263 Hz          =   +9.40931 Hz          + 0.1415%
+#define FILTER_LPF_OVERCURRENT_DETECT          27      // Q15(  0.00082) =   +2.62279 Hz          =   +2.62372 Hz          - 0.0352%
 /* 
  * LPF filter coefficient for negative Ed detect. Equation used for calculation:
  * f3db*Ts*2*pi f3d is equal to natural frequency
  */
-#define FILTER_LPF_NEGATIVE_ED_DETECT          97      // Q15(  0.00296) =   +9.42263 Hz          =   +9.40931 Hz          + 0.1415%
+#define FILTER_LPF_NEGATIVE_ED_DETECT          27      // Q15(  0.00082) =   +2.62279 Hz          =   +2.62372 Hz          - 0.0352%
 /* 
  * HPF filter coefficient for 16bit implementation of HPF.
  * f3db is 2x natural frequency.
  */
-#define FILTER_HPF_VARIANCE_DETECT            387      // Q16(  0.00591) =  +18.79668 Hz          =  +18.81862 Hz          - 0.1166%
+#define FILTER_HPF_VARIANCE_DETECT            108      // Q16(  0.00165) =   +5.24559 Hz          =   +5.24743 Hz          - 0.0352%
 /* 
  * Timer threshold to trigger low speed detect.
  * It is set to 3 times (1/natural frequency of velocity loop)
  */
-#define ACTIVE_TIMER_THRESHOLD_LOW_SPEED_DETECT       6377      // Q0(6377.00000) = +318.85000 ms          = +318.83310 ms          + 0.0053%
+#define ACTIVE_TIMER_THRESHOLD_LOW_SPEED_DETECT      22868      // Q0(22868.00000) =   +1.14340 s           =   +1.14342 s           - 0.0015%
 /* 
  * Inactive timer threshold for low speed detect.
  * It is set to (2.0/natural frequency of velocity loop),
  * in units of the ADC ISR period.
  */
-#define INACTIVE_TIMER_THRESHOLD_LOW_SPEED_DETECT       6377      // Q0(6377.00000) = +318.85000 ms          = +318.83310 ms          + 0.0053%
+#define INACTIVE_TIMER_THRESHOLD_LOW_SPEED_DETECT      22868      // Q0(22868.00000) =   +1.14340 s           =   +1.14342 s           - 0.0015%
 /* 
  * Overcurrent detector. Normally if the saturation limit was exceeded,
  * then we have a fault in the controllers.
@@ -112,27 +112,27 @@ extern "C" {
  * Timer threshold to trigger negative Ed stall detect.
  * It is set to 5 times (1/natural frequency of velocity loop)
  */
-#define ACTIVE_TIMER_THRESHOLD_NEGATIVE_ED_DETECT      10628      // Q0(10628.00000) = +531.40000 ms          = +531.38850 ms          + 0.0022%
+#define ACTIVE_TIMER_THRESHOLD_NEGATIVE_ED_DETECT      38114      // Q0(38114.00000) =   +1.90570 s           =   +1.90569 s           + 0.0003%
 /* 
  * Timer threshold to trigger negative Ed stall detect.
  * It is set to 5 times (1/natural frequency of velocity loop)
  */
-#define INACTIVE_TIMER_THRESHOLD_NEGATIVE_ED_DETECT      10628      // Q0(10628.00000) = +531.40000 ms          = +531.38850 ms          + 0.0022%
+#define INACTIVE_TIMER_THRESHOLD_NEGATIVE_ED_DETECT      38114      // Q0(38114.00000) =   +1.90570 s           =   +1.90569 s           + 0.0003%
 /* 
  * Timer threshold to trigger stall detect based on torque angle.
  * It is set to 3 times (1/natural frequency of velocity loop)
  */
-#define ACTIVE_TIMER_THRESHOLD_TORQUE_ANGLE_DETECT       6377      // Q0(6377.00000) = +318.85000 ms          = +318.83310 ms          + 0.0053%
+#define ACTIVE_TIMER_THRESHOLD_TORQUE_ANGLE_DETECT      22868      // Q0(22868.00000) =   +1.14340 s           =   +1.14342 s           - 0.0015%
 /* 
  * Inactive Timer threshold for stall detect based on torque angle.
  * It is set to 3 times (1/natural frequency of velocity loop)
  */
-#define INACTIVE_TIMER_THRESHOLD_TORQUE_ANGLE_DETECT       6377      // Q0(6377.00000) = +318.85000 ms          = +318.83310 ms          + 0.0053%
+#define INACTIVE_TIMER_THRESHOLD_TORQUE_ANGLE_DETECT      22868      // Q0(22868.00000) =   +1.14340 s           =   +1.14342 s           - 0.0015%
 /* 
  * Timer threshold to trigger stall detect based on variance in Ed and Eq.
  * It is set to (1/natural frequency of velocity loop)
  */
-#define TIMER_COUNTS_VARIANCE_DETECT           21      // Q0( 21.00000)  = +105.00000 ms          = +106.27770 ms          - 1.2022%
+#define TIMER_COUNTS_VARIANCE_DETECT           76      // Q0( 76.00000)  = +380.00000 ms          = +381.13890 ms          - 0.2988%
 
 /* Threshold for under speed detect as a fixed fraction of minimum velocity */
 #define THRESHOLD_UNDERSPEED_STALL_DETECT  ((int16_t)(0.333*MCAF_VELOCITY_COMMAND_MIN))

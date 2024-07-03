@@ -51,7 +51,7 @@ extern "C" {
 
 /* 
  * Vexc:                           1.427  V
- * tau:                            5.000 ms
+ * tau:                           20.000 ms
  * zeta:                           1.500  
  * executionDivider:               2.000  
  * elim:                         999.970 m
@@ -60,10 +60,10 @@ extern "C" {
  * A2norm:                       511.984375  
  * A2:                            11.613  /A
  * A1A2:                         0.094806  
- * Ki:                           421.916 krad/s^2
- *                                 4.029 MRPM/s
- * Kp:                             6.329 krad/s
- *                                60.435 kRPM
+ * Ki:                            26.370 krad/s^2
+ *                               251.812 kRPM/s
+ * Kp:                             1.582 krad/s
+ *                                15.109 kRPM
  * dt:                            50.000 us
  * timestep:                     100.000 us
  * omega_lpf:                     20.000 krad/s
@@ -77,7 +77,7 @@ extern "C" {
  * angleProbeSlewRate:            13.005 kA/s
  * angleProbeBlankingTime:       522.868 us
  * correctionGainDc:               0.000  rad/A
- * pllLockTime:                    5.000 ms
+ * pllLockTime:                   20.000 ms
  * pllLockSpeedLimit:              5.724  rad/s
  *                                54.660  RPM
  * pllLockCurrentLimit:            1.020  A
@@ -87,10 +87,10 @@ extern "C" {
 /* Excitation voltage amplitude */
 #define ZSMT_EXCITATION_VOLTAGE_AMPLITUDE        616      // Q15(  0.01880) =   +1.42683 V           =   +1.42746 V           - 0.0437%
 /* Proportional gain of PLL = 2*zeta/B/tau */
-#define ZSMT_PLL_KP                         17784      // Q11(  8.68359) =   +6.32860 krad/s      =   +6.32874 krad/s      - 0.0021%
-#define ZSMT_PLL_KP_Q                          11
+#define ZSMT_PLL_KP                         17784      // Q13(  2.17090) =   +1.58215 krad/s      =   +1.58218 krad/s      - 0.0021%
+#define ZSMT_PLL_KP_Q                          13
 /* Integral gain of PLL = 1/B/tau^2 */
-#define ZSMT_PLL_KI                          3794      // Q16(  0.05789) = +421.91577 krad/s^2    = +421.91569 krad/s^2    + 0.0000%
+#define ZSMT_PLL_KI                           237      // Q16(  0.00362) =  +26.35583 krad/s^2    =  +26.36973 krad/s^2    - 0.0527%
 /* PLL integrator time scaling factor */
 #define ZSMT_PLL_DT                          2388      // Q16(  0.03644) =  +49.99724 us          =  +50.00000 us          - 0.0055%
 /* Scaling gain for HFI error */
@@ -115,7 +115,7 @@ extern "C" {
 /* DC correction gain */
 #define ZSMT_CORRECTION_GAIN_DC                 0      // Q14(  0.00000) =   +0.00000 rad/A       =   +0.00000 rad/A       + 0.0000%
 /* Required PLL lock time */
-#define ZSMT_PLL_LOCK_TIME                    100      // Q0(100.00000)  =   +5.00000 ms          =   +5.00000 ms          + 0.0000%
+#define ZSMT_PLL_LOCK_TIME                    400      // Q0(400.00000)  =  +20.00000 ms          =  +20.00000 ms          + 0.0000%
 /* Maximum allowed speed for ZSMT startup */
 #define ZSMT_PLL_LOCK_SPEED_LIMIT             328      // Q15(  0.01001) =   +5.72957 rad/s       =   +5.72398 rad/s       + 0.0977%
 /* Maximum allowed squared current for ZSMT startup */
