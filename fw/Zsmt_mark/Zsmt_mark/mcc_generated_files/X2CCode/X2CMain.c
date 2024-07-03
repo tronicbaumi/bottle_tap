@@ -22,7 +22,9 @@
 #warning "Please generate the code from the model!"
 #endif
 
-#define limit 175000000
+/*setting the limit for the max height.
+ update to update */
+#define limit 175000000 
 #define lower_limit limit
 #define Upper_Limit 0 
 
@@ -129,13 +131,16 @@ void UpdateInports(void) {
 
         if (sw1_pressed && sw2_pressed) {
             targetValue = 0;
-        } else if (sw1_pressed && Position_Switch_GetValue() !=0) {
+        } else if (sw1_pressed && Position_Switch_GetValue() !=0) { //Downwards.
             Calculated_position += (x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.n); // estimated speed
             targetValue = 4000; // going down
-        } else if (sw2_pressed && Calculated_position > Upper_Limit) {
-            Calculated_position += (x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.n); // estimated speed
+        } else if (sw2_pressed && Calculated_position > Upper_Limit) {//Upwards. 
+            Calculated_position += (x2cModel.blocks.sFOC_main.sHFI.bHFInjectionSquare.n); // estimated speed 
             targetValue = -4000; // going up
-        } else {
+        }else if (sw1_pressed && Position_Switch_GetValue() ==0){
+            Calculated_position = limit;
+            targetValue = 0;
+        }else {
             targetValue = 0;
         }
         
