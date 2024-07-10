@@ -34,6 +34,8 @@ module main()
 
     }
     
+    
+    
 //    translate([100,100,100])langloch(5.5,80,5);
 //    translate([100,100,105])langloch(14,80,80);
 }
@@ -41,7 +43,7 @@ module main()
 
 module plus()
 {   
-    translate([0,0,0])rotate([0,0,0])cube([220,100,80]);
+    translate([0,0,0])rotate([0,0,0])cube([210,100,80]);
 //    translate([116-52,0,0])rotate([0,0,0])cube([52,62,12]);
 //    translate([0,0,0])rotate([0,0,0])cube([116,62,5]);
 //    translate([0,0,12])rotate([0,0,0])cylinder(l1,12/2,11.8/2);
@@ -62,21 +64,22 @@ module minus()
 //    translate([116/2,52,3])rotate([0,0,0])cylinder(2,4/2,8/2);
 //    
 //    translate([42/2+5,12,0])rotate([90,0,0])cylinder(20,20/2,20/2);
-   translate([30,50,100])rotate([0,100,0])cylinder(220,110/2,110/2);
+   translate([20,50,100])rotate([0,102,0])cylinder(220,110/2,110/2);
+    
+   translate([-10,0,75])rotate([0,12,0])cube([240,100,100]); 
+    
+    translate([30,15,0])langloch(5.5,60,5);
+    translate([30,15,5])langloch(16,60,80);
+    
+    translate([130,15,0])langloch(5.5,60,5);
+    translate([130,15,5])langloch(16,60,80);
     
     
-    translate([40,15,0])langloch(5.5,60,5);
-    translate([40,15,5])langloch(16,60,80);
+    translate([30,85,0])langloch(5.5,60,5);
+    translate([30,85,5])langloch(16,60,80);
     
-    translate([140,15,0])langloch(5.5,60,5);
-    translate([140,15,5])langloch(16,60,80);
-    
-    
-    translate([40,85,0])langloch(5.5,60,5);
-    translate([40,85,5])langloch(16,60,80);
-    
-    translate([140,85,0])langloch(5.5,60,5);
-    translate([140,85,5])langloch(16,60,80);
+    translate([130,85,0])langloch(5.5,60,5);
+    translate([130,85,5])langloch(16,60,80);
     
 }
 

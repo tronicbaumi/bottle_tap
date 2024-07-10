@@ -84,7 +84,8 @@ void setup() {
   pinMode(ENABLE_BOTTLE, OUTPUT);
   pinMode(ENABLE_GLASS, OUTPUT);
 
-  digitalWrite(ENABLE_BOTTLE,HIGH);
+  digitalWrite(ENABLE_BOTTLE,LOW);
+  digitalWrite(ENABLE_GLASS,LOW);
 
 }
 
