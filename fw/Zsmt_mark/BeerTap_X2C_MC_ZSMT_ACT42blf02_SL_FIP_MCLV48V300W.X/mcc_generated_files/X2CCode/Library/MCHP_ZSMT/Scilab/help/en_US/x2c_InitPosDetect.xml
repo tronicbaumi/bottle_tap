@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:lang="en"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns3="http://www.w3.org/1999/xhtml"
+    xmlns:mml="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+
+    <refnamediv xml:id="x2c_InitPosDetect">
+        <refname>x2c_InitPosDetect</refname>
+        <refpurpose>X2C Initial Position Detection Block</refpurpose>
+    </refnamediv>
+
+    <refsection>
+        <para>
+            Block image not available.
+        </para>
+    </refsection>
+
+    <refsection>
+        <title>Description</title>
+        <para>Calculation of initial rotor angle.</para>
+    </refsection>
+
+    <refsection>
+        <title>Inports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">I_A:</emphasis> Current in phase A</member>
+            <member><emphasis role="bold">I_B:</emphasis> Current in phase B</member>
+            <member><emphasis role="bold">I_C:</emphasis> Current in phase C</member>
+            <member><emphasis role="bold">Enable:</emphasis> Enable = false: Outputs are zero.
+Enable = true: Initial rotor angle is determined and enable signal for HF injection is given.</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Outports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">U_A:</emphasis> Voltage to be applied in phase A</member>
+            <member><emphasis role="bold">U_B:</emphasis> Voltage to be applied in phase B</member>
+            <member><emphasis role="bold">U_C:</emphasis> Voltage to be applied in phase C</member>
+            <member><emphasis role="bold">Ready:</emphasis> Signal to indicate end of initial position detection</member>
+            <member><emphasis role="bold">phi0:</emphasis> Initial position estimate</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Mask Parameters</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">U_pulse:</emphasis> Amplitude of voltage pulses used for determination of initial rotor anlge</member>
+            <member><emphasis role="bold">T_pulse:</emphasis> Pulse length in samples</member>
+            <member><emphasis role="bold">T_pause:</emphasis> Time between voltage pulses</member>
+            <member><emphasis role="bold">U_max:</emphasis> Phase voltage scaling value
+(Only used for scaling in fixed point implementations)</member>
+            <member><emphasis role="bold">ts_fact:</emphasis> Multiplication factor of base sampling time (in integer format).</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Implementations</title>
+
+        <simplelist type="vert">
+            <member><emphasis role="bold">FiP16:</emphasis> 16 Bit Fixed Point</member>
+            <member><emphasis role="bold">FiP32:</emphasis> 32 Bit Fixed Point</member>
+            <member><emphasis role="bold">Float32:</emphasis> 32 Bit Floating Point</member>
+            <member><emphasis role="bold">Float64:</emphasis> 64 Bit Floating Point</member>
+        </simplelist>
+    </refsection>
+
+</refentry>

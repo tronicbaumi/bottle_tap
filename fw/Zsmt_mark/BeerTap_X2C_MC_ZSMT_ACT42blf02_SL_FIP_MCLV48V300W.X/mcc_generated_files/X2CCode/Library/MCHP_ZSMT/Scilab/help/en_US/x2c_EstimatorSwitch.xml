@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:lang="en"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns3="http://www.w3.org/1999/xhtml"
+    xmlns:mml="http://www.w3.org/1998/Math/MathML"
+    xmlns:db="http://docbook.org/ns/docbook">
+
+    <refnamediv xml:id="x2c_EstimatorSwitch">
+        <refname>x2c_EstimatorSwitch</refname>
+        <refpurpose>X2C Estimator Switch Block</refpurpose>
+    </refnamediv>
+
+    <refsection>
+        <para>
+            Block image not available.
+        </para>
+    </refsection>
+
+    <refsection>
+        <title>Description</title>
+        <para>Implements switching policy between sensorless algorithms for low and high speeds. Decision base is the speed magnitude.
+Handle with caution: it is implemented as a switch, so there is no soft transition.</para>
+    </refsection>
+
+    <refsection>
+        <title>Inports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">phi_H:</emphasis> Estimated rotor angle from algorithm for high speeds</member>
+            <member><emphasis role="bold">phi_L:</emphasis> Estimated rotor angle from algorithm for low speeds</member>
+            <member><emphasis role="bold">n_H:</emphasis> Estimated rotor speed from algorithm for high speeds</member>
+            <member><emphasis role="bold">n_L:</emphasis> Estimated rotor speed from algorithm for low speeds</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Outports</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">phi:</emphasis> Used estimated rotor angle</member>
+            <member><emphasis role="bold">n:</emphasis> Used estimated rotor speed</member>
+            <member><emphasis role="bold">Enable_H:</emphasis> Enable estimator for high speeds</member>
+            <member><emphasis role="bold">Enable_L:</emphasis> Enable estimator for low speeds</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Mask Parameters</title>
+        <simplelist type="vert">
+            <member><emphasis role="bold">thresh_up:</emphasis> Speed threshold for switching from low to high speed estimated values</member>
+            <member><emphasis role="bold">thresh_down:</emphasis> Speed threshold for switching from high to low speed estimated values</member>
+            <member><emphasis role="bold">n_max:</emphasis> Maximum (mechanical) speed
+(Only used for scaling in fixed point implementations)</member>
+            <member><emphasis role="bold">ts_fact:</emphasis> Multiplication factor of base sampling time (in integer format).</member>
+        </simplelist>
+    </refsection>
+
+    <refsection>
+        <title>Implementations</title>
+
+        <simplelist type="vert">
+            <member><emphasis role="bold">FiP16:</emphasis> 16 Bit Fixed Point</member>
+            <member><emphasis role="bold">FiP32:</emphasis> 32 Bit Fixed Point</member>
+            <member><emphasis role="bold">Float32:</emphasis> 32 Bit Floating Point</member>
+            <member><emphasis role="bold">Float64:</emphasis> 64 Bit Floating Point</member>
+        </simplelist>
+    </refsection>
+
+</refentry>

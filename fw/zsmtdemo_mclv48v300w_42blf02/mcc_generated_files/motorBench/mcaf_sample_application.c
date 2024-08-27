@@ -65,7 +65,7 @@ typedef enum {
     NORMAL_OPERATION
 } APP_STATE;
 
-APP_STATE appState = INIT_DOWNWARD; // Initialize the application state
+APP_STATE appState =  INIT_DOWNWARD; // Initialize the application state
 
 /**
  * Determines the appropriate velocity command for a given input of unipolar

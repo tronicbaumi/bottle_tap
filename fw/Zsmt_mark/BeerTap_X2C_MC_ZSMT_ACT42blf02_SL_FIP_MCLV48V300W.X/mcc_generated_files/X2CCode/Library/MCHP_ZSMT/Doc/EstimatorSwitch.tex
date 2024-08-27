@@ -1,0 +1,177 @@
+\XtoCBlock{EstimatorSwitch}
+\label{block:EstimatorSwitch}
+\begin{figure}[H]\includegraphics{EstimatorSwitch}\end{figure} 
+
+\begin{XtoCtabular}{Inports}
+phi\_H & Estimated rotor angle from algorithm for high speeds\tabularnewline
+\hline
+phi\_L & Estimated rotor angle from algorithm for low speeds\tabularnewline
+\hline
+n\_H & Estimated rotor speed from algorithm for high speeds\tabularnewline
+\hline
+n\_L & Estimated rotor speed from algorithm for low speeds\tabularnewline
+\hline
+\end{XtoCtabular}
+
+
+\begin{XtoCtabular}{Outports}
+phi & Used estimated rotor angle\tabularnewline
+\hline
+n & Used estimated rotor speed\tabularnewline
+\hline
+Enable\_H & Enable estimator for high speeds\tabularnewline
+\hline
+Enable\_L & Enable estimator for low speeds\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCMaskParamTabular}{Mask Parameters}
+\rowcolor[gray]{0.8}\textbf{Name} & \textbf{ID} & \textbf{Description}\tabularnewline\hline
+thresh\_up & 1 & Speed threshold for switching from low to high speed estimated values\tabularnewline
+\hline
+thresh\_down & 2 & Speed threshold for switching from high to low speed estimated values\tabularnewline
+\hline
+n\_max & 3 & Maximum (mechanical) speed
+
+(Only used for scaling in fixed point implementations)\tabularnewline
+\hline
+ts\_fact & 4 & Multiplication factor of base sampling time (in integer format)\tabularnewline
+\hline
+\end{XtoCMaskParamTabular}
+
+\subsubsection*{Description:}
+Implements switching policy between sensorless algorithms for low and high speeds. Decision base is the speed magnitude.
+
+Handle with caution: it is implemented as a switch, so there is no soft transition.
+
+% include optional documentation file
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/EstimatorSwitch_Info.tex}{\vspace{1ex}}{}
+
+\subsubsection*{Implementations:}
+\begin{tabular}{l l}
+\textbf{FiP16} & 16 Bit Fixed Point Implementation\tabularnewline
+\textbf{FiP32} & 32 Bit Fixed Point Implementation\tabularnewline
+\textbf{Float32} & 32 Bit Floating Point Implementation\tabularnewline
+\textbf{Float64} & 64 Bit Floating Point Implementation\tabularnewline
+\end{tabular}
+
+\XtoCImplementation{FiP16}
+\nopagebreak[0]
+
+16 Bit Fixed Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+phi\_H & int16\tabularnewline
+\hline
+phi\_L & int16\tabularnewline
+\hline
+n\_H & int16\tabularnewline
+\hline
+n\_L & int16\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+phi & int16\tabularnewline
+\hline
+n & int16\tabularnewline
+\hline
+Enable\_H & bool\tabularnewline
+\hline
+Enable\_L & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_EstimatorSwitch_FiP16.tex}{}{}
+\fi
+\XtoCImplementation{FiP32}
+\nopagebreak[0]
+
+32 Bit Fixed Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+phi\_H & int32\tabularnewline
+\hline
+phi\_L & int32\tabularnewline
+\hline
+n\_H & int32\tabularnewline
+\hline
+n\_L & int32\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+phi & int32\tabularnewline
+\hline
+n & int32\tabularnewline
+\hline
+Enable\_H & bool\tabularnewline
+\hline
+Enable\_L & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_EstimatorSwitch_FiP32.tex}{}{}
+\fi
+\XtoCImplementation{Float32}
+\nopagebreak[0]
+
+32 Bit Floating Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+phi\_H & float32\tabularnewline
+\hline
+phi\_L & float32\tabularnewline
+\hline
+n\_H & float32\tabularnewline
+\hline
+n\_L & float32\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+phi & float32\tabularnewline
+\hline
+n & float32\tabularnewline
+\hline
+Enable\_H & bool\tabularnewline
+\hline
+Enable\_L & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_EstimatorSwitch_Float32.tex}{}{}
+\fi
+\XtoCImplementation{Float64}
+\nopagebreak[0]
+
+64 Bit Floating Point Implementation
+
+\begin{XtoCtabular}{Inports Data Type}
+phi\_H & float64\tabularnewline
+\hline
+phi\_L & float64\tabularnewline
+\hline
+n\_H & float64\tabularnewline
+\hline
+n\_L & float64\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+phi & float64\tabularnewline
+\hline
+n & float64\tabularnewline
+\hline
+Enable\_H & bool\tabularnewline
+\hline
+Enable\_L & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_ZSMT/Doc/Test-Results/Test_EstimatorSwitch_Float64.tex}{}{}
+\fi

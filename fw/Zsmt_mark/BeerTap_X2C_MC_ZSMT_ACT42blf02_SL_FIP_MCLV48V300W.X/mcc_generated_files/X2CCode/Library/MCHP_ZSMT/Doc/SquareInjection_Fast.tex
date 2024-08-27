@@ -1,0 +1,123 @@
+\XtoCBlock{SquareInjection\_Fast}
+\label{block:SquareInjectionFast}
+\missingfigure{SquareInjection\_Fast : SquareInjection\_Fast.png} 
+
+\begin{XtoCtabular}{Inports}
+Ix & d-current in estimated refercence frame x,y\tabularnewline
+\hline
+Iy & q-current in estimated refercence frame x,y\tabularnewline
+\hline
+Sync & synchronization with slowTaskISR;
+
+First detected rising egde of the Sync-input activates the voltage injection\tabularnewline
+\hline
+EnableInj & Enables and disables injection of HF-voltage. 
+
+Usually used in combination with sensorless bEmf-algortihms @higher speeds. For applications solely controlled by hf-injection, set this input to constant 1.
+
+
+
+EnableInj = 0: hf-voltage injection is disabled. Ud and angle-error dPhi are set to zero.
+
+EnableInj != 0:  hf-voltage is enabled\tabularnewline
+\hline
+Enable & Enable = 0: Outputs are zero.
+
+Enable != 0: Initial rotor angle is determined, PLL and controller enabled\tabularnewline
+\hline
+\end{XtoCtabular}
+
+
+\begin{XtoCtabular}{Outports}
+Ud & This Output has 2 operational meanings:
+
+@startUp: ud is the amplitude of the voltage-phasor for the calculation of the initial rotor angle.
+
+@Injection: once Injection is activated, ud is the amplitude of the square-wave voltage injected. \tabularnewline
+\hline
+PhiInit & Initial rotor angle\tabularnewline
+\hline
+EnablePLL & Enable signal for PLL\tabularnewline
+\hline
+EnableCtrl & Enable signal for motor-controllers\tabularnewline
+\hline
+dPhi & Angle-error of the estimated reference frame x,y. k\epsilon \sin (2\Delta\varphi)\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Mask Parameters}
+VoltPhasor & Angle Detection: Amplitdue of voltage pulses used for determination of initial rotor anlge\tabularnewline
+\hline
+T1 & Angle Detection: Time after enable of first voltage-pulse\tabularnewline
+\hline
+deltaT & Angle Detection: Time inbetween voltage pulses\tabularnewline
+\hline
+Tpulse & Angle Detection: Time of voltage-pulse to be at the given amplitude\tabularnewline
+\hline
+DelayPLL & Time delay for enabling PLL\tabularnewline
+\hline
+DelayCtrl & Time Delay for enabling PLL [s]\tabularnewline
+\hline
+uInj & voltage amplitude of injected square wave\tabularnewline
+\hline
+uDCmax & Normalization of Udc link voltage\tabularnewline
+\hline
+ts\_fact & \tabularnewline
+\hline
+\end{XtoCtabular}
+
+\subsubsection*{Description:}
+* AngleDetection: calculates rotor-angle at init-time;
+
+* Enable Sequence: realizes an adjustable Delay-Sequence for enabling PLL and controller;
+
+* Voltage Injection: injects a square-wave voltage signal with fPWM/2 and adjustable amplitude;
+
+
+
+BE AWARE:
+
+This Block needs the SquareInjection\_Slow-Block to work properly!
+
+% include optional documentation file
+\InputIfFileExists{SquareInjection_Fast_Info.tex}{\vspace{1ex}}{}
+
+\subsubsection*{Implementations:}
+\begin{tabular}{l l}
+\textbf{FiP16} & \tabularnewline
+\end{tabular}
+
+\XtoCImplementation{FiP16}
+\nopagebreak[0]
+
+
+
+\begin{XtoCtabular}{Inports Data Type}
+Ix & int16\tabularnewline
+\hline
+Iy & int16\tabularnewline
+\hline
+Sync & int16\tabularnewline
+\hline
+EnableInj & bool\tabularnewline
+\hline
+Enable & bool\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Outports Data Type}
+Ud & int16\tabularnewline
+\hline
+PhiInit & int16\tabularnewline
+\hline
+EnablePLL & bool\tabularnewline
+\hline
+EnableCtrl & bool\tabularnewline
+\hline
+dPhi & int16\tabularnewline
+\hline
+\end{XtoCtabular}
+
+\ifdefined \AddTestReports
+\InputIfFileExists{\XcHomePath/Library/MCHP_LSHT/Doc/Test_SquareInjection_Fast_FiP16.tex}{}{}
+\fi

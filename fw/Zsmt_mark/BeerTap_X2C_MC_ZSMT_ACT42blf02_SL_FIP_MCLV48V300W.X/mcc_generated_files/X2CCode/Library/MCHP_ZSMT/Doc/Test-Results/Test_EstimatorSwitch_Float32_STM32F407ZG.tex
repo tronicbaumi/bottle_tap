@@ -1,0 +1,117 @@
+\XtoCVerification{EstimatorSwitch Float32 CPU STM32F407ZG}
+\begin{tabular}{l l}
+\textbf{Date of Test} & 2020-07-20 \tabularnewline
+\textbf{Target controller} & STM32F407ZG \tabularnewline
+\end{tabular}
+\vspace{1ex}
+\XtoCTestCase{Inport test}{1}
+Inport test for MCHP_ZSMT block EstimatorSwitch.
+
+\vspace{1em}
+\begin{tabularx}{\textwidth}{|c|c|c|>{\centering\arraybackslash}X|c|}
+\hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.8}\textbf{Test results}} \tabularnewline \hline
+\textbf{Time step} & 1 & 2 & ... & 131 \tabularnewline \hline
+\textbf{CPU cycles} & 110 & 110 & ... & 106 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Inputs}} \tabularnewline \hline
+\textbf{phi\_H (DSP)} & 3.11 & 3.11 & ... & 2.682 \tabularnewline \hline
+\textbf{phi\_L (DSP)} & 1.866 & 1.866 & ... & 1.609 \tabularnewline \hline
+\textbf{n\_H (DSP)} & 0.516 & 13.687 & ... & -977.203 \tabularnewline \hline
+\textbf{n\_L (DSP)} & 0.413 & 10.949 & ... & -781.762 \tabularnewline \hline
+\textbf{phi\_H} & 3.11 & 3.11 & ... & 2.682 \tabularnewline \hline
+\textbf{phi\_L} & 1.866 & 1.866 & ... & 1.609 \tabularnewline \hline
+\textbf{n\_H} & 0.516 & 13.687 & ... & -977.203 \tabularnewline \hline
+\textbf{n\_L} & 0.413 & 10.949 & ... & -781.762 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Parameters}} \tabularnewline \hline
+\textbf{thresh\_up} & \multicolumn{4}{c|}{600} \tabularnewline \hline
+\textbf{thresh\_down} & \multicolumn{4}{c|}{100} \tabularnewline \hline
+\textbf{n\_max} & \multicolumn{4}{c|}{1} \tabularnewline \hline
+\textbf{ts\_fact} & \multicolumn{4}{c|}{1} \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Outputs}} \tabularnewline \hline
+\textbf{phi} & 1.866 & 1.866 & ... & 2.682 \tabularnewline \hline
+\textbf{n} & 0.413 & 10.949 & ... & -977.203 \tabularnewline \hline
+\textbf{Enable\_H} & 0 & 0 & ... & 1 \tabularnewline \hline
+\textbf{Enable\_L} & 1 & 1 & ... & 0 \tabularnewline \hline
+\textbf{Exp. phi} & 1.866 & 1.866 & ... & 2.682 \tabularnewline \hline
+\textbf{Exp. n} & 0.413 & 10.949 & ... & -977.203 \tabularnewline \hline
+\textbf{Exp. Enable\_H} & 0 & 0 & ... & 1 \tabularnewline \hline
+\textbf{Exp. Enable\_L} & 1 & 1 & ... & 0 \tabularnewline \hline
+\textbf{phi (DSP)} & 1.866 & 1.866 & ... & 2.682 \tabularnewline \hline
+\textbf{n (DSP)} & 0.413 & 10.949 & ... & -977.203 \tabularnewline \hline
+\textbf{Enable\_H (DSP)} & 0 & 0 & ... & 1 \tabularnewline \hline
+\textbf{Enable\_L (DSP)} & 1 & 1 & ... & 0 \tabularnewline \hline
+\textbf{Exp. phi (DSP)} & 1.866 & 1.866 & ... & 2.682 \tabularnewline \hline
+\textbf{Exp. n (DSP)} & 0.413 & 10.949 & ... & -977.203 \tabularnewline \hline
+\textbf{Exp. Enable\_H (DSP)} & 0 & 0 & ... & 1 \tabularnewline \hline
+\textbf{Exp. Enable\_L (DSP)} & 1 & 1 & ... & 0 \tabularnewline \hline
+\end{tabularx}
+\vspace{1ex}
+
+\begin{XtoCtabular}{Test settings}
+Tolerance phi & $\pm$1.3970e-07 ($\pm$300 LSB) \tabularnewline \hline
+Tolerance n & $\pm$3.7253e-05 ($\pm$80000 LSB) \tabularnewline \hline
+Tolerance Enable\_H & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance Enable\_L & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Test statistics}
+Min CPU cycles & 106 \tabularnewline \hline
+Max CPU cycles & 110 \tabularnewline \hline
+Avg CPU cycles & 106 \tabularnewline \hline
+\end{XtoCtabular}
+\XtoCTestCase{Conversion test}{1}
+Conversion test for MCHP_ZSMT block EstimatorSwitch.
+
+\vspace{1em}
+\begin{tabularx}{\textwidth}{|c|c|c|>{\centering\arraybackslash}X|c|}
+\hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.8}\textbf{Test results}} \tabularnewline \hline
+\textbf{Time step} & 1 & 2 & ... & 8 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Mask parameters}} \tabularnewline \hline
+\textbf{thresh\_up} & 0 & 1 & ... & 33000 \tabularnewline \hline
+\textbf{thresh\_down} & 0 & 0 & ... & 3000 \tabularnewline \hline
+\textbf{n\_max} & 1000 & 1000 & ... & 32768 \tabularnewline \hline
+\textbf{ts\_fact} & 1 & 1 & ... & 1 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Controller parameters}} \tabularnewline \hline
+\textbf{thresh\_up} & 0 & 1 & ... & 33000 \tabularnewline \hline
+\textbf{thresh\_down} & 0 & 0 & ... & 3000 \tabularnewline \hline
+\textbf{Exp. thresh\_up} & 0 & 1 & ... & 33000 \tabularnewline \hline
+\textbf{Exp. thresh\_down} & 0 & 0 & ... & 3000 \tabularnewline \hline
+\end{tabularx}
+\vspace{1ex}
+
+\begin{XtoCtabular}{Test settings}
+Tolerance thresh\_up & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance thresh\_down & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+\end{XtoCtabular}
+\XtoCTestCase{Conversion-on-Target test}{1}
+Conversion-on-Target test for MCHP_ZSMT block EstimatorSwitch.
+
+\vspace{1em}
+\begin{tabularx}{\textwidth}{|c|c|c|>{\centering\arraybackslash}X|c|}
+\hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.8}\textbf{Test results}} \tabularnewline \hline
+\textbf{Time step} & 1 & 2 & ... & 8 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Mask parameters}} \tabularnewline \hline
+\textbf{thresh\_up} & 0 & 1 & ... & 33000 \tabularnewline \hline
+\textbf{thresh\_down} & 0 & 0 & ... & 3000 \tabularnewline \hline
+\textbf{n\_max} & 1000 & 1000 & ... & 32768 \tabularnewline \hline
+\textbf{ts\_fact} & 1 & 1 & ... & 1 \tabularnewline \hline
+\multicolumn{5}{|l|}{\cellcolor[gray]{0.9}\textit{Controller parameters}} \tabularnewline \hline
+\textbf{thresh\_up} & 0 & 1 & ... & 33000 \tabularnewline \hline
+\textbf{thresh\_down} & 0 & 0 & ... & 3000 \tabularnewline \hline
+\textbf{Exp. thresh\_up} & 0 & 1 & ... & 33000 \tabularnewline \hline
+\textbf{Exp. thresh\_down} & 0 & 0 & ... & 3000 \tabularnewline \hline
+\end{tabularx}
+\vspace{1ex}
+
+\begin{XtoCtabular}{Test settings}
+Tolerance thresh\_up & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+Tolerance thresh\_down & $\pm$0.0000e+00 ($\pm$0 LSB) \tabularnewline \hline
+\end{XtoCtabular}
+
+\begin{XtoCtabular}{Test statistics}
+Min CPU cycles & 946 \tabularnewline \hline
+Max CPU cycles & 948 \tabularnewline \hline
+Avg CPU cycles & 947 \tabularnewline \hline
+\end{XtoCtabular}
