@@ -61,7 +61,7 @@ BasicStepperDriver stepperGLASS(MOTOR_STEPS, DIR_GLASS, STEP_GLASS);
 SyncDriver controller(stepperBOTTLE, stepperGLASS);
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println("bottle tap started....");
   Serial.println("==========================");
   /*
@@ -84,7 +84,8 @@ void setup() {
   pinMode(ENABLE_BOTTLE, OUTPUT);
   pinMode(ENABLE_GLASS, OUTPUT);
 
-  digitalWrite(ENABLE_BOTTLE,HIGH);
+  digitalWrite(ENABLE_BOTTLE,LOW);
+  digitalWrite(ENABLE_GLASS,LOW);
 
 }
 
