@@ -5,29 +5,13 @@ $fn=60;
 
 // variables
 
-// variable 1
-d1 = 10;    // [1:1:100]
-// variable 2
-l1 = 65;    // [5:1:80]
-// variable 3
-l2 = 28;    // [1:1:69]
 
 main();
 
 
 module main()
 {
-    
-//    translate([50,0,0])cube_r(30,20,10,2);
-//    
-//    translate([0,50,0])rotate([90,0,0])rectTriangle(10,20,5);
-//    
-//    linear_extrude(12)translate([10,10,0])import("BFKDO.svg");
-//    
-//    translate([50,50,0])rotate([0,0,0])linear_extrude(height = 0.5)text("(c) ChB 2/2021",size = 5);
-//    
-//    translate([100,0,0])cylinder_r(40,12,8,3,2);
-    
+      
     difference(){
         plus();
         minus();
@@ -39,43 +23,22 @@ module main()
 module plus()
 {   
   
+    translate([0,0,0])rotate([0,0,0])cube([5+6.5+42+42+5+6.5,60,6.5]);
     
-    translate([0,0,0])rotate([0,0,0])cube([5+6.5+42+42+5+6.5,60,6]);
-    
-    
-//    translate([0,0,12])rotate([0,0,0])cylinder(l1,12/2,11.8/2);
-    
-//    translate([-42,17,0])rotate([0,0,0])cylinder(2,4/2,8/2);
 }
 
 module minus()
 {
-    translate([5,2,1])rotate([0,0,0])cube([55.5,13.5,5]);
+    translate([5,2,1])rotate([0,0,0])cube([55.5,13.5,5.5]);
     translate([5+6.5,2+13.5/2,0])rotate([0,0,0])cylinder(1,5/2,5/2);
     translate([5+6.5+42,2+13.5/2,0])rotate([0,0,0])cylinder(1,5/2,5/2);
-    translate([5+6.5+42+42,2+13.5/2,0])rotate([0,0,0])cylinder(6,5/2,5/2);
+    translate([5+6.5+42+42,2+13.5/2,0])rotate([0,0,0])cylinder(6.5,5/2,5/2);
     
-    translate([5,60-13.5-2,1])rotate([0,0,0])cube([55.5,13.5,5]);
+    translate([5,60-13.5-2,1])rotate([0,0,0])cube([55.5,13.5,5.5]);
     translate([5+6.5,60-13.5/2-2,0])rotate([0,0,0])cylinder(1,5/2,5/2);
     translate([5+6.5+42,60-13.5/2-2,0])rotate([0,0,0])cylinder(1,5/2,5/2);    
-    translate([5+6.5+42+42,60-13.5/2-2,0])rotate([0,0,0])cylinder(6,5/2,5/2);
+    translate([5+6.5+42+42,60-13.5/2-2,0])rotate([0,0,0])cylinder(6.5,5/2,5/2);
     
-//    translate([21.2+5,62/2,0])rotate([0,0,0])cylinder(9,18/2,18/2);
-//    
-//    translate([116-(21.2+5),62/2,2])rotate([0,0,0])cylinder(7,22/2,22/2);
-//    translate([116-(21.2+5),62/2,0])rotate([0,0,0])cylinder(9,18/2,18/2);    
-//    
-//    translate([10,10,0])rotate([0,0,0])cylinder(9,4/2,4/2);
-//    translate([10,10,0])rotate([0,0,0])cylinder(2,8/2,4/2);
-//    
-//    translate([10,62-10,0])rotate([0,0,0])cylinder(9,4/2,4/2);
-//    translate([10,62-10,0])rotate([0,0,0])cylinder(2,8/2,4/2);
-//    
-//    translate([116-10,10,0])rotate([0,0,0])cylinder(9,4/2,4/2);
-//    translate([116-10,10,0])rotate([0,0,0])cylinder(2,8/2,4/2);
-//    
-//    translate([116-10,62-10,0])rotate([0,0,0])cylinder(9,4/2,4/2);
-//    translate([116-10,62-10,0])rotate([0,0,0])cylinder(2,8/2,4/2);
 }
 
 module cube_r(x,y,z,r)
